@@ -29,6 +29,11 @@ COPY apps/dashboard/package.json ./package.json
 COPY apps/dashboard/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY apps/dashboard/next.config.mjs ./next.config.mjs
 COPY apps/dashboard/tsconfig.json ./tsconfig.json
+COPY pyproject.toml /app/pyproject.toml
+COPY config /app/config
+COPY data /app/data
+COPY proxy-data /app/proxy-data
+COPY reports /app/reports
 
 # Install only production dependencies
 RUN corepack enable pnpm \

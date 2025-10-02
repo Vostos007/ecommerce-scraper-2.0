@@ -9,7 +9,6 @@ __pycache__/
 venv/
 .venv/
 logs/
-reports/
 RUNBOOKS/
 docs/
 examples/

@@ -96,6 +96,7 @@ services:
         condition: service_healthy
     volumes:
       - exports_data:/app/data
+      - reports_data:/app/reports
 
   worker:
     image: ecommerce-scraper/api:latest
@@ -111,6 +112,7 @@ services:
     command: ["python", "services/worker/worker.py"]
     volumes:
       - exports_data:/app/data
+      - reports_data:/app/reports
     depends_on:
       postgres:
         condition: service_healthy
@@ -132,6 +134,9 @@ services:
     depends_on:
       api:
         condition: service_started
+    volumes:
+      - exports_data:/app/data
+      - reports_data:/app/reports
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 30s
@@ -143,3 +148,4 @@ volumes:
   redis_data:
   minio_data:
   exports_data:
+  reports_data:

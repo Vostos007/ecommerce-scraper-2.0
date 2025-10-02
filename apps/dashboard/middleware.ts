@@ -12,7 +12,7 @@ function buildNonce(): string {
 function buildCsp(nonce: string): string {
   const isProd = process.env.NODE_ENV === 'production';
   const scriptSrc = ["'self'", `'nonce-${nonce}'`];
-  const connectSrc = ["'self'`];
+  const connectSrc = ["'self'"];
 
   if (!isProd) {
     scriptSrc.push("'unsafe-eval'");
