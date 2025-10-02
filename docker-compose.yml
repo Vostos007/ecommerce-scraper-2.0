@@ -85,7 +85,7 @@ services:
       S3_ACCESS_KEY: minioadmin
       S3_SECRET_KEY: minioadmin
       CORS_ORIGINS: '["http://localhost:3000", "http://dashboard:3000"]'
-      PYTHON_BIN: /ms-playwright/python/bin/python
+      PYTHON_BIN: python
     ports:
       - "8000:8000"
     command: ["uvicorn", "services.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
@@ -108,7 +108,7 @@ services:
       S3_BUCKET: scraper-artifacts
       S3_ACCESS_KEY: minioadmin
       S3_SECRET_KEY: minioadmin
-      PYTHON_BIN: /ms-playwright/python/bin/python
+      PYTHON_BIN: python
     command: ["python", "services/worker/worker.py"]
     volumes:
       - exports_data:/app/data

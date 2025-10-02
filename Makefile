@@ -16,8 +16,7 @@ help:
 
 install:
 	@echo "📥 Installing dependencies..."
-	pip install -r services/api/requirements.txt
-	pip install -r services/worker/requirements.txt
+	pip install -r requirements.txt
 	playwright install chromium
 	@echo "✅ Dependencies installed"
 
@@ -52,7 +51,7 @@ logs:
 
 test:
 	@echo "🧪 Running tests..."
-	cd ../.. && pytest network/NEW_PROJECT/tests/ -v
+	pytest
 	@echo "✅ Tests completed"
 
 clean:
