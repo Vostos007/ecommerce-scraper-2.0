@@ -100,6 +100,53 @@ function isExecutable(candidate: string): boolean {
   }
 }
 
+function hasPathSeparator(value: string): boolean {
+  return value.includes(path.sep) || (process.platform === 'win32' && value.includes('/'));
+}
+
+function resolveViaPath(command: string): string | null {
+  const pathEnv = process.env.PATH;
+  if (!pathEnv) {
+    return null;
+  }
+
+  if (process.platform === 'win32') {
+    const pathext = process.env.PATHEXT?.split(';').filter(Boolean) ?? ['.exe', '.bat', '.cmd'];
+    for (const dir of pathEnv.split(path.delimiter)) {
+      if (!dir) continue;
+      for (const ext of pathext) {
+        const candidate = path.join(dir, command.endsWith(ext.toLowerCase()) ? command : `${command}${ext.toLowerCase()}`);
+        if (isExecutable(candidate)) {
+          return candidate;
+        }
+      }
+    }
+    return null;
+  }
+
+  for (const dir of pathEnv.split(path.delimiter)) {
+    if (!dir) continue;
+    const candidate = path.join(dir, command);
+    if (isExecutable(candidate)) {
+      return candidate;
+    }
+  }
+  return null;
+}
+
+function resolveExecutable(command: string): string | null {
+  if (!command) {
+    return null;
+  }
+
+  if (hasPathSeparator(command)) {
+    return isExecutable(command) ? command : null;
+  }
+
+  const resolved = resolveViaPath(command);
+  return resolved ?? (isExecutable(command) ? command : null);
+}
+
 function resolvePythonBinary(): string {
   if (cachedPythonBinary) {
     return cachedPythonBinary;
@@ -107,35 +154,19 @@ function resolvePythonBinary(): string {
 
   const fromEnv = process.env.PYTHON_BIN;
   if (fromEnv) {
-    if (!isExecutable(fromEnv)) {
+    const resolvedFromEnv = resolveExecutable(fromEnv);
+    if (!resolvedFromEnv) {
       throw new Error(`PYTHON_BIN=${fromEnv} не является исполняемым файлом`);
     }
-    cachedPythonBinary = fromEnv;
+    cachedPythonBinary = resolvedFromEnv;
     return cachedPythonBinary;
   }
 
-  const candidates: string[] = [];
   for (const command of ['python3', 'python']) {
-    if (process.platform === 'win32') {
-      const pathext = process.env.PATHEXT?.split(';').filter(Boolean) ?? ['.exe', '.bat', '.cmd'];
-      for (const dir of (process.env.PATH ?? '').split(path.delimiter)) {
-        if (!dir) continue;
-        for (const ext of pathext) {
-          candidates.push(path.join(dir, `${command}${ext.toLowerCase()}`));
-        }
-      }
-    } else {
-      for (const dir of (process.env.PATH ?? '').split(path.delimiter)) {
-        if (!dir) continue;
-        candidates.push(path.join(dir, command));
-      }
-    }
-  }
-
-  for (const candidate of candidates) {
-    if (isExecutable(candidate)) {
-      cachedPythonBinary = candidate;
-      return candidate;
+    const resolved = resolveExecutable(command);
+    if (resolved) {
+      cachedPythonBinary = resolved;
+      return resolved;
     }
   }
 

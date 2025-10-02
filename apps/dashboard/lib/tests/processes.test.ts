@@ -1,6 +1,8 @@
+import os from 'node:os';
+import path from 'node:path';
 import { EventEmitter } from 'node:events';
 import { PassThrough } from 'node:stream';
-import { beforeEach, describe, expect, test, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 
 class FakeProcess extends EventEmitter {
   public readonly stdout = new PassThrough();
@@ -42,6 +44,10 @@ beforeEach(() => {
   // Reset global active processes
   const globalStore = globalThis as any;
   globalStore.__dashboardActiveProcesses = undefined;
+});
+
+afterEach(() => {
+  vi.resetModules();
 });
 
 describe('processes spawnExport', () => {
@@ -89,5 +95,34 @@ describe('processes spawnExport', () => {
     spawnExport('atmospherestore.ru');
     spawnExport('atmospherestore.ru');
     expect(() => spawnExport('atmospherestore.ru')).toThrowError('Превышен лимит одновременных экспортов');
+  });
+});
+
+describe('getPythonBinary resolution', () => {
+  test('resolves command names via PATH when PYTHON_BIN is not absolute', async () => {
+    const realFs = await vi.importActual<typeof import('node:fs')>('node:fs');
+
+    const tmpDir = realFs.mkdtempSync(path.join(os.tmpdir(), 'python-mock-'));
+    const commandName = process.platform === 'win32' ? 'python-mock.cmd' : 'python-mock';
+    const commandPath = path.join(tmpDir, commandName);
+    realFs.writeFileSync(commandPath, process.platform === 'win32' ? '@echo off\r\n' : '#!/bin/sh\nexit 0\n', {
+      encoding: 'utf-8'
+    });
+    realFs.chmodSync(commandPath, 0o755);
+
+    const originalPath = process.env.PATH ?? '';
+    process.env.PATH = tmpDir;
+    process.env.PYTHON_BIN = process.platform === 'win32' ? 'python-mock' : 'python-mock';
+
+    vi.resetModules();
+    const processesModule = await import('../processes');
+    const resolved = processesModule.getPythonBinary();
+
+    expect(resolved).toBe(commandPath);
+
+    process.env.PATH = originalPath;
+    delete process.env.PYTHON_BIN;
+    realFs.unlinkSync(commandPath);
+    realFs.rmSync(tmpDir, { recursive: true, force: true });
   });
 });
