@@ -1,5 +1,3 @@
-import type { NextConfig } from 'next';
-
 const appOrigin = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3050';
 
 const securityHeaders = [
@@ -44,11 +42,9 @@ const corsHeaders = [
   }
 ];
 
-const config: NextConfig = {
+const config = {
   reactStrictMode: true,
-  turbopack: {
-    // В dev режиме оставляем стандартные настройки; возможность точечной настройки сохранена на будущее.
-  },
+  turbopack: {},
   async headers() {
     return [
       {
