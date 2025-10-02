@@ -1,8 +1,2002 @@
 {
-  "version": "1.0",
-  "generated_at": "2025-09-18T08:30:00Z",
   "links": [
-    { "url": "https://sittingknitting.ru/catalog/soft-merino" },
-    { "url": "https://sittingknitting.ru/catalog/linen-classic" }
+    {
+      "url": "https://sittingknitting.ru/shop/250_avtorskikh_dizaynov_khirose_mitsukharu.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/about-berlin-cashmere-street.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/abs-protivoskolzyashhie-naklejki-regia.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/adapter-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/adapter-dlya-lesok-fine-gauge.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/adaptery.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/addi_colibri_chulochnye_spitsy_15_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/addi_lace_krugovye_spitsy_40_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/addi_lace_krugovye_spitsy_80_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/addi_lineyka_dlya_spits_serdechko.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/addi_marker_nosochek_1_sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/addi_marker_serdechko_nosochek_v_banochke_16_sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/addi_marker_serdechko_v_banochke_10_sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/addi_nabor_nakonechnikov_dlya_spits_mishka_4_sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/addi_unicorn_krugovye_spitsy_100_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/addi_unicorn_krugovye_spitsy_120_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/addi_unicorn_krugovye_spitsy_80_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/air.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/alpaca-couture.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/alpaca-silk.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/alpakka-silke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/angora-80.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/angora-tweed.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/aquarelle.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/art_uzor_bulavka_dlya_snyatiya_petel_90_2_mm_art_1053269.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/art_uzor_koltso_karabin_48_mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/art_uzor_nabor_bulavok_dlya_snyatiya_petel_3_sht_9_11_5_15_sm_art_2294145.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/austermann_fortissima_color_6_fach_tweed_effekt.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/baby-alpaca.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/baby-merino.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/bambi-shawl-art-yarn.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/bamboo-cpitsy-chulochnye.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/bc_garn_tussah_tweed.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/bice.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/blitz_pugovitsa_16_mm_djs_001.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/boho.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/borgo_de_pazzi_amore_lino.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/borgo_de_pazzi_pima_silk.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/borstet-alpakka.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/brillino.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/brisa.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/bulavka-dlya-snyatiya-petel-90-mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/bulavka-dlya-snyatiya-petel.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/cantucci.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carewool_nabor_sredstv_dlya_stirki_pryazhi_4kh100_ml.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carewool_sredstvo_dlya_stirki_25_ml.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carewool_tre_sredstvo_dlya_stirki_shersttsoderzhashchey_pryazhi_350_ml.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carewool_zero_kontsentrat_dlya_stirki_detskoy_sherstsoderzhashchey_odezhdy_200_ml.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carryc-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carryc-carryt.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carryc-fine-gauge.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carryc-long-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carryc-long-3.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carryc-long-fine-gauge.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carryc-long-standartnye-fine-gauge.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carryc-long.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carryc-ukorochennye-fine-gauge.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/carryc.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/casagrande_cash_20_fine.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/casagrande_cashmere_lux.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/casagrande_fusion.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/cash-20.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/cash-tweed.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/cashmere-50-mw.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/casual-soft.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/catenella-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/chiaogoo_leska_kabel_dlya_spits_swiv360_l_metall_neylon.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/chiaogoo_leska_kabel_dlya_spits_swiv360_s_metall_neylon.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/chiaogoo_nabor_chulochnykh_spits_15_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/chiaogoo_nabor_syemnykh_bambukovykh_spits_twist_tip_sets_small_10_sm_5_par.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/chiaogoo_nabor_syemnykh_bambukovykh_spits_twist_tip_sets_small_13_sm_5_par.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/chiaogoo_nabor_syemnykh_spits_twist_shorties_large_5_8_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/chiaogoo_organayzer_dlya_krugovykh_spits_2070.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/chiaogoo_santimetrovaya_lenta.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/chiaogoo_spitsy_dlya_vyazaniya_kos.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/christmas-meilenweit.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/chulochnye-spitsy-ginger-20-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/chulochnye-spitsy-nova.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/chulochnye-spitsy-symfonie-dreamz-15-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/chulochnye-spitsy.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/complete-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/complete.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/concept_by_katia_marmara.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/cosmopolitan-concept.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/cotton-alpaca.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/cotton-bamboo-mw-100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/cotton-linen.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/cotton-merino.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/cotton-tutti-frutti.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/cotton-yak.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/derzhatel_dlya_pryazhi_25_sm_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/diamante.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/divnyy_dom_vereya_uvlazhnyayushchiy_krem_dlya_ruk.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/double-sunday-petiteknit.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/driftwood-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/driftwood-3.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/driftwood.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/dvustoronnij-kryuchok-mind.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/eco-socks-life-color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/eco-socks-life-uni.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/ecocashmere.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/ecopuno.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/elastichnaya-nit-rezinka.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/eliseo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/etimo-kryuchok-dlya-vyazaniya-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/etimo-kryuchok-dlya-vyazaniya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/etimo-lace-blue-kryuchok-dlya-vyazaniya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/etimo-nabor-kryuchkov-dlya-vyazaniya-teg-002.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/etimo-red.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/etimo-rose-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/etimo-rose-lace.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/etimo-rose.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/etimo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/ezhednevnik_a5_160_l_tvyerdaya_oblozhka.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/ezhednevnik_a5_80_l_myagkaya_oblozhka.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/ezhednevnik_a5_80_l_tvyerdaya_oblozhka.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/fermuar_kapuchino_svetloe_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/fermuar_malakhit_svetloe_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/flambe.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/gamma_kanva_36x34_sm_plastik.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/gamma_kanva_kruglaya_dlya_donyshka_15_sm_plastik.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/garden-city-color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/gargia-colors-design-line.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/genio-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/graffiti-care.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/grove-standartnye-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/grove-standartnye.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/grove-ukorochennye.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/guya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hamanaka_korzina_osnova_dlya_sumki_45kh28_5_sm_2_sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hamanaka_pryamougolnaya_korzina_osnova_dlya_sumki_32kh21_sm_2_sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hand-dye-dlya-okrashivaniya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/handmade_pugovitsa_buk_15_mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/handmade_pugovitsa_dub_15_mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hekla.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hemline_bulavki_s_tsvetnoy_plastikovoy_golovkoy_75_sht_art_678.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hemline_igly_dlya_shtopki_stalnye_2_4_10_sht_art_284g_24.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hemline_igly_dlya_shtopki_stalnye_3_5_10_sht_art_284g_35.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hemline_koltso_s_lezviem_dlya_obrezaniya_niti_n4372.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hemline_mononit_prozrachnaya_200_m.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hemline_mononit_prozrachnaya_200_m_v_upakovke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hemline_nozhnitsy_dlya_vyshivaniya_goroshek_9_5_sm_art_b4819.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hemline_nozhnitsy_dlya_vyshivaniya_klubok_10_sm_art_b5443_db.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hemline_rezinka_belevaya_s_azhurnym_kraem_15_mm_3_m_belaya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hemline_rezinka_vyazannaya_6_mm_3_m_belaya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hemline_santimetr_ruletka_sova_150_sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/highland-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hiya_hiya_adaptery_dlya_semnykh_spits_sock.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hiya_hiya_igly_dlya_sshivaniya_3_sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hiya_hiya_konektor_dlya_lesok_small.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hiya_hiya_krugovye_spitsy_steel_100_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hiya_hiya_krugovye_spitsy_steel_80_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hiya_hiya_leska_kabel_dlya_spits_miniature.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hiya_hiya_leska_kabel_dlya_spits_small.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hiya_hiya_lineyka_dlya_spits_ovechka.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hiya_hiya_nakonechnik_dlya_spits_panda_small.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hiya_hiya_nozhnitsy_kitty.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hiya_hiya_steel_chulochnye_spitsy_15_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/hiya_hiya_stoppery_businy_dlya_spits_small.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/igly-dlya-shersti.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/igly-ruchnye-dlya-vyshivaniya-s-zakruglennym-konchikom-13-15.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/indigo-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/indigo-3.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/indigo-chulochnye.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/indigo-ukorochennye.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/indigo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/infinity-design-cotton-merino.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/infinity_design_alpaca_boucle.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/infinity_design_everyday.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/ingenua.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/karabin-13h40-mm-rozovoe-zoloto-metall-2-sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/karabin-38-mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/karabin-43-mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/karabin-metallicheskij-13-mm-1-sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/karabin_pod_krugluyu_ruchku_14_mm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_bereber.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_cashmere_10_.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_cool_cotton.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_cotton_merino_volume.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_essential_n110_zhurnal_na_angliyskom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_kirei_color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_komorebi.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_paraiso.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_piumino.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_pluma.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_polynesia_gradient.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_pugovitsa_kokos_v_glazuri_20_mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_pugovitsa_kokos_v_glazuri_24_mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/katia_tencel_cotton.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/kleiber_elektronnyy_schyetchik_ryadov.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/klej-tekstilnyj-30-g.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knina-swivel-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knina-swivel-3.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knina-swivel-4.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knina-swivel.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knit_pro_igly_dlya_pryazhi_nabor_4_sht_plastik.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_blossom_proektnaya_sumka_s_chekhlami_dlya_chulochnykh_i_syemnykh_spits.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_joy_sumochka_dlya_rukodeliya_linii.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_joy_sumochka_dlya_rukodeliya_tsvetochki.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_karbonz_chulochnye_spitsy_15_sm_karbon.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_karbonz_syemnye_spitsy_11_6_sm_standartnye_karbon.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_karbonz_syemnye_spitsy_8_7_sm_ukorochennye_karbon.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_leska_kabel_mindful.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_leska_kabel_swivel_stainless_steel_cable.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_marker_dlya_vyazaniya_amoure_40_sht_.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_marker_dlya_vyazaniya_krug.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_marker_dlya_vyazaniya_mindful_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_marker_dlya_vyazaniya_sansara_1_sht_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_mindful_sumochka_dlya_rukodeliya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_mindful_syemnye_spitsy_10_sm_ukorochennye_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_mindful_syemnye_spitsy_13_sm_standartnye_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_mindfull_chulochnye_spitsy_15_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_mindul_krugovye_spitsy_100_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_mindul_krugovye_spitsy_80_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_chulochnykh_spits_mindful_grateful_15_sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_krugovykh_spits_mindful_explore.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_markerov_dlya_vyazaniya_mindful_plastik.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_standartnykh_spits_denim_indigo_wood_11_sm_8_par.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_syemnykh_spits_day_night_12_5_sm_8_par.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_syemnykh_spits_dreamz_special_derevo_9_5_sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_syemnykh_spits_j_adore_12_5_sm_6_par.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_syemnykh_spits_joy_of_knitting_13_sm_7_par.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_syemnykh_spits_karbonz_starter_set_12_sm_4_pary.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_syemnykh_spits_mindful_belive_13_sm_7_par.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_syemnykh_spits_mindful_gratitude_13_sm_12_par.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_syemnykh_spits_mindful_kindness_10_sm_7_par.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_syemnykh_spits_mindful_warmth_10_sm_12_par.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nabor_syemnykh_spits_self_love_12_5_sm_8_par.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_nova_chulochnye_spitsy_20_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_passion_proektnaya_sumka_s_chekhlami_dlya_chulochnykh_i_syemnykh_spits.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_schetchik_ryadov_dlya_pryamykh_spits_diametrom_2_5mm_i_4_5_6_5mm_plastik.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_schyetchik_ryadov_clicky.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knitpro_schyetchik_ryadov_mindful_v_meshochke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knopka_magnitnaya_14_mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knopka_magnitnaya_18_mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knopka_magnitnaya_prishivnaya_14_mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knopka_magnitnaya_prishivnaya_18_mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/knopka_prishivnaya_18_mm_klt_18.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/koltso-20-mm-zolotistoe.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/konnektor-dlya-lesok.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/konnektory.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/kremke_edelweiss_classic_4ply.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/kremke_reborn_denim_colori.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/kremke_stellaris.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-40-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-addi-lace-100-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-cubics-100-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-cubics-40-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-ginger-40-sm-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-ginger-60-sm-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-ginger-80-sm-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-knit-red-40-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-novel-100-sm-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-novel-40-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-novel-60-sm-2krugovye-spitsy-novel-60-sm-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-novel-80-sm-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-premium-bamboo-100-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-premium-bamboo-80-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-red-lace-100-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-red-lace-80-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/krugovye-spitsy-sockenwunder-lace.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/kryuchki-raku-raku.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/kryuchok-addi-duet-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/kryuchok-dlya-vyazaniya-mind.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lace-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lago.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_gossa_chulochnye_spitsy_raznotsvetnye_15_sm_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_about_berlin_n11_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_accessories_n22_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_cara.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_cashmere_brick_about_berlin.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_chekhol_dlya_krugovykh_spits_11kh24_sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_chekhol_dlya_syemnykh_spits_29kh16_5_sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_chulochnye_spitsy_signal_15_sm_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_classici_n22_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_classici_n23_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_classici_n24_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_cocco.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_color_mix_multi_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_color_mix_soft_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_colorissimo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_cool_wool_lace.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_cotton_bamboo_giulia_mw_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_cotton_vegano_frutti_mw_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_cotton_vegano_mw_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_country_tweed_fine.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_diversa.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_ecopuno_degrade_.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_filati_n64_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_filati_n65_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_fiocco_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_fun_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_gomitollo_n_11_buklet_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_gomitolo_collina.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_gomitolo_lino.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_gomitolo_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_hakeln_n_04_buklet_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_hakeln_n_05_buklet_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_home_n74_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_igly_dlya_shersti_nabor_3_sht_razmer_igl_2_25mm_2_75mm_3_25mm_art_10944.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_infanty_edition_n02_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_kids_n12_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_landlust_die_sockenwolle_iv.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_linea_pura_n_15_buklet_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_linea_pura_n_16_buklet_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_lookbook_n_13_buklet_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_lookbook_n_14_buklet_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_meilenweit_n07_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_merino_extrafine_alto_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_merino_extrafine_appiano_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_merino_extrafine_cosimo_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_merino_extrafine_denim_mix_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_merino_extrafine_laura_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_merino_hand_dyed_meilenweit_50.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_nabor_chulochnykh_spits_15_sm_4kh5_sht_bezhevyy_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_nabor_chulochnykh_spits_15_sm_4kh5_sht_chyernyy_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_nabor_chulochnykh_spits_15_sm_4kh5_sht_naturale_bezhevyy_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_nabor_chulochnykh_spits_15_sm_4kh5_sht_raduga_bezhevyy_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_nabor_chulochnykh_spits_15_sm_4kh5_sht_raduga_chyernyy_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_nabor_kryuchkov_malyy_signal_4_sht_bezhevyy.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_nabor_kryuchkov_malyy_signal_4_sht_chyernyy.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_nabor_kryuchkov_s_myagkoy_tsvetnoy_ruchkoy.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_nabor_syemnykh_spits_4_pary_signal_derevo_bezhevyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_nabor_syemnykh_spits_4_sht_signal_derevo_chyernyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_nabor_syemnykh_spits_8_sht_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_nabor_syemnykh_spits_chyernyy_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_natural_alpaca_pelo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_per_fortuna.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_per_lei.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_pi_bella.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_piccolo_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_sara.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_seta_calmo_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_seta_chiara_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_seta_lia_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_seta_meilenweit_100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_setasuri_degrade.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_signal_syemnye_spitsy_11_6_sm_standartnye_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_solo_lino.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_sumka_dlya_pokupok_rozovye_ovechki.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_syemnye_spitsy_11_6_sm_raduga_standartnye_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_syemnye_spitsy_8_5_sm_raduga_ukorochennye_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_tucher_n06_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lana_grossa_tucher_n07_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/landlust-die-sockenwoole.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_ajrak_organayzer_dlya_rukodeliya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_ajrak_organayzer_dlya_syemnykh_spits.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_chulochnye_spitsy_15_sm_ebenovoe_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_ikat_organayzer_dlya_chulochnykh_spits.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_krugovye_spitsy_100_sm_ebenovoe_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_krugovye_spitsy_40_sm_ebenovoe_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_krugovye_spitsy_80_sm_ebenovoe_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_leska_kabel_fixed_2_sht_v_nabore_ne_krutyashchayasya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_leska_kabel_swivel_360_2_sht_v_nabore.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_nabor_igl_dlya_shitya_pryazhey_2_25_2_75_i_3_25mm_ebenovoe_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_nabor_syemnykh_spits_bliss_derevo_7_par_10_sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_nabor_syemnykh_spits_charm_derevo_5_par_13_sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_nabor_syemnykh_spits_grace_derevo_5_par_10_sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_nabor_syemnykh_spits_heritage_derevo_5_par_10_sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_nabor_syemnykh_spits_legacy_derevo_5_par_13_sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_organayzer_dlya_rukodeliya_tkan.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_syemnye_spitsy_11_6_sm_standartnye_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_syemnye_spitsy_9_5_sm_ukorochennye_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lantern_moon_tunisskiy_kryuchok_dlya_vyazaniya_ebenovoe_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lebes.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/leska-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/leska-3.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/leska-4.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/leska-addisos-click-120-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/leska-basic-dlya-spits-addiclick.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/leska-ginger.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/leska-lace-short-dlya-addiclick.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/leska-prozrachnaya-l.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/leska-prozrachnaya-s.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/leska-twist-x-flex-blue-sleska-twist-x-flex-blue-s.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/leska.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/line.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/livigno_bertagna_filati.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_blush_chulochnye_spitsy_15_sm_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_blush_fuchsia_denim_nabor_semnykh_spits_11_sm_12_par_derevo_dzhinsovyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_blush_fuchsia_denim_nabor_semnykh_spits_7_sm_9_par_derevo_dzhinsovyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_blush_fuchsia_nabor_chulochnykh_spits_15_sm_8kh5_sht_2_3_75_mm_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_blush_krugovye_spitsy_100_sm_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_blush_magenda_nabor_chulochnykh_spits_15_sm_8kh5_sht_2_3_75_mm_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_blush_magenda_nabor_semnykh_spits_11_sm_12_par_derevo_kozhanyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_blush_magenda_nabor_semnykh_spits_7_sm_9_par_derevo_kozhanyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_blush_syemnye_spitsy_11_5_sm_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_blush_syemnye_spitsy_7_sm_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_cypra_black_nabor_semnykh_spits_11_sm_12_par_med_dzhinsovyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_cypra_black_nabor_semnykh_spits_7_sm_9_par_med_dzhinsovyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_cypra_brown_nabor_semnykh_spits_11_sm_12_par_med_dzhinsovyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_cypra_brown_nabor_semnykh_spits_7_sm_9_par_med_dzhinsovyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_cypra_syemnye_spitsy_11_5_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_cypra_syemnye_spitsy_7_sm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_driftwood_nabor_chulochnykh_spits_15_sm_8kh5_sht_derevo_kozhanyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_driftwood_nabor_semnykh_spits_11_5_sm_12_par_derevo_kozhanyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_driftwood_nabor_semnykh_spits_7_sm_9_par_derevo_kozhanyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_indigo_chulochnye_spitsy_15_sm_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_indigo_krugovye_spitsy_100_sm_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_indigo_krugovye_spitsy_80_sm_derevo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_indigo_nabor_chulochnykh_spits_15_sm_8kh5_sht_4_9_mm_derevo_dzhinsovyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_leska_kabel_dlya_spits_blush.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_leska_kabel_dlya_spits_clear.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_leska_kabel_dlya_spits_green.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_leska_kabel_dlya_spits_indigo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_leska_kabel_dlya_spits_magenda.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_nabor_kabelnogo_soedineniya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/lykke_umber_nabor_chulochnykh_spits_15_sm_8kh5_sht_4_9_mm_derevo_dzhinsovyy_chekhol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/magic.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/malyshkakanvas.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/markery-amoure-knitpro-20-sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/master_klass_po_vyazaniyu_perchatok.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/meilenweit-100-denim-mix.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/meilenweit-100-seta-cocoon.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/meilenweit-100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/meilenweit-50.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/meilenweit-tweed-100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/merino-extrafine-uni-mw-100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/merino-extrafine.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/merino-flame.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/merino-hand-dyed-100-mw.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/merino-lino.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/merino.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/miadolla_nabor_dlya_shitya_lama.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/mila.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/milada_shkatulka_slayder_dlya_aksessuarov.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/milada_spitsy_dlya_vyazaniya_kos.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/milada_sredstvo_dlya_stirki.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/milada_zashchitnye_kolpachki_na_spitsy.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/mini-twist-set-standartnye.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/mini.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/mirasol_sisa.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/mohair-cotton.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/montanamontana.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/mountains-and-fjord-design-linemountains-and-fjord-design-line.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/murmur.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-birok-dlya-kviltinga.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-chulochnyh-spits-ginger.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-chulochnyh-spits-symfonie-dreamz-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-chulochnyh-spits-symfonie-dreamz.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-chulochnyh-spits-symfonie-wood-15-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-classic-1.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-grove-standartnye-zelenyj-chehol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-grove-ukorochennye-zelenyj-chehol.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-kryuchkov-etimo-red.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-kryuchkov-raku-raku.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-semnyh-spits-carboc-long-fine-gauge.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-semnyh-spits-carryc-long-fine-gauge-kopirovat.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-spits-ginger-deluxe.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-spits-lana-grossa.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-standartnyh-spits-color-play-delux.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-twist-shorties-mini.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-twist-shorties-small.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-ukorochennyh-spits-ginger-deluxe.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabor-ultrakorotkih-spits-denim.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabory-markerov-zooni-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabory-markerov-zooni.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabory_pryazhi_coast_morskaya_tema.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabory_pryazhi_coast_nezhnost.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabory_pryazhi_coast_siren.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabory_pryazhi_coast_sirenevyy_tuman.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabory_pryazhi_coast_v_lesu.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabory_pryazhi_coast_vsye_luchshee_srazu.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nabory_pryazhi_coast_zhakkard.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nakonechnik-dlya-spits-oranzhevyj.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nakonechnik-dlya-spits.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nakonechniki-dlya-spits-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nakonechniki-dlya-spits.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nobilis.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nordic-dream.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/novel-lace-long.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/novel-lace-short.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/nozhnichki-dlya-vyshivaniya-hemline.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/organajzer-dlya-hraneniya-chulochnyh-spits.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/organajzer-dlya-hraneniya-semnyh-spits.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/organic-cotton.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/pairfect-design-line.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/party.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/peo-30.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/podarochnyj-nabor-nozhnitsy-naperstok.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/podarochnyy_sertifikat_1000_r.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/podarochnyy_sertifikat_10_000_r.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/podarochnyy_sertifikat_3000_r.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/podarochnyy_sertifikat_5000_r.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/podarochnyy_sertifikat_500_r.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/polukoltsa-razemnye-20-mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/polukoltsa-razemnye-32-mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/polukoltso-20-mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/polukoltso_dlya_sumok_20_mm_3_mm_metall.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/power_ball_energy.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/power_ball_graffiti_gradient_care.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/power_ball_pulse.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/premium-alpaca-soft.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/premium-bamboo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/premium-cashmere.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/premium-merino-yak-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/premium-merino-yak-color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/premium-silk-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/prym_prozrachnaya_nit_dlya_shitya_i_beseropleteniya_70_200_m.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/pugovitsa_karamel_15_mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/pugovitsa_karamel_20_mm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/pugovitsa_zvezda_4_kh_prokolnaya_17_mm_31610.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/rafiya-ispie.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia-4-ply.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_6_ply_150_g.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_6_ply_color_150_g.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_8_ply_uni_150_g.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_baby_smiles.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_celebrations_color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_cotton_color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_cotton_color_spring_has_sprung.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_cotton_color_springtime_mood.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_day_dreaming_color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_electric_neon_color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_festival_color_design_line_by_kaffe_fasset.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_hit_the_road_color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_impressione.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_knit_with_colours.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_lofoten_6_ply_design_line_by_a_c.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_magazine_43_noski_semeystva_regia_vkladysh_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_magic_mirror_color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_pairfect_shadow_color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_scandinavian_color_design_line_by_arne_carlos.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_setesdal_color_design_line_by_arne_carlos.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regia_the_two_of_us_color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/regilin.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/rellana_flotte_socke_baumwolle_stretch_tutti_frutti.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_2_5_80_140_poliestr.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_2_80_140sm_chyernyy_poliestr.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_2_80_140sm_koral_poliestr.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_55_110sm_rozovyy_vecher.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_amazonka.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_ch_b.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_fiesta.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_fuksiya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_grafika.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_guchchi_poliestr.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_klever.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_mishlen.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_oranzh.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_peschanyy_bereg_poliestr.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_pesok.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_polosy.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_rozovye_sny.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_rozovyy_vecher_poliestr.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_siniy_poliestr.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_terrakot.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_dlya_sumki_3_8_80_140sm_vesna.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_ruchka_dlya_sumok_i_korzin_2_sht_2_5_sm_4_otverstiya_chyernyy_kozha.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_ruchka_dlya_sumok_i_korzin_2_sht_2_sm_2_mm_4_otverstiya_tyemno_korichnevyy_kozha.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/remen_ruchka_dlya_sumok_i_korzin_2_sht_2_sm_4_otverstiya_chyernyy_kozha.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/ruchka-gelevaya-s-tematicheskim-oformleniem.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/ruchka_derevyannaya_2_sht_12kh12_9_sm_bezhevyy.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/ruchka_derevyannaya_2_sht_15kh8_sm_korichnevyy.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sandnes-garn-duo.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sandnes-garn-kos.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sandnes_garn_2004_mohair_and_silk_s_instruktsiey_na_angliyskom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sandnes_garn_2010_hverdag_s_instruktsiey_na_angliyskom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sandnes_garn_2204_bomull_s_instruktsiey_na_angliyskom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sandnes_garn_2207_line_og_tynn_line_s_instruktsiey_na_angliyskom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sandnes_garn_2302_diy_s_instruktsiey_na_angliyskom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sandnes_garn_mandarin_naturell.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sandnes_garn_mandarin_petit.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/santimetr-ruletka-mishka-150-sm-grundel.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/schachenmayr_arizona.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/schachenmayr_catania_denim.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/schachenmayr_cotton_bambulino.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/schachenmayr_journey.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/semnye-spitsy-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/semnye-spitsy-symfonie-dreamz-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/semnye-spitsy-symfonie-dreamz.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/semnye-spitsy.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/semnye-standartnye-spitsy-ginger-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/semnye-ukorochennye-spitsy-ginger.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/setasuri.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/shchyetochka_dlya_ukhoda_za_odezhdoy.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/shhetochka-dlya-snyatiya-pilinga-krasnaya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/shhetochka-dlya-snyatiya-pilinga-sinyaya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/shvejnyj-nabor-v-plastikovom-futlyare.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/silk-mohair-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/silk-mohair.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sira.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_donyshko_dlya_shopera.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_opisanie_kudryavaya_shapka.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_opisanie_po_vyazaniyu_manishki.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_opisanie_po_vyazaniyu_povyazki.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_opisanie_shapka_2_v_1.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_opisanie_shapka_graficheskaya.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_opisanie_shapka_iz_yaka.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_opisanie_shapka_obyemnyy_pushistik.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_opisanie_shapki_iz_cloud.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_opisanie_shapki_iz_noble.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_proektnaya_sumka_vsye_s_soboy_kanvas_chyernaya_kozha.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_proektnaya_sumka_vsye_s_soboy_kanvas_korichnevaya_kozha.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_shoper_prosto_sumka_kanvas_chyernaya_kozha.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_shoper_prosto_sumka_kanvas_korichnevaya_kozha.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_sumochka_kosmetichka_motok_i_spitsy_kanvas.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_vedro_proektnoe_bolshoe_25kh25_voshchyenyy_kanvas_.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_vedro_proektnoe_malenkoe_15kh15_voshchyenyy_kanvas_.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sizhuvyazhu_vedro_proektnoe_srednee_20kh20_s_podkladom_voshchyenyy_kanvas_.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/soft-linen-mix.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/soft-mix.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/soja-100-mw.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sovmestnik_po_vyazaniyu_avoski.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-crasytrio-bamboo-short.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-crasytrio-short.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-crasytrio.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-dlya-vyazaniya-kos-symfonie-wood.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-krugovye-100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-krugovye-3.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-krugovye-30.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-krugovye-4.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-krugovye-60-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-krugovye-lace-80-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-krugovye.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-semnye-sharp-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-semnye-sharp.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-semnye-steel-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-semnye-steel.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-semnye-ukorochennye.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/spitsy-semnye.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/stopper-dlya-leski-2-sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/stopper-dlya-leski-fine-gauge-2-sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/stoppery-l.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/stripy-mouline.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/stripy.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sumka-tkanevaya-domiki.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sumka-tkanevaya-goroshek.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/summer-ombre.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/summer-shine.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/sunday-petiteknit.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/symfonie-cubics-deluxe.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/symfonie-cubics-special.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/symfonie-dreamz-delux.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/symfonie-dreamz-special.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/symfonie-dreamz-starter.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/symfonie-rose-deluxe.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/symfonie-wood-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/symfonie-wood-knitpro-deluxe.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/symfonie-wood.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/tapestry-needles.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/tsepochka-metallicheskaya-120-sm.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/tulip_nabor_kryuchkov_etimo_blue_8_sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/tulip_nabor_kryuchkov_sucre_bead_crochet_5_sht.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/tulip_nabor_marekrov_amicolle_serdechko_v_banochke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/tweed-uni-4-ply-100.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/tweed-uni-6-ply.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/tweed.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/twist-large-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/twist-large.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/twist-small.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/tynn-silk-mohair.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/tynn_-line_sandnes_garn.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/umber-2.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/umber-3.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/umber-4.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/umber-chulochnye.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/umber.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/umina.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/veden_ema_kontsetrat_dlya_ruk_s_vasilkom_i_kompleksom_naturalnykh_masel.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/verena_n47_zhurnal_na_russkom_yazyke.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/virtual-reality-color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/wellness-color.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/yak-80.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/yak-90.html"
+    },
+    {
+      "url": "https://sittingknitting.ru/shop/yucatan.html"
+    }
   ]
 }

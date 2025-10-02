@@ -1,9 +1,2914 @@
 {
-  "version": "1.0",
-  "generated_at": "2025-09-20T10:00:00Z",
   "links": [
-    { "url": "https://atmospherestore.ru/product/astral-yarn" },
-    { "url": "https://atmospherestore.ru/product/cosmic-needles" },
-    { "url": "https://atmospherestore.ru/product/nebula-wool" }
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/formy-dlya-golovnyh-uborov/forma-plastikovaya-dlya-shlyap-56sm-chernaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/formy-dlya-golovnyh-uborov/forma-plastikovaya-dlya-shlyap-bejevaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/formy-dlya-golovnyh-uborov/forma-plastikovaya-dlya-shlyap-belaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/formy-dlya-golovnyh-uborov/forma-plastikovaya-dlya-shlyap-chernaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/formy-dlya-golovnyh-uborov/kozyirek-plastikovyiy-chernyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/knopki"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/knopki/knopki-gamma-d-16-mm-nikel-upakovka-10-sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/knopki/knopki-gamma-d-18mm-kl-g-chernyj-nikel-magnitnye"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/knopki/knopki-gamma-d-18mm-kl-g-nikel-magnitnye"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/knopki/knopki-gamma-d-21-mm-kl-210-chernyj-nikel-upakovka-10-sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/knopki/knopki-gamma-d-21-mm-kl-210-nikel-upakovka-10-sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/knopki/knopki-gamma-d-21-mm-klm-210-med-upakovka-10-sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/knopki/knopki-gamma-d-21-mm-klm-210-zoloto-upakovka-10-sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/knopki/knopki-gamma-d-21mm-kla-21-prozrachnyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/forma-dlja-sumki-plastikovaja-2132-sm-chernaja"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/kanva-plastikovaja-4575-sm-belaja"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/kanva-plastikovaja-4575-sm-chernaja"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/kanva-plastikovaya-4575-sm-prozrachnaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-dna-sumki-bejevaya-isk-koja-ovalnaya--plastik-15-30-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-dna-sumki-bejevaya-isk-koja-pryamougolnaya--plastik-15-30-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-dna-sumki-isk-koja-156-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-dna-sumki-isk-koja-20-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-dna-sumki-kanva-h202-551-2"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-dna-sumki-kanva-h202-551-4"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-dna-sumki-korich-isk-koja-20-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-dna-sumki-korichnevaya-isk-koja-ovalnaya--plastik-15-30-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-dna-sumki-korichnevaya-isk-koja-pryamougolnaya--plastik-15-30-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-dna-sumki-krug-plastik"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-dna-sumki-oval-plastik"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-sumki-16512-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-sumki-1811-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-sumki-2013-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-sumki-bejevaya-45285-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-sumki-belaya-45285-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/osnova-dlya-sumki-chernaya-45285-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/plastikovaya-kanva-dlya-pryamougolnoy-sumki-31545-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/osnovy-dlya-sumok/plastikovaya-kanva-dlya-pryamougolnoy-sumki-315sm--45sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/57698-pugovitsa-na-prokol-15mm-av"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/9071-pugovitsa-na-prokol-17mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/avantyura-2-prokola-22mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/bejevaya-na-nojke-18-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/belaya-s-prokolami-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/bezhevaya_s_obodkom"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/brjulik-belyj-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/busina-antracit-10-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/busina-belaja-10-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/businka-kruglaya-korichnevaya-12-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/cherepaha-temnaja-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/cherepaha_chetyre_prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/chernaya-s-prokolami-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/chernaya_dyra"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/chernyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/chernyiy-french-na-nojke-20-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/chernyiy-matovyiy-bochonok-18-mm-2-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/chernyiy-matovyiy-bochonok-23-mm-2-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/chipsyi-latun-2-prokola-22-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/concept-11-mm-kokos-s-lakovym-napyleniem"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/concept-15-mm-kokos-s-lakovym-napyleniem"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/concept-20-mm-kokos-s-lakovym-napyleniem"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/concept-25-mm-kokos-s-lakovym-napyleniem"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/concept-30-mm-kokos-s-lakovym-napyleniem"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/concept-mother-of-pearl-15-mm-poliester"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/concept-mother-of-pearl-23-mm-poliester"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/concept-mother-of-pearl-28-mm-poliester"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/derevenskiy-mramor-2-prokola-11-mm-bordovyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/derevenskiy-mramor-2-prokola-11-mm-goluboy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/derevenskiy-mramor-2-prokola-11-mm-haki"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/derevenskiy-mramor-2-prokola-11-mm-korichnevyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/derevenskiy-mramor-2-prokola-11-mm-rozovyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/derevenskiy-mramor-2-prokola-11-mm-seryiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/derevenskiy-mramor-2-prokola-11-mm-temno-seryiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/detskaya-4-prokola-11-mm-rozovyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/detskaya-4-prokola-11-mm-zelenyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/disk-chernyj-nikel-25-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/disk-matovoe-serebro-12-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/disk-matovoe-zoloto-12-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/disk-serebro-25-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/disk-zoloto-25-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/disk_serebro_dvdtsatpyat"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/disko-2-prokola-chernyj-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/edison-18-mm-na-nojke"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/edison-216-na-nojke"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/edison-na-nojke-18mm-belyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/emal-v-serebre-chernyj-25-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/emal-v-zolote-belyj-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/emal-v-zolote-belyj-25-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/emal-v-zolote-chernyj-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/fialkovyiy-perlamutr-2-prokola-22-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/fridrih-18-mm-temno-korichnevyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/galka-na-nojke-nikel-20h15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/glazur-chernaja-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/gradient-rozovyj-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/gradient-rozovyj-21-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/gradient-sinij-21-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/grani-2-prokola-chernyj-21-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/grani-na-nozhke-chernyj-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/hod-korolevy-belyj-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/hod-korolevy-chernyj-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/hod-korolevy-chernyj-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/inej-lilovyj-25-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/k1325-pugovitsa-15mm-tertaya-bronza"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kapelka-na-nojke-10mm-chernyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kazan-latunnyj-22-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kazan-latunnyj-28-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kazan-serebrjanyj-22-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kazan-serebrjanyj-28-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/klever-na-nojke-12-mm-svetlo-krasnyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/klever_medoviy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/klever_smorodina"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kokos-chetyre-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kokos-v-glazuri-21-mm-haki"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kokos-v-glazuri-21-mm-korichnevyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kokos-v-glazuri-28-mm-fioletovyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kokos-v-glazuri-28-mm-haki"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kokos-v-glazuri-32-mm-krasnoe-zoloto"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kokosovyie-slivki-4-prokola-24-mm-ekryu"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/konfeta-23-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/konus-na-nojke-11-mm-chernyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/konus-na-nojke-11-mm-temno-siniy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/korichnevaya_lesnaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/korichnevyiy-perlamutr-2-prokola-22-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kosmos-belyj-28-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kosmos-zelenyj-28-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kosmos_dvadtsat_tri"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/krakelyur"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/krasnyiy-temnyiy-11-mm-2-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kristall-radujnyiy-krug-18-mm-na-nojke"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kristall-radujnyiy-kvadrat-1818-mm-2-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kroko-bordo-23-mm-4-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kruglaya-s-obodkom-chernyiy-nikel-na-nojke-17-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kruglaya-s-obodkom-latun-na-nojke-17-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/kvadrat-malevicha-2-prokola-37h37-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/lovets-snov-4-prokola-27-mm-chern-svjeltyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/lunnyiy-kamen-nikel-9-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/marmelad-olivkovyiy-2-prokola-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/matovaja-bordo-25-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/matovaya_zelenaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/matovyiy-oval-seryiy-2-prokola-38h28-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/mediator_dva_prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/meduza"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskaya-s-chernoy-emalyu-18-mm-4-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskaya-s-jeltyim-kamnem-15-mm-na-nojke"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskaya-s-jeltyim-kamnem-na-nojke-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskaya-s-rozovyim-kamnem-15-mm-na-nojke"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskaya-s-seroy-emalyu-18-mm-4-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskaya-zvezda-belaya-15-mm-na-nojke"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskaya-zvezda-belaya-20-mm-na-nojke"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskaya-zvezda-chernaya-15-mm-na-nojke"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskaya-zvezda-chernaya-20-mm-na-nojke"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-bronza-blitz-mb-0229-175-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-bronza-gamma-mb-0188-18-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-bronza-gamma-mb-0203-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-bronza-gamma-mb-0209-18-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-bronza-gamma-mb-0216-20-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-chernyiy-nikel-blitz-mb-0227-175-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-chernyiy-nikel-blitz-mb-0229-175-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-chernyiy-nikel-gamma-mb-0188-18-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-chernyiy-nikel-gamma-mb-0203-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-chernyiy-nikel-gamma-mb-0209-18-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-chernyiy-nikel-gamma-mb-0216-20-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-nikel-blitz-mb-0229-175-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-nikel-gamma-mb-0188-18-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-nikel-gamma-mb-0203-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskie-nikel-gamma-mb-0209-18-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskiy-uzor-serebro-na-nojke-19-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/metallicheskoe-dvoynoe-koltso-nikel-20-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/mister-ship-22-mm-chernyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/monpanse-granit-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/monpanse-rozovyiy-karts-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/monpanse-smitsonit-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/monpanse-sodalit-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/monpanse-yashma-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/motok-pryaji-na-nojke-16mm-chernyiy-nikel"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/motyilek-chernyiy-nikel-2-prokola-18mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/mramor-4-prokola-20mm-chernyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/mramornaya-sero-belaya-18-mm-4-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/muha-krasnaja-na-nozhke-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/muha-krasnaya-20-mm-na-nojke"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/nikelirovannaya-tsep-11-mm-2-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/oliva-na-nojke-28-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/olivki-20-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/olivkovyiy-brutal-2-prokola-37-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/olivkovyiy-perlamutr-4-prokola-35-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/ornament-22-mm-chernyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/ornament-22-mm-krasnyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/ornament-22-mm-slivochnyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/palermo-bolshaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pchela-chernaja-gljancevaja-18-mm-metall"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pchela-chernaja-gljancevaja-20-mm-metall"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pchela-chernoe-zoloto-18-mm-metall"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pechene-4-prokola-18mm-korichnevyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/perlamutr-20-mm-naturalnyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/perlamutrovyiy-ledenets-krasnyiy-8-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/planeta-krasnaja-32-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/platochnaja-vjazka-serebro-22-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/prostaja-matovaja-chernaja-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/prostaja-persik-11-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/prostaja-pylnaja-roza-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/prozrachnyie-shtrihi-2-prokola-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/prozrachnyiy-polosatik"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pudrovyiy-perlamutr-2-prokola-24-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pugovica-na-nozhke-uzel-belyj-10mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pugovitsa-2-prokola-23mm-lilovyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pugovitsa-2-prokola-23mm-rozovyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pugovitsa-2-prokola-23mm-zelenyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pugovitsa-20mm-4-prokola-cherno-seryiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pugovitsa-20mm-4-prokola-korichnevyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pugovitsa-4-prokola-23mm-bejevyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pugovitsa-4-prokola-23mm-goluboy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pugovitsa-glyantsevaya-svetlo-korichnevaya-2-prokola-23-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pugovitsa-na-nojke-255mm-siniy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pugovitsa-na-nojke-perlamutr"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/pugovitsyi-15mm-du-chernyiy-serebro"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/raduga_decat_milimetrov"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/radujnaya-multi-21-mm-2-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/raduzhnaja-rozovaja-2-prokola-21-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/raduzhnaya_zheltaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/rakushka-2-prokola-23-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/rakushka-chernaya-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/rakushka-naturalnaja-25-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/rakushka-naturalnaja-28-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/retro-korichnevaya-4-prokola-22-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/retro-pryamougolnaya-bolshaya-1128-mm-2-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/retro-pryamougolnaya-malenkaya-1123-mm-2-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/retro-svetlo-seraya-18-mm-4-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/retro-temno-seraya-18-mm-4-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/rijskaya-2-prokola-18mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/royal-na-nozhke-belyj-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/royal-na-nozhke-chernyj-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/rozovyiy-yarkiy-11-mm-2-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/serebristaya-chekanka-18-mm-na-nojke"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/sero-bejevyiy-perlamutr-2-prokola-22-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/sero-bejevyiy-perlamutr-2-prokola-28-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/seryiy-perlamutr-28-mm-4-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/sfera-na-nojke-chernyiy-nikel-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/sfera-na-nojke-med-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/sfera-na-nojke-serebro-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/shampan-perlamutr-4-prokola-35-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/sharik-perlamutrovyiy-na-nojke-8-mm-molochnyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/sharlotta-15-mm-chernyj-v-serebre"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/shkolnaja-23-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/shkolnaja-25-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/sijanie-21-mm-goluboj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/sijanie-21-mm-rozovyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/slivochniy_muss"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/slonovaya-kost-belyiy-2-prokola-40-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/slonovaya-kost-chernyiy-2-prokola-40-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/slonovaya-kost-korichnevyiy-2-prokola-40-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/sobaka-na-sene-4-prokola-28-mm-belaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/sobaka-na-sene-4-prokola-28-mm-chernaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/stalnoy-myatyiy-kvadrat-1820-mm-na-nojke"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/stezhka-chernyj-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/stm-6965-pugovitsyi-metall-15mm-du-1"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/straza-biryuza-10-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/straza-golubaya-10-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/straza-jeltaya-10-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/straza-sinyaya-10-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/svetlo-seryiy-perlamutr-2-prokola-20-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tsvetnaya-emal-na-nojke-10mm-brusnika"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tsvetnaya-emal-na-nojke-10mm-chernyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tsvetnaya-emal-na-nojke-10mm-jeltyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tsvetnaya-emal-na-nojke-10mm-siren"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tsvetnaya-emal-na-nojke-10mm-zelenyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tuman-28-mm-bezhevyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tuman-28-mm-chernyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tuman-28-mm-karamel"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tuman-28-mm-korichnevyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tuman-28-mm-seryj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tuman-28-mm-sinij"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tuman-28-mm-vinnyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tvist-4-prokola-18mm-molochnyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tvist-bej-korichn-4-prokola-20-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/tvist-bezhevo-korichnevyj-4-prokola-23-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/vanilnyiy-muss-2-prokola-18-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/venom-chernyj-28-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/vjazanka-chernyj-nikel-12-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/vjazanka-nikel-12-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/vual-23-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/vual-25-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/vulkan-4-prokola-fioletovaja-25-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/vulkan-rozovyj-28-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/vulkan-vinnyj-28-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/vulkan-zelenyj-28-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/woody-4-prokola-25-mm-sero-zelenyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/woody-4-prokola-25-mm-svseryiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/yantarnaya-18-mm-2-prokola"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/ysm-2005-pugovitsa-15mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/zelenyiy-perlamutr-18-mm-na-nojke"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/zhemchuzhnyj-krug-v-serebre-15-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/zhemchuzhnyj-krug-v-zolote-12-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/pugovicy/zolotaya-s-beloy-emalyu-4-prokola-20-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/regilin"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/regilin/hamanaka-regilin-07-mm-ot-1-m"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/prym"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/ruchki-hamanaka"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/ruchki-hamanaka/ruchki-plastikovyie-kruglyie-prozrachnyie-11-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/ruchki-hamanaka/ruchki-plastikovyie-prozrachnyie-16811-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/ruchki-hamanaka/ruchki-polimernyie-duga-bambuk"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/ruchki-hamanaka/ruchki-polimernyie-kruglyie-bambuk"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/ruchki-prym"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/ruchki-prym/prym-fermuar-dlya-sumok-bella"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/ruchki-prym/prym-fermuar-dlya-sumok-metall-lucia"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/ruchki-prym/prym-fermuar-dlya-sumok-metall-scarlett"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/ruchki-prym/prym-krepleniya-dlya-ruchek-med"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/ruchki-prym/prym-ruchki-dlya-sumok-iskusstvennaya-koja-theresa-temno-korichnevyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/ruchki-prym/prym-ruchki-dlya-sumok-metall-taylor"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/furnitura/ruchki-dlya-sumok/ruchki-prym/prym-ruchki-dlya-sumok-simone"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-concept-by-katia"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-concept-by-katia/katia-concept-15"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-concept-by-katia/katia-cotton-merino-family-jurnal"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-concept-by-katia/katia-essent-114"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-concept-by-katia/katia-kids-107"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-concept-by-katia/katia-sport-115"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/about-berlin-11"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/about-berlin-n10"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/accessoires-n22"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/cashmere-special-n02"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/classici-n26"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/classici-n27"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/filati-n68"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/gomitolo-n09"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/hakeln-n07"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/home-n74"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/lana-grossa-bags"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/lana-grossa-filati-semdesyat"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/lana-grossa-lookbook-devyatnadtsat"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/linea_pura_semnadtsat"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/lookbook-n17"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/lookbook-n18"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/natural-lama-n01"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lana-grossa/tucher-06"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lang-yarns"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lang-yarns/phoenix--phoenix-tweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lang-yarns/punto-60-cashmere"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/jurnaly-lang-yarns/punto-62-cloud-tweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/katia-cotton-merino-family"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/opisanie-pdf"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/opisaniya-lana-grossa"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/opisaniya-lana-grossa/allora-pulover"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/opisaniya-lana-grossa/alta-moda-cotolana-top-polupatentnyim-uzorom"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/opisaniya-lana-grossa/brigitte-no2--brigitte-no3-shapka"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/opisaniya-lana-grossa/brigitte-no3-pulover-s-rukavom-reglan"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/opisaniya-lana-grossa/lana-grossa-polo"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/opisaniya-lana-grossa/opisanie_avio"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/opisaniya-lana-grossa/pappagallo-kardigan"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/opisaniya-lana-grossa/setasuri-big-kardigan"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/opisaniya-lana-grossa/setasuri-big-kardigan-polupatentnym-uzorom"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/opisaniya-lana-grossa/setasuri-vodolazka"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/jurnaly-i-opisaniya/volokno"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/dlya-snyatiya-katyshkov"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/dlya-snyatiya-katyshkov/atmosfera-shchetka"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/dlya-snyatiya-katyshkov/hemline-mashinka-dlya-snyatiya-pillinga"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/dlya-snyatiya-katyshkov/hemline-schetka-dlya-mohera"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/dlya-snyatiya-katyshkov/hemline-schetochka-dlya-snyatiya-pilinga-iz-buka"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/dlya-snyatiya-katyshkov/hemline-schetochka-dvuhstoronnyaya-dlya-udaleniya-katyishkov"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/dlya-snyatiya-katyshkov/lana_grossa_shchyetochka_dlya_pilinga"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/dlya-snyatiya-katyshkov/schetochka-dlya-snyatiya-pilinga"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/dlya-snyatiya-katyshkov/schetochka-dlya-snyatiya-pilinga-kashemira-i-delikatnyih-sherstyanyih-volokon-addicomb"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/kley-tekstilnyy"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/kley-tekstilnyy/hemline-klej-dlja-tekstilja-30-g"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/meshki-i-sumki"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/meshki-i-sumki/katia-chehol-dlja-hranenija-krjuchkov"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/meshki-i-sumki/katia-chehol-dlja-hranenija-prjamyh-spic"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/meshki-i-sumki/katia-sumka-dlja-prjazhi-i-prinadlezhnostej-dlja-vjazanija"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/meshki-i-sumki/lana-grossa-skladnaja-sumka-6040-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/raznoe/pautinka-termokleevaya-razmer-20mm5m"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/sredstva-dlya-stirki/dozatory"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/sredstva-dlya-stirki/dozatory/dozator"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/sredstva-dlya-stirki/shapoo"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/sredstva-dlya-stirki/shapoo/shapoo-shaggy-natural-30-ml"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/sredstva-dlya-stirki/shapoo/shapoo-shaggy-s-aromatom-light-silk"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/sredstva-dlya-stirki/shapoo/shapoo-shaggy-s-aromatom-light-silk-30-ml"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/sredstva-dlya-stirki/shapoo/shapoo-shaggy-s-aromatom-tart-woody-175-ml"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/sredstva-dlya-stirki/shapoo/shapoo-shaggy-s-aromatom-tart-woody-30-ml"
+    },
+    {
+      "url": "https://atmospherestore.ru/aksessuary/sredstva-dlya-stirki/shapoo/shapoo-strong"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/bulavki-dlya-petel"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/bulavki-dlya-petel/katia-sborschik-petel"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/bulavki-dlya-petel/rico-design-bulavka-kilt-pin-7-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/bulavki-dlya-petel/tulip-bulavki-dlja-nezakrytyh-petel-mind-aljuminij-3sht-v-upakovke"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/dlya-kos-i-jgutov"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/dlya-kos-i-jgutov/addi-spitsyi-dlya-vyazaniya-kos-i-jgutov-25-mm-i-4-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/dlya-kos-i-jgutov/katia-spitsi-dlya-vyazaniya-kos"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/dlya-pomponov-i-shnurkov"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/dlya-pomponov-i-shnurkov/knitpro-kukolka-dlya-pleteniya-shnurov-symfonie-classic"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/dlya-pomponov-i-shnurkov/knitpro-nabor-dlja-izgotovlenija-pomponov-nirvana-diametr-65sm-i-85sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/dlya-pomponov-i-shnurkov/rico-design-nabor-smennyh-igl-dlja-shnuropleta-4-sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/dlya-pomponov-i-shnurkov/tulip-nabor-dlja-pletenija-shnurov-mashinka-krjuchok"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/igly-dlya-trikotaja"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/igly-dlya-trikotaja/addiloop-igla-dlya-shitya-tolstoy-pryajey-s-petley-na-kontse-95-mm-2-sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/igly-dlya-trikotaja/clovernaborigl"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/igly-dlya-trikotaja/igli_atmosphere"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/igly-dlya-trikotaja/igli_tulip"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/igly-dlya-trikotaja/katia-igly"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/igly-dlya-trikotaja/rico-iglyi-dlya-sshivaniya-trikotajnyih-izdeliy-short-7-sm-3-sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/igly-dlya-trikotaja/tulip-nabor-bulavok-dlja-blokirovki-serdce-9-shtuk"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/igly-dlya-trikotaja/tulip-nabor-bulavok-dlja-blokirovki-tjulpan-9-shtuk"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/igly-dlya-trikotaja/tulip-nabor-igl-dlja-shitja-prjazhej-izognutyj-konchik"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/igly-dlya-trikotaja/tulip-nabor-igl-dlja-shitja-prjazhej-plastik"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/igly-dlya-trikotaja/tulip_igly_thick"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/addi-izmeritel-spits-i-kryuchkov-serdtse"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/addi-izmeritel-spits-s-nojom"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/addi-santimetr-ruletka-rose-gold"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/addi-schetchik-ryadov-elektronnyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/addi-schetnaya-ramka-dlya-spits"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/chiaogoo_lineika_kvadrat"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/hemline-santimetr-ruletka-iz-iskusstvennoj-kozhi-kruglaja-chernaja-150sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/hemline-santimetr-ruletka-iz-iskusstvennoy-koji-kruglaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/hemline-santimetr-ruletka-iz-iskusstvennoy-koji-kvadrat-sinyaya-s-tesneniem"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/hemline-santimetr-ruletka-na-magnitnoy-osnove--biryuzovyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/hemline-santimetr-ruletka-na-magnitnoy-osnove--jeltyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/hemline-santimetr-ruletka-na-magnitnoy-osnove--tsiklamenovyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/katia-izmeritel-spic-i-krjuchkov-s-linejkoj"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/katia-schetchik-rjadov-kruglyj-na-magnite"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/knitpro-kolco-schetchik-rjadov-nerzhavejuschaja-stal-cvet-chernyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/knitpro-schetchik-ryadov-nerjaveyuschaya-stal-tsvet-radugi"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/lana_grossa_lineika_dlya_izmereniya_diametra_spits"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/lantern-moon-linejka-dlja-opredelenija-razmera-spic"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/lantern-moon-ruletka-150-sm-ovechka-belaja"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/lantern-moon-ruletka-150-sm-ovechka-chernaja"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/lantern-moon-ruletka-150-sm-ovechka-seraja"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/lineyka-15-mm-19-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/izmeritelnye-pribory/tulip-lineika-dlya-izmereniya-plotnosti"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/markery/bulavki-tykovki"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/markery/glamourknits"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/markery/knit-pro"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/markery/knit-pro/mindful-nabor-markerov-dlya-vyazaniya-plastik-biryuzovyiy-100sht-v-meshochke"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/markery/kolechki"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/markery/markery-atmosfera"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/markery/raznye"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/markery/tulip"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/markery/tulip/tulip-nabor-markerov-dlja-vjazanija-amicolle-zheltyj-krasnyj-belyj-serdce-v-banochke"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/markery/tulip/tulip-nabor-markerov-dlja-vjazanija-amicolle-zheltyj-krasnyj-korichnevyj-serdce-v-banochke"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/markery/tulip/tulip-nabor-markerov-dlya-vyazaniya-amicolle-serdce-v-banochke"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/markery/tulip/tulip-nabor-markerov-dlya-vyazaniya-amicolle-tyulpan-v-banochke"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nabory-dop-instrumentov/hemline-nabor-aksessuarov-dlya-vyazaniya"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nabory-dop-instrumentov/hemline-shveynyiy-nabor-v-plastikovom-konteynere-rozovoe-zoloto"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nabory-dop-instrumentov/katia_blokator_babushkin"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nakonechniki-dlya-spic-i-lesok"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nakonechniki-dlya-spic-i-lesok/addi-disk-silikonovyiy-dlya-soedineniya-spits"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nakonechniki-dlya-spic-i-lesok/ka-seeknit-protektor-rezinovyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nakonechniki-dlya-spic-i-lesok/katia-nabor-zaglushek-dlja-spic-24-sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nakonechniki-dlya-spic-i-lesok/katia_derzhateli_dlya_cpits"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nakonechniki-dlya-spic-i-lesok/katia_stoppery_serdechki"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nakonechniki-dlya-spic-i-lesok/knitpro-nabor-tub-dlya-spits-ot-2-do-55-mm-3-sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nakonechniki-dlya-spic-i-lesok/tulip-nakonechniki-dlja-spic-oranzhevye-465-mm-amicolle-2sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nakonechniki-dlya-spic-i-lesok/tulip-nakonechniki-dlja-spic-temno-sinie-465-mm-amicolle-2sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nakonechniki-dlya-spic-i-lesok/tulip-nakonechniki-dlya-spits-belyie-465-mm-"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nakonechniki-dlya-spic-i-lesok/tulip-nakonechniki-dlya-spits-rozovyie-245-mm-"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/naperstki-i-derjateli/addi_naperstok_dlya_zhakkarda"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/niti-i-nitevdevateli/hemline-mononit-prozrachnaya-100-neylon"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/niti-i-nitevdevateli/prym-nit-elastik-dlya-vyazaniya-prozrachnaya-200-m"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/niti-i-nitevdevateli/tulip-nitevdevatel-nabor"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nojnicy"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nojnicy/chiaogoo_noznnitsi_dlya_rukodeliya"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nojnicy/hemline-nojnitsyi-dlya-vyishivaniya-67-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nojnicy/hemline-nojnitsyi-dlya-vyishivaniya-7-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nojnicy/hemline-nozhnicy-dlja-obrezki-nitej"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nojnicy/katia-nojnitsyi-mini-95-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nojnicy/lantern-moon-nozhnicy-v-kozhanom-futljare"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nojnicy/mindful-nozhnicy-skladnye-v-meshochke-dlina-10sm-nerzhavejuschaja-stal"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/dopolnitelnye-instrumenty/nojnicy/rico-design-nojnitsyi-95-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-addi"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-addi/addi-kryuchok-s-ruchkoy-iz-gretskogo-oreha-16-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-chiaogoo"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-chiaogoo/chiaogoo-kryuchok-bambukovyiy-s-metallicheskoy-golovkoy"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-clover"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-hamanaka"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-hamanaka/raku-raku-135-sm/hamanaka-kryuchok-raku-raku-135-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-knitpro"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-knitpro/knitpro-krjuchki-basix-aluminum"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-knitpro/knitpro-krjuchki-waves"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-lana-grossa"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-lana-grossa/lana-grossa-kryuchok-stalnoy-odnostoronniy"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-lana-grossa/lana_grossa_kryuchok_dlya_tunisskogo_vyazaniya"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-lantern-moon"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-lantern-moon/lantern-moon-krjuchok-dlja-vjazanija"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-lantern-moon/lantern-moon-tunisskij-krjuchok-dlja-vjazanija"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-rico-design/rico-design-kryuchok-alyuminievyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-tulip/krjuchok-dlja-vjazanija-s-ruchkoj-etimo"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-tulip/kryuchok-dlya-vyazaniya-businami-bead-crochet"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-tulip/kryuchok-dlya-vyazaniya-dvuhstoronniy-"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-tulip/kryuchok-dlya-vyazaniya-s-ruchkoy-"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-tulip/kryuchok-dlya-vyazaniya-s-ruchkoy-etimo-red"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/kryuchki/kryuchki-tulip/tulip-krjuchok-dlja-vjazanija-mind"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-addi"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-addi/addi-nabor-startovyiy-dlya-kombinirovaniya-spits-sistemyi-addiclick-starter"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-chiaogoo"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-chiaogoo/chiaogoo-nabor-razyemnyih-spits-complete-13-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-chiaogoo/chiaogoo-nabor-razyemnyih-spits-large-13-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-chiaogoo/chiaogoo-nabor-razyemnyih-spits-small-13-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-chiaogoo/chiaogoo-nabor-razyemnyih-spits-twist-short-combo-blue"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-chiaogoo/chiaogoo-nabor-twist-shorties-large-8-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-chiaogoo/complete-10-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-chiaogoo/mini-twist-set-10-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-chiaogoo/mini-twist-set-13-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-chiaogoo/nabor-twist-shorties-small"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-chiaogoo/small-10-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-chiaogoo/twist-short-combo"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-chiaogoo/twist-shorties"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-hamanaka"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-ka-seeknit"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-ka-seeknit/chulochnye"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-ka-seeknit/razemnye"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-ka-seeknit/razemnye/ml"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-ka-seeknit/razemnye/premium"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-ka-seeknit/razemnye/s"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-ka-seeknit/razemnye/seeknitdualis"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-ka-seeknit/razemnye/seeknitdualis/ka-seeknitdualis-koshitsu"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-ka-seeknit/razemnye/short"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-ka-seeknit/razemnye/std"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-katia"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-katia/katia-nabor-krjuchkov-na-breloke"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-knitpro"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-knitpro/nabor-kryuchkov-knitpro"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-knitpro/nabory-chulochnyh-spic-knitpro"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-knitpro/nabory-krugovyh-spic-knitpro"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-knitpro/nabory-krugovyh-spic-knitpro/mindful-nabor-krugovyih-spits-explore"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-knitpro/nabory-razemnyh-spic-knitpro"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-knitpro/nabory-razemnyh-spic-knitpro/knitpro-jadore-nabor-razyemnyih-spits"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-knitpro/nabory-razemnyh-spic-knitpro/mindful-nabor-syemnyih-spits-gratitude"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-knitpro/nabory-ukorochennyh-spic-knitpro"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-knitpro/nabory-ukorochennyh-spic-knitpro/mindful-nabor-razyemnyih-ukorochennyih-spits-kindness"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lana-grossa"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lana-grossa/nabory-kryuchkov-lana-grossa"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lana-grossa/nabory-razemnyh-spic-lana-grossa"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lana-grossa/nabory-razemnyh-spic-lana-grossa/lana-grossa-nabor-instrumentov-dlya-vyazaniya-noskov-tsvet-bejevyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lana-grossa/nabory-razemnyh-spic-lana-grossa/lana-grossa-nabor-rainbow"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lana-grossa/nabory-razemnyh-spic-lana-grossa/lana-grossa-nabor-razyemnyih-spits-naturale"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lana-grossa/nabory-razemnyh-spic-lana-grossa/lana-grossa-naboryi-chulochnyih-spits-malyiy-15-sm-design--holz-multicolor"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lantern-moon"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lantern-moon/nabor-razemnyh-spic-lantern-moon"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lantern-moon/nabor-razemnyh-spic-lantern-moon/lantern-moon-nabor-razemnyh-spic-gloryslava"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lantern-moon/nabor-razemnyh-spic-lantern-moon/lantern-moon-nabor-razyomnyh-spic-legasy-nasledie"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lantern-moon/nabor-ukorochennyh-razemnyh-spic-lantern-moon"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lantern-moon/nabor-ukorochennyh-razemnyh-spic-lantern-moon/lantern-moon-nabor-ukorochennyh-razemnyh-spic-ancestryrodoslovnaja"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lantern-moon/nabor-ukorochennyh-razemnyh-spic-lantern-moon/lantern-moon-nabor-ukorochennyh-razemnyh-spic-blissblazhenstvo"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lantern-moon/nabor-ukorochennyh-razemnyh-spic-lantern-moon/lantern-moon-nabor-ukorochennyh-razemnyh-spic-heritagedostojanie"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lantern-moon/nabory-kryuchkov-lantern-moon"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lantern-moon/nabory-kryuchkov-lantern-moon/lantern-moon-nabor-razemnyh-tunisskih-krjuchkov-bequestnasledstvo"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lykke/lykke-chulochnye"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lykke/lykke-dlinnye-razemnye"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lykke/lykke-razemnye-115-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-lykke/lykke-razemnye-7-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-tulip"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-tulip/nabor-kryuchkov-dlya-vyazaniya-"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-tulip/tulip-carryc-ukorocheniy"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-tulip/tulip-nabor-krjuchkov-dlja-vjazanija-bead-crochet-5-vidov-krjuchkov"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-tulip/tulip-nabor-krjuchkov-dlja-vjazanija-classic-1"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-tulip/tulip-nabor-spic-semnyh-ukorochennyh-carryc-dlina-95sm-11-vidov-spic-v-nabore"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-tulip/tulip-nabor-spits-carryc-long"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/nabory-spic-i-kryuchkov/nabory-tulip/tulip_carry_c_long_dvenadtsat"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/addi-aksessuary"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/addi-aksessuary/addiclick-konnektor-dlya-leski-basic-2-sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/chulochnye-spicy-addi"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/chulochnye-spicy-addi/addi-chulochnye-spicy-stal-20-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/chulochnye-spicy-addi/addi-chulochnyie-spitsyi-bambuk-15-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/chulochnye-spicy-addi/addi-novel-quintett/addi-novel-quintett-chulochnyie-spitsyi-15-sm-s-kvadratnyim-konchikom"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/chulochnye-spicy-addi/addi-sockenwunder"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/chulochnye-spicy-addi/addicolibri"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/chulochnye-spicy-addi/addicrasytrio-gnushchiesya-chulochnye-spicy-bambuk"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/chulochnye-spicy-addi/addicrasytrio-gnushchiesya-chulochnye-spicy-bambuk/addicrasytrio-gnuschiesya-chulochnyie-spitsyi"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/chulochnye-spicy-addi/addicrasytrio-gnushchiesya-chulochnye-spicy-bambuk/addicrasytrio-long-supergladkie-26-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/chulochnye-spicy-addi/addicrasytrio-novel-long-gnushchiesya-chulochnye-spicy/addicrasytrionovel-long-gnuschiesya-chulochnyie-spitsyi"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/chulochnye-spicy-addi/kvadratnye-addi-novel-quintett"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-addi-christmas"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-addi-lace"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-addi-lace/addi-krugovyie-spitsyi-krasnaya-leska-100-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-addi-lace/addi-krugovyie-spitsyi-krasnaya-leska-40-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-addi-lace/addi-krugovyie-spitsyi-krasnaya-leska-80-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-addi-unicorn"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-addi-unicorn/addi-krugovye-spicy-unicorn-100-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-addi-unicorn/addi-krugovye-spicy-unicorn-60-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-addi-unicorn/addi-krugovye-spicy-unicorn-80-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-s-kvadratnym-konchikom"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-s-kvadratnym-konchikom/addi-novel-krugovyie-spitsyi-s-kvadratnyim-konchikom-100-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-s-kvadratnym-konchikom/addi-novel-krugovyie-spitsyi-s-kvadratnyim-konchikom-40-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-s-kvadratnym-konchikom/addi-novel-krugovyie-spitsyi-s-kvadratnyim-konchikom-60-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-s-kvadratnym-konchikom/addi-novel-krugovyie-spitsyi-s-kvadratnyim-konchikom-80-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-sokenwunder-lace"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/leski-soedinitelnye-addi"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/leski-soedinitelnye-addi/addi-lace-short-soedinitelnaya-leska"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/leski-soedinitelnye-addi/addi-sos-soedinitelnaya-leska"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/leski-soedinitelnye-addi/addi-unicorn-soedinitelnaja-leska"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/leski-soedinitelnye-addi/addiclick-nabor-dopolnitelnyih-lesok-60-80-100-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/razemnye-spicy-addi-unicorn"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/razemnye-spicy-addi-unicorn/addi-razemnye-spicy-unicorn"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/razemnye-spicy-lace"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/razemnye-spicy-lace/addi-lace-long-razyemnyie-spitsyi-s-udlinennyim-konchikom"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/razemnye-spicy-lace/addi-lace-short-razyemnyie-spitsyi-s-udlinennyim-konchikom"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/razemnye-spicy-s-kvadratnym-konchikom"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/razemnye-spicy-s-kvadratnym-konchikom/addi-novel-lace-long-razyemnyie-spitsyi-s-kvadratnyim-konchikom"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/razemnye-spicy-s-kvadratnym-konchikom/addi-novel-lace-short-razyemnyie-spitsyi-s-kvadratnyim-konchikom"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/aksessuary-shiaogoo"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/aksessuary-shiaogoo/chiagoo-adapteryi"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/aksessuary-shiaogoo/chiagoo-stopperyi"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/aksessuary-shiaogoo/chiaogoo-nabor-aksessuarov-dlja-vjazanija"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/aksessuary-shiaogoo/chiaogoo_mini_nabor"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/aksessuary-shiaogoo/ghiagoo-coediniteli-dlya-lesok"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/aksessuary-shiaogoo/rezinovyie-derjateli-dlya-zakruchivaniya"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/krugovye-spicy-chiaogoo-knit-red"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/krugovye-spicy-chiaogoo-knit-red/chiagoo-krugovyie-spitsyi-knit-red-23-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/krugovye-spicy-chiaogoo-knit-red/chiagoo-krugovyie-spitsyi-knit-red-40-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/krugovye-spicy-chiaogoo-lace"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/krugovye-spicy-chiaogoo-lace/chiagoo-krugovyie-spitsyi-lace-80-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/krugovye-spicy-chiaogoo-lace/chiaogoo-krugovyie-spitsyi-lace-100-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/krugovye-spicy-chiaogoo-lace/chiaogoo-krugovyie-spitsyi-lace-40-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/leski-soedinitelnye-chiaogoo"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/leski-soedinitelnye-chiaogoo/chiagoo-leska-soedinitelnaya-k-metallicheskim-spitsam-l"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/leski-soedinitelnye-chiaogoo/chiagoo-leska-soedinitelnaya-k-metallicheskim-spitsam-s"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/leski-soedinitelnye-chiaogoo/chiagoo-leska-soedinitelnaya-k-metallicheskim-ultratonkim-spitsam-mini"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/leski-soedinitelnye-chiaogoo/chiaogoo-leska-povorotnaja-swiv-360-k-metallicheskim-spicam-l"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/leski-soedinitelnye-chiaogoo/chiaogoo-leska-povorotnaja-swiv-360-k-metallicheskim-spicam-s"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/leski-soedinitelnye-chiaogoo/chiaogoo-leski-soedinitelnyie-5-sm-3-sht-mini-red"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/leski-soedinitelnye-chiaogoo/chiaogoo-leski-soedinitelnyie-5-sm-3-sht-s-blue"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/leski-soedinitelnye-chiaogoo/leska-twist-x-flex-blue"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/razemnye-spicy-chiaogoo-10-sm/chiagoo-razyemnyie-spitsyi-10-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/razemnye-spicy-chiaogoo-13-sm/shiagoo-razyemnyie-spitsyi-13-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-chiaogoo/razemnye-spicy-chiaogoo-8-sm/spitsyi-razyemnyie-75-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/aksessuary-ka-seeknit"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/koshitsu"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/koshitsu/chulochnye-spicy-koshitsu/ka-seeknit-koshitsu-chulochnyie-spitsyi-15-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/koshitsu/krugovye-spicy-koshitsu"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/koshitsu/krugovye-spicy-koshitsu/ka-seeknit-koshitsu-krugovyie-asimmetrichnyie-spitsyi-23-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/koshitsu/krugovye-spicy-koshitsu/ka-seeknit-koshitsu-krugovyie-spitsyi-100-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/koshitsu/krugovye-spicy-koshitsu/ka-seeknit-koshitsu-krugovyie-spitsyi-40-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/koshitsu/krugovye-spicy-koshitsu/ka-seeknit-koshitsu-krugovyie-spitsyi-60-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/koshitsu/krugovye-spicy-koshitsu/ka-seeknit-koshitsu-krugovyie-spitsyi-80-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/koshitsu/razemnye-spicy-koshitsu"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/koshitsu/razemnye-spicy-koshitsu/ka-seeknit-koshitsu-razyemnyie-spitsyi-5-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/leski-soedinitelnye-ka-seeknit"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/leski-soedinitelnye-ka-seeknit/ka-seeknit-leska-soedinitelnaya-m2"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/leski-soedinitelnye-ka-seeknit/ka-seeknit-leska-soedinitelnaya-m4"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/shirotake"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/shirotake/chulochnye-spicy-shirotake"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/shirotake/razemnye-spicy-shirotake"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-ka-seeknit/shirotake/razemnye-spicy-shirotake/ka-seeknit-shirotake-razyemnyie-spitsyi-5-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/chulochnye-spicy-ginger"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/chulochnye-spicy-mindful"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/chulochnye-spicy-mindful/mindful-spicy-chulochnye-15-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/krugovye-spicy-ginger"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/krugovye-spicy-ginger/knit-pro-ginger-krugovyie-spitsyi-40-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/krugovye-spicy-ginger/knitpro-ginger-krugovyie-spitsyi-100-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/krugovye-spicy-mindful"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/krugovye-spicy-mindful/mindful-krugovyie-spitsyi-100-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/krugovye-spicy-mindful/mindful-krugovyie-spitsyi-25-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/krugovye-spicy-mindful/mindful-krugovyie-spitsyi-40-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/krugovye-spicy-mindful/mindful-krugovyie-spitsyi-80-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/leski-soedinitelnye"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/leski-soedinitelnye/knit-pro-leska-soedinitelnaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/leski-soedinitelnye/knitpro-leska-soedinitelnaya-povorotnaya-fioletovaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/leski-soedinitelnye/leska-soedinitelnaya-dlya-razyemnyih-spits-tsvet-biryuzovyiy"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/pryamye-spicy-mindful"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/pryamye-spicy-mindful/pryamyie-spitsyi-mindful-25-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/razemnye-spicy-ginger"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/razemnye-spicy-mindful"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/razemnye-spicy-mindful/mindful-razyemnyie-spitsyi-13sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/razemnye-spicy-ukorochennye-ginger"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/razemnye-spicy-ukorochennye-mindful"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-knitpro/razemnye-spicy-ukorochennye-mindful/razyemnyie-spitsyi-ukorochennyie-mindful-10sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/chulochnye-spicy-lana-grossa"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/chulochnye-spicy-lana-grossa/lana-grossa-chulochnyie-spitsyi"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/krugovye-spicy-lana-grossa"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/krugovye-spicy-lana-grossa/lana-grossa-krugovyie-spitsyi-40-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/krugovye-spicy-lana-grossa/lana-grossa-krugovyie-spitsyi-60-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/krugovye-spicy-lana-grossa/lana-grossa-krugovyie-spitsyi-80-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/krugovye-spicy-lana-grossa/lana-grossa-krugovyie-spitsyi-quatro-80-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/krugovye-spicy-lana-grossa/lana-grossa-krugovyie-spitsyi-signal-60-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/krugovye-spicy-lana-grossa/lana-grossa-krugovyie-spitsyi-signal-80-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/leski-soedinitelnye-lana-grossa/lana-grossa-leska-soedinitelnaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/razemnye-spicy-lana-grossa"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/razemnye-spicy-lana-grossa/lana-grossa-razyemnyie-spitsyi-115-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/razemnye-spicy-lana-grossa/lana-grossa-razyemnyie-spitsyi-85-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lana-grossa/razemnye-spicy-lana-grossa/lana-grossa-razyemnyie-spitsyi-quatro"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/aksessuary-lantern-moon"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/aksessuary-lantern-moon/lantern-moon-adapter-dlja-lesok-2sht"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/aksessuary-lantern-moon/lantern-moon-derzhatel-dlja-aksessuarov-sherpa"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/aksessuary-lantern-moon/lantern-moon-meshochek-dlja-markerov-dahlia-bordovyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/aksessuary-lantern-moon/lantern-moon-meshochek-dlja-markerov-sage-zelenyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/aksessuary-lantern-moon/lantern-moon-organajzer-dlja-chulochnyh-spic-ajrak"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/aksessuary-lantern-moon/lantern-moon-organajzer-dlja-krugovyh-spic-ajrak"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/aksessuary-lantern-moon/lantern-moon-organajzer-dlja-razemnyh-spic-ajrak"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/aksessuary-lantern-moon/lantern-moon-organajzer-dlja-rukodelija-ajrak"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/aksessuary-lantern-moon/lantern-moon-organajzer-dlja-rukodelija-cloud-seryj"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/aksessuary-lantern-moon/lantern-moon-organajzer-dlja-rukodelija-dahlia-bordovyj"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/aksessuary-lantern-moon/lantern_moon_kryuchok_dlya_remonta"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/aksessuary-lantern-moon/lantern_moon_spitsy_dlya_kos"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/chulochnye-spicy-lantern-moon"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/chulochnye-spicy-lantern-moon/chulochnye-spicy-lantern-moon-15-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/krugovye-spicy-lantern-moon"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/krugovye-spicy-lantern-moon/lantern-moon-krugovye-spicy-100-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/krugovye-spicy-lantern-moon/lantern-moon-krugovye-spicy-40-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/krugovye-spicy-lantern-moon/lantern-moon-krugovye-spicy-80-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/leski-soedinitelnye-lantern-moon"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/leski-soedinitelnye-lantern-moon/lantern-moon-leska-povorotnaja-soedinitelnaja"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/leski-soedinitelnye-lantern-moon/lantern-moon-leska-soedinitelnaja"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/pryamye-spicy-lantern-moon"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/pryamye-spicy-lantern-moon/lantern-moon-prjamye-spicy-25-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/razemnye-spicy-lantern-moon"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/razemnye-spicy-lantern-moon/lantern-moon-razemnye-spicy-10-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lantern-moon/razemnye-spicy-lantern-moon/lantern-moon-razyomnye-spicy-13-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/chulochnye-spicy-lykke"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/krugovye-spicy-driftwood"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/krugovye-spicy-driftwood/lykke-krugovyie-spitsyi-driftwood-100-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/krugovye-spicy-driftwood/lykke-krugovyie-spitsyi-driftwood-40-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/krugovye-spicy-driftwood/lykke-krugovyie-spitsyi-driftwood-80-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/leski-soedinitelnye-lykke"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/leski-soedinitelnye-lykke/lykke-rozovaya-leska-dlya-razyemnyih-spits-pink"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/leski-soedinitelnye-lykke/lykke-rozovaya-leska-dlya-razyemnyih-ukorochennyih-spits-pink"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/leski-soedinitelnye-lykke/lykke-rozovaya-leska-dlya-syemnyih-ukorochennyih-spits-blush"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/razemnye-spicy-lykke"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/razemnye-spicy-lykke/lykke-razyemnyie-spitsyi-blush-125-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/razemnye-spicy-lykke/lykke-razyemnyie-spitsyi-blush-7-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/razemnye-spicy-lykke/lykke-razyemnyie-spitsyi-driftwood-125-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/razemnye-spicy-lykke/lykke-razyemnyie-spitsyi-indigo-125-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/razemnye-spicy-lykke/lykke-razyemnyie-spitsyi-umber-125-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-lykke/razemnye-spicy-lykke/lykke-razyemnyie-spitsyi-umber-7-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-rico-design"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-rico-design-wolle-rodel"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-rico-design/chulochnye-spicy-rico-design"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-rico-design/krugovye-spicy-rico-circular-bamboo/rico-design-krugovyie-spitsyi-circular-bamboo-80-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-rico-design/krugovye-spicy-rico-design"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-rico-design/leski-soedinitelnye-rico-design"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-rico-design/leski-soedinitelnye-rico-design/rico-design-wolle-rodel-leska-soedinitelnaya-fioletovaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-rico-design/leski-soedinitelnye-rico-design/rico-leski-soedinitelnyie"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-rico-design/pryamye-spicy-rico-design"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-rico-design/pryamye-spicy-rico-design/rico-design-wolle-rodel-pryamyie-bambukovyie-spitsyi-33-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-rico-design/razemnye-spicy-rico-design-115-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-rico-design/razemnye-spicy-rico-design-115-sm/rico-design-wolle-rodel-razyemnyie-akrilovyie-spitsyi"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/aksessuary-tulip"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/aksessuary-tulip/tulip-adapter-dlja-trosika-carryc"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/aksessuary-tulip/tulip-zaglushki-dlja-trosika-carryc-long"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/aksessuary-tulip/tulip_adapter_fine"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/aksessuary-tulip/tulip_zaglushka_fine"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/chulochnye-spicy-bamboo-15-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/krugovye-spicy-tulip-knina-swivel"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/krugovye-spicy-tulip-knina-swivel/tulip-krugovye-spicy-knina-swivel-40-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/krugovye-spicy-tulip-knina-swivel/tulip-krugovye-spicy-knina-swivel-60-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/krugovye-spicy-tulip-knina-swivel/tulip-krugovye-spicy-knina-swivel-80-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/leski-soedinitelnye-tulip"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/leski-soedinitelnye-tulip/tulip-leska-soedinitelnaja-carryc-carryt-povorotnaja"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/leski-soedinitelnye-tulip/tulip-leska-soedinitelnaja-carryc-long-povorotnaja"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/leski-soedinitelnye-tulip/tulipPleska_carry_c_fine_long"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/leski-soedinitelnye-tulip/tulip_leska_carry_c_fine"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/pryamye-spicy-bamboo-25-sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/razemnye-spicy-tulip-carry-c"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/razemnye-spicy-tulip-carry-c/tulip-razemnye-spicy-carryc-95-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/razemnye-spicy-tulip-carry-c/tulip-razemnye-spicy-carryc-long-12sm"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/razemnye-spicy-tulip-carry-c/tulip_razyomnie_ukorochennie"
+    },
+    {
+      "url": "https://atmospherestore.ru/instrumenty/spicy/spicy-tulip/razemnye-spicy-tulip-carry-c/tulip_tonkie_dlinnye"
+    },
+    {
+      "url": "https://atmospherestore.ru/kraft/organayzery-dlya-spic/organayzer-dlya-krugovyh-spic/beckycrunch-organayzer-dlya-krugovyih-spits"
+    },
+    {
+      "url": "https://atmospherestore.ru/kraft/organayzery-dlya-spic/organayzer-dlya-razemnyh-spic/beckycrunch-organayzer-dlya-razyemnyih-spits"
+    },
+    {
+      "url": "https://atmospherestore.ru/kraft/organayzery-dlya-spic/organayzer-quattro/organayzer-dlya-spits-quattro"
+    },
+    {
+      "url": "https://atmospherestore.ru/kraft/organayzery-dlya-spic/organayzer-travel/organayzer-dlya-spits-travel"
+    },
+    {
+      "url": "https://atmospherestore.ru/kraft/organayzery-dlya-spic/organayzer-travel/organayzer-dlya-spits-travel-bolshoi"
+    },
+    {
+      "url": "https://atmospherestore.ru/kraft/sumki_craf/fashion-banan/becky-crunch-fashion-banan"
+    },
+    {
+      "url": "https://atmospherestore.ru/kraft/sumki_craf/fashion-karman/beckycrunchfashionkarman"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/atmosfera_priaza/allo-pushistyy"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/atmosfera_priaza/ey-lyuks-pushistyy"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/aura-yarns/crazy-alpaca-carnival"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/aura-yarns/crazy-alpaca-carnival/aura-yarns-crazy-alpaca-carnival"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/aura-yarns/every-day/aura-every-day"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/aura-yarns/li_vi"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/aura-yarns/love-me-20/aura-yarns-love-me-20"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/aura-yarns/love-me/aura-love-me"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/aura-yarns/mur-miu/aura-yarns-mur-miu"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/aura-yarns/shiny-day/aura-yarns-shiny-day"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/aura-yarns/space/aura-yarns-space"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/aura-yarns/starlight/aura-yarns-starlight"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/aura-yarns/touch-me"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/ampezzo"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/angora-80/casagrande-angora-80"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/baby-alpaca/casagrande-baby-alpaca"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/cash-20-fine/casagrande-cash-20-fine"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/cash-20/casagrande-cash20"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/cash-tweed/casagrande-cashtweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/cashmere-lux/casagrande-cashmere-lux"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/fusion/fusion-casagrande"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/millennium"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/millennium/casagrande-millennium"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/nobilis/casagrande-nobilis"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/silk-tweed/casagrande-silk-tweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/stripy/casagrande-stripy-watercolor"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/top-cashmere/casagrande-top-cashmere"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/tweed-absolu"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/tweed-absolu/casagrande-tweed-absolu"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/vogue/casagrande-vogue"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/yak-80/casagrande-yak-80"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/yak-nepal"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/yak-nepal/casagrande-yak-nepal"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/yak-tibet"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/casagrande/yak-tibet/casagrande-yak-tibet"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/hamanaka/category-hamanaka-rafiya-eco-andaria/hamanaka-rafiya-eco-andaria"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/hamanaka/hamanaka-rafiya-eco-andaria-crochet"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/hamanaka/hamanaka-rafiya-eco-andaria-crochet/eco_andria_crochet"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/hamanaka/rafiya-multikolor"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia-concept/katia-concept-sweet-fleece"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/category-katia-concept-babilonia/katia-concept-babilonia"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/category-katia-concept-pluma/katia-concept-pluma"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/category-katia-gatsby/katia-gatsby"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/category-katia-linen/katia-linen"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-concept-angelo"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-concept-angelo/katia-concept-angelo-1"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-concept-pluma-degrade/katia-concept-pluma-degrade-1"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-concept-pure-alpaca-natural-colors/katia-concept-pure-alpaca-natural-colors-1"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-concept-silk-alpaca-natural-colors/katia-concept-silk-alpaca-natural-colors-1"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-cool-cotton"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-cool-cotton/katia-cool-cotton-1"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-panama/katia-panama-1"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-soncept-atenea/katia-concept-atenea"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-soncept-camboya"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-soncept-camboya/katia-concept-camboya"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-soncept-cashmere-10/katia-concept-sashmere10"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-soncept-cosmopolitan/katia-concept-cosmopolitan"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-soncept-cotton-merino-glam/katia-concept-cotton-merino_glam"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-soncept-cotton-merino-tweed/katia-concept-cotton-merino-tweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-soncept-cotton-merino/katia-cotton-merino"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-soncept-cotton-yak/katia-cotton-yak"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-soncept-mohair-cotton/katia-concept-mohair-cotton"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-soncept-soffiato/katia-concept-soffiato"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-soncept-summer-tweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/katia/katia-soncept-summer-tweed/katia-concept-summer-tweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/brigitte-no2"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/brigitte-no2/lana-grossa-brigitte-no2"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/brillino"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/brillino/lg_brillino"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/campo/lana_grossa_campo"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/cashmere-kiss/lana-grossa-cashmere-kiss"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/cashmere-pure/lana-grossa-cashmere-pure"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/category-alta-moda-cotolana/alta-moda-cotolana"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/category-brigitte-no3/brigitte-no3"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/category-landlust-alpaka-merino-160/landlust-alpaka-merino-160"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/cool-merino"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/cool-merino/lana-grossa-cool-merino"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/cool-wool-big-vintage"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/cool-wool-big-vintage/lana-grossa-cool-wool-big-vintage"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/cool-wool-big/lana-grossa-cool-wool-big-uni"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/country-tweed-fine/lana-grossa-country-tweed-fine"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/gigante/lana-grossa-gigante"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/lala-berlin-flamy"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/lala-berlin-flamy/lana-grossa-lala-berlin-flamy"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/lala-berlin-smoothy"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/lana-grossa-glamour/lana_grossa_glamour"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/linarte"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/linarte/lana-grossa-linarte"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/lucciola/lana-grossa-lucciola"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/meilenweit-100-seta/lana-grossa-meilenweit-100-seta"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/meilenweit100merino-extrafine/meilenweit-100-merino-extrafine"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/meilenweit100tweed/lana-grossa-meilenweit100tweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/meilenweit50-neon"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/meilenweit50/lana-grossa-meilenweit50"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/meilenweit50cashmere/lana-grossa-meilenweit50cashmere"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/mohair-di-gio/lana-grossa-mohair-di-gio"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/mohair-moda"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/mohair-moda/lana-grossa-mohair-moda"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/natural-alpaca-pelo/lana-grossa-natural-alpaca-pelo"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/natural-lama-chunky/lana-grossa-natural-lama-chunky"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/natural-lama-fine/lana-grossa-natural-lama-fine"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/natural-superkid-tweed/lana-grossa-natural-superkid-tweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/per-fortuna/lana-grossa-per-fortuna"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/promessa/lana_grossa_promessa"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/riccio"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/riccio/lana_grossa_riccio"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/royal-alpaca/lana-grossa-royal-alpaca"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/setapura/lana-grossa-setapura"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/setasuri/lana-grossa-setasuri"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/silkhair"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/silkhair/lana-grossa-silkhair"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/soft-cotton"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/soft-cotton/lana_grossa_cotton_soft"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lana-grossa/solo-lino/lana-grossa-solo-lino"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/alpaca-soxx-4-ply/lang-yarns-alpaca-soxx-4-ply"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/astra/lang-yarns-astra"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/cashmere-light-color/lang-yarns-cashmere-light-color"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/cashmere-light/lang-yarns-cashmere-light"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/cashmere-premium"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/cashmere-premium/kashemir-premium-lang"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/category-mohair-fancy/mohair-fancy"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/celeste"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/cloud"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/cloud-tweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/cloud-tweed/lang-yarns-cloud-tweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/cloud/lang-yarns-cloud"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/crealino"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/crealino/lang-yarns-crealino"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/desire/lang-yarns-desire"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/honor/lang-yarns-honor"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/lambswool"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/lambswool/lang-yarns-lambswool"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/lana-grossa-glamour/lang-yarns-glamour"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/mohair-21"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/mohair-21/lang-yarns-mohair-21"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/norma/lang-yarns-norma"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/paillettes/lang-yarns-paillettes"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/phoenix-tweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/phoenix-tweed/lang-yarns-phoenix-tweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/phoenix/lang-yarns-phoenix"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/secret-garden/lang-yarns-secret-garden"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/silk-color/lang-yarns-silk-color"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/super-soxx-color-4-ply/lang-yarns-super-soxx-color-4-ply"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/suri-alpaca/lang-suri-alpaca"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/vaya/lang-yarns-vaya"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/vicuna/lang-yarns-vicuna"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/lang-yarns/yak/lang-yarns-yak"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/creative-crazy-paillettes/rico-creative-crazy-paillettes"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/creative-jazz-up/rico-creative-jass-up"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/creative-make-it-glitter/rico-creative-make-it-glitter"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/creative-make-it-tweed-neon/rico-make-it-tweed"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/creative-petit-lapin"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/creative-petit-lapin/rico-design-creative-petit-lapin-super-chunky"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/essentials-baby-alpaca--merino-aran/Rico-Essentials-Baby-Alpaca-Merino-aran"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/essentials-cashlana-dk"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/essentials-cotton-dk/rico-essentials-cotton-dk"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/essentials-organic-cotton-aran/rico-essentials-organic-cotton-aran"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/essentials-organic-cotton-dk/rico-essentials-organic-cotton-dk"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/essentials-super-kid-mohair-loves-silk-colourlove/rico-essentials-super-kid-mohair-loves-silk-colourlove"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/essentials-super-kid-mohair-loves-silk-print/rico-design-super-kid-mohair-loves-silk-print"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/essentials-super-kid-mohair-silk/rico-essentials-super-kid-mohair-silk"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-alpaca-sparks-joy"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-alpaca-sparks-joy/rico-fashion-alpaca-sparks-joy"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-alpaca-superfine-heavens"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-alpaca-superfine-heavens/rico-superfine-heavens"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-cotton-metallise"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-cotton-metallise/rico-fashion-cotton-metallise"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-cottony/rico-fashion-cottony"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-glitz"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-light-luxury-hand-dyed/rico-fashion-light-luxury-hand-dyed"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-light-luxury/rico-fashion-light-luxury"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-modern-tweed-aran/rico-modern-tweed-aran"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-mohair-merino/rico-fashion-mohair-merino"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-mohair-rainbows/Rico-mohair-rainbows"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/fashion-silk-blend-dk/rico-fashion-silk-blend-dk"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/luxury-alpaca-superfine-aran/rico-luxury-alpaca-superfine-aran"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/luxury-omg/rico-luxury-omg"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/metallic/rico-metallic"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/socks-neon-4-ply/rico-socks-neon"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/socks-super-soft-super-degrade-4-ply/rico-super-socks-super-degrade"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/superba-alpaca-luxury-socks/rico-superba-alpaca-luxury-socks"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/superba-cashmeri-luxury-socks/rico-cashmeri-luxury-socks"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/superba-footballs-4-ply/rico-superba-footballs-4-ply"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/superba-hottest-socks-ever/rico-superba-hottest-socks-ever-4-ply"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/superba-merino--linen--silk/Rico-len-shelk-merinos"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/superba-premium-4-ply-100/rico-superba-premium-4-ply-100g"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/superba-premium-4-ply-50/rico-superba-premium"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/superba-susu"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/superba-tweed-4-ply/rico-superba-tweed-4-ply"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/superba-tweed-6-ply/rico-superba-tweed-6-ply"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rico-design/superba-twirl-4-ply/rico-superba-twirl-4-ply"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rosarios-4/alfama/rosarios-4-alfama"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rosarios-4/marvila/rosarios-4-marvila"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/rosarios-4/monchique/rosarios-4-moncique"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/schachenmayr-regia/design-line/schachenmayr-regia-design-line"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/schachenmayr-regia/pryaja-merino-yak"
+    },
+    {
+      "url": "https://atmospherestore.ru/pryaja/schachenmayr-regia/pryaja-merino-yak/schachenmayr-regia-merino-yak"
+    },
+    {
+      "url": "https://atmospherestore.ru/vyshivka/biser/biser-miyuki/delica-11-0"
+    },
+    {
+      "url": "https://atmospherestore.ru/vyshivka/biser/biser-miyuki/drops-34-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/vyshivka/biser/biser-miyuki/speyseryi-2-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/vyshivka/biser/biser-miyuki/speyseryi-3-mm"
+    },
+    {
+      "url": "https://atmospherestore.ru/vyshivka/instrumenty-dlya-vyshivki/nit/nit-miyuki-dlya-biseropleteniya"
+    }
   ]
 }
