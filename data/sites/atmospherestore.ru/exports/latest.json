@@ -1,0 +1,19 @@
+{
+  "generated_at": "2025-09-25T09:00:00Z",
+  "products": [
+    {
+      "sku": "ATM-001",
+      "url": "https://atmospherestore.ru/product/astral-yarn",
+      "name": "Astral Yarn",
+      "price": 1290,
+      "currency": "RUB"
+    },
+    {
+      "sku": "ATM-002",
+      "url": "https://atmospherestore.ru/product/cosmic-needles",
+      "name": "Cosmic Needles",
+      "price": 890,
+      "currency": "RUB"
+    }
+  ]
+}

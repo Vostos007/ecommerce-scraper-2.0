@@ -23,6 +23,7 @@ COPY scripts ./scripts
 COPY database ./database
 COPY services ./services
 COPY config ./config
+COPY data ./data
 
 ENV PYTHONPATH="/app"
 
