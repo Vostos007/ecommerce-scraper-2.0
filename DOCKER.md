@@ -73,17 +73,7 @@ docker compose down
 | `NEXT_PUBLIC_API_BASE_URL` | Базовый URL API для фронтенда       | `http://api:8000` (внутри compose)|
 | `PYTHON_BIN`    | Путь до Python в контейнере (Playwright image) | `/ms-playwright/python/bin/python`|
 
-В `config/users.json` предустановлен оператор:
-
-| Логин | Пароль   | Роль     |
-|-------|----------|----------|
-| demo  | demo1234 | operator |
-
-При необходимости создайте свою учётку:
-
-```bash
-docker compose exec api python services/api/manage_users.py --create
-```
+Авторизация в демо-сборке отключена: Dashboard доступен сразу после запуска. При желании можно включить обратно, восстановив `AuthProvider` и `/login` — в `config/users.json` остаётся пример структуры пользователя.
 
 ## Обновление после новых коммитов
 
