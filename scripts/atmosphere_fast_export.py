@@ -1,17 +1,12 @@
-"""Production exporter entry point.
-
-Здесь нужно импортировать реальный Python скрипт экспорта и вызвать его
-с правильными параметрами. Пример заготовки ниже оставлен, чтобы было
-понятно куда внедрять боевую логику.
-"""
+"""Atmosphere Store export entry point."""
 
 from __future__ import annotations
 
+from .export_runner import run_export
+
 
 def main() -> None:
-    raise NotImplementedError(
-        "Подключите боевой экспорт atmosphere_fast_export и удалите этот плейсхолдер."
-    )
+    run_export('atmospherestore.ru')
 
 
 def run_export() -> None:

@@ -1,12 +1,12 @@
-"""Production exporter entry point."""
+"""Sitting Knitting export entry point."""
 
 from __future__ import annotations
 
+from .export_runner import run_export
+
 
 def main() -> None:
-    raise NotImplementedError(
-        "Подключите боевой экспорт cityknitting_fast_export и удалите этот плейсхолдер."
-    )
+    run_export('sittingknitting.ru')
 
 
 def run_export() -> None:

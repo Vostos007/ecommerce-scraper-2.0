@@ -1,5 +1,31 @@
 {
   "version": "1.0",
   "generated_at": "2025-10-05T12:00:00Z",
-  "sites": []
+  "sites": [
+    {
+      "name": "Atmosphere Store",
+      "domain": "atmospherestore.ru",
+      "backend": "default"
+    },
+    {
+      "name": "Sitting Knitting",
+      "domain": "sittingknitting.ru",
+      "backend": "default"
+    },
+    {
+      "name": "Knitshop",
+      "domain": "knitshop.ru",
+      "backend": "default"
+    },
+    {
+      "name": "Ili-ili",
+      "domain": "ili-ili.com",
+      "backend": "default"
+    },
+    {
+      "name": "Triskeli",
+      "domain": "triskeli.ru",
+      "backend": "default"
+    }
+  ]
 }
