@@ -2,13 +2,11 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useEffect, useMemo, useState, type ChangeEvent } from 'react';
+import { useEffect, useMemo, type ChangeEvent } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
 
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { useAuth } from '@/hooks/useAuth';
 import { getSites } from '@/lib/api';
 import type { SiteSummary } from '@/lib/sites';
 import { useDashboardStore } from '@/stores/dashboard';
@@ -16,81 +14,6 @@ import { Select } from './ui/select';
 import { cn } from '@/lib/utils';
 
 const PLACEHOLDER_OPTION = { value: '', label: 'Выберите сайт', disabled: true };
-
-function UserAvatar({ username }: { username: string }) {
-  const initials = useMemo(() => username.slice(0, 2).toUpperCase(), [username]);
-  return (
-    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary/10 text-sm font-semibold text-primary">
-      {initials}
-    </div>
-  );
-}
-
-function UserMenu() {
-  const { user, logout } = useAuth();
-  const router = useRouter();
-  const [open, setOpen] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  if (!user) {
-    return null;
-  }
-
-  const handleLogout = async () => {
-    if (!window.confirm('Вы уверены, что хотите выйти из системы?')) {
-      return;
-    }
-    await logout();
-    router.replace('/login');
-  };
-
-  return (
-    <details className="relative" open={open} onToggle={(event) => setOpen(event.currentTarget.open)}>
-      <summary className="flex cursor-pointer list-none items-center gap-3 rounded-full border border-transparent px-2 py-1 text-left transition hover:border-border">
-        <UserAvatar username={user.username} />
-        <div className="hidden text-left sm:block">
-          <p className="text-sm font-medium leading-tight">{user.username}</p>
-          <Badge variant="outline" className="mt-0.5 text-xs uppercase tracking-wide">
-            {user.role}
-          </Badge>
-        </div>
-      </summary>
-      <div className="absolute right-0 mt-2 w-56 space-y-1 rounded-md border border-border bg-popover p-2 shadow-lg">
-        <div className="rounded-md bg-muted/40 p-2 text-xs text-muted-foreground">
-          Последний вход: {user.lastLogin ? new Date(user.lastLogin).toLocaleString() : '—'}
-        </div>
-        <Button variant="ghost" size="sm" className="w-full justify-start" disabled>
-          Профиль (скоро)
-        </Button>
-        <Button variant="ghost" size="sm" className="w-full justify-start" disabled>
-          Настройки (скоро)
-        </Button>
-        {user.role === 'admin' ? (
-          <Button
-            variant="ghost"
-            size="sm"
-            className="w-full justify-start"
-            onClick={() => router.push('/dashboard/users')}
-          >
-            Управление пользователями
-          </Button>
-        ) : null}
-        <Button
-          variant="destructive"
-          size="sm"
-          className="w-full justify-start"
-          onClick={handleLogout}
-        >
-          Выйти
-        </Button>
-      </div>
-    </details>
-  );
-}
 
 export function TopNav() {
   const router = useRouter();
@@ -102,7 +25,6 @@ export function TopNav() {
   });
 
   const { activeSite, setActiveSite } = useDashboardStore();
-  const { isAuthenticated, isLoading: authLoading } = useAuth();
 
   useEffect(() => {
     if (!activeSite && sites.length > 0) {
@@ -160,7 +82,9 @@ export function TopNav() {
         label: `Сайт: ${siteLabel}`,
         href: `/dashboard/${activeSite}`,
         isActive: (path: string) =>
-          path.startsWith(`/dashboard/${activeSite}`) && !path.startsWith('/dashboard/downloads') && !path.startsWith('/dashboard/proxies')
+          path.startsWith(`/dashboard/${activeSite}`) &&
+          !path.startsWith('/dashboard/downloads') &&
+          !path.startsWith('/dashboard/proxies')
       });
     }
 
@@ -175,10 +99,6 @@ export function TopNav() {
     setActiveSite(nextSite);
     router.push(`/dashboard/${nextSite}`);
   };
-
-  if (authLoading || !isAuthenticated) {
-    return null;
-  }
 
   return (
     <header
@@ -219,7 +139,9 @@ export function TopNav() {
             size="sm"
             className="w-60"
           />
-          <UserMenu />
+          <Badge variant="outline" className="text-xs uppercase tracking-wide text-muted-foreground">
+            Demo Mode
+          </Badge>
         </div>
       </div>
       <nav className="md:hidden">
