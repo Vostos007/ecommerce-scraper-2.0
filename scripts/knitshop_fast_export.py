@@ -1,12 +1,12 @@
-"""Demo exporter for Knitshop."""
+"""Production exporter entry point."""
 
 from __future__ import annotations
 
-from .demo_export import run_demo_export
-
 
 def main() -> None:
-    run_demo_export('knitshop.ru', default_total=40)
+    raise NotImplementedError(
+        "Подключите боевой экспорт knitshop_fast_export и удалите этот плейсхолдер."
+    )
 
 
 def run_export() -> None:

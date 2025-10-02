@@ -1,15 +1,20 @@
-"""Demo exporter for Atmosphere Store."""
+"""Production exporter entry point.
+
+Здесь нужно импортировать реальный Python скрипт экспорта и вызвать его
+с правильными параметрами. Пример заготовки ниже оставлен, чтобы было
+понятно куда внедрять боевую логику.
+"""
 
 from __future__ import annotations
 
-from .demo_export import run_demo_export
-
 
 def main() -> None:
-    run_demo_export('atmospherestore.ru', default_total=80)
+    raise NotImplementedError(
+        "Подключите боевой экспорт atmosphere_fast_export и удалите этот плейсхолдер."
+    )
 
 
-def run_export() -> None:  # API совместимость со старыми скриптами
+def run_export() -> None:
     main()
 
 

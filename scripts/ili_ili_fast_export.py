@@ -1,12 +1,12 @@
-"""Demo exporter for Ili-ili."""
+"""Production exporter entry point."""
 
 from __future__ import annotations
 
-from .demo_export import run_demo_export
-
 
 def main() -> None:
-    run_demo_export('ili-ili.com', default_total=55)
+    raise NotImplementedError(
+        "Подключите боевой экспорт ili_ili_fast_export и удалите этот плейсхолдер."
+    )
 
 
 def run_export() -> None:
