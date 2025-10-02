@@ -1,0 +1,35 @@
+circuit_breaker:
+  failure_threshold: 5
+  recovery_timeout_sec: 300
+  half_open_max_calls: 3
+  success_threshold: 2
+  failure_types: [ConnectTimeout, HTTP_429, HTTP_503, ECONNREFUSED]
+  exclude_types: [HTTP_401, HTTP_404]
+
+traffic_budget:
+  global_soft_mb_per_day: 600
+  global_hard_mb_per_day: 900
+  residential_soft_mb_total: 900
+  residential_hard_mb_total: 1000
+
+fetch_defaults:
+  timeouts: { connect: 30, read: 60, total: 60 }
+  retries:
+    total: 5
+    backoff: exponential
+    base_delay_sec: 1.0
+    max_delay_sec: 10
+  smart_retry:
+    connect_timeout_retries: 2
+    http_5xx_retries: 4
+    rate_limit_backoff_sec: 60
+  max_html_bytes: 1572864
+  accept_compression: true
+  html_only: true
+
+bandwidth_optimization:
+  enable_streaming: true
+  chunk_size_kb: 64
+  abort_on_large_response: true
+  early_termination_markers: ["</html>", "</body>"]
+  max_redirect_follow: 3

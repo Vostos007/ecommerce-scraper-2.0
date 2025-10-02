@@ -1,15 +1,24 @@
 {
   "users": [
     {
-      "id": "operator-1759413652167",
-      "username": "demo",
-      "passwordHash": "scrypt:txM9cDwV+6P/oaw0OTmgSQ==:tAq0xG0DuCz0cJsRMacD2lhh8fCCmquOjod/Dtf4Jv2yRvPqojRpe1C4Z6aA/babJ4BShuo/vm0HpFZBZw3bBQ==",
+      "id": "admin-001",
+      "username": "admin",
+      "passwordHash": "$2a$12$vrPIeze4NpzWoLayOFN0C.KoczrJ4I.ZLhnpBPppxFA8ZUnRahwIi",
+      "role": "admin",
+      "createdAt": "2025-09-28T19:32:18.777Z",
+      "lastLogin": "2025-09-29T05:02:22.069Z",
+      "active": true
+    },
+    {
+      "id": "operator-001",
+      "username": "operator",
+      "passwordHash": "$2b$12$tPK9eb68GDsBxyUScLBbOefyrv6SXzZcUT5YeHvJkBU8ymbzSa/4S",
       "role": "operator",
-      "createdAt": "2025-10-02T14:00:52.378Z",
+      "createdAt": "2025-01-01T00:00:00.000Z",
       "lastLogin": null,
       "active": true
     }
   ],
   "version": "1.0",
-  "lastModified": "2025-10-02T14:00:52.378Z"
+  "lastModified": "2025-09-29T05:02:22.069Z"
 }

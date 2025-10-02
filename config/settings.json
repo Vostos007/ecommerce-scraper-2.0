@@ -1,0 +1,2427 @@
+{
+  "scraper_backend": "httpx",
+  "fast_scraper": {
+    "max_concurrent": 30,
+    "request_delay": 0.1,
+    "connection_timeout": 10,
+    "retry_attempts": 3,
+    "verify_ssl": true,
+    "dns_cache_ttl": 300,
+    "connection_pool_size": 100,
+    "keep_alive_timeout": 60,
+    "adaptive_concurrency": false
+  },
+  "httpx_scraper": {
+    "max_concurrent": 20,
+    "timeout": {
+      "connect": 20.0,
+      "read": 90.0,
+      "write": 90.0,
+      "pool": 90.0
+    },
+    "limits": {
+      "max_keepalive_connections": 100,
+      "max_connections": 200,
+      "keepalive_expiry": 60.0
+    },
+    "http2": false,
+    "verify_ssl": true,
+    "follow_redirects": true,
+    "retry_attempts": 4,
+    "retry_delay": 2.0,
+    "user_agent_rotation": true
+  },
+  "playwright_options": {
+    "headless": true,
+    "debug_mode": false,
+    "browser_type": "chromium",
+    "launch_options": {
+      "args": [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--disable-background-timer-throttling",
+        "--disable-backgrounding-occluded-windows",
+        "--disable-renderer-backgrounding"
+      ],
+      "ignore_default_args": [
+        "--enable-automation"
+      ],
+      "ignore_https_errors": true,
+      "slow_mo": 0
+    },
+    "context_options": {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "user_agent": null,
+      "locale": "en-US",
+      "timezone_id": "America/New_York",
+      "permissions": [],
+      "extra_http_headers": {},
+      "offline": false,
+      "http_credentials": null
+    }
+  },
+  "flaresolverr": {
+    "enabled": true,
+    "endpoint": "http://localhost:8192",
+    "max_timeout_ms": 180000,
+    "request_defaults": {
+      "timeout_seconds": 120,
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+      "headers": {
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7"
+      }
+    },
+    "retry_policy": {
+      "max_retries": 2,
+      "retry_delay_seconds": 2.0,
+      "backoff_multiplier": 1.5
+    },
+    "session_management": {
+      "enabled": true,
+      "reuse_sessions": true,
+      "default_namespace": "webscraper",
+      "cleanup_on_shutdown": true
+    },
+    "performance_settings": {
+      "concurrent_sessions": 3,
+      "session_ttl_seconds": 900,
+      "max_queue_length": 8
+    },
+    "integration_settings": {
+      "auto_fallback": true,
+      "proxy_support": true,
+      "guard_detection_triggers": [
+        "ddos-guard",
+        "cloudflare",
+        "bot_detection",
+        "captcha"
+      ],
+      "health_check_interval_seconds": 120
+    },
+    "proxy_bridge": {
+      "enabled": true,
+      "mode": "dynamic",
+      "listen_host": "127.0.0.1",
+      "listen_port": 0,
+      "inactivity_timeout_seconds": 300
+    }
+  },
+  "playwright_optimization": {
+    "enabled": true,
+    "browser_pooling": {
+      "max_browsers": 3,
+      "max_contexts_per_domain": 5,
+      "max_pages_per_context": 10,
+      "browser_idle_timeout_seconds": 600,
+      "context_idle_timeout_seconds": 300,
+      "page_idle_timeout_seconds": 60,
+      "cleanup_interval_seconds": 120
+    },
+    "performance_settings": {
+      "navigation_timeout_ms": 60000,
+      "wait_for_selector_timeout_ms": 15000,
+      "default_wait_strategy": "networkidle",
+      "enable_request_interception": true,
+      "block_resources": [
+        "image",
+        "font",
+        "media"
+      ],
+      "enable_javascript": true,
+      "enable_css": true
+    },
+    "resource_optimization": {
+      "max_memory_mb": 1024,
+      "memory_check_interval_seconds": 30,
+      "auto_cleanup_on_memory_pressure": true,
+      "max_concurrent_navigations": 5,
+      "enable_gpu": false,
+      "disable_dev_shm_usage": true
+    },
+    "stealth_settings": {
+      "enable_stealth_mode": true,
+      "randomize_viewport": true,
+      "randomize_user_agent_per_context": true,
+      "simulate_human_behavior": true,
+      "random_delays": {
+        "min_ms": 100,
+        "max_ms": 1000
+      }
+    }
+  },
+  "intelligent_method_selection": {
+    "enabled": true,
+    "factors": {
+      "cms_type_weight": 0.4,
+      "performance_history_weight": 0.3,
+      "resource_usage_weight": 0.2,
+      "site_complexity_weight": 0.1
+    },
+    "performance_tracking": {
+      "track_success_rates": true,
+      "track_response_times": true,
+      "track_resource_usage": true,
+      "history_retention_days": 30
+    },
+    "fallback_rules": {
+      "max_aiohttp_failures": 3,
+      "max_playwright_failures": 2,
+      "fallback_delay_seconds": 5,
+      "reset_failure_count_hours": 24
+    }
+  },
+  "js_detection": {
+    "force_playwright_domains": [
+      "knitshop.ru",
+      "triskeli.ru",
+      "6wool.ru"
+    ],
+    "force_aiohttp_domains": [
+      "atmospherestore.ru",
+      "sittingknitting.ru"
+    ],
+    "js_indicators": [
+      "<div id='app'>",
+      "<script src",
+      "react",
+      "angular",
+      "vue",
+      "svelte",
+      "ember",
+      "backbone",
+      "knockout",
+      "jquery"
+    ],
+    "complexity_indicators": {
+      "spa_patterns": [
+        "#/",
+        "#!/",
+        "router",
+        "state"
+      ],
+      "ajax_patterns": [
+        "fetch(",
+        "XMLHttpRequest",
+        "$.ajax",
+        "axios"
+      ],
+      "framework_patterns": [
+        "ng-",
+        "v-",
+        "data-react",
+        "data-vue"
+      ]
+    },
+    "performance_thresholds": {
+      "max_script_tags": 10,
+      "max_inline_js_length": 5000,
+      "min_static_content_ratio": 0.3
+    }
+  },
+  "batch_processing": {
+    "inter_site_delay_seconds": 5,
+    "jitter_factor": 0.3,
+    "adaptive_concurrency": true,
+    "max_concurrency": 6,
+    "domain_rate_limit": {
+      "min_interval_seconds": 20
+    },
+    "circuit_breaker": {
+      "enabled": true,
+      "circuit_failure_threshold": 3,
+      "circuit_timeout_seconds": 900,
+      "recovery_attempts": 1,
+      "health_check_interval": 300
+    },
+    "performance_monitoring": {
+      "track_performance_metrics": true,
+      "performance_window_minutes": 60,
+      "auto_adjust_delays": true
+    },
+    "enabled": false,
+    "batch_size": 10,
+    "max_batches_concurrent": 2
+  },
+  "resource_monitoring": {
+    "enabled": false,
+    "cpu_threshold": 85,
+    "memory_threshold_mb": 500,
+    "check_interval_seconds": 10,
+    "scale_down_factor": 0.5,
+    "scale_up_delay_seconds": 30
+  },
+  "rate_limit_protection": {
+    "max_429_per_minute": 5,
+    "backoff_multiplier": 2.0,
+    "min_request_delay": 0.1,
+    "max_request_delay": 10.0
+  },
+  "debug_options": {
+    "enabled": false,
+    "headless_override": false,
+    "slow_motion_ms": 0,
+    "screenshot_on_error": true,
+    "verbose_logging": false,
+    "step_by_step": false,
+    "browser_devtools": false,
+    "save_html_on_error": true,
+    "log_level": "INFO"
+  },
+  "logging": {
+    "level": "INFO",
+    "file_path": "logs/scraper.log",
+    "max_file_size_mb": 10,
+    "backup_count": 5,
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "console_output": true,
+    "performance_logging": false
+  },
+  "error_handling": {
+    "max_retries": 3,
+    "retry_delay_seconds": 5,
+    "continue_on_error": true,
+    "save_failed_urls": true,
+    "error_report_path": "logs/errors.json",
+    "graceful_shutdown": true
+  },
+  "development": {
+    "enabled": false,
+    "test_mode": false,
+    "mock_responses": false,
+    "cache_responses": false,
+    "validate_selectors": true,
+    "performance_profiling": false
+  },
+  "display": {
+    "output_format": "tree",
+    "max_name_length": 50,
+    "currency": "RUB",
+    "language": "ru",
+    "show_colors": true,
+    "show_timestamps": false,
+    "table_style": "markdown",
+    "tree_symbols": {
+      "branch": "\u251c\u2500\u2500",
+      "last": "\u2514\u2500\u2500",
+      "vertical": "\u2502",
+      "space": "   "
+    },
+    "formatting_options": {
+      "truncate_long_names": true,
+      "show_price_ranges": true,
+      "include_stock_summary": true,
+      "group_by_product": true,
+      "sort_variations": true
+    },
+    "internationalization": {
+      "enabled": true,
+      "fallback_language": "en"
+    }
+  },
+  "display_options": {
+    "format": "hierarchical",
+    "show_variation_types": true,
+    "group_by_product": true,
+    "show_price_ranges": true,
+    "show_stock_summary": true,
+    "max_variations_per_product": 10,
+    "truncate_product_names": 50,
+    "use_tree_symbols": true,
+    "color_coding": true,
+    "currency_symbol": "RUB",
+    "decimal_places": 2
+  },
+  "output_formats": {
+    "console": {
+      "enabled": true,
+      "format": "hierarchical",
+      "use_colors": true,
+      "max_width": 120
+    },
+    "markdown": {
+      "enabled": true,
+      "format": "table",
+      "include_summary": true,
+      "group_variations": true
+    },
+    "json": {
+      "enabled": false,
+      "include_metadata": true,
+      "pretty_print": true
+    }
+  },
+  "variation_display": {
+    "sort_order": [
+      "size",
+      "color",
+      "material",
+      "other"
+    ],
+    "type_labels": {
+      "size": "\u0420\u0430\u0437\u043c\u0435\u0440",
+      "color": "\u0426\u0432\u0435\u0442",
+      "material": "\u041c\u0430\u0442\u0435\u0440\u0438\u0430\u043b",
+      "other": "\u0412\u0430\u0440\u0438\u0430\u043d\u0442"
+    },
+    "show_confidence_scores": false,
+    "group_similar_types": true,
+    "max_variations_inline": 5
+  },
+  "performance_display": {
+    "show_processing_mode": true,
+    "show_batch_stats": true,
+    "show_resource_usage": true,
+    "show_timing_info": true,
+    "include_efficiency_metrics": true
+  },
+  "i18n": {
+    "language": "ru",
+    "currency_format": "ru-RU",
+    "number_format": "ru-RU",
+    "date_format": "dd.MM.yyyy HH:mm"
+  },
+  "opencart_selectors": {
+    "name": [
+      ".product__title",
+      "h1",
+      "h1.title",
+      ".product-title",
+      ".product-name"
+    ],
+    "price": [
+      ".price-new",
+      ".product-price",
+      ".price",
+      ".autocalc-product-price",
+      "span[itemprop=\"price\"]"
+    ],
+    "stock": [
+      ".stock-status",
+      ".stock",
+      ".product-availability",
+      "span[itemprop=\"availability\"]"
+    ],
+    "variations": [
+      ".options select[name*=\"option\"]",
+      ".form-group select",
+      ".product-option__value select"
+    ]
+  },
+  "cms_detection": {
+    "enabled": true,
+    "confidence_threshold": 0.7,
+    "detection_methods": {
+      "html_meta": {
+        "weight": 0.4,
+        "indicators": {
+          "bitrix": [
+            "bitrix",
+            "1c-bitrix"
+          ],
+          "wordpress": [
+            "wordpress",
+            "wp-content"
+          ],
+          "joomla": [
+            "joomla",
+            "com_"
+          ],
+          "magento": [
+            "magento",
+            "mage"
+          ],
+          "shopify": [
+            "shopify",
+            "myshopify"
+          ],
+          "opencart": [
+            "opencart",
+            "route=product"
+          ],
+          "sixwool": [
+            "6wool",
+            "jawoll"
+          ],
+          "cm3": [
+            "cm3"
+          ],
+          "cscart": [
+            "cs-cart",
+            "cscart"
+          ],
+          "insales": [
+            "insales"
+          ]
+        }
+      },
+      "url_patterns": {
+        "weight": 0.3,
+        "patterns": {
+          "bitrix": [
+            "/bitrix/",
+            "ili-ili.com"
+          ],
+          "wordpress": [
+            "/wp-content/",
+            "/wp-admin/"
+          ],
+          "joomla": [
+            "/component/",
+            "/index.php?option="
+          ],
+          "magento": [
+            "/media/catalog/",
+            "/static/version"
+          ],
+          "shopify": [
+            "/collections/",
+            "/products/"
+          ],
+          "opencart": [
+            "/index.php?route="
+          ],
+          "sixwool": [
+            "6wool.ru",
+            "/ajax/catalog/",
+            "/local/templates/6wool"
+          ],
+          "cm3": [
+            "mpyarn.ru"
+          ],
+          "cscart": [
+            "initki.ru",
+            "/cart.php"
+          ],
+          "insales": [
+            "triskeli.ru",
+            "/collection/",
+            "/products/"
+          ]
+        }
+      },
+      "css_selectors": {
+        "weight": 0.3,
+        "selectors": {
+          "bitrix": [
+            ".bx-",
+            ".bitrix"
+          ],
+          "wordpress": [
+            ".woocommerce-",
+            ".wp-"
+          ],
+          "joomla": [
+            ".virtuemart-",
+            ".hikashop-"
+          ],
+          "magento": [
+            ".product-item",
+            ".catalog-product-view"
+          ],
+          "shopify": [
+            ".product-single",
+            ".shopify-"
+          ],
+          "opencart": [
+            ".product-layout",
+            ".oc-"
+          ],
+          "sixwool": [
+            "[data-sixwool-variation]",
+            "#bx-component-scope"
+          ],
+          "cm3": [
+            ".cm3-product",
+            ".cm3-variants"
+          ],
+          "cscart": [
+            ".ty-product-block",
+            ".ty-product-options"
+          ],
+          "insales": [
+            "[data-variants]",
+            ".js-product-variants"
+          ]
+        }
+      },
+      "javascript_indicators": {
+        "patterns": {
+          "sixwool": [
+            "sixwoolOffers",
+            "JCCatalogElement"
+          ],
+          "cm3": [
+            "CM3Catalog"
+          ],
+          "cscart": [
+            "Tygh"
+          ],
+          "insales": [
+            "InSales"
+          ]
+        }
+      }
+    },
+    "fallback_detection": true,
+    "cache_detection_results": true,
+    "detection_cache_ttl": 3600,
+    "cache_ttl_seconds": 1800,
+    "domain_overrides": {
+      "mpyarn.ru": {
+        "force": "cm3",
+        "confidence_floor": 0.8
+      },
+      "initki.ru": {
+        "force": "cscart",
+        "confidence_floor": 0.8
+      },
+      "triskeli.ru": {
+        "force": "insales",
+        "confidence_floor": 0.85
+      },
+      "ili-ili.com": {
+        "force": "bitrix",
+        "confidence_floor": 0.9
+      }
+    }
+  },
+  "adaptive_selectors": {
+    "enabled": true,
+    "learning_threshold": 0.8,
+    "memory_dir": "data/selector_memory",
+    "validation_settings": {
+      "min_samples_required": 5,
+      "max_learning_age_days": 30,
+      "confidence_decay_factor": 0.95,
+      "relearn_on_failure": true,
+      "backup_memory_on_update": true
+    },
+    "performance_tracking": {
+      "track_success_rate": true,
+      "track_response_time": true,
+      "auto_disable_low_performers": true,
+      "performance_threshold": 0.6
+    },
+    "learning_parameters": {
+      "mutation_rate": 0.1,
+      "crossover_rate": 0.7,
+      "population_size": 20,
+      "generations": 10
+    }
+  },
+  "cms_selectors": {
+    "opencart": {
+      "selectors": {
+        "name": [
+          "h1.title",
+          ".product-title",
+          ".product-name",
+          ".product-info h1",
+          ".product-details h1"
+        ],
+        "price": [
+          ".price-new",
+          ".product-price",
+          ".price",
+          ".price-current",
+          ".product-price-current"
+        ],
+        "stock": [
+          ".stock-status",
+          ".stock",
+          ".availability",
+          ".product-stock",
+          ".stock-info"
+        ],
+        "variations": [
+          ".options select[name*=\"option\"]",
+          ".form-group select",
+          ".product-options select",
+          ".option select"
+        ]
+      },
+      "confidence_weight": 0.9,
+      "fallback_selectors": {
+        "name": [
+          "h1",
+          ".title",
+          ".name"
+        ],
+        "price": [
+          ".price",
+          ".cost",
+          ".amount"
+        ],
+        "stock": [
+          ".stock",
+          ".available"
+        ],
+        "variations": [
+          "select",
+          ".options select"
+        ]
+      }
+    },
+    "bitrix": {
+      "selectors": {
+        "name": [
+          ".product-title",
+          ".bx-title",
+          ".product-name",
+          "h1",
+          ".bx-item-title",
+          ".catalog-element-title"
+        ],
+        "price": [
+          "#bx-component-scope [data-entity='price']",
+          ".bx-price",
+          ".bx-price-current",
+          ".catalog-price",
+          ".current-price",
+          ".price",
+          ".product-price"
+        ],
+        "stock": [
+          "#bx-component-scope [data-entity='quantity-block']",
+          ".availability",
+          ".bx-availability",
+          ".catalog-availability",
+          ".product-stock",
+          ".stock"
+        ],
+        "variations": [
+          ".bx-option select",
+          ".product-options select",
+          ".catalog-options select",
+          ".bx-sku select"
+        ]
+      },
+      "confidence_weight": 0.85,
+      "fallback_selectors": {
+        "name": [
+          "h1",
+          ".title",
+          ".name"
+        ],
+        "price": [
+          ".price",
+          ".cost"
+        ],
+        "stock": [
+          ".stock",
+          ".available"
+        ],
+        "variations": [
+          "select",
+          ".options select"
+        ]
+      },
+      "wait_for_selectors": [
+        "#bx-component-scope",
+        ".product-item-detail",
+        ".product-detail"
+      ],
+      "playwright_wait_states": [
+        "networkidle",
+        "load"
+      ],
+      "ajax_endpoints": {
+        "offers": [
+          "/ajax/catalog/getOffers.php",
+          "/ajax/catalog/getSku.php"
+        ],
+        "headers": {
+          "x-requested-with": "XMLHttpRequest"
+        },
+        "timeout": 12,
+        "retries": 2
+      }
+    },
+    "cscart": {
+      "selectors": {
+        "name": [
+          ".product-title",
+          ".ty-product-block-title",
+          "h1",
+          ".product-name"
+        ],
+        "price": [
+          ".ty-price",
+          ".price",
+          ".product-price",
+          ".ty-price-num"
+        ],
+        "stock": [
+          ".ty-qty-in-stock",
+          ".stock",
+          ".availability",
+          ".product-availability"
+        ],
+        "variations": [
+          ".ty-product-options select",
+          ".cm-picker-variant",
+          ".ty-variants select"
+        ]
+      },
+      "confidence_weight": 0.75,
+      "api_support": true,
+      "fallback_selectors": {
+        "name": [
+          "h1",
+          ".ty-product-block-title",
+          ".product-title"
+        ],
+        "price": [
+          ".price",
+          ".ty-price"
+        ],
+        "stock": [
+          ".stock",
+          ".availability"
+        ],
+        "variations": [
+          "select",
+          ".ty-product-options select"
+        ]
+      }
+    },
+    "wordpress": {
+      "selectors": {
+        "name": [
+          ".product_title",
+          ".woocommerce-product-title",
+          "h1.product_title",
+          ".entry-title",
+          ".product-name"
+        ],
+        "price": [
+          ".price",
+          ".woocommerce-Price-amount",
+          ".product-price",
+          ".woocommerce-price",
+          ".price-current"
+        ],
+        "stock": [
+          ".stock",
+          ".woocommerce-stock",
+          ".availability",
+          ".product-stock",
+          ".stock-status"
+        ],
+        "variations": [
+          ".variations select",
+          ".woocommerce-variation select",
+          ".product-variations select",
+          ".variable-item select"
+        ]
+      },
+      "confidence_weight": 0.8,
+      "fallback_selectors": {
+        "name": [
+          "h1",
+          ".title",
+          ".name"
+        ],
+        "price": [
+          ".price",
+          ".cost"
+        ],
+        "stock": [
+          ".stock",
+          ".available"
+        ],
+        "variations": [
+          "select",
+          ".options select"
+        ]
+      }
+    },
+    "joomla": {
+      "selectors": {
+        "name": [
+          ".product-title",
+          ".item-title",
+          "h1",
+          ".product-name",
+          ".virtuemart-product-title"
+        ],
+        "price": [
+          ".product-price",
+          ".price",
+          ".virtuemart-price",
+          ".product-price-current",
+          ".hikashop-price"
+        ],
+        "stock": [
+          ".stock",
+          ".availability",
+          ".product-stock",
+          ".virtuemart-stock",
+          ".hikashop-stock"
+        ],
+        "variations": [
+          ".product-options select",
+          ".vm-options select",
+          ".hikashop-options select",
+          ".custom-field select"
+        ]
+      },
+      "confidence_weight": 0.75,
+      "fallback_selectors": {
+        "name": [
+          "h1",
+          ".title",
+          ".name"
+        ],
+        "price": [
+          ".price",
+          ".cost"
+        ],
+        "stock": [
+          ".stock",
+          ".available"
+        ],
+        "variations": [
+          "select",
+          ".options select"
+        ]
+      }
+    },
+    "magento": {
+      "selectors": {
+        "name": [
+          ".product-name",
+          ".page-title",
+          "h1",
+          ".product-title",
+          ".catalog-product-view h1"
+        ],
+        "price": [
+          ".price",
+          ".product-price",
+          ".final-price",
+          ".price-final",
+          ".catalog-price"
+        ],
+        "stock": [
+          ".stock",
+          ".availability",
+          ".product-availability",
+          ".catalog-availability",
+          ".product-stock"
+        ],
+        "variations": [
+          ".product-options select",
+          ".swatch-option",
+          ".configurable-swatch select",
+          ".super-attribute-select"
+        ]
+      },
+      "confidence_weight": 0.8,
+      "fallback_selectors": {
+        "name": [
+          "h1",
+          ".title",
+          ".name"
+        ],
+        "price": [
+          ".price",
+          ".cost"
+        ],
+        "stock": [
+          ".stock",
+          ".available"
+        ],
+        "variations": [
+          "select",
+          ".options select"
+        ]
+      }
+    },
+    "cm3": {
+      "selectors": {
+        "name": [
+          ".product-title",
+          ".cm3-product-name",
+          "h1",
+          ".product-name"
+        ],
+        "price": [
+          ".price",
+          ".product-price",
+          ".cm3-price",
+          ".current-price"
+        ],
+        "stock": [
+          ".stock",
+          ".availability",
+          ".product-stock",
+          ".cm3-stock",
+          ".kind-item .shop-product-btn",
+          "link[itemprop='availability']"
+        ],
+        "variations": [
+          ".product-options select",
+          ".cm3-variants select",
+          ".variant-select",
+          ".kinds-block .kind-item",
+          ".mods_block .kind-item"
+        ]
+      },
+      "confidence_weight": 0.7,
+      "fallback_selectors": {
+        "name": [
+          "h1",
+          ".product-title"
+        ],
+        "price": [
+          ".price",
+          ".current-price"
+        ],
+        "stock": [
+          ".stock",
+          ".availability"
+        ],
+        "variations": [
+          "select",
+          ".product-options select"
+        ]
+      },
+      "ajax_endpoints": {
+        "offers": [
+          "/magazin/product/get-offers/",
+          "/g/ajax/catalog/sku"
+        ],
+        "headers": {
+          "x-requested-with": "XMLHttpRequest"
+        },
+        "timeout": 10,
+        "retries": 2
+      }
+    },
+    "insales": {
+      "selectors": {
+        "name": [
+          ".product-title",
+          ".product-header__title",
+          "h1",
+          ".product-name",
+          "[data-product-title]"
+        ],
+        "price": [
+          ".price",
+          ".product-price",
+          ".js-product-price",
+          "[data-product-price]",
+          ".current-price"
+        ],
+        "stock": [
+          ".stock",
+          ".product-availability",
+          ".availability",
+          "[data-product-availability]",
+          ".js-variant-stock"
+        ],
+        "variations": [
+          ".product-variants",
+          ".variant-options",
+          ".variants-list select",
+          "[data-variants] select",
+          ".js-product-variants select"
+        ]
+      },
+      "confidence_weight": 0.8,
+      "api_support": true,
+      "fallback_selectors": {
+        "name": [
+          "h1",
+          ".product-title",
+          ".product-name"
+        ],
+        "price": [
+          ".price",
+          ".product-price"
+        ],
+        "stock": [
+          ".stock",
+          ".availability"
+        ],
+        "variations": [
+          "select",
+          ".product-variants select"
+        ]
+      }
+    },
+    "shopify": {
+      "selectors": {
+        "name": [
+          ".product-title",
+          ".product-single__title",
+          "h1",
+          ".product-name",
+          ".product__title"
+        ],
+        "price": [
+          ".price",
+          ".product-price",
+          ".current-price",
+          ".product__price",
+          ".price__current"
+        ],
+        "stock": [
+          ".stock",
+          ".product-availability",
+          ".availability",
+          ".product-stock",
+          ".stock-status"
+        ],
+        "variations": [
+          ".product-form select",
+          ".variant-select",
+          ".product-variants select",
+          ".single-option-selector"
+        ]
+      },
+      "confidence_weight": 0.85,
+      "fallback_selectors": {
+        "name": [
+          "h1",
+          ".title",
+          ".name"
+        ],
+        "price": [
+          ".price",
+          ".cost"
+        ],
+        "stock": [
+          ".stock",
+          ".available"
+        ],
+        "variations": [
+          "select",
+          ".options select"
+        ]
+      }
+    },
+    "sixwool": {
+      "selectors": {
+        "name": [
+          "h1",
+          ".product-detail-title",
+          ".product-title"
+        ],
+        "price": [
+          "#bx-component-scope [data-entity='price']",
+          "[data-sixwool-price]",
+          ".product-detail-price",
+          ".product-price .current-price"
+        ],
+        "stock": [
+          "[data-sixwool-stock]",
+          ".product-detail-stock",
+          ".product-availability",
+          "[data-entity='quantity-block']"
+        ],
+        "variations": [
+          "[data-sixwool-variation] select",
+          "[data-sixwool-variation] input[type=radio]",
+          "#bx-component-scope select",
+          "[data-entity='sku-line-block'] select"
+        ]
+      },
+      "fallback_selectors": {
+        "name": [
+          "h1",
+          ".product-name"
+        ],
+        "price": [
+          ".product-price",
+          "[itemprop='price']"
+        ],
+        "stock": [
+          ".product-availability",
+          ".availability"
+        ],
+        "variations": [
+          "select[name*='OFFER']",
+          "[data-sixwool-variation]"
+        ]
+      },
+      "confidence_weight": 0.92,
+      "wait_for_selectors": [
+        "#bx-component-scope",
+        "[data-sixwool-variation]",
+        ".product-detail"
+      ],
+      "playwright_wait_states": [
+        "networkidle",
+        "load"
+      ],
+      "api_support": true,
+      "allow_price_fallback": true,
+      "ajax_endpoints": {
+        "offers": [
+          "/ajax/catalog/getOffers.php",
+          "/ajax/catalog/getSku.php"
+        ],
+        "headers": {
+          "x-requested-with": "XMLHttpRequest",
+          "accept": "application/json"
+        },
+        "timeout": 15,
+        "retries": 3
+      }
+    }
+  },
+  "api_credentials": {
+    "cscart": {
+      "timeout": 12,
+      "retries": 2,
+      "api_support": true,
+      "api_key_env": "CSCART_API_KEY",
+      "api_url_pattern": "/api/2.0/products/{product_id}",
+      "admin_api_pattern": "/admin.php?dispatch=products.get&product_id={product_id}",
+      "admin_variants_pattern": "/api/2.0/products/{product_id}/options",
+      "product_id_regex": "(?P<product_id>\\d+)",
+      "headers": {
+        "Accept": "application/json",
+        "Authorization": "Bearer ${CSCART_API_KEY}"
+      }
+    },
+    "insales": {
+      "timeout": 12,
+      "retries": 2,
+      "api_support": true,
+      "admin_api": true,
+      "api_key_env": "INSALES_API_KEY",
+      "api_url_pattern": "/admin/products/{product_id}/variants.json",
+      "headers": {
+        "Accept": "application/json",
+        "X-Auth-Token": "${INSALES_API_KEY}"
+      }
+    }
+  },
+  "fallback_chain": {
+    "enabled": true,
+    "max_fallback_steps": 3,
+    "timeout_per_step": 5,
+    "steps": [
+      {
+        "name": "primary_selectors",
+        "method": "direct_css",
+        "timeout": 3,
+        "retry_count": 1
+      },
+      {
+        "name": "adaptive_selectors",
+        "method": "adaptive_learning",
+        "timeout": 5,
+        "retry_count": 2,
+        "conditions": {
+          "min_confidence": 0.7,
+          "max_age_days": 7
+        }
+      },
+      {
+        "name": "fallback_selectors",
+        "method": "fallback_css",
+        "timeout": 4,
+        "retry_count": 1
+      },
+      {
+        "name": "generic_selectors",
+        "method": "generic_fallback",
+        "timeout": 2,
+        "retry_count": 0,
+        "selectors": {
+          "name": [
+            "h1",
+            "h2",
+            ".title",
+            ".name"
+          ],
+          "price": [
+            ".price",
+            ".cost",
+            ".amount",
+            "[data-price]"
+          ],
+          "stock": [
+            ".stock",
+            ".availability",
+            ".status"
+          ],
+          "variations": [
+            "select",
+            ".options select",
+            "[data-variant]"
+          ]
+        }
+      }
+    ],
+    "failure_handling": {
+      "continue_on_failure": true,
+      "log_failures": true,
+      "fallback_to_generic": true
+    }
+  },
+  "scheduling": {
+    "enabled": true,
+    "max_concurrent_tasks": 5,
+    "task_timeout_minutes": 120,
+    "cleanup_old_tasks_days": 30,
+    "default_schedule": "0 */6 * * *",
+    "retry_failed_tasks": true,
+    "max_task_retries": 3,
+    "retry_delay_minutes": 15,
+    "notification_on_failure": true,
+    "notification_on_success": false,
+    "store_execution_history": true,
+    "max_execution_history_days": 90,
+    "enable_cron_validation": true,
+    "timezone": "UTC",
+    "system_maintenance_window": {
+      "enabled": false,
+      "start_hour": 2,
+      "duration_hours": 2,
+      "pause_tasks": true
+    }
+  },
+  "email_notifications": {
+    "enabled": true,
+    "smtp_settings": {
+      "server": "smtp.gmail.com",
+      "port": 587,
+      "use_tls": true,
+      "use_ssl": false,
+      "username": "",
+      "password": "",
+      "timeout": 30
+    },
+    "default_settings": {
+      "from_name": "Web Scraper System",
+      "from_email": "noreply@webscraper.local",
+      "reply_to": "",
+      "priority": "normal",
+      "charset": "utf-8"
+    },
+    "template_settings": {
+      "template_dir": "notifications/templates",
+      "default_template": "default.html",
+      "include_logo": true,
+      "logo_url": "",
+      "footer_text": "This email was sent by the Web Scraper System"
+    },
+    "notification_types": {
+      "task_completion": {
+        "enabled": true,
+        "template": "task_completion.html",
+        "subject": "Scraping Task Completed: {task_name}",
+        "include_summary": true,
+        "include_attachments": false
+      },
+      "task_failure": {
+        "enabled": true,
+        "template": "task_failure.html",
+        "subject": "Scraping Task Failed: {task_name}",
+        "include_error_details": true,
+        "include_logs": true
+      },
+      "price_alerts": {
+        "enabled": true,
+        "template": "price_alert.html",
+        "subject": "Price Alert: Significant Changes Detected",
+        "threshold_percentage": 10.0,
+        "include_comparison_chart": true
+      },
+      "stock_alerts": {
+        "enabled": true,
+        "template": "stock_alert.html",
+        "subject": "Stock Alert: Availability Changes",
+        "notify_out_of_stock": true,
+        "notify_back_in_stock": true
+      },
+      "weekly_report": {
+        "enabled": true,
+        "template": "weekly_report.html",
+        "subject": "Weekly Scraping Report",
+        "send_day": "monday",
+        "send_time": "09:00",
+        "include_charts": true,
+        "include_trends": true
+      },
+      "monthly_report": {
+        "enabled": true,
+        "template": "monthly_report.html",
+        "subject": "Monthly Scraping Report",
+        "send_day": 1,
+        "send_time": "10:00",
+        "include_detailed_analytics": true,
+        "include_export_files": true
+      }
+    },
+    "rate_limiting": {
+      "max_emails_per_hour": 50,
+      "max_emails_per_day": 200,
+      "delay_between_emails": 1,
+      "bulk_email_batch_size": 10
+    },
+    "retry_settings": {
+      "max_retries": 3,
+      "retry_delay_seconds": 60,
+      "exponential_backoff": true,
+      "retry_on_smtp_errors": true
+    },
+    "default_recipients": []
+  },
+  "reporting": {
+    "enabled": true,
+    "output_directory": "reports/generated",
+    "archive_directory": "reports/archive",
+    "template_directory": "reports/templates",
+    "auto_cleanup_days": 60,
+    "include_charts": true,
+    "include_analytics": true,
+    "default_timezone": "UTC",
+    "currency_symbol": "RUB",
+    "decimal_places": 2,
+    "auto_generate_after_scheduled_scrape": {
+      "enabled": false,
+      "report_type": "scrape_summary",
+      "export_formats": [
+        "pdf"
+      ],
+      "send_email": true,
+      "email_recipients": []
+    },
+    "report_types": {
+      "weekly": {
+        "enabled": true,
+        "auto_generate": true,
+        "schedule": "0 9 * * MON",
+        "include_sections": [
+          "summary",
+          "price_changes",
+          "stock_changes",
+          "top_products",
+          "site_performance"
+        ],
+        "chart_types": [
+          "line",
+          "bar",
+          "pie"
+        ],
+        "data_aggregation": "week"
+      },
+      "monthly": {
+        "enabled": true,
+        "auto_generate": true,
+        "schedule": "0 10 1 * *",
+        "include_sections": [
+          "executive_summary",
+          "detailed_analytics",
+          "price_trends",
+          "stock_trends",
+          "site_comparison",
+          "performance_metrics",
+          "recommendations"
+        ],
+        "chart_types": [
+          "line",
+          "bar",
+          "heatmap",
+          "scatter"
+        ],
+        "data_aggregation": "month",
+        "include_forecasting": true
+      },
+      "custom": {
+        "enabled": true,
+        "max_date_range_days": 365,
+        "allow_site_filtering": true,
+        "allow_product_filtering": true,
+        "custom_sections": true,
+        "export_formats": [
+          "pdf",
+          "excel",
+          "json",
+          "html"
+        ]
+      }
+    },
+    "analytics_settings": {
+      "price_change_threshold": 5.0,
+      "significant_change_threshold": 15.0,
+      "trend_analysis_periods": [
+        7,
+        30,
+        90
+      ],
+      "moving_average_periods": [
+        7,
+        14,
+        30
+      ],
+      "seasonal_analysis": true,
+      "correlation_analysis": true,
+      "outlier_detection": true,
+      "forecasting_periods": 30
+    },
+    "chart_settings": {
+      "width": 1200,
+      "height": 800,
+      "dpi": 300,
+      "format": "png",
+      "style": "seaborn-v0_8",
+      "color_palette": [
+        "#1f77b4",
+        "#ff7f0e",
+        "#2ca02c",
+        "#d62728",
+        "#9467bd"
+      ],
+      "font_size": 12,
+      "title_font_size": 16,
+      "grid": true,
+      "legend": true
+    },
+    "caching": {
+      "enabled": true,
+      "cache_duration_hours": 6,
+      "cache_analytics_queries": true,
+      "cache_chart_data": true,
+      "max_cache_size_mb": 100
+    }
+  },
+  "export_options": {
+    "enabled": true,
+    "default_format": "pdf",
+    "output_directory": "exports",
+    "filename_template": "report_{type}_{date}_{site}",
+    "include_timestamp": true,
+    "compress_large_files": true,
+    "max_file_size_mb": 50,
+    "formats": {
+      "pdf": {
+        "enabled": true,
+        "page_size": "A4",
+        "orientation": "portrait",
+        "margins": {
+          "top": 2,
+          "bottom": 2,
+          "left": 2,
+          "right": 2
+        },
+        "font_family": "Helvetica",
+        "font_size": 12,
+        "include_header": true,
+        "include_footer": true,
+        "include_page_numbers": true,
+        "include_table_of_contents": true,
+        "image_quality": "high",
+        "embed_fonts": true
+      },
+      "excel": {
+        "enabled": true,
+        "include_charts": true,
+        "include_formatting": true,
+        "multiple_sheets": true,
+        "sheet_names": {
+          "summary": "Summary",
+          "products": "Products",
+          "price_history": "Price History",
+          "analytics": "Analytics"
+        },
+        "auto_adjust_columns": true,
+        "freeze_header_row": true,
+        "include_filters": true,
+        "chart_size": {
+          "width": 600,
+          "height": 400
+        }
+      },
+      "json": {
+        "enabled": true,
+        "pretty_print": true,
+        "include_metadata": true,
+        "include_raw_data": true,
+        "include_processed_data": true,
+        "compression": "gzip"
+      },
+      "html": {
+        "enabled": true,
+        "include_css": true,
+        "include_javascript": true,
+        "interactive_charts": true,
+        "responsive_design": true,
+        "theme": "bootstrap",
+        "include_export_buttons": true,
+        "embed_images": true
+      },
+      "csv": {
+        "enabled": true,
+        "delimiter": ",",
+        "quote_char": "\"",
+        "include_headers": true,
+        "encoding": "utf-8",
+        "separate_files_per_table": true
+      }
+    },
+    "email_attachment": {
+      "enabled": true,
+      "max_attachment_size_mb": 25,
+      "compress_attachments": true,
+      "allowed_formats": [
+        "pdf",
+        "excel",
+        "csv"
+      ],
+      "zip_multiple_files": true
+    }
+  },
+  "analytics": {
+    "enabled": true,
+    "database_optimization": {
+      "enable_indexing": true,
+      "auto_vacuum": true,
+      "analyze_frequency_hours": 24,
+      "cache_query_results": true,
+      "query_timeout_seconds": 30
+    },
+    "data_processing": {
+      "batch_size": 1000,
+      "parallel_processing": true,
+      "max_workers": 4,
+      "memory_efficient_mode": true,
+      "chunk_large_datasets": true
+    },
+    "statistical_analysis": {
+      "confidence_level": 0.95,
+      "significance_level": 0.05,
+      "min_sample_size": 30,
+      "outlier_detection_method": "iqr",
+      "trend_detection_sensitivity": 0.1,
+      "seasonality_detection": true
+    },
+    "performance_metrics": {
+      "track_query_performance": true,
+      "track_memory_usage": true,
+      "track_processing_time": true,
+      "alert_on_slow_queries": true,
+      "slow_query_threshold_seconds": 10
+    },
+    "data_retention": {
+      "raw_data_retention_days": 365,
+      "aggregated_data_retention_days": 1095,
+      "analytics_cache_retention_hours": 24,
+      "auto_archive_old_data": true,
+      "compression_threshold_days": 90
+    },
+    "alerting": {
+      "enabled": true,
+      "price_volatility_threshold": 20.0,
+      "stock_depletion_threshold": 10,
+      "error_rate_threshold": 5.0,
+      "performance_degradation_threshold": 50.0,
+      "alert_cooldown_minutes": 30
+    }
+  },
+  "proxy_infrastructure": {
+    "enabled": true,
+    "manual_proxy_file": "manual_proxies.txt",
+    "manual_proxy_scheme": "http",
+    "proxy_health": {
+      "enabled": false,
+      "check_interval_seconds": 300,
+      "health_threshold": 0.8,
+      "max_failures_before_replacement": 3,
+      "test_urls": [
+        "https://httpbin.org/ip",
+        "https://icanhazip.com",
+        "https://api.ipify.org",
+        "https://6wool.ru/",
+        "https://www.cloudflare.com/cdn-cgi/trace"
+      ],
+      "timeout_seconds": 10,
+      "concurrent_checks": 5,
+      "verify_ssl": true,
+      "performance_tracking": {
+        "track_response_time": true,
+        "track_success_rate": true,
+        "track_bandwidth": true,
+        "history_retention_hours": 24
+      }
+    },
+    "session_management": {
+      "enabled": true,
+      "session_dir": "data/sessions",
+      "session_ttl_seconds": 3600,
+      "encryption_enabled": true,
+      "auto_cleanup_expired": true,
+      "cleanup_interval_seconds": 1800,
+      "max_sessions_per_domain": 10,
+      "session_validation": {
+        "validate_on_load": true,
+        "refresh_threshold_seconds": 300,
+        "auto_refresh": true
+      }
+    },
+    "content_validation": {
+      "enabled": true,
+      "min_content_length": 1000,
+      "quality_threshold": 0.7,
+      "block_indicators": [
+        "access denied",
+        "blocked",
+        "captcha",
+        "rate limit",
+        "\u0437\u0430\u0431\u043b\u043e\u043a\u0438\u0440\u043e\u0432\u0430\u043d",
+        "\u0434\u043e\u0441\u0442\u0443\u043f \u0437\u0430\u043f\u0440\u0435\u0449\u0435\u043d",
+        "\u043a\u0430\u043f\u0447\u0430",
+        "cloudflare",
+        "ddos protection",
+        "security check"
+      ],
+      "required_elements": [
+        "title",
+        "h1"
+      ],
+      "silent_block_detection": {
+        "enabled": true,
+        "min_content_ratio": 0.3,
+        "check_element_count": true,
+        "compare_with_previous": true
+      }
+    },
+    "premium_proxies": {
+      "enabled": false,
+      "primary_service": "proxy6",
+      "proxy6": {
+        "api_key": "",
+        "api_url": "https://proxy6.net/api",
+        "proxy_type": "http",
+        "country": "RU",
+        "auto_refresh": true,
+        "refresh_interval_seconds": 3600,
+        "min_proxy_count": 10
+      },
+      "backup_services": {
+        "proxy_seller": {
+          "api_key": "",
+          "enabled": false
+        }
+      },
+      "cost_management": {
+        "max_monthly_cost": 100.0,
+        "track_usage": true,
+        "auto_scale": true
+      }
+    },
+    "exponential_backoff": {
+      "enabled": true,
+      "base_delay_seconds": 1.0,
+      "max_delay_seconds": 300.0,
+      "multiplier": 2.0,
+      "jitter": true,
+      "max_attempts": 5,
+      "circuit_breaker_enabled": true,
+      "circuit_failure_threshold": 5,
+      "circuit_timeout_seconds": 60,
+      "circuit_recovery_attempts": 3,
+      "error_specific_strategies": {
+        "timeout": {
+          "max_attempts": 3,
+          "multiplier": 1.5,
+          "base_delay": 2.0
+        },
+        "rate_limit": {
+          "max_attempts": 5,
+          "multiplier": 3.0,
+          "base_delay": 10.0
+        },
+        "captcha": {
+          "max_attempts": 2,
+          "multiplier": 5.0,
+          "base_delay": 30.0
+        },
+        "blocked": {
+          "max_attempts": 1,
+          "multiplier": 1.0,
+          "base_delay": 0.0
+        },
+        "network": {
+          "max_attempts": 4,
+          "multiplier": 2.0,
+          "base_delay": 1.0
+        },
+        "http_5xx": {
+          "max_attempts": 3,
+          "multiplier": 2.0,
+          "base_delay": 5.0
+        },
+        "http_4xx": {
+          "max_attempts": 1,
+          "multiplier": 1.0,
+          "base_delay": 0.0
+        },
+        "proxy_error": {
+          "max_attempts": 2,
+          "multiplier": 1.5,
+          "base_delay": 3.0
+        },
+        "authentication": {
+          "max_attempts": 1,
+          "multiplier": 1.0,
+          "base_delay": 0.0
+        }
+      }
+    },
+    "proxy_rotator": {
+      "auto_replace_burned": true,
+      "min_healthy_proxies": 3,
+      "health_check_interval_seconds": 300,
+      "intelligent_selection": true,
+      "load_balancing": true,
+      "enable_background_monitoring": true
+    }
+  },
+  "guard_detection": {
+    "ddos_guard_signatures": [
+      "ddos-guard",
+      "DDoS-GUARD",
+      "Request unsuccessful. Incapsula incident",
+      "window.ddosGuard",
+      "checking your browser before accessing 6wool",
+      "sixwool ddos guard"
+    ],
+    "cloudflare_signatures": [
+      "cf-browser-verification",
+      "Checking your browser before accessing"
+    ],
+    "max_bypass_attempts": 3,
+    "cooldown_seconds": 180,
+    "domain_overrides": {
+      "6wool.ru": {
+        "keywords": [
+          "6wool",
+          "DDoS-GUARD",
+          "ddos-guard"
+        ],
+        "status_codes": [
+          403,
+          503
+        ],
+        "max_bypass_attempts": 4,
+        "cooldown_seconds": 240
+      }
+    }
+  },
+  "captcha_solving": {
+    "enabled": false,
+    "service": "2captcha",
+    "api_key": "",
+    "api_url": "http://2captcha.com",
+    "timeout_seconds": 120,
+    "polling_interval_seconds": 5,
+    "max_retries": 3,
+    "auto_solve_on_detection": true,
+    "supported_types": [
+      "recaptcha_v2",
+      "recaptcha_v3",
+      "hcaptcha",
+      "image"
+    ],
+    "cost_tracking": {
+      "enabled": true,
+      "daily_limit_usd": 10.0,
+      "alert_on_low_balance": true,
+      "min_balance_usd": 5.0
+    },
+    "performance_settings": {
+      "prefer_fast_workers": true,
+      "max_solve_time_seconds": 60,
+      "retry_on_timeout": true
+    }
+  },
+  "firecrawl": {
+    "enabled": false,
+    "api_keys": [
+      "fc-f88b13cabdf84e1c949680c279b645f4",
+      "fc-5a82a897d80d42d280d48409fe9ada64",
+      "fc-567cc5546fba4b5499fa6dbf5eaef0da"
+    ],
+    "api_key": "fc-f88b13cabdf84e1c949680c279b645f4",
+    "base_url": "https://api.firecrawl.dev/v2/scrape",
+    "timeout_seconds": 60,
+    "max_requests_per_run": 20,
+    "only_main_content": true,
+    "max_age_ms": 172800000,
+    "store_in_cache": true,
+    "location": {
+      "country": "RU",
+      "languages": [
+        "ru"
+      ]
+    },
+    "parsers": [],
+    "formats": [
+      "markdown"
+    ]
+  },
+  "user_agent_rotation": {
+    "enabled": true,
+    "mandatory_rotation": true,
+    "strategy": "intelligent",
+    "pool_size": 100,
+    "refresh_interval_hours": 24,
+    "rotation_triggers": {
+      "every_request": true,
+      "on_proxy_rotation": true,
+      "on_error": true,
+      "time_based_minutes": 30
+    },
+    "user_agent_sources": {
+      "fake_useragent": true,
+      "custom_lists": true,
+      "real_browser_data": true
+    },
+    "filtering": {
+      "min_browser_version": 90,
+      "exclude_mobile": false,
+      "exclude_bots": true,
+      "prefer_chrome": true
+    },
+    "performance_tracking": {
+      "track_success_rates": true,
+      "domain_preferences": true,
+      "auto_optimize": true
+    }
+  },
+  "robots_compliance": {
+    "enabled": true,
+    "respect_crawl_delay": true,
+    "respect_disallow": true,
+    "default_user_agent": "*",
+    "cache_ttl_hours": 24,
+    "timeout_seconds": 10,
+    "crawl_delay_settings": {
+      "min_delay_seconds": 1.0,
+      "max_delay_seconds": 60.0,
+      "default_delay_seconds": 1.0,
+      "respect_robots_delay": true
+    },
+    "compliance_overrides": {
+      "testing_mode": false,
+      "ignore_for_domains": [],
+      "force_allow_patterns": []
+    },
+    "sitemap_integration": {
+      "prefer_sitemap_urls": true,
+      "auto_discover_sitemaps": true,
+      "validate_sitemap_urls": true
+    }
+  },
+  "antibot_logging": {
+    "enabled": true,
+    "log_level": "INFO",
+    "structured_format": true,
+    "include_performance_metrics": true,
+    "log_destinations": {
+      "file": {
+        "enabled": true,
+        "path": "logs/antibot.log",
+        "max_size_mb": 50,
+        "backup_count": 5
+      },
+      "console": {
+        "enabled": true,
+        "colored_output": true
+      },
+      "json_file": {
+        "enabled": true,
+        "path": "logs/antibot_structured.jsonl"
+      }
+    },
+    "event_types": {
+      "captcha_events": true,
+      "user_agent_events": true,
+      "proxy_events": true,
+      "compliance_events": true,
+      "rate_limit_events": true,
+      "performance_events": true
+    },
+    "metrics_aggregation": {
+      "enabled": true,
+      "flush_interval_seconds": 60,
+      "include_trends": true,
+      "alert_thresholds": {
+        "captcha_rate_percent": 10.0,
+        "block_rate_percent": 5.0,
+        "error_rate_percent": 15.0
+      }
+    }
+  },
+  "antibot_integration": {
+    "enabled": true,
+    "mandatory_compliance": true,
+    "fail_on_robots_violation": false,
+    "auto_captcha_solving": true,
+    "intelligent_delays": true,
+    "performance_optimization": true,
+    "session_consistency": true,
+    "domain_overrides": {
+      "6wool.ru": {
+        "playwright_wait_seconds": 5.5,
+        "wait_for_selectors": [
+          "#bx-component-scope",
+          "[data-sixwool-variation]",
+          "[data-sixwool-price]"
+        ],
+        "navigation_retries": 3,
+        "retry_backoff_seconds": [
+          2.0,
+          3.5,
+          5.0
+        ]
+      }
+    }
+  },
+  "max_products_per_run": 50,
+  "use_hardcoded_fallback": false,
+  "scraping": {
+    "product_patterns": [
+      "/product/",
+      "/item/",
+      "/instrumenty/",
+      "/catalog/"
+    ],
+    "category_extraction": {
+      "timeout_seconds": 30,
+      "max_categories": 5,
+      "max_pages_per_category": 3
+    },
+    "domain_settings": {}
+  },
+  "max_concurrent": 10,
+  "stock_monitoring": {
+    "enabled": false,
+    "check_interval_minutes": 30,
+    "ai_powered_analysis": true,
+    "alert_thresholds": {
+      "price_change_percentage": 5.0,
+      "stock_change_threshold": 3,
+      "velocity_alert_days": 7,
+      "low_stock_threshold": 5
+    },
+    "prediction_settings": {
+      "forecast_days": 30,
+      "min_history_days": 7,
+      "confidence_threshold": 0.7,
+      "enable_demand_forecasting": true,
+      "enable_stockout_prediction": true
+    },
+    "ai_models": {
+      "demand_forecasting": {
+        "model_type": "arima",
+        "retrain_frequency_days": 7,
+        "min_data_points": 20
+      },
+      "anomaly_detection": {
+        "sensitivity": 0.8,
+        "window_size_days": 14,
+        "min_baseline_days": 7
+      }
+    },
+    "monitoring_targets": {
+      "products": true,
+      "variations": true,
+      "categories": true,
+      "suppliers": false
+    },
+    "data_retention": {
+      "raw_changes_days": 90,
+      "aggregated_data_days": 365,
+      "predictions_days": 180
+    }
+  },
+  "webhook_notifications": {
+    "enabled": false,
+    "security": {
+      "use_hmac_signatures": true,
+      "secret_key": "",
+      "signature_header": "X-Webhook-Signature-256"
+    },
+    "retry_settings": {
+      "max_retries": 3,
+      "initial_delay_seconds": 1,
+      "exponential_backoff": true,
+      "max_delay_seconds": 60
+    },
+    "rate_limiting": {
+      "max_notifications_per_minute": 10,
+      "burst_limit": 5,
+      "cooldown_seconds": 30
+    },
+    "notification_channels": {
+      "slack": {
+        "enabled": false,
+        "webhook_url": "",
+        "channel": "#inventory-alerts",
+        "username": "Stock Monitor Bot",
+        "icon_emoji": ":chart_with_upwards_trend:",
+        "templates": {
+          "price_change": "\ud83d\udcb0 Price Alert: {product_name} changed from {old_price} to {new_price} ({change_percentage}%)",
+          "stock_change": "\ud83d\udce6 Stock Alert: {product_name} stock changed from {old_stock} to {new_stock}",
+          "stockout_prediction": "\u26a0\ufe0f Stockout Prediction: {product_name} predicted to run out in {days_remaining} days",
+          "restock_alert": "\u2705 Restock Alert: {product_name} is back in stock with {current_stock} units"
+        }
+      },
+      "discord": {
+        "enabled": false,
+        "webhook_url": "",
+        "username": "Inventory Monitor",
+        "avatar_url": "",
+        "templates": {
+          "price_change": "\ud83d\udcb0 **Price Alert**\n{product_name}\n{old_price} \u2192 {new_price} ({change_percentage}%)",
+          "stock_change": "\ud83d\udce6 **Stock Alert**\n{product_name}\nStock: {old_stock} \u2192 {new_stock}",
+          "stockout_prediction": "\u26a0\ufe0f **Stockout Warning**\n{product_name}\nPredicted to run out in {days_remaining} days",
+          "restock_alert": "\u2705 **Restock Alert**\n{product_name} is back in stock ({current_stock} units)"
+        }
+      },
+      "telegram": {
+        "enabled": false,
+        "bot_token": "",
+        "chat_id": "",
+        "parse_mode": "HTML",
+        "templates": {
+          "price_change": "\ud83d\udcb0 <b>Price Alert</b>\n{product_name}\n{old_price} \u2192 {new_price} ({change_percentage}%)",
+          "stock_change": "\ud83d\udce6 <b>Stock Alert</b>\n{product_name}\nStock: {old_stock} \u2192 {new_stock}",
+          "stockout_prediction": "\u26a0\ufe0f <b>Stockout Warning</b>\n{product_name}\nPredicted to run out in {days_remaining} days",
+          "restock_alert": "\u2705 <b>Restock Alert</b>\n{product_name} is back in stock ({current_stock} units)"
+        }
+      },
+      "teams": {
+        "enabled": false,
+        "webhook_url": "",
+        "templates": {
+          "slack_stock_alert": {
+            "channel": "slack",
+            "event_type": "stock_alert",
+            "title_template": "Stock Alert: {product_name}",
+            "message_template": "Stock changed from {old_stock} to {new_stock}",
+            "priority": "high"
+          },
+          "discord_price_alert": {
+            "channel": "discord",
+            "event_type": "stock_alert",
+            "title_template": "Inventory Update",
+            "message_template": "{product_name}: {old_price} -> {new_price}",
+            "priority": "normal"
+          }
+        },
+        "endpoints": [
+          {
+            "id": "primary-slack",
+            "url": "",
+            "channel": "slack",
+            "secret": "",
+            "enabled": false,
+            "headers": {
+              "Content-Type": "application/json"
+            }
+          },
+          {
+            "id": "primary-discord",
+            "url": "",
+            "channel": "discord",
+            "secret": "",
+            "enabled": false
+          }
+        ]
+      },
+      "generic_webhook": {
+        "enabled": false,
+        "webhook_url": "",
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json",
+          "User-Agent": "WebScraper-StockMonitor/1.0"
+        },
+        "payload_format": "json",
+        "include_metadata": true
+      }
+    },
+    "batch_processing": {
+      "enabled": true,
+      "batch_size": 5,
+      "batch_timeout_seconds": 30,
+      "send_individual_for_critical": true
+    },
+    "filtering": {
+      "min_severity": "medium",
+      "severity_levels": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "filter_duplicates": true,
+      "duplicate_window_minutes": 60
+    }
+  },
+  "variation_currency_defaults": {
+    "6wool.ru": "RUB",
+    "mpyarn.ru": "RUB",
+    "initki.ru": "RUB",
+    "triskeli.ru": "RUB",
+    "ili-ili.com": "RUB"
+  },
+  "variation_parser_profiles": {
+    "cm3": {
+      "strategy": "cm3_standard",
+      "json_selectors": [
+        "script:contains('CM3')",
+        "script:contains('shop2.init')",
+        "script[data-role='shop2-init']"
+      ],
+      "fallback_chain": [
+        "static"
+      ],
+      "price_selectors": [
+        ".cm3-price",
+        ".product-price"
+      ],
+      "stock_selectors": [
+        ".cm3-stock",
+        ".availability"
+      ]
+    },
+    "cscart": {
+      "strategy": "cscart_api_hybrid",
+      "api_first": true,
+      "json_selectors": [
+        "script:contains('Tygh')"
+      ],
+      "fallback_chain": [
+        "api",
+        "static"
+      ],
+      "price_selectors": [
+        ".ty-price",
+        ".product-price"
+      ],
+      "stock_selectors": [
+        ".ty-qty-in-stock",
+        ".stock"
+      ]
+    },
+    "insales": {
+      "strategy": "insales_api_hybrid",
+      "api_first": true,
+      "json_selectors": [
+        "[data-variants]",
+        "script:contains('InSales')"
+      ],
+      "fallback_chain": [
+        "api",
+        "static"
+      ],
+      "price_selectors": [
+        ".product-price",
+        ".js-product-price"
+      ],
+      "stock_selectors": [
+        ".product-availability",
+        ".js-variant-stock"
+      ]
+    },
+    "bitrix": {
+      "strategy": "bitrix_json",
+      "json_selectors": [
+        "script:contains('JCCatalogElement')",
+        "script:contains('offers')"
+      ],
+      "fallback_chain": [
+        "bitrix",
+        "static"
+      ],
+      "price_selectors": [
+        "#bx-component-scope [data-entity='price']",
+        ".bx-price"
+      ],
+      "stock_selectors": [
+        "#bx-component-scope [data-entity='quantity-block']",
+        ".bx-availability"
+      ]
+    }
+  },
+  "api_integration_profiles": {
+    "cscart": {
+      "domain": "initki.ru",
+      "credential_key": "cscart",
+      "timeout": 12,
+      "retries": 2,
+      "fallback_to_html": true
+    },
+    "insales": {
+      "domain": "triskeli.ru",
+      "credential_key": "insales",
+      "timeout": 12,
+      "retries": 2,
+      "admin_api": true,
+      "fallback_to_html": true
+    }
+  },
+  "rich_display": {
+    "console": {
+      "highlight": true,
+      "markup": true,
+      "soft_wrap": false,
+      "width": 160,
+      "record": false,
+      "color_system": "auto"
+    },
+    "theme": {
+      "name": "aurora",
+      "variant": "dark",
+      "palette": {
+        "success": "green",
+        "error": "bold red",
+        "warning": "bold yellow",
+        "info": "cyan",
+        "muted": "#808080",
+        "accent": "magenta",
+        "progress.text": "bold cyan",
+        "progress.percentage": "bold green",
+        "table.header": "bold cyan",
+        "table.footer": "bold magenta",
+        "table.success": "green",
+        "table.error": "bold red",
+        "table.neutral": "white",
+        "tree.product": "bold white",
+        "tree.variation": "cyan",
+        "tree.meta": "#b0b0b0"
+      },
+      "accessibility": {
+        "high_contrast": false,
+        "color_blind_safe": true,
+        "monochrome": false
+      },
+      "progress": {
+        "bar_style": "cyan",
+        "completed_style": "bold green",
+        "pulse_style": "magenta",
+        "failure_style": "bold red"
+      },
+      "tables": {
+        "box": "ROUNDED",
+        "row_styles": [
+          "",
+          "dim"
+        ],
+        "title_style": "bold magenta"
+      }
+    },
+    "preferences": {
+      "show_live_updates": true,
+      "max_table_width": 120,
+      "summary_box": "rounded"
+    },
+    "environments": {
+      "development": {
+        "live_refresh_rate": 10,
+        "enable_diagnostics": true
+      },
+      "production": {
+        "live_refresh_rate": 4,
+        "enable_diagnostics": false
+      }
+    },
+    "integration": {
+      "capture_console_output": true,
+      "log_format": "rich",
+      "fallback_to_plaintext": true
+    },
+    "variants": [
+      {
+        "name": "aurora-light",
+        "variant": "light",
+        "palette": {
+          "success": "green",
+          "error": "red",
+          "warning": "yellow",
+          "info": "cyan",
+          "muted": "#5a5a5a",
+          "accent": "blue",
+          "progress.text": "bold blue",
+          "progress.percentage": "bold green",
+          "table.header": "bold blue",
+          "table.footer": "bold green",
+          "table.success": "green",
+          "table.error": "red",
+          "table.neutral": "black",
+          "tree.product": "black",
+          "tree.variation": "blue",
+          "tree.meta": "#666666"
+        },
+        "accessibility": {
+          "high_contrast": true,
+          "color_blind_safe": true,
+          "monochrome": false
+        },
+        "progress": {
+          "bar_style": "blue",
+          "completed_style": "green",
+          "pulse_style": "cyan",
+          "failure_style": "red"
+        },
+        "tables": {
+          "box": "SIMPLE",
+          "row_styles": [
+            "",
+            "#e0e0e0"
+          ],
+          "title_style": "bold blue"
+        }
+      }
+    ]
+  },
+  "incremental_exports": {
+    "enabled": true,
+    "backup_enabled": true,
+    "merge_strategy": "preserve_existing",
+    "max_backups_per_file": 5,
+    "backup_retention_days": 30,
+    "compress_old_backups": true,
+    "compression_age_threshold_days": 7,
+    "validate_before_update": true,
+    "rollback_on_error": true,
+    "max_retry_attempts": 3,
+    "retry_delay_seconds": 1
+  },
+  "file_versioning": {
+    "checksum_algorithm": "sha256",
+    "atomic_updates": true,
+    "backup_directory_name": "backups",
+    "max_backup_storage_mb": 100,
+    "enable_integrity_checks": true
+  },
+  "export_performance": {
+    "large_file_threshold_mb": 10,
+    "chunk_size_rows": 1000,
+    "enable_progress_tracking": true,
+    "parallel_processing": false
+  },
+  "incremental_export_logging": {
+    "log_merge_statistics": true,
+    "log_backup_operations": true,
+    "log_performance_metrics": true,
+    "debug_mode": false
+  }
+}

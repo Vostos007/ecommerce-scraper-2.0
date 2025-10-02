@@ -1,31 +1,523 @@
 {
-  "version": "1.0",
-  "generated_at": "2025-10-05T12:00:00Z",
+  "defaults": {
+    "email": "reports@example.com",
+    "max_products": 10000,
+    "backend": "auto",
+    "output_format": "json",
+    "enable_stock_monitor": false
+  },
   "sites": [
     {
       "name": "Atmosphere Store",
       "domain": "atmospherestore.ru",
-      "backend": "default"
+      "base_url": "https://atmospherestore.ru",
+      "overrides": {
+        "scraping": {
+          "product_patterns": [
+            "/product/",
+            "route=product/product",
+            "/instrumenty/",
+            "/pryaja/",
+            "/aksessuary/"
+          ],
+          "cached_urls_file": "data/sites/atmospherestore.ru/cache/atmosphere_urls.txt",
+          "category_urls": [
+            "https://atmospherestore.ru/pryaja/",
+            "https://atmospherestore.ru/instrumenty/",
+            "https://atmospherestore.ru/aksessuary/"
+          ],
+          "sitemap_sources": [
+            "https://atmospherestore.ru/index.php?route=extension/feed/google_sitemap"
+          ],
+          "max_discovery_urls": 6000,
+          "pagination": {
+            "param": "PAGEN_1",
+            "start": 1,
+            "max_pages": 200,
+            "include_base": true,
+            "stop_on_empty": true,
+            "delay_seconds": 0.2
+          },
+          "min_product_path_segments": 4
+        }
+      },
+      "max_products": 10000
     },
     {
       "name": "Sitting Knitting",
       "domain": "sittingknitting.ru",
-      "backend": "default"
+      "base_url": "https://sittingknitting.ru",
+      "overrides": {
+        "scraping": {
+          "product_patterns": [
+            "/katalog/",
+            "/catalog/",
+            "/shop/"
+          ],
+          "cached_urls_file": "data/sites/sittingknitting.ru/cache/sittingknitting_urls.txt",
+          "cache_ttl_hours": 24,
+          "category_urls": [
+            "https://sittingknitting.ru/katalog/pryazha/",
+            "https://sittingknitting.ru/katalog/kryuchki/",
+            "https://sittingknitting.ru/katalog/nabory_spits_i_kryuchkov_1/",
+            "https://sittingknitting.ru/katalog/aksessuary_1/",
+            "https://sittingknitting.ru/katalog/furnitura_dlya_sumok/"
+          ],
+          "sitemap_sources": [
+            "https://sittingknitting.ru/sitemap.xml"
+          ],
+          "max_discovery_urls": 8000,
+          "pagination": {
+            "param": "PAGEN_1",
+            "start": 1,
+            "max_pages": 200,
+            "include_base": true,
+            "stop_on_empty": true,
+            "delay_seconds": 0.2
+          },
+          "min_product_path_segments": 3,
+          "firecrawl_map": {
+            "enabled": true,
+            "limit": 60,
+            "sitemap": "include",
+            "include_subdomains": false,
+            "fallback_limits": [30, 10]
+          }
+        }
+      },
+      "max_products": 10000
     },
     {
       "name": "Knitshop",
       "domain": "knitshop.ru",
-      "backend": "default"
+      "base_url": "https://www.knitshop.ru",
+      "backend": "httpx",
+      "skip_auto": true,
+      "overrides": {
+        "scraping": {
+          "product_patterns": [
+            "/catalog/",
+            "/product/"
+          ],
+          "catalog_patterns": [
+            "/catalog/pryazha-dlya-ruchnogo-vyazaniya/",
+            "/catalog/pryazha-na-bobinakh/",
+            "/catalog/spitsy-i-kryuchki/",
+            "/catalog/nabory-spits-i-kryuchkov/",
+            "/catalog/kryuchki-nabory-kryuchkov/",
+            "/catalog/zhurnaly-knigi-i-yaponskie-katalogi/",
+            "/catalog/aksessuary-dlya-vyazaniya/",
+            "/catalog/sredstva-dlya-stirki-ukhod-i-khranenie/",
+            "/catalog/birki-markery-pugovitsy-broshki/",
+            "/catalog/pompony-iz-naturalnogo-mekha/"
+          ],
+          "pagination": {
+            "param": "PAGEN_1",
+            "start": 1,
+            "max_pages": 50,
+            "include_base": true,
+            "stop_on_empty": true,
+            "delay_seconds": 0.6
+          },
+          "product_delay_seconds": 0.2,
+          "category_urls": [
+            "https://www.knitshop.ru/catalog/pryazha-dlya-ruchnogo-vyazaniya/",
+            "https://www.knitshop.ru/catalog/pryazha-na-bobinakh/",
+            "https://www.knitshop.ru/catalog/spitsy-i-kryuchki/",
+            "https://www.knitshop.ru/catalog/nabory-spits-i-kryuchkov/",
+            "https://www.knitshop.ru/catalog/kryuchki-nabory-kryuchkov/",
+            "https://www.knitshop.ru/catalog/zhurnaly-knigi-i-yaponskie-katalogi/",
+            "https://www.knitshop.ru/catalog/aksessuary-dlya-vyazaniya/",
+            "https://www.knitshop.ru/catalog/sredstva-dlya-stirki-ukhod-i-khranenie/",
+            "https://www.knitshop.ru/catalog/birki-markery-pugovitsy-broshki/",
+            "https://www.knitshop.ru/catalog/pompony-iz-naturalnogo-mekha/"
+          ],
+          "cached_urls_file": "data/sites/knitshop.ru/cache/knitshop_urls.txt"
+        }
+      }
     },
     {
-      "name": "Ili-ili",
+      "name": "MPYarn",
+      "domain": "mpyarn.ru",
+      "base_url": "https://mpyarn.ru",
+      "overrides": {
+        "scraping": {
+          "product_patterns": [
+            "/magazin/product/"
+          ],
+          "cached_urls_file": "data/sites/mpyarn.ru/cache/mpyarn_urls.txt",
+          "cache_ttl_hours": 720,
+          "category_urls": [
+            "https://mpyarn.ru/catalog/",
+            "https://mpyarn.ru/collection/"
+          ],
+          "sitemap_sources": [
+            "https://mpyarn.ru/sitemap.xml"
+          ],
+          "max_discovery_urls": 1200,
+          "pagination": {
+            "param": "PAGEN_1",
+            "start": 1,
+            "max_pages": 200,
+            "include_base": true,
+            "stop_on_empty": true,
+            "delay_seconds": 0.2
+          },
+          "min_product_path_segments": 3,
+          "filter_sitemap_products": true,
+          "preseed_urls_file": "data/sites/mpyarn.ru/mpyarn.ru.URL_map.json",
+          "preseed_replace_existing": true,
+          "variation_strategy": "cm3_standard",
+          "preferred_cms": "cm3"
+        },
+        "cms_detection": {
+          "force": "cm3",
+          "confidence_floor": 0.7
+        },
+        "variation_parser": {
+          "cms_type": "cm3",
+          "strategy": "cm3_standard",
+          "fallback_chain": [
+            "static"
+          ],
+          "currency": "RUB"
+        },
+        "firecrawl": {
+          "enabled": false,
+          "max_requests_per_run": 0
+        }
+      },
+      "max_products": 10000,
+      "cms_type": "cm3"
+    },
+    {
+      "name": "iNitki",
+      "domain": "initki.ru",
+      "base_url": "https://initki.ru",
+      "overrides": {
+        "scraping": {
+          "product_patterns": [
+            "/catalog/",
+            "/product/",
+            "/pryazha/",
+            "/instrumenty/",
+            "/literatura/",
+            "/gotovye-izdeliya/"
+          ],
+          "cached_urls_file": "data/sites/initki.ru/cache/initki_urls.txt",
+          "cache_ttl_hours": 720,
+          "category_urls": [
+            "https://initki.ru/pryazha/",
+            "https://initki.ru/spitsy-i-kryuchki/",
+            "https://initki.ru/aksessuary/"
+          ],
+          "sitemap_sources": [
+            "https://initki.ru/sitemap.xml"
+          ],
+          "max_discovery_urls": 8000,
+          "pagination": {
+            "param": "page",
+            "start": 1,
+            "max_pages": 200,
+            "include_base": true,
+            "stop_on_empty": true,
+            "delay_seconds": 0.2
+          },
+          "min_product_path_segments": 4,
+          "variation_strategy": "cscart_api_hybrid",
+          "preferred_cms": "cscart"
+        },
+        "api_integration": {
+          "enabled": true,
+          "type": "cscart",
+          "fallback_to_html": true
+        },
+        "cms_detection": {
+          "force": "cscart",
+          "confidence_floor": 0.75
+        },
+        "variation_parser": {
+          "cms_type": "cscart",
+          "strategy": "cscart_api_hybrid",
+          "api_enabled": true,
+          "fallback_chain": [
+            "api",
+            "static"
+          ],
+          "currency": "RUB"
+        },
+        "firecrawl_map": {
+          "enabled": true,
+          "limit": 60,
+          "sitemap": "include",
+          "include_subdomains": false,
+          "fallback_limits": [30, 10]
+        }
+      },
+      "max_products": 10000,
+      "cms_type": "cscart"
+    },
+    {
+      "name": "Ili-Ili",
       "domain": "ili-ili.com",
-      "backend": "default"
+      "base_url": "https://ili-ili.com",
+      "overrides": {
+        "scraping": {
+          "product_patterns": [
+            "/catalog/",
+            "/collection/"
+          ],
+          "cached_urls_file": "data/sites/ili-ili.com/cache/iliili_urls.txt",
+          "preseed_urls_file": "data/sites/ili-ili.com/ili-ili.com.sitemap.json",
+          "cache_ttl_hours": 24,
+          "category_urls": [
+            "https://ili-ili.com/catalog/",
+            "https://ili-ili.com/collection/"
+          ],
+          "sitemap_sources": [
+            "https://ili-ili.com/sitemap.xml"
+          ],
+          "max_discovery_urls": 6000,
+          "pagination": {
+            "param": "PAGEN_1",
+            "start": 1,
+            "max_pages": 200,
+            "include_base": true,
+            "stop_on_empty": true,
+            "delay_seconds": 0.2
+          },
+          "min_product_path_segments": 3,
+          "filter_sitemap_products": true,
+          "require_numeric_last_segment": true,
+          "preseed_replace_existing": true,
+          "product_delay_seconds": 2.5,
+          "playwright_fallback": true,
+          "playwright_wait_seconds": 8.0,
+          "variation_strategy": "bitrix_json",
+          "preferred_cms": "bitrix",
+          "bitrix_json_enabled": true,
+          "firecrawl_map": {
+            "enabled": false,
+            "limit": 0,
+            "sitemap": "include",
+            "include_subdomains": false,
+            "fallback_limits": [15, 5]
+          }
+        },
+        "cms_detection": {
+          "force": "bitrix",
+          "confidence_floor": 0.85
+        },
+        "variation_parser": {
+          "cms_type": "bitrix",
+          "strategy": "bitrix_json",
+          "json_variations": true,
+          "fallback_chain": [
+            "bitrix",
+            "static"
+          ],
+          "currency": "RUB"
+        },
+        "debug_monitor": {
+          "enabled": true,
+          "stall_timeout_seconds": 180,
+          "consecutive_error_threshold": 25
+        },
+        "antibot": {
+          "enabled": true,
+          "playwright_wait_seconds": 8.0,
+          "navigation_retries": 3,
+          "retry_backoff_seconds": [
+            2.0,
+            3.0,
+            5.0
+          ],
+          "delay_between_requests_seconds": 2.5
+        },
+        "httpx_scraper": {
+          "timeout": {
+            "connect": 30.0,
+            "read": 90.0,
+            "write": 90.0,
+            "pool": 90.0
+          },
+          "retry_attempts": 4,
+          "retry_delay": 2.0
+        },
+        "playwright_optimization": {
+          "performance_settings": {
+            "navigation_timeout_ms": 60000,
+            "wait_for_selector_timeout_ms": 15000,
+            "default_wait_strategy": "networkidle"
+          }
+        },
+        "firecrawl": {
+          "timeout_seconds": 60,
+          "max_requests_per_run": 10
+        }
+      },
+      "max_products": 10000,
+      "cms_type": "bitrix"
     },
     {
       "name": "Triskeli",
       "domain": "triskeli.ru",
-      "backend": "default"
+      "base_url": "https://triskeli.ru",
+      "backend": "auto",
+      "overrides": {
+        "scraping": {
+          "product_patterns": [
+            "/collection/",
+            "/catalog/",
+            "/collections/"
+          ],
+          "cached_urls_file": "data/sites/triskeli.ru/cache/triskeli_urls.txt",
+          "category_urls": [
+            "https://triskeli.ru/collection/",
+            "https://triskeli.ru/catalog/"
+          ],
+          "sitemap_sources": [
+            "https://triskeli.ru/sitemap.xml"
+          ],
+          "max_discovery_urls": 6000,
+          "pagination": {
+            "param": "PAGEN_1",
+            "start": 1,
+            "max_pages": 200,
+            "include_base": true,
+            "stop_on_empty": true,
+            "delay_seconds": 0.2
+          },
+          "min_product_path_segments": 3,
+          "variation_strategy": "insales_api_hybrid",
+          "preferred_cms": "insales",
+          "insales_url_patterns": [
+            "/collection/",
+            "/products/"
+          ]
+        },
+        "api_integration": {
+          "enabled": true,
+          "type": "insales",
+          "admin_api": true,
+          "fallback_to_html": true
+        },
+        "cms_detection": {
+          "force": "insales",
+          "confidence_floor": 0.8
+        },
+        "variation_parser": {
+          "cms_type": "insales",
+          "strategy": "insales_api_hybrid",
+          "api_enabled": true,
+          "admin_api": true,
+          "fallback_chain": [
+            "api",
+            "static"
+          ],
+          "currency": "RUB"
+        }
+      },
+      "max_products": 10000,
+      "cms_type": "insales"
+    },
+    {
+      "name": "6 Wool",
+      "domain": "6wool.ru",
+      "base_url": "https://6wool.ru",
+      "backend": "auto",
+      "overrides": {
+        "scraping": {
+          "product_patterns": [
+            "/catalog/"
+          ],
+          "cached_urls_file": "data/sites/6wool.ru/cache/6wool_urls.txt",
+          "category_urls": [
+            "https://6wool.ru/catalog/",
+            "https://6wool.ru/catalog/pryazha/",
+            "https://6wool.ru/catalog/instrumenty/",
+            "https://6wool.ru/catalog/aksessuary/",
+            "https://6wool.ru/catalog/literatura/",
+            "https://6wool.ru/catalog/nabory-dlya-vyazaniya/",
+            "https://6wool.ru/catalog/pugovitsy/"
+          ],
+          "sitemap_sources": [
+            "https://6wool.ru/sitemap.xml"
+          ],
+          "max_discovery_urls": 6000,
+          "pagination": {
+            "param": "PAGEN_1",
+            "start": 1,
+            "max_pages": 200,
+            "include_base": true,
+            "stop_on_empty": true,
+            "delay_seconds": 0.2
+          },
+          "min_product_path_segments": 4,
+          "force_category_discovery": true,
+          "playwright_fallback": true,
+          "playwright_wait_seconds": 4.0,
+          "ajax_variation_endpoints": [
+            "/ajax/catalog/getOffers.php",
+            "/ajax/catalog/getSku.php"
+          ],
+          "playwright_wait_selectors": [
+            "#bx-component-scope",
+            "[data-sixwool-variation]",
+            "[data-sixwool-price]"
+          ],
+          "hydration_wait_seconds": 5.5,
+          "ddos_guard": {
+            "keywords": [
+              "6wool",
+              "DDoS-GUARD",
+              "ddos-guard"
+            ],
+            "retry_attempts": 4,
+            "cooldown_seconds": 240
+          },
+          "variation_strategy": "sixwool_bitrix_hybrid",
+          "preferred_cms": "sixwool",
+          "ajax_timeout_seconds": 15
+        },
+        "cms_detection": {
+          "force": "sixwool",
+          "fallback": "bitrix",
+          "confidence_floor": 0.35
+        },
+        "antibot": {
+          "playwright_wait_seconds": 5.5,
+          "wait_for_selectors": [
+            "#bx-component-scope",
+            "[data-sixwool-variation]",
+            "[data-sixwool-price]"
+          ],
+          "navigation_retries": 3,
+          "retry_backoff_seconds": [
+            2.0,
+            3.5,
+            5.0
+          ],
+          "flaresolverr": {
+            "enabled": true,
+            "trigger_keywords": [
+              "DDoS-GUARD",
+              "6wool"
+            ],
+            "max_bypass_attempts": 4
+          }
+        },
+        "variation_parser": {
+          "cms_type": "sixwool",
+          "ajax_enabled": true,
+          "fallback_chain": [
+            "bitrix",
+            "static"
+          ],
+          "currency": "RUB"
+        }
+      },
+      "max_products": 10000
     }
   ]
 }

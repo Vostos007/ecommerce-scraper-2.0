@@ -131,32 +131,6 @@ class ExportResponse(BaseModel):
         }
 
 
-class ExportStatusResponse(BaseModel):
-    """Detailed status for a running or completed export job."""
-
-    jobId: str = Field(..., description="Job identifier")
-    site: str = Field(..., description="Associated site/domain")
-    script: str = Field(..., description="Python module used for export")
-    status: str = Field(..., description="Current job status")
-    startedAt: Optional[datetime] = Field(default=None, description="Job start timestamp")
-    lastEventAt: Optional[datetime] = Field(default=None, description="Timestamp of latest event")
-    exitCode: Optional[int] = Field(default=None, description="Exit code when job finished")
-    exitSignal: Optional[str] = Field(default=None, description="Exit signal when job finished")
-    totalUrls: Optional[int] = Field(default=None, description="Total number of URLs to process")
-    processedUrls: int = Field(..., description="Processed URLs (success + failed)")
-    successUrls: int = Field(..., description="Successfully processed URLs")
-    failedUrls: int = Field(..., description="Failed URLs")
-    progressPercent: float = Field(..., ge=0.0, le=100.0, description="Progress percentage")
-    estimatedSecondsRemaining: Optional[float] = Field(
-        default=None,
-        description="Estimated remaining time in seconds",
-    )
-    estimatedCompletionAt: Optional[datetime] = Field(
-        default=None,
-        description="Estimated completion timestamp",
-    )
-
-
 class HealthResponse(BaseModel):
     """Health check response."""
     status: str = Field(..., description="Overall health status")

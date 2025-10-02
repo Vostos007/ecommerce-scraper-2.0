@@ -1,1 +1,1 @@
-"""Placeholder to keep scripts package in VCS."""
+"""CLI utilities for per-site scrapers."""

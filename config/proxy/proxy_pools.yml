@@ -1,0 +1,39 @@
+datacenter:
+  rotation: success_weighted
+  health_check:
+    interval_sec: 3600
+    timeout_sec: 10
+    success_rate_threshold: 0.7
+    latency_threshold_ms: 5000
+    test_urls: ["https://httpbin.org/ip", "https://ili-ili.com"]
+    failure_streak_threshold: 3
+    health_score_decay: 0.9
+  auto_exclude: { consecutive_fails: 3, exclude_duration_sec: 1800 }
+  intelligent_selection:
+    weight_by_latency: true
+    weight_by_success_rate: true
+    domain_specific_stats: true
+  load_balancing:
+    strategy: weighted_round_robin
+    sticky_sessions: true
+    sticky_ttl_sec: 600
+  list:
+    - "http://user:pass@80.243.132.245:8000"
+    - "socks5://user:pass@45.129.205.70:8000"
+    - "https://PQbaZF:eqsPVa@147.45.95.98:8000"
+    - "https://PQbaZF:eqsPVa@147.45.94.6:8000"
+    - "https://PQbaZF:eqsPVa@147.45.95.165:8000"
+
+residential:
+  provider: proxys.io
+  source_file: "../../proxys_reside.txt"
+  scheme: "http"
+  auth: { user: "", pass: "" }
+  daily_mb_cap: 300
+  burst:
+    max_consecutive_requests: 5
+    cooldown_after_burst_sec: 1800
+    daily_burst_allowance: 100
+    adaptive_cooldown: true
+    cooldown_multiplier: 1.5
+    success_cooldown_reset: true

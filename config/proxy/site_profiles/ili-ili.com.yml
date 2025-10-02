@@ -1,0 +1,17 @@
+domain: "ili-ili.com"
+allow_residential: true
+budget:
+  soft_mb_per_day: 50
+  hard_mb_per_day: 100
+  residential_mb_per_day: 150
+fetch_policy:
+  sequence: [direct, datacenter_proxy, antibot, flaresolverr, residential_burst]
+guards:
+  max_concurrent: 2
+  disallow_patterns: ["*/static/*", "*/assets/*", "*.pdf", "*.jpg", "*.png", "*.css", "*.js"]
+  content_type_whitelist: ["text/html", "application/json"]
+antibot:
+  detection: { check_cloudflare: true, check_captcha: true, analyze_headers: true }
+  escalation: { cloudflare_detected: flaresolverr, captcha_detected: skip_or_manual }
+timeouts: { connect: 30, read: 60, total: 60 }
+retries: { total: 5, backoff: exponential }

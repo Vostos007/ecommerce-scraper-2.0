@@ -1,0 +1,113 @@
+{
+  "legacy_file_cleanup": {
+    "patterns": {
+      "root_version_files": {
+        "include": ["=*.0", "=*.0.*", "=*.bak"],
+        "exclude": []
+      },
+      "root_test_files": {
+        "include": ["test_*.py", "*_test.py"],
+        "exclude": ["tests/**"]
+      },
+      "database_backups": {
+        "include": ["database/**/*.bak", "database/**/*.db-wal", "database/**/*.db-shm"],
+        "exclude": [],
+        "policy": "backups"
+      },
+      "temporary_logs": {
+        "include": ["logs/**/*.tmp", "logs/**/*_temp.log", "logs/**/*.log.old"],
+        "exclude": ["logs/persistent/**"],
+        "policy": "logs"
+      },
+      "selector_memory": {
+        "include": ["data/selector_memory/**"],
+        "exclude": ["data/selector_memory/.keep", "data/selector_memory/**/.gitkeep", "data/selector_memory/current/**"],
+        "policy": "selector_memory"
+      }
+    },
+    "retention_policies": {
+      "default_days": 30,
+      "logs_days": 14,
+      "backups_days": 60,
+      "selector_memory_days": 7
+    }
+  },
+  "temporary_file_cleanup": {
+    "directories": ["data/tmp", "logs", "reports/tmp"],
+    "patterns": [
+      {"pattern": "*.tmp", "backup": false},
+      {"pattern": "*.temp", "backup": false},
+      {"pattern": "*.session", "backup": false},
+      {"pattern": "*.cache", "backup": false},
+      {"pattern": "*.log", "backup": true},
+      {"pattern": "*.log.*", "backup": true}
+    ],
+    "exclude": ["logs/persistent/**"],
+    "size_threshold_bytes": 2048,
+    "age_thresholds": {
+      "default": 7,
+      "logs": 14,
+      "reports": 30
+    }
+  },
+  "directory_cleanup": {
+    "scan_roots": ["data", "logs", "reports"],
+    "exclude": ["data/sites/**", "reports/archive/**", "logs/persistent/**"],
+    "validation_rules": {
+      "preserve_named_directories": ["data/sites", "data/history", "reports/archive"],
+      "require_gitkeep": true
+    }
+  },
+  "naming_conventions": {
+    "rules": {
+      "python": {
+        "include": ["core/**/*.py", "parsers/**/*.py", "scripts/**/*.py"],
+        "exclude": ["venv/**", "tests/**", "*/__init__.py"]
+      },
+      "test": {
+        "include": ["tests/**/*.py"],
+        "exclude": []
+      },
+      "config": {
+        "include": ["config/**/*.*", "network/**/*.json"],
+        "exclude": ["config/settings.json"]
+      },
+      "data": {
+        "include": ["data/**/*.csv", "data/**/*.json", "data/**/*.parquet"],
+        "exclude": ["data/sites/**"]
+      },
+      "docs": {
+        "include": ["docs/**/*.md"],
+        "exclude": []
+      }
+    }
+  },
+  "configuration_consolidation": {
+    "scan_roots": ["config", "utils"],
+    "include": ["*.json", "*.yaml", "*.yml", "*.ini", "*.toml"],
+    "exclude": ["config/settings.json", "config/sites.json"],
+    "merge_strategy": "deep",
+    "canonical_preference": ["config/", "network/", "utils/"],
+    "validation_rules": {
+      "ensure_valid_json": true
+    }
+  },
+  "safety_and_validation": {
+    "exclusions": ["venv/**", "htmlcov/**", "reports/archive/**"],
+    "protected_paths": ["config/settings.json", "config/sites.json", "main.py"],
+    "rollback": {
+      "enabled": true,
+      "keep_backups_for_days": 14
+    }
+  },
+  "automation": {
+    "schedules": {
+      "temporary_cleanup": "daily",
+      "legacy_cleanup": "weekly",
+      "deep_cleanup": "monthly",
+      "seasonal_cleanup": "quarterly"
+    },
+    "ci_integration": true,
+    "alerting_channels": ["slack", "email"]
+  }
+}

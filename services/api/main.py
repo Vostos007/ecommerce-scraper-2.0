@@ -16,11 +16,11 @@ settings = get_settings()
 async def lifespan(app: FastAPI):
     """
     Application lifespan manager.
-    
+
     Handles startup and shutdown events:
     - Startup: Initialize database connection pool
     - Shutdown: Close database connections gracefully
-    
+
     Args:
         app: FastAPI application instance
     """
@@ -29,18 +29,23 @@ async def lifespan(app: FastAPI):
     print(f"[API] Database URL: {settings.database_url}")
     print(f"[API] Redis URL: {settings.redis_url}")
     print(f"[API] CORS Origins: {settings.cors_origins}")
-    
+
     # Initialize database manager
-    app.state.db = DatabaseManager(settings.database_url)
-    await app.state.db.init_pool()
-    print("[API] Database pool initialized")
-    
+    try:
+        app.state.db = DatabaseManager()
+        app.state.db.init_db()
+        print("[API] Database initialized")
+    except Exception as e:
+        print(f"[API] Database initialization failed: {e}")
+        app.state.db = None
+
     yield
-    
+
     # Shutdown
     print("[API] Shutting down...")
-    await app.state.db.close()
-    print("[API] Database pool closed")
+    if app.state.db:
+        await app.state.db.close()
+        print("[API] Database pool closed")
 
 
 # Create FastAPI application
