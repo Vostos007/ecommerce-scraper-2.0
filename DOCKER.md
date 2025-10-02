@@ -11,13 +11,20 @@
 
 Оба Dockerfile копируют каталоги `core/`, `parsers/`, `scripts/`, `utils/`, `services/`, `database/`, `apps/dashboard/`, поэтому внутри контейнеров есть весь код.
 
-## Быстрый запуск (всё сразу)
+## Быстрый запуск (одной командой)
+
+В корне репозитория лежит `bootstrap.sh`. Он клонирует проект (если нужно), собирает образы, поднимает контейнеры и открывает Dashboard:
 
 ```bash
-# В первый раз (или после изменений) соберите образы
-docker compose build
+./bootstrap.sh                    # создаст runtime в ~/ecommerce-scraper-runtime
+# или явный путь
+./bootstrap.sh /opt/scraper-demo
+```
 
-# Запускаем весь стек
+## Ручной запуск (если хотите контролировать шаги)
+
+```bash
+docker compose build
 docker compose up -d
 ```
 
@@ -36,6 +43,7 @@ docker compose up -d
 - `minio-init` — однократная инициализация bucket-а `scraper-artifacts`
 
 Экспортируемые файлы сохраняются во volume `exports_data` (см. `docker-compose.yml`).
+Внутри образа лежит демонстрационный набор площадок (`config/sites.json` + `data/sites/**`) с готовыми файлами карт и последними экспортами для Atmosphere Store, Sitting Knitting, Knitshop, Ili-ili и Triskeli.
 
 Просмотр логов:
 
@@ -63,6 +71,19 @@ docker compose down
 | `S3_ENDPOINT` / `S3_*` | Настройки MinIO                         | `http://minio:9000`, `minioadmin`|
 | `CORS_ORIGINS`  | Допустимые origin'ы для API                   | `http://localhost:3000,...`      |
 | `NEXT_PUBLIC_API_BASE_URL` | Базовый URL API для фронтенда       | `http://api:8000` (внутри compose)|
+| `PYTHON_BIN`    | Путь до Python в контейнере (Playwright image) | `/ms-playwright/python/bin/python`|
+
+В `config/users.json` предустановлен оператор:
+
+| Логин | Пароль   | Роль     |
+|-------|----------|----------|
+| demo  | demo1234 | operator |
+
+При необходимости создайте свою учётку:
+
+```bash
+docker compose exec api python services/api/manage_users.py --create
+```
 
 ## Обновление после новых коммитов
 

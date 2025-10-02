@@ -2,8 +2,8 @@
   "users": [
     {
       "id": "operator-1759413652167",
-      "username": "test",
-      "passwordHash": "$2a$12$J2hP9HzVKit3vZCZD1DYdeDvc63DRsGG6ZFqwanxvlsrw8WoFv6ay",
+      "username": "demo",
+      "passwordHash": "scrypt:txM9cDwV+6P/oaw0OTmgSQ==:tAq0xG0DuCz0cJsRMacD2lhh8fCCmquOjod/Dtf4Jv2yRvPqojRpe1C4Z6aA/babJ4BShuo/vm0HpFZBZw3bBQ==",
       "role": "operator",
       "createdAt": "2025-10-02T14:00:52.378Z",
       "lastLogin": null,

@@ -22,4 +22,6 @@ apps/dashboard/coverage/
 
 # Docker / build artifacts
 exports/
+!/data/sites/**/exports/
+!/data/sites/**/exports/latest.json
 *.log
