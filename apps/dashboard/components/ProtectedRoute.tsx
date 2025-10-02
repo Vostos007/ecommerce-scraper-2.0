@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, type ReactNode } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { type ReactNode } from 'react';
 
 import { useAuth, type Permission, type Role } from '@/hooks/useAuth';
 
@@ -22,54 +21,9 @@ function DefaultFallback() {
   );
 }
 
-export function ProtectedRoute({
-  children,
-  requiredPermission,
-  requiredRole,
-  fallback,
-  redirectTo = '/login',
-  permissionStrategy = 'all'
-}: ProtectedRouteProps) {
-  const { isAuthenticated, isLoading, canAccess, requireRole, user } = useAuth();
-  const router = useRouter();
-  const pathname = usePathname();
-
-  useEffect(() => {
-    if (!isLoading && !isAuthenticated) {
-      const target = `${redirectTo}?next=${encodeURIComponent(pathname ?? '/')}`;
-      router.replace(target);
-    }
-  }, [isAuthenticated, isLoading, redirectTo, router, pathname]);
-
-  const authorized = useMemo(() => {
-    if (!isAuthenticated || !user) {
-      return false;
-    }
-    if (requiredRole && !requireRole(requiredRole)) {
-      return false;
-    }
-    if (requiredPermission && !canAccess(requiredPermission, permissionStrategy)) {
-      return false;
-    }
-    return true;
-  }, [isAuthenticated, user, requiredRole, requireRole, requiredPermission, canAccess, permissionStrategy]);
-
-  if (isLoading) {
-    return (
-      <div className="flex items-center justify-center py-10 text-sm text-muted-foreground">
-        Проверяем доступ...
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return null;
-  }
-
-  if (!authorized) {
-    return <>{fallback ?? <DefaultFallback />}</>;
-  }
-
+export function ProtectedRoute({ children }: ProtectedRouteProps) {
+  // Авторизация отключена: всегда показываем контент.
+  useAuth();
   return <>{children}</>;
 }
 
@@ -81,10 +35,7 @@ interface PermissionGateProps {
 }
 
 export function PermissionGate({ permission, strategy = 'all', fallback = null, children }: PermissionGateProps) {
-  const { canAccess } = useAuth();
-  if (!canAccess(permission, strategy)) {
-    return <>{fallback}</>;
-  }
+  useAuth();
   return <>{children}</>;
 }
 
@@ -95,10 +46,6 @@ interface RoleGateProps {
 }
 
 export function RoleGate({ role, fallback = null, children }: RoleGateProps) {
-  const { requireRole } = useAuth();
-  if (!requireRole(role)) {
-    return <>{fallback}</>;
-  }
+  useAuth();
   return <>{children}</>;
 }
-

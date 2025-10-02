@@ -10,12 +10,8 @@ const SCRIPT_ALLOWLIST: Record<string, string> = {
   // City Knitting скрипт обслуживает домен sittingknitting.ru
   'sittingknitting.ru': 'cityknitting_fast_export',
   'knitshop.ru': 'knitshop_fast_export',
-  'mpyarn.ru': 'mpyarn_fast_export',
   'ili-ili.com': 'ili_ili_fast_export',
-  '6wool.ru': 'sixwool_fast_export',
-  'triskeli.ru': 'triskeli_fast_export',
-  'triskeli.com': 'triskeli_fast_export',
-  'mp-yarn.ru': 'mpyarn_fast_export'
+  'triskeli.ru': 'triskeli_fast_export'
 };
 
 const CACHE_TTL_MS = 60_000;
