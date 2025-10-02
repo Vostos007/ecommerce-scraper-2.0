@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9.12.0
+
+      - name: Install dashboard dependencies
+        working-directory: apps/dashboard
+        run: pnpm install --frozen-lockfile
+
+      - name: Baseline metrics
+        run: make baseline PYTHON_BIN=$(which python3)
+
+      - name: Golden tests
+        run: make golden-ci PYTHON_BIN=$(which python3)
+
+      - name: Unit tests
+        run: pytest -q
+
+      - name: Mypy
+        run: |
+          pip install mypy
+          mypy
+
+      - name: Upload baseline artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: baseline-artifacts
+          path: |
+            docs/architecture/baseline-metrics.json
+            docs/architecture/baseline-metrics.md
+            docs/architecture/importtime.raw.txt
+            docs/architecture/importtime-summary.csv
+            docs/architecture/startup-memory.json
+

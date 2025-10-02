@@ -1,0 +1,25 @@
+# Python environments
+venv/
+.venv/
+*.pyc
+__pycache__/
+
+# Node.js installs
+apps/dashboard/node_modules/
+apps/dashboard/.next/
+apps/dashboard/test-results/
+apps/dashboard/playwright-report/
+apps/dashboard/coverage/
+
+# IDE / tooling
+.vscode/
+.serena/
+.agents/
+
+# Local config
+.env
+.env.local
+
+# Docker / build artifacts
+exports/
+*.log

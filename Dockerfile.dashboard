@@ -1,0 +1,38 @@
+# syntax=docker/dockerfile:1.6
+
+FROM node:20-bullseye AS deps
+WORKDIR /app/apps/dashboard
+
+# Enable pnpm via corepack and install dependencies
+COPY apps/dashboard/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY apps/dashboard/package.json ./package.json
+RUN corepack enable pnpm \
+    && pnpm install --frozen-lockfile
+
+FROM node:20-bullseye AS builder
+WORKDIR /app
+COPY --from=deps /app/apps/dashboard /app/apps/dashboard
+COPY apps/dashboard /app/apps/dashboard
+RUN corepack enable pnpm \
+    && cd apps/dashboard \
+    && pnpm build
+
+FROM node:20-bullseye AS runner
+WORKDIR /app/apps/dashboard
+ENV NODE_ENV=production \
+    PORT=3000
+
+# Copy built assets and necessary files
+COPY --from=builder /app/apps/dashboard/.next ./.next
+COPY --from=builder /app/apps/dashboard/public ./public
+COPY apps/dashboard/package.json ./package.json
+COPY apps/dashboard/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY apps/dashboard/next.config.ts ./next.config.ts
+COPY apps/dashboard/tsconfig.json ./tsconfig.json
+
+# Install only production dependencies
+RUN corepack enable pnpm \
+    && pnpm install --prod --frozen-lockfile
+
+EXPOSE 3000
+CMD ["pnpm", "start"]

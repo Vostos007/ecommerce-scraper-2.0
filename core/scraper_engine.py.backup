@@ -1,0 +1,1708 @@
+import json
+import logging
+import time
+import random
+import asyncio
+from datetime import datetime
+from urllib.parse import urlparse
+import psutil  # For resource monitoring
+from pathlib import Path
+from typing import Dict, List, Optional, Any
+from tabulate import tabulate
+
+from colorama import Fore
+
+from .antibot_manager import AntibotManager
+from .sitemap_analyzer import SitemapAnalyzer
+from .batch_processor import BatchProcessor
+from parsers.product_parser import ProductParser
+from core.selector_memory import SelectorMemory
+from database.manager import DatabaseManager
+from utils.logger import (
+    setup_logger,
+    create_progress_bar,
+    log_scraping_step,
+    colored_print,
+)
+from utils.helpers import human_delay
+from .hybrid_engine import HybridScrapingEngine
+from utils.display_formatter import format_hierarchical_product_display
+from .async_playwright_manager import AsyncPlaywrightManager
+from network.httpx_scraper import ModernHttpxScraper
+from network.fast_scraper import FastHeadlessScraper
+
+
+class ScraperEngine:
+    def __init__(self, config_path: str = "config/settings.json"):
+        self.config_path = config_path
+        self.config = self._load_config()
+        self.logger = self._setup_logger()
+        self.scraper_backend = self.config.get("scraper_backend", "auto")
+        self.use_hybrid = self.scraper_backend in ["auto", "aiohttp", "playwright", "httpx"]
+
+        self.intelligent_selection = self.config.get(
+            "intelligent_method_selection", {}
+        ).get("enabled", True)
+        self.playwright_manager = AsyncPlaywrightManager(
+            self.config, logger=self.logger
+        )
+        self.method_performance: Dict[str, Dict[str, Any]] = {}
+
+        # Initialize modern httpx scraper (2025 best practices)
+        self.httpx_scraper = None
+
+        # Initialize fast scraper (legacy aiohttp)
+        try:
+            from network.fast_scraper import FastHeadlessScraper
+            self.fast_scraper = FastHeadlessScraper(self.config_path)
+        except ImportError:
+            self.logger.warning("FastHeadlessScraper not available")
+            self.fast_scraper = None
+        
+        # Initialize hybrid engine for intelligent method selection
+        try:
+            self.hybrid_engine = HybridScrapingEngine(self.config_path)
+        except Exception as e:
+            self.logger.warning(f"Failed to initialize hybrid engine: {e}")
+            self.hybrid_engine = None
+
+        # Initialize AI-powered stock monitoring system
+        self.stock_monitor = None
+        try:
+            from monitoring.stock_monitor import ModernStockMonitor
+            monitoring_config = self.config.get("stock_monitoring", {})
+            if monitoring_config.get("enabled", True):
+                self.stock_monitor = ModernStockMonitor(self.config_path)
+                self.logger.info("AI-powered stock monitoring system initialized")
+            else:
+                self.logger.info("Stock monitoring disabled in configuration")
+        except ImportError:
+            self.logger.warning("ModernStockMonitor not available")
+        except Exception as e:
+            self.logger.error(f"Failed to initialize stock monitor: {e}")
+
+        # Initialize webhook notification system
+        self.webhook_notifier = None
+        try:
+            from notifications.webhook_notifier import WebhookNotifier
+            webhook_config = self.config.get("webhook_notifications", {})
+            if webhook_config.get("enabled", True):
+                self.webhook_notifier = WebhookNotifier(self.config_path)
+                self.logger.info("Webhook notification system initialized")
+        except ImportError:
+            self.logger.warning("WebhookNotifier not available")
+        except Exception as e:
+            self.logger.error(f"Failed to initialize webhook notifier: {e}")
+
+        # Batch processing initialization
+        self.batch_enabled = self.config.get("batch_processing", {}).get(
+            "enabled", False
+        )
+        self.batch_processor = None
+        if self.batch_enabled:
+            batch_config = self.config.get("batch_processing", {})
+            batch_size = batch_config.get("batch_size", 50)
+
+            # Configuration validation
+            if not 10 <= batch_size <= 200:
+                self.logger.warning(
+                    f"Batch size {batch_size} out of range (10-200), defaulting to 50"
+                )
+                batch_size = 50
+                batch_config["batch_size"] = 50
+
+            # Resource check (simple CPU/memory)
+            cpu_percent = psutil.cpu_percent()
+            memory = psutil.virtual_memory()
+            if cpu_percent > 80 or memory.percent > 80:
+                self.logger.warning(
+                    "High resource usage detected, disabling batch processing for safety"
+                )
+                self.batch_enabled = False
+
+        if not self.batch_enabled:
+            self.logger.info("Batch processing disabled or not configured")
+
+        self.antibot = None
+        self.analyzer = None
+        self.parser = None
+        self.db = None
+        self._init_basic_components()
+
+        # Initialize batch processor after basic components
+        if self.batch_enabled and self.batch_processor is None:
+            self.batch_processor = BatchProcessor(
+                db_manager=self.db, config=self.config
+            )
+            self.logger.info("Batch processor initialized successfully")
+
+        # Performance metrics
+        self.batch_metrics = {
+            "batches_processed": 0,
+            "batch_time": 0,
+            "urls_per_batch_sec": 0,
+        }
+        self.sequential_metrics = {
+            "urls_processed": 0,
+            "seq_time": 0,
+            "urls_per_seq_sec": 0,
+        }
+        self.processing_mode = "sequential"  # Track current mode
+    self.config = self._load_config()
+    self.logger = self._setup_logger()
+    self.scraper_backend = self.config.get("scraper_backend", "auto")
+    self.use_hybrid = self.scraper_backend in ["auto", "aiohttp", "playwright", "httpx"]
+
+    self.intelligent_selection = self.config.get(
+        "intelligent_method_selection", {}
+    ).get("enabled", True)
+    self.playwright_manager = AsyncPlaywrightManager(
+        self.config, logger=self.logger
+    )
+    self.method_performance: Dict[str, Dict[str, Any]] = {}
+
+    # Initialize modern httpx scraper (2025 best practices)
+    self.httpx_scraper = None
+
+    # Initialize fast scraper (legacy aiohttp)
+    try:
+        from network.fast_scraper import FastHeadlessScraper
+        self.fast_scraper = FastHeadlessScraper(self.config_path)
+    except ImportError:
+        self.logger.warning("FastHeadlessScraper not available")
+        self.fast_scraper = None
+    
+    # Initialize hybrid engine for intelligent method selection
+    try:
+        self.hybrid_engine = HybridScrapingEngine(self.config_path)
+    except Exception as e:
+        self.logger.warning(f"Failed to initialize hybrid engine: {e}")
+        self.hybrid_engine = None
+
+    # Initialize AI-powered stock monitoring system
+    self.stock_monitor = None
+    try:
+        from monitoring.stock_monitor import ModernStockMonitor
+        monitoring_config = self.config.get("stock_monitoring", {})
+        if monitoring_config.get("enabled", True):
+            self.stock_monitor = ModernStockMonitor(self.config_path)
+            self.logger.info("AI-powered stock monitoring system initialized")
+        else:
+            self.logger.info("Stock monitoring disabled in configuration")
+    except ImportError:
+        self.logger.warning("ModernStockMonitor not available")
+    except Exception as e:
+        self.logger.error(f"Failed to initialize stock monitor: {e}")
+
+    # Initialize webhook notification system
+    self.webhook_notifier = None
+    try:
+        from notifications.webhook_notifier import WebhookNotifier
+        webhook_config = self.config.get("webhook_notifications", {})
+        if webhook_config.get("enabled", True):
+            self.webhook_notifier = WebhookNotifier(self.config_path)
+            self.logger.info("Webhook notification system initialized")
+    except ImportError:
+        self.logger.warning("WebhookNotifier not available")
+    except Exception as e:
+        self.logger.error(f"Failed to initialize webhook notifier: {e}")
+
+    # Batch processing initialization
+    self.batch_enabled = self.config.get("batch_processing", {}).get(
+        "enabled", False
+    )
+    self.batch_processor = None
+    if self.batch_enabled:
+        batch_config = self.config.get("batch_processing", {})
+        batch_size = batch_config.get("batch_size", 50)
+
+        # Configuration validation
+        if not 10 <= batch_size <= 200:
+            self.logger.warning(
+                f"Batch size {batch_size} out of range (10-200), defaulting to 50"
+            )
+            batch_size = 50
+            batch_config["batch_size"] = 50
+
+        # Resource check (simple CPU/memory)
+        cpu_percent = psutil.cpu_percent()
+        memory = psutil.virtual_memory()
+        if cpu_percent > 80 or memory.percent > 80:
+            self.logger.warning(
+                "High resource usage detected, disabling batch processing for safety"
+            )
+            self.batch_enabled = False
+
+    if not self.batch_enabled:
+        self.logger.info("Batch processing disabled or not configured")
+
+    self.antibot = None
+    self.analyzer = None
+    self.parser = None
+    self.db = None
+    self._init_basic_components()
+
+    # Initialize batch processor after basic components
+    if self.batch_enabled and self.batch_processor is None:
+        self.batch_processor = BatchProcessor(
+            db_manager=self.db, config=self.config
+        )
+        self.logger.info("Batch processor initialized successfully")
+
+    # Performance metrics
+    self.batch_metrics = {
+        "batches_processed": 0,
+        "batch_time": 0,
+        "urls_per_batch_sec": 0,
+    }
+    self.sequential_metrics = {
+        "urls_processed": 0,
+        "seq_time": 0,
+        "urls_per_seq_sec": 0,
+    }
+    self.processing_mode = "sequential"  # Track current mode  # Track current mode  # Track current mode  # Track current mode  # Track current mode
+
+    def _load_config(self) -> Dict:
+        """Load configuration from JSON file"""
+        logger = logging.getLogger(__name__)
+        try:
+            with open(self.config_path, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except FileNotFoundError:
+            logger.error(f"Config file not found: {self.config_path}")
+            raise
+        except json.JSONDecodeError:
+            logger.error(f"Invalid JSON in config: {self.config_path}")
+            raise
+
+    def _setup_logger(self):
+        """Setup logger"""
+        log_level = getattr(logging, self.config.get("log_level", "INFO"))
+        log_file = "data/logs/scrape.log"
+        return setup_logger("scraper", level=log_level, log_file=log_file)
+
+    def _init_basic_components(self):
+        """Initialize basic components that don't require base_url"""
+        try:
+            self.antibot = AntibotManager(self.config_path)
+            self.db = DatabaseManager()
+            # Initialize database with tables, views, and indexes
+            self.db.init_db()
+            self.logger.info("Basic components initialized successfully")
+        except Exception as e:
+            self.logger.error(f"Failed to initialize basic components: {e}")
+            raise
+
+    def _init_url_dependent_components(self, base_url: str):
+        """Initialize URL-dependent components"""
+        try:
+            if self.antibot is None:
+                raise ValueError("AntibotManager not initialized")
+            self.analyzer = SitemapAnalyzer(self.antibot, base_url)
+            self.selector_memory = SelectorMemory(database_manager=self.db)
+            self.parser = ProductParser(
+                self.antibot,
+                self.analyzer,
+                playwright_manager=self.playwright_manager,
+                selector_memory=self.selector_memory,
+            )
+            self.logger.info("URL-dependent components initialized successfully")
+        except Exception as e:
+            self.logger.error(f"Failed to initialize URL-dependent components: {e}")
+            raise
+
+    def _print_enhanced_output(
+        self,
+        scraped_products: int,
+        total_variations: int,
+        product_urls: List[str],
+        base_url: str,
+    ):
+        """Print enhanced hierarchical output with grouped product-variation presentation"""
+        if self.db is None:
+            print(
+                f"\n📊 SUMMARY: {scraped_products} products, {total_variations} variations"
+            )
+            return
+
+        try:
+            # Get latest scrape data using DatabaseManager method
+            grouped_products = self.db.get_latest_scrape_products_grouped()
+
+            # Calculate statistics from grouped data
+            if grouped_products:
+                base_prices = [
+                    p["base_price"] for p in grouped_products if p["base_price"]
+                ]
+                variation_prices = []
+                for product in grouped_products:
+                    variation_prices.extend(
+                        [v["price"] for v in product["variations"] if v["price"]]
+                    )
+
+                stats = {
+                    "total_products": len(grouped_products),
+                    "total_variations": sum(
+                        len(p["variations"]) for p in grouped_products
+                    ),
+                    "avg_base_price": (
+                        sum(base_prices) / len(base_prices) if base_prices else 0.0
+                    ),
+                    "min_base_price": min(base_prices) if base_prices else 0.0,
+                    "max_base_price": max(base_prices) if base_prices else 0.0,
+                    "avg_variation_price": (
+                        sum(variation_prices) / len(variation_prices)
+                        if variation_prices
+                        else 0.0
+                    ),
+                    "min_variation_price": (
+                        min(variation_prices) if variation_prices else 0.0
+                    ),
+                    "max_variation_price": (
+                        max(variation_prices) if variation_prices else 0.0
+                    ),
+                }
+            else:
+                stats = None
+
+            print("\n" + "=" * 80)
+            print("📊 SCRAPING RESULTS SUMMARY")
+            print("=" * 80)
+            print(f"**Totals:**")
+            print(f"- Products scraped: {scraped_products}")
+            print(f"- Variations found: {total_variations}")
+            print(f"- URLs processed: {len(product_urls)}")
+            print(f"- Site: {base_url}")
+            print(f"- Processing Mode: {self.processing_mode}")
+
+            if stats:
+                print(f"**Price Statistics:**")
+                print(
+                    f"- Base prices: {stats['min_base_price']:.2f} - {stats['max_base_price']:.2f} RUB (avg: {stats['avg_base_price']:.2f} RUB)"
+                )
+                if (
+                    stats["min_variation_price"] and stats["max_variation_price"]
+                ):  # variation prices exist
+                    print(
+                        f"- Variation prices: {stats['min_variation_price']:.2f} - {stats['max_variation_price']:.2f} RUB (avg: {stats['avg_variation_price']:.2f} RUB)"
+                    )
+
+            # Batch processing statistics
+            if self.batch_enabled:
+                print(f"**Batch Processing Stats:**")
+                print(
+                    f"- Batches processed: {self.batch_metrics.get('batches_processed', 0)}"
+                )
+                print(
+                    f"- Batch URLs/sec: {self.batch_metrics.get('urls_per_batch_sec', 0):.2f}"
+                )
+                print(
+                    f"- Optimal batch size: {self.config.get('batch_processing', {}).get('batch_size', 50)}"
+                )
+                print(
+                    f"- Adaptation events: {'Enabled' if self.batch_enabled else 'Disabled due to resources'}"
+                )
+
+            # Resource usage
+            final_cpu = psutil.cpu_percent()
+            final_mem = psutil.virtual_memory().percent
+            print(f"**Resource Usage:**")
+            print(f"- CPU usage: {final_cpu}%")
+            print(f"- Memory usage: {final_mem}%")
+
+            # Enhanced statistics from grouped data
+            if grouped_products:
+                products_with_variations = sum(
+                    1 for p in grouped_products if p["variation_count"] > 0
+                )
+                variation_counts = [
+                    p["variation_count"]
+                    for p in grouped_products
+                    if p["variation_count"] > 0
+                ]
+                all_variation_types = set()
+                for product in grouped_products:
+                    all_variation_types.update(product["variation_types"].keys())
+
+                print(f"**Variation Analysis:**")
+                print(f"- Products with variations: {products_with_variations}")
+                if variation_counts:
+                    print(
+                        f"- Average variations per product: {sum(variation_counts) / len(variation_counts):.1f}"
+                    )
+                    print(f"- Max variations per product: {max(variation_counts)}")
+                if all_variation_types:
+                    print(
+                        f"- Variation types: {', '.join(sorted(all_variation_types))}"
+                    )
+
+            # Hierarchical display
+            print(
+                f"\n**Product Hierarchy (Latest {min(5, len(grouped_products))} Products):**"
+            )
+            display_limit = min(5, len(grouped_products))
+            display_products = grouped_products[:display_limit]
+            self._print_hierarchical_display_from_grouped(display_products)
+
+            # Alternative enhanced table format
+            print(f"\n**Enhanced Table Format:**")
+            self._print_enhanced_table_from_grouped(display_products)
+
+            # History info - using DatabaseManager method
+            # For now, we'll use a simple count since we don't have a specific method for this
+            # This could be enhanced later with a dedicated method
+            history_count = (
+                0  # Placeholder - would need to implement in DatabaseManager
+            )
+            print(f"\n**Price History:** {history_count} change records created")
+
+            # Batch efficiency
+            if self.batch_enabled:
+                batch_efficiency = (
+                    (scraped_products / len(product_urls)) * 100 if product_urls else 0
+                )
+                print(f"**Batch Efficiency:** {batch_efficiency:.1f}% success rate")
+
+            print("\n" + "=" * 80 + "\n")
+
+        except Exception as e:
+            self.logger.error(f"Error generating enhanced output: {e}")
+            print(
+                f"\n📊 SUMMARY: {scraped_products} products, {total_variations} variations"
+            )
+
+    def _create_hierarchical_display(self, cursor, limit: int) -> Dict:
+        """Create grouped data for hierarchical display"""
+        cursor.execute(
+            """
+            SELECT
+                p.id, p.name, p.base_price, p.stock_quantity,
+                pvs.variation_count, pvs.min_variation_price, pvs.max_variation_price,
+                v.variation_type, v.variation_value, v.price, v.stock_quantity
+            FROM products p
+            LEFT JOIN products_with_variation_summary pvs ON p.id = pvs.id
+            LEFT JOIN product_variations v ON p.id = v.product_id
+            WHERE p.scraped_at = (SELECT MAX(scraped_at) FROM products)
+            ORDER BY p.id, v.id
+            LIMIT ?
+        """,
+            (limit * 10,),
+        )  # Allow up to 10 variations per product
+
+        rows = cursor.fetchall()
+        grouped_data = {}
+
+        for row in rows:
+            product_id = row[0]
+            if product_id not in grouped_data:
+                grouped_data[product_id] = {
+                    "name": row[1],
+                    "base_price": row[2],
+                    "base_stock": row[3],
+                    "variation_count": row[4] or 0,
+                    "min_variation_price": row[5],
+                    "max_variation_price": row[6],
+                    "variations": [],
+                }
+
+            if row[7]:  # variation_type exists
+                grouped_data[product_id]["variations"].append(
+                    {"type": row[7], "value": row[8], "price": row[9], "stock": row[10]}
+                )
+
+        return grouped_data
+
+    def _print_hierarchical_display(self, grouped_data: Dict):
+        """Print hierarchical product-variation display"""
+        for product_data in grouped_data.values():
+            header = self._format_product_header(product_data)
+            print(header)
+
+            if product_data["variations"]:
+                for variation in product_data["variations"]:
+                    variation_row = self._format_variation_row(variation)
+                    print(variation_row)
+            else:
+                print("   └── No variations available")
+
+            print()  # Empty line between products
+
+    def _print_enhanced_table(self, cursor, limit: int):
+        """Print enhanced table format with merged cells"""
+        cursor.execute(
+            """
+            SELECT
+                p.name, p.base_price, p.stock_quantity,
+                v.variation_type, v.variation_value, v.price, v.stock_quantity
+            FROM products p
+            LEFT JOIN product_variations v ON p.id = v.product_id
+            WHERE p.scraped_at = (SELECT MAX(scraped_at) FROM products)
+            ORDER BY p.id, v.id
+            LIMIT ?
+        """,
+            (limit * 10,),
+        )
+
+        rows = cursor.fetchall()
+
+        if not rows:
+            print("No data available")
+            return
+
+        # Markdown table with indentation for hierarchy
+        print(
+            "| Product Name | Variation Type | Variation Value | Price (RUB) | Stock |"
+        )
+        print(
+            "|--------------|----------------|-----------------|-------------|-------|"
+        )
+
+        current_product = None
+        for row in rows:
+            name, base_price, base_stock, var_type, var_value, var_price, var_stock = (
+                row
+            )
+
+            if current_product != name:
+                # New product row with merged cell effect using indentation
+                display_name = (
+                    f"**{name[:40]}...**" if len(name) > 40 else f"**{name}**"
+                )
+                price = f"{base_price:.2f}" if base_price else "N/A"
+                stock = str(base_stock) if base_stock is not None else "N/A"
+                print(f"| {display_name} | Base | - | {price} | {stock} |")
+                current_product = name
+
+            # Variation row with indentation
+            if var_type:
+                var_value_display = var_value or "-"
+                var_price_display = f"{var_price:.2f}" if var_price else "N/A"
+                var_stock_display = str(var_stock) if var_stock is not None else "N/A"
+                print(
+                    f"| ├─ | {var_type} | {var_value_display} | {var_price_display} | {var_stock_display} |"
+                )
+
+    def _format_product_header(self, product_data: Dict) -> str:
+        """Format product header for hierarchical display"""
+        name = (
+            product_data["name"][:50] + "..."
+            if len(product_data["name"]) > 50
+            else product_data["name"]
+        )
+        base_price = (
+            f"{product_data['base_price']:.2f}" if product_data["base_price"] else "N/A"
+        )
+        base_stock = (
+            product_data["base_stock"]
+            if product_data["base_stock"] is not None
+            else "N/A"
+        )
+
+        header = f"📦 {name} (Base Price: {base_price} RUB, Base Stock: {base_stock})"
+
+        # Add variation summary if available
+        if product_data["variation_count"] > 0:
+            min_price = (
+                f"{product_data['min_variation_price']:.2f}"
+                if product_data["min_variation_price"]
+                else "N/A"
+            )
+            max_price = (
+                f"{product_data['max_variation_price']:.2f}"
+                if product_data["max_variation_price"]
+                else "N/A"
+            )
+            header += f" [{product_data['variation_count']} variations: {min_price}-{max_price} RUB]"
+
+        return header
+
+    def _format_variation_row(self, variation_data: Dict) -> str:
+        """Format individual variation row"""
+        var_type = variation_data["type"]
+        var_value = variation_data["value"] or "-"
+        price = f"{variation_data['price']:.2f}" if variation_data["price"] else "N/A"
+        stock = (
+            variation_data["stock"] if variation_data["stock"] is not None else "N/A"
+        )
+
+        return f"   ├── {var_type}: {var_value} | Price: {price} RUB | Stock: {stock}"
+
+    def _calculate_product_summary(self, variations: List[Dict]) -> Dict:
+        """Calculate summary statistics for product variations"""
+        if not variations:
+            return {
+                "count": 0,
+                "min_price": None,
+                "max_price": None,
+                "avg_price": None,
+                "total_stock": 0,
+            }
+
+        prices = [v["price"] for v in variations if v["price"] is not None]
+        stocks = [v["stock"] for v in variations if v["stock"] is not None]
+
+        return {
+            "count": len(variations),
+            "min_price": min(prices) if prices else None,
+            "max_price": max(prices) if prices else None,
+            "avg_price": sum(prices) / len(prices) if prices else None,
+            "total_stock": sum(stocks) if stocks else 0,
+        }
+
+    def _print_hierarchical_display_from_grouped(self, grouped_products):
+        """Print hierarchical product-variation display from ProductWithVariations data"""
+        result = format_hierarchical_product_display(grouped_products)
+        print(result)
+
+    def _print_enhanced_table_from_grouped(self, grouped_products):
+        """Print enhanced table format from ProductWithVariations data"""
+        if not grouped_products:
+            print("No data available")
+            return
+
+        # Markdown table with indentation for hierarchy
+        print(
+            "| Product Name | Variation Type | Variation Value | Price (RUB) | Stock |"
+        )
+        print(
+            "|--------------|----------------|-----------------|-------------|-------|"
+        )
+
+        current_product = None
+        for product in grouped_products:
+            name = (
+                product["name"][:40] + "..."
+                if len(product["name"]) > 40
+                else product["name"]
+            )
+            base_price = product["base_price"]
+            base_stock = product["stock_quantity"]
+
+            if current_product != name:
+                # New product row with merged cell effect using indentation
+                display_name = f"**{name}**"
+                price = f"{base_price:.2f}" if base_price else "N/A"
+                stock = str(base_stock) if base_stock is not None else "N/A"
+                print(f"| {display_name} | Base | - | {price} | {stock} |")
+                current_product = name
+
+            # Variation rows with indentation
+            for variation in product["variations"]:
+                var_type = variation["variation_type"]
+                var_value = variation["variation_value"] or "-"
+                var_price = f"{variation['price']:.2f}" if variation["price"] else "N/A"
+                var_stock = (
+                    str(variation["stock_quantity"])
+                    if variation["stock_quantity"] is not None
+                    else "N/A"
+                )
+                print(f"| ├─ | {var_type} | {var_value} | {var_price} | {var_stock} |")
+
+    def _format_product_header_from_grouped(self, product) -> str:
+        """Format product header for hierarchical display from ProductWithVariations"""
+        name = (
+            product["name"][:50] + "..."
+            if len(product["name"]) > 50
+            else product["name"]
+        )
+        base_price = f"{product['base_price']:.2f}" if product["base_price"] else "N/A"
+        base_stock = (
+            product["stock_quantity"]
+            if product["stock_quantity"] is not None
+            else "N/A"
+        )
+
+        header = f"📦 {name} (Base Price: {base_price} RUB, Base Stock: {base_stock})"
+
+        # Add variation summary if available
+        if product["variation_count"] > 0:
+            min_price = f"{product['min_price']:.2f}" if product["min_price"] else "N/A"
+            max_price = f"{product['max_price']:.2f}" if product["max_price"] else "N/A"
+            header += f" [{product['variation_count']} variations: {min_price}-{max_price} RUB]"
+
+        return header
+
+    def _format_variation_row_from_grouped(self, variation) -> str:
+        """Format individual variation row from VariationRecord"""
+        var_type = variation["variation_type"]
+        var_value = variation["variation_value"] or "-"
+        price = f"{variation['price']:.2f}" if variation["price"] else "N/A"
+        stock = (
+            variation["stock_quantity"]
+            if variation["stock_quantity"] is not None
+            else "N/A"
+        )
+
+        return f"   ├── {var_type}: {var_value} | Price: {price} RUB | Stock: {stock}"
+
+    def run_scrape(self, base_url: str, email: str) -> Dict[str, Any]:
+        """
+        Unified scraping method that automatically selects between aiohttp and Playwright
+        based on intelligent method selection.
+        """
+        try:
+            # Load configuration and set base_url
+            self.config["base_url"] = base_url
+            self.config["email"] = email
+
+            # Initialize antibot manager and analyzer
+            self.antibot = AntibotManager(self.config_path)
+            self.analyzer = SitemapAnalyzer(self.antibot, base_url)
+
+            # Performance tracking
+            start_time = time.time()
+
+            # Initialize components
+            log_scraping_step("Initializing antibot systems")
+            try:
+                asyncio.run(self.antibot.start())
+                self.logger.info("Antibot systems initialized successfully")
+            except Exception as e:
+                self.logger.warning(f"Antibot initialization error: {e}")
+
+            # Sitemap analysis and URL discovery
+            log_scraping_step("Sitemap analysis")
+            max_products = self.config.get("max_products_per_run", 20)
+            product_urls = self._get_product_urls(max_products)
+            
+            # Only use hardcoded URLs if no discovery was successful
+            if not product_urls:
+                self.logger.warning("URL discovery failed completely, checking if hardcoded fallback should be used")
+                # Check if we should use hardcoded fallback (only for testing)
+                if self.config.get("use_hardcoded_fallback", False):
+                    log_scraping_step(
+                        "URL fallback", details="Using hardcoded product URLs for testing"
+                    )
+                    # Use hardcoded URLs specific to atmospherestore.ru for testing only
+                    if "atmospherestore.ru" in base_url:
+                        product_urls = [
+                            "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/razemnye-spicy-lace/addi-lace-long-razyemnyie-spitsyi-s-udlinennyim-konchikom",
+                            "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/razemnye-spicy-lace/addi-lace-short-razyemnyie-spitsyi-s-udlinennyim-konchikom",
+                            "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/leski-soedinitelnye-addi/addi-lace-short-soedinitelnaya-leska",
+                            "https://atmospherestore.ru/instrumenty/spicy/spicy-addi/krugovye-spicy-s-kvadratnym-konchikom/addi-novel-krugovyie-spitsyi-s-kvadratnyim-konchikom-40-sm",
+                        ][:max_products]
+                        self.logger.info(f"Using {len(product_urls)} hardcoded product URLs for testing")
+                    else:
+                        self.logger.error("No product URLs found and no hardcoded fallback for this domain")
+                        return {"scraped_products": 0, "variations": 0, "total_urls_found": 0}
+                else:
+                    self.logger.error("No product URLs found and hardcoded fallback disabled")
+                    return {"scraped_products": 0, "variations": 0, "total_urls_found": 0}
+            else:
+                log_scraping_step(
+                    "URL parsing",
+                    details=f"Found {len(product_urls)} product URLs from discovery",
+                )
+
+            if not product_urls:
+                self.logger.warning("No product URLs found")
+                return {"scraped_products": 0, "variations": 0, "total_urls_found": 0}
+
+            # Batch processing path after URL discovery
+            batch_size = self.config.get("batch_processing", {}).get("batch_size", 50)
+            batch_success = False
+            scraped_products = 0
+            total_variations = 0
+
+            # Try batch processing first if enabled
+            if self.config.get("batch_processing", {}).get("enabled", False):
+                try:
+                    log_scraping_step(
+                        "Batch processing initialization",
+                        details=f"Processing {len(product_urls)} URLs in batches of {batch_size}",
+                    )
+                    from core.batch_processor import BatchProcessor
+
+                    batch_processor = BatchProcessor(self.config)
+                    batch_results = batch_processor.process_urls_in_batches(
+                        product_urls, base_url, email
+                    )
+
+                    if batch_results and batch_results.get("scraped_products", 0) > 0:
+                        batch_success = True
+                        scraped_products = batch_results["scraped_products"]
+                        total_variations = batch_results["variations"]
+                        log_scraping_step(
+                            "Batch processing completed",
+                            details=f"Scraped {scraped_products} products, {total_variations} variations",
+                        )
+                    else:
+                        self.logger.warning("Batch processing failed or returned no results")
+
+                except Exception as batch_error:
+                    self.logger.warning(f"Batch processing failed: {batch_error}")
+
+            # Fallback to sequential processing if batch failed or disabled
+            if not batch_success:
+                log_scraping_step(
+                    "Sequential processing",
+                    details=f"Processing {len(product_urls)} URLs sequentially",
+                )
+
+                # Intelligent method selection - fixed method name
+                selected_method = self._select_optimal_method(base_url)
+                log_scraping_step(
+                    "Method selection", details=f"Selected method: {selected_method}"
+                )
+
+                if selected_method == "httpx":
+                    try:
+                        # Create new event loop for httpx scraping
+                        import asyncio
+                        import threading
+
+                        def run_httpx_in_thread():
+                            return asyncio.run(self._scrape_with_httpx(base_url, product_urls, email))
+
+                        # Run in separate thread to avoid event loop conflicts
+                        import concurrent.futures
+                        with concurrent.futures.ThreadPoolExecutor() as executor:
+                            future = executor.submit(run_httpx_in_thread)
+                            result = future.result()
+                        if result and result.get("success", False):
+                            scraped_products = result.get("scraped_products", 0)
+                            total_variations = result.get("variations", 0)
+                            log_scraping_step(
+                                "Httpx scraping completed",
+                                details=f"Scraped {scraped_products} products, {total_variations} variations",
+                            )
+                        else:
+                            raise Exception("Httpx scraper returned no results")
+                    except Exception as e:
+                        self.logger.error(f"Httpx scraping failed: {e}")
+                        # Fallback to Playwright
+                        selected_method = "playwright"
+
+                elif selected_method == "aiohttp":
+                    try:
+                        if self.fast_scraper is None:
+                            raise Exception("Fast scraper not initialized")
+                        result = asyncio.run(
+                            self.fast_scraper.scrape_products(
+                                base_url, product_urls, email
+                            )
+                        )
+                        if result and result.get("success", False):
+                            scraped_products = result.get("scraped_products", 0)
+                            total_variations = result.get("variations", 0)
+                            log_scraping_step(
+                                "Fast scraping completed",
+                                details=f"Scraped {scraped_products} products, {total_variations} variations",
+                            )
+                        else:
+                            raise Exception("Fast scraper returned no results")
+                    except Exception as e:
+                        self.logger.error(f"Fast scraping failed: {e}")
+                        # Fallback to Playwright
+                        selected_method = "playwright"
+
+                if selected_method == "playwright":
+                    try:
+                        # Playwright-based scraping
+                        result = self._scrape_with_playwright(
+                            base_url, product_urls, email
+                        )
+                        scraped_products = result.get("scraped_products", 0)
+                        total_variations = result.get("variations", 0)
+                        log_scraping_step(
+                            "Playwright scraping completed",
+                            details=f"Scraped {scraped_products} products, {total_variations} variations",
+                        )
+                    except Exception as e:
+                        self.logger.error(f"Playwright scraping failed: {e}")
+                        return {
+                            "scraped_products": 0,
+                            "variations": 0,
+                            "total_urls_found": len(product_urls),
+                        }
+
+            # Performance and resource reporting
+            end_time = time.time()
+            total_time = end_time - start_time
+
+            final_result = {
+                "scraped_products": scraped_products,
+                "variations": total_variations,
+                "total_urls_found": len(product_urls),
+                "processing_time": total_time,
+                "method_used": selected_method if not batch_success else "batch",
+                "batch_processing_used": batch_success,
+            }
+
+            # Add batch-specific metrics if available
+            if batch_success and "batch_results" in locals():
+                final_result.update(
+                    {
+                        "batches_completed": batch_results.get("batches_completed", 0),
+                        "peak_concurrent_batches": batch_results.get(
+                            "peak_concurrent_batches", 1
+                        ),
+                        "avg_cpu_usage": batch_results.get("avg_cpu_usage", "N/A"),
+                        "peak_memory_usage": batch_results.get(
+                            "peak_memory_usage", "N/A"
+                        ),
+                        "scaling_events": batch_results.get("scaling_events", 0),
+                        "connection_reuse_rate": batch_results.get(
+                            "connection_reuse_rate", "N/A"
+                        ),
+                        "dns_cache_hit_rate": batch_results.get(
+                            "dns_cache_hit_rate", "N/A"
+                        ),
+                    }
+                )
+
+            log_scraping_step(
+                "Scraping completed",
+                details=f"Final result: {scraped_products} products, {total_variations} variations in {total_time:.2f}s",
+            )
+
+            # Run AI-powered stock monitoring after successful scraping
+            if scraped_products > 0 or total_variations > 0:
+                log_scraping_step("AI Stock Monitoring", details="Running stock change analysis and predictions")
+                try:
+                    # Run stock monitoring in a separate thread to avoid blocking
+                    def run_monitoring_in_thread():
+                        return asyncio.run(self.run_stock_monitoring())
+
+                    import concurrent.futures
+                    with concurrent.futures.ThreadPoolExecutor() as executor:
+                        future = executor.submit(run_monitoring_in_thread)
+                        monitoring_result = future.result(timeout=30)  # 30 second timeout
+
+                    if monitoring_result and monitoring_result.get("status") != "error":
+                        final_result["stock_monitoring"] = monitoring_result
+                        log_scraping_step(
+                            "Stock monitoring completed",
+                            details=f"Changes detected: {monitoring_result.get('changes_detected', 0)}, Alerts: {monitoring_result.get('alerts_generated', 0)}"
+                        )
+                    else:
+                        self.logger.warning("Stock monitoring completed with issues")
+
+                except Exception as e:
+                    self.logger.error(f"Stock monitoring failed: {e}")
+                    final_result["stock_monitoring"] = {"status": "error", "error": str(e)}
+            else:
+                self.logger.info("Skipping stock monitoring - no products scraped")
+
+            return final_result
+
+        except Exception as e:
+            self.logger.error(f"Critical scraping error: {e}", exc_info=True)
+            return {"scraped_products": 0, "variations": 0, "total_urls_found": 0}
+
+        finally:
+            # Cleanup antibot manager
+            if hasattr(self, "antibot") and self.antibot:
+                try:
+                    # Check if we're in an async context
+                    try:
+                        loop = asyncio.get_running_loop()
+                        # We're in a running loop, schedule cleanup for later
+                        asyncio.create_task(self.antibot.cleanup())
+                    except RuntimeError:
+                        # No running loop, safe to use asyncio.run
+                        asyncio.run(self.antibot.cleanup())
+                except Exception as e:
+                    self.logger.error(f"Error during antibot cleanup: {e}")
+
+            # Performance and memory cleanup
+            if self.config.get("cleanup_after_scrape", True):
+                import gc
+                gc.collect()
+                self.logger.debug("Memory cleanup completed")
+
+    async def run_stock_monitoring(self) -> Dict[str, Any]:
+        """
+        Run AI-powered stock monitoring after scraping to detect changes
+        """
+        if not self.stock_monitor:
+            self.logger.warning("Stock monitor not initialized, skipping monitoring")
+            return {"status": "skipped", "reason": "monitor_not_initialized"}
+        
+        try:
+            self.logger.info("Running AI-powered stock monitoring...")
+            
+            # Run stock monitoring with AI analysis
+            monitoring_result = await self.stock_monitor.monitor_stock_changes()
+            
+            # Log monitoring results
+            alerts_generated = monitoring_result.get("alerts_generated", 0)
+            changes_detected = monitoring_result.get("changes_detected", 0)
+            predictions_made = monitoring_result.get("predictions_made", 0)
+            
+            self.logger.info(f"Stock monitoring completed: {changes_detected} changes detected, {alerts_generated} alerts generated, {predictions_made} predictions made")
+            
+            # Send webhook notifications if configured and alerts were generated
+            if self.webhook_notifier and alerts_generated > 0:
+                try:
+                    webhook_result = await self.webhook_notifier.send_stock_alerts(
+                        monitoring_result.get("alerts", [])
+                    )
+                    self.logger.info(f"Webhook notifications sent: {webhook_result.get('notifications_sent', 0)} successful")
+                    monitoring_result["webhook_notifications"] = webhook_result
+                except Exception as e:
+                    self.logger.error(f"Failed to send webhook notifications: {e}")
+                    monitoring_result["webhook_error"] = str(e)
+            
+            return monitoring_result
+            
+        except Exception as e:
+            self.logger.error(f"Error during stock monitoring: {e}")
+            return {"status": "error", "error": str(e)}
+
+    def _select_optimal_method(self, url: str) -> Optional[str]:
+        override = self._get_method_override()
+        if override is not None:
+            return override
+
+        if not self.hybrid_engine or not self.intelligent_selection:
+            return override
+
+        try:
+            return self.hybrid_engine.sync_detect_optimal_method(url)
+        except Exception as exc:  # noqa: BLE001
+            self.logger.debug(f"Optimal method detection failed for {url}: {exc}")
+            return override
+
+    def _get_method_override(self) -> Optional[str]:
+        """Map scraper_backend to method override for hybrid engine."""
+        if self.scraper_backend == "auto":
+            return None  # Detection
+        elif self.scraper_backend == "aiohttp":
+            return "aiohttp"
+        elif self.scraper_backend == "httpx":
+            return "httpx"
+        elif self.scraper_backend == "playwright":
+            return "playwright"
+        else:
+            self.logger.warning(
+                f"Unknown scraper_backend {self.scraper_backend}, defaulting to auto"
+            )
+            return None
+
+    async def _scrape_with_httpx(self, base_url: str, product_urls: List[str], email: str) -> Dict[str, Any]:
+        """
+        Scrape products using modern httpx-based scraper (browserless)
+        """
+        try:
+            from network.httpx_scraper import ModernHttpxScraper
+            
+            async with ModernHttpxScraper(self.config_path) as httpx_scraper:
+                result = await httpx_scraper.scrape_products(base_url, product_urls, email)
+                
+                self.logger.info(f"Httpx scraping completed: {result.get('scraped_products', 0)} products")
+                return result
+                
+        except Exception as e:
+            self.logger.error(f"Httpx scraping failed: {e}")
+            return {"success": False, "scraped_products": 0, "variations": 0}
+
+    def _scrape_with_playwright(self, base_url: str, product_urls: List[str], email: str) -> Dict[str, Any]:
+        """
+        Fallback playwright-based scraping method with variation parsing
+        """
+        try:
+            # Initialize parsers for Playwright scraping
+            from parsers.product_parser import ProductParser
+            from parsers.variation_parser import VariationParser
+            
+            parser = ProductParser(self.antibot, self.analyzer)
+            variation_parser = VariationParser()
+            
+            scraped_products = 0
+            total_variations = 0
+            
+            for i, url in enumerate(product_urls):
+                try:
+                    # Use antibot manager to scrape with Playwright if it has the method
+                    if hasattr(self.antibot, 'scrape_with_playwright'):
+                        html_content = asyncio.run(self.antibot.scrape_with_playwright(url))
+                    else:
+                        # Fallback to basic browser scraping
+                        self.logger.warning("Using basic Playwright fallback")
+                        html_content = None
+                    
+                    if html_content:
+                        # Parse the HTML content
+                        product_data = parser.parse_product(html_content, url)
+                        
+                        if product_data:
+                            scraped_products += 1
+                            
+                            # Extract variations using the enhanced variation parser
+                            variations = variation_parser.extract_variations(html_content, url)
+                            
+                            if variations:
+                                total_variations += len(variations)
+                                self.logger.debug(f"Found {len(variations)} variations for product {i+1}")
+                                
+                                # Store variations in product data
+                                product_data['variations'] = variations
+                            
+                            # Store in database if available
+                            if hasattr(self.db, 'store_product'):
+                                self.db.store_product(product_data)
+                            
+                            self.logger.info(f"Successfully scraped product {i+1}/{len(product_urls)} with {len(variations) if variations else 0} variations")
+                        else:
+                            self.logger.warning(f"Failed to parse product data for {url}")
+                    else:
+                        self.logger.warning(f"Failed to get HTML content for {url}")
+                        
+                except Exception as e:
+                    self.logger.error(f"Error scraping {url}: {e}")
+                    continue
+            
+            return {
+                "success": scraped_products > 0,
+                "scraped_products": scraped_products,
+                "variations": total_variations,
+                "method": "playwright_with_variations"
+            }
+            
+        except Exception as e:
+            self.logger.error(f"Playwright scraping failed: {e}")
+            return {"success": False, "scraped_products": 0, "variations": 0}
+
+    def _get_product_urls(self, max_products: int) -> List[str]:
+        """Get product URLs from sitemap or categories with improved discovery"""
+        if self.analyzer is None:
+            self.logger.error("Analyzer not initialized")
+            return []
+
+        if self.antibot is None:
+            self.logger.error("AntibotManager not initialized")
+            return []
+
+        try:
+            self.logger.info("Starting enhanced product URL discovery")
+            
+            # Get scraping configuration
+            scraping_config = self.config.get("scraping", {})
+            product_patterns = scraping_config.get("product_patterns", ["/product/", "/item/", "/instrumenty/", "/catalog/"])
+            category_config = scraping_config.get("category_extraction", {})
+            timeout_seconds = category_config.get("timeout_seconds", 30)
+            max_categories = category_config.get("max_categories", 5)
+            max_pages_per_category = category_config.get("max_pages_per_category", 3)
+            
+            # Try sitemap first
+            self.logger.info("Attempting sitemap discovery")
+            sitemap_url = self.analyzer.find_sitemap_url(self.antibot)
+            product_urls = []
+            
+            if sitemap_url:
+                self.logger.info(f"Parsing sitemap: {sitemap_url}")
+                page = self.antibot.get_page()
+                if page:
+                    all_urls = self.analyzer.parse_sitemap(sitemap_url, page)
+                    # Filter for product URLs using improved patterns
+                    self.logger.debug(f"Using product patterns: {product_patterns}")
+                    product_urls = [
+                        url
+                        for url in all_urls
+                        if any(pattern in url.lower() for pattern in product_patterns)
+                    ]
+                    self.logger.info(
+                        f"Found {len(product_urls)} product URLs from sitemap"
+                    )
+                if len(product_urls) >= max_products:
+                    self.logger.info(f"Limiting to {max_products} product URLs from sitemap")
+                    return product_urls[:max_products]
+
+            sitemap_product_urls = product_urls
+            if len(sitemap_product_urls) >= max_products:
+                self.logger.info(
+                    f"Limiting to {max_products} product URLs from sitemap"
+                )
+                return sitemap_product_urls[:max_products]
+
+            self.logger.warning(
+                f"Sitemap gave {len(sitemap_product_urls)} products, trying enhanced category extraction as fallback"
+            )
+
+            # Enhanced fallback to category extraction with longer timeouts
+            page = self.antibot.get_page()
+            if not page:
+                self.logger.error("Failed to get browser page for category extraction")
+                return sitemap_product_urls  # Return what we have from sitemap
+
+            try:
+                self.logger.info(f"Loading main page with {timeout_seconds}s timeout: {self.config['base_url']}")
+                # Use longer timeout for atmospherestore.ru
+                page.goto(self.config["base_url"], wait_until="networkidle", timeout=timeout_seconds * 1000)
+                time.sleep(8)  # Longer wait for dynamic content
+
+                self.logger.info("Extracting category URLs with enhanced patterns")
+                category_urls = self.analyzer.find_category_urls(
+                    page, self.config["base_url"]
+                )
+                self.logger.info(
+                    f"Found {len(category_urls)} category URLs: {category_urls[:5]}"
+                )
+
+                all_product_urls = (
+                    sitemap_product_urls.copy()
+                )  # Include sitemap URLs if any
+                
+                # Process more categories with longer timeouts
+                categories_to_process = min(max_categories, len(category_urls))
+
+                for i, category_url in enumerate(category_urls[:categories_to_process], 1):
+                    self.logger.info(
+                        f"Processing category {i}/{categories_to_process}: {category_url}"
+                    )
+                    try:
+                        category_products = self.analyzer.extract_product_urls(
+                            category_url, page, max_pages=max_pages_per_category
+                        )
+                        self.logger.info(
+                            f"Found {len(category_products)} products in category {category_url}"
+                        )
+                        all_product_urls.extend(category_products)
+                        if len(all_product_urls) >= max_products:
+                            self.logger.info(
+                                f"Reached max products limit ({max_products}), stopping category processing"
+                            )
+                            break
+                        time.sleep(3)  # Longer delay between categories
+                    except Exception as e:
+                        self.logger.error(
+                            f"Error processing category {category_url}: {e}"
+                        )
+                        continue
+
+                self.logger.info(
+                    f"Total product URLs from enhanced discovery: {len(all_product_urls)}"
+                )
+                if len(all_product_urls) >= max_products:
+                    self.logger.info(f"Limiting to {max_products} product URLs")
+                    return all_product_urls[:max_products]
+                return all_product_urls
+
+            finally:
+                # Page close handled by context
+                self.logger.debug("Category extraction page closed")
+
+        except Exception as e:
+            self.logger.error(f"Error getting product URLs: {e}", exc_info=True)
+            return []
+
+    # Reporting Integration Methods
+
+    def run_scheduled_scrape(self, task) -> Dict[str, Any]:
+        """Execute scheduled scraping task with enhanced logging and reporting"""
+        try:
+            self.logger.info(f"Executing scheduled task: {task.task_name}")
+
+            # Run the regular scrape
+            result = self.run_scrape(task.base_url, task.email)
+
+            # Enhance result with scheduling context
+            result.update(
+                {
+                    "task_id": task.id,
+                    "task_name": task.task_name,
+                    "scheduled_at": (
+                        task.next_run.isoformat() if task.next_run else None
+                    ),
+                    "execution_type": "scheduled",
+                }
+            )
+
+            # Detect significant changes for alerting
+            significant_changes = self.detect_significant_changes(result)
+            if significant_changes:
+                self.send_change_notifications(significant_changes, task.email)
+
+            # Generate scrape summary for reporting
+            summary = self.generate_scrape_summary(result)
+            result["summary"] = summary
+
+            # Automatic report generation after scheduled scrape
+            self._generate_automatic_report_after_scheduled_scrape(result, task)
+
+            return result
+
+        except Exception as e:
+            self.logger.error(f"Error in scheduled scrape: {e}")
+            return {
+                "task_id": getattr(task, "id", "unknown"),
+                "status": "failed",
+                "error": str(e),
+                "scraped_products": 0,
+                "variations": 0,
+            }
+
+    def detect_significant_changes(
+        self, scrape_result: Dict[str, Any]
+    ) -> List[Dict[str, Any]]:
+        """Detect significant price/stock changes for alerting"""
+        try:
+            significant_changes = []
+
+            # Get threshold configuration from reporting.analytics_settings
+            reporting_config = self.config.get("reporting", {})
+            analytics_settings = reporting_config.get("analytics_settings", {})
+            price_threshold = analytics_settings.get("price_change_threshold", 10.0)
+
+            # Get stock threshold from analytics.alerting
+            analytics_config = self.config.get("analytics", {})
+            alerting_config = analytics_config.get("alerting", {})
+            stock_threshold = alerting_config.get("stock_depletion_threshold", 5)
+
+            # Query recent price changes
+            if self.db:
+                from datetime import datetime, timedelta
+
+                recent_cutoff = datetime.now() - timedelta(hours=24)
+
+                # Get significant price changes
+                price_query = """
+                SELECT p.name, p.url, ph.price_old, ph.price_new, ph.scraped_at,
+                       ((ph.price_new - ph.price_old) / ph.price_old) * 100 as change_percent
+                FROM products p
+                JOIN price_history ph ON p.id = ph.product_id
+                WHERE ph.scraped_at >= ?
+                    AND ph.price_old IS NOT NULL
+                    AND ph.price_new IS NOT NULL
+                    AND ABS((ph.price_new - ph.price_old) / ph.price_old) * 100 >= ?
+                ORDER BY ABS(change_percent) DESC
+                LIMIT 10
+                """
+
+                price_changes = self.db.execute_query(
+                    price_query, [recent_cutoff.isoformat(), price_threshold]
+                )
+
+                for change in price_changes:
+                    significant_changes.append(
+                        {
+                            "type": "price_change",
+                            "product_name": change[0],
+                            "product_url": change[1],
+                            "old_price": change[2],
+                            "new_price": change[3],
+                            "change_percent": change[5],
+                            "scraped_at": change[4],
+                            "severity": "high" if abs(change[5]) > 20 else "medium",
+                        }
+                    )
+
+                # Get significant stock changes
+                stock_query = """
+                SELECT p.name, p.url, ph.stock_old, ph.stock_new, ph.scraped_at
+                FROM products p
+                JOIN price_history ph ON p.id = ph.product_id
+                WHERE ph.scraped_at >= ?
+                    AND ph.stock_old IS NOT NULL
+                    AND ph.stock_new IS NOT NULL
+                    AND ABS(ph.stock_new - ph.stock_old) >= ?
+                ORDER BY ABS(ph.stock_new - ph.stock_old) DESC
+                LIMIT 10
+                """
+
+                stock_changes = self.db.execute_query(
+                    stock_query, [recent_cutoff.isoformat(), stock_threshold]
+                )
+
+                for change in stock_changes:
+                    significant_changes.append(
+                        {
+                            "type": "stock_change",
+                            "product_name": change[0],
+                            "product_url": change[1],
+                            "old_stock": change[2],
+                            "new_stock": change[3],
+                            "scraped_at": change[4],
+                            "severity": "high" if change[3] == 0 else "medium",
+                        }
+                    )
+
+            return significant_changes
+
+        except Exception as e:
+            self.logger.error(f"Error detecting significant changes: {e}")
+            return []
+
+    def send_change_notifications(self, changes: List[Dict[str, Any]], email: str):
+        """Send notifications for significant changes"""
+        try:
+            if not changes:
+                return
+
+            # Import email manager
+            from notifications.email_manager import EmailNotificationManager
+
+            email_manager = EmailNotificationManager(self.config_path)
+
+            # Group changes by type
+            price_changes = [c for c in changes if c["type"] == "price_change"]
+            stock_changes = [c for c in changes if c["type"] == "stock_change"]
+
+            # Send price change alerts
+            for change in price_changes:
+                product_data = {
+                    "name": change["product_name"],
+                    "url": change["product_url"],
+                }
+                change_data = {
+                    "old_price": change["old_price"],
+                    "new_price": change["new_price"],
+                    "change_percent": change["change_percent"],
+                    "change_amount": change["new_price"] - change["old_price"],
+                }
+                email_manager.send_price_change_alert(
+                    product_data, change_data, [email]
+                )
+
+            # Send stock change alerts
+            for change in stock_changes:
+                product_data = {
+                    "name": change["product_name"],
+                    "url": change["product_url"],
+                }
+                stock_data = {
+                    "old_stock": change["old_stock"],
+                    "new_stock": change["new_stock"],
+                }
+                email_manager.send_stock_alert(product_data, stock_data, [email])
+
+            self.logger.info(f"Sent {len(changes)} change notifications to {email}")
+
+        except Exception as e:
+            self.logger.error(f"Error sending change notifications: {e}")
+
+    def generate_scrape_summary(self, result: Dict[str, Any]) -> Dict[str, Any]:
+        """Generate summary data for reporting"""
+        try:
+            summary = {
+                "timestamp": datetime.now().isoformat(),
+                "products_scraped": result.get("scraped_products", 0),
+                "variations_found": result.get("variations", 0),
+                "urls_processed": result.get("total_urls_found", 0),
+                "success_rate": result.get("success_rate", 0),
+                "processing_mode": result.get("processing_mode", "unknown"),
+                "performance": {
+                    "urls_per_second": result.get("urls_per_second", 0),
+                    "batch_metrics": result.get("batch_metrics", {}),
+                    "sequential_metrics": result.get("sequential_metrics", {}),
+                },
+            }
+
+            # Add resource usage if available
+            try:
+                import psutil
+
+                summary["resource_usage"] = {
+                    "cpu_percent": psutil.cpu_percent(),
+                    "memory_percent": psutil.virtual_memory().percent,
+                    "disk_usage_percent": psutil.disk_usage("/").percent,
+                }
+            except Exception:
+                pass
+
+            return summary
+
+        except Exception as e:
+            self.logger.error(f"Error generating scrape summary: {e}")
+            return {"timestamp": datetime.now().isoformat(), "error": str(e)}
+
+    def get_performance_metrics(self) -> Dict[str, Any]:
+        """Get detailed performance metrics for monitoring"""
+        try:
+            metrics = {
+                "scraper_engine": {
+                    "processing_mode": self.processing_mode,
+                    "batch_enabled": self.batch_enabled,
+                    "scraper_backend": self.scraper_backend,
+                    "use_hybrid": self.use_hybrid,
+                },
+                "batch_metrics": self.batch_metrics.copy(),
+                "sequential_metrics": self.sequential_metrics.copy(),
+            }
+
+            # Add database statistics
+            if self.db:
+                try:
+                    db_stats = self.db.get_database_stats()
+                    metrics["database"] = db_stats
+                except Exception as e:
+                    self.logger.warning(f"Could not get database stats: {e}")
+
+            # Add system resource information
+            try:
+                import psutil
+
+                metrics["system_resources"] = {
+                    "cpu_count": psutil.cpu_count(),
+                    "memory_total_gb": psutil.virtual_memory().total / (1024**3),
+                    "memory_available_gb": psutil.virtual_memory().available
+                    / (1024**3),
+                    "disk_total_gb": psutil.disk_usage("/").total / (1024**3),
+                    "disk_free_gb": psutil.disk_usage("/").free / (1024**3),
+                }
+            except Exception:
+                pass
+
+            return metrics
+
+        except Exception as e:
+            self.logger.error(f"Error getting performance metrics: {e}")
+            return {"error": str(e)}
+
+    def send_completion_notification(self, result: Dict[str, Any], email: str):
+        """Send notification after scraping completion"""
+        try:
+            # Import email manager
+            from notifications.email_manager import EmailNotificationManager
+
+            email_manager = EmailNotificationManager(self.config_path)
+
+            # Check if notifications are enabled
+            config = self.config.get("reporting_integration", {})
+            notification_settings = config.get("notification_settings", {})
+
+            if not notification_settings.get("immediate_alerts", True):
+                return
+
+            # Prepare notification data
+            notification_data = {
+                "products_scraped": result.get("scraped_products", 0),
+                "variations_found": result.get("variations", 0),
+                "success_rate": result.get("success_rate", 0),
+                "processing_time": result.get("processing_time", 0),
+                "urls_processed": result.get("total_urls_found", 0),
+                "timestamp": datetime.now(),
+            }
+
+            # Send completion notification (this would need a template)
+            # For now, we'll use a simple alert format
+            alert_details = {
+                "alert_type": "scraping_completed",
+                "details": notification_data,
+                "severity": "info",
+            }
+
+            success = email_manager.send_alert_email(
+                "scraping_completion", alert_details, [email]
+            )
+
+            if success:
+                self.logger.info(f"Sent completion notification to {email}")
+            else:
+                self.logger.warning(
+                    f"Failed to send completion notification to {email}"
+                )
+
+        except Exception as e:
+            self.logger.error(f"Error sending completion notification: {e}")
+
+    def _generate_automatic_report_after_scheduled_scrape(
+        self, result: Dict[str, Any], task
+    ) -> None:
+        """Generate and send automatic report after scheduled scrape"""
+        try:
+            # Check if automatic report generation is enabled
+            reporting_config = self.config.get("reporting", {})
+            auto_generate_config = reporting_config.get(
+                "auto_generate_after_scheduled_scrape", {}
+            )
+
+            if not auto_generate_config.get("enabled", False):
+                return
+
+            self.logger.info("Generating automatic report after scheduled scrape")
+
+            # Generate scrape summary report data
+            report_data = {
+                "metadata": {
+                    "report_type": "scrape_summary",
+                    "task_name": getattr(task, "task_name", "Unknown Task"),
+                    "task_id": getattr(task, "id", "unknown"),
+                    "site_domain": getattr(task, "base_url", "Unknown Site"),
+                    "generated_at": datetime.now().isoformat(),
+                    "execution_type": "scheduled",
+                },
+                "summary": result.get("summary", {}),
+                "scraping_results": {
+                    "products_scraped": result.get("scraped_products", 0),
+                    "variations_found": result.get("variations", 0),
+                    "urls_processed": result.get("total_urls_found", 0),
+                    "success_rate": result.get("success_rate", 0),
+                    "processing_mode": result.get("processing_mode", "unknown"),
+                    "performance": {
+                        "urls_per_second": result.get("urls_per_second", 0),
+                        "batch_metrics": result.get("batch_metrics", {}),
+                        "sequential_metrics": result.get("sequential_metrics", {}),
+                    },
+                },
+            }
+
+            # Generate report files using ExportManager
+            from reports.export_manager import ExportManager
+
+            export_manager = ExportManager(self.config_path)
+
+            export_formats = auto_generate_config.get("export_formats", ["pdf"])
+            generated_files = []
+
+            for format_type in export_formats:
+                try:
+                    # Create filename with timestamp
+                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                    filename = f"scrape_summary_{getattr(task, 'task_name', 'task').replace(' ', '_')}_{timestamp}"
+
+                    # Export the report
+                    success = export_manager.export_report(
+                        report_data, format_type, f"{filename}.{format_type}"
+                    )
+                    if success:
+                        generated_files.append(f"{filename}.{format_type}")
+                        self.logger.info(
+                            f"Generated {format_type} report: {filename}.{format_type}"
+                        )
+                    else:
+                        self.logger.warning(f"Failed to generate {format_type} report")
+
+                except Exception as e:
+                    self.logger.error(f"Error generating {format_type} report: {e}")
+
+            # Send email with report if configured
+            if auto_generate_config.get("send_email", False) and generated_files:
+                try:
+                    from notifications.email_manager import EmailNotificationManager
+
+                    email_manager = EmailNotificationManager(self.config_path)
+
+                    recipients = auto_generate_config.get("email_recipients", [])
+                    if not recipients:
+                        recipients = [getattr(task, "email", "")]
+
+                    if recipients and any(recipients):
+                        # Prepare email data
+                        email_data = {
+                            "task_name": getattr(task, "task_name", "Scheduled Task"),
+                            "site_domain": getattr(task, "base_url", "Unknown Site"),
+                            "products_scraped": result.get("scraped_products", 0),
+                            "variations_found": result.get("variations", 0),
+                            "success_rate": result.get("success_rate", 0),
+                            "generated_at": datetime.now(),
+                            "report_files": generated_files,
+                        }
+
+                        # Send the report email
+                        success = email_manager.send_report_email(
+                            report_data, recipients
+                        )
+                        if success:
+                            self.logger.info(
+                                f"Sent automatic report email to {len(recipients)} recipients"
+                            )
+                        else:
+                            self.logger.warning("Failed to send automatic report email")
+
+                except Exception as e:
+                    self.logger.error(f"Error sending automatic report email: {e}")
+
+        except Exception as e:
+            self.logger.error(f"Error in automatic report generation: {e}")

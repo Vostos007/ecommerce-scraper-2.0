@@ -1,17 +1,10 @@
 # syntax=docker/dockerfile:1.6
 
-FROM python:3.11-slim AS base
+# Playwright образ уже содержит все браузеры и системные библиотеки
+FROM mcr.microsoft.com/playwright/python:v1.48.0-jammy AS base
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
-
-# System dependencies for asyncpg/psycopg2
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y \
-        build-essential \
-        libpq-dev \
-        curl \
-    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -20,11 +13,13 @@ COPY services/api/requirements.txt ./services/api/requirements.txt
 COPY services/worker/requirements.txt ./services/worker/requirements.txt
 
 RUN pip install --no-cache-dir -r services/api/requirements.txt \
-    && pip install --no-cache-dir -r services/worker/requirements.txt \
-    && playwright install-deps chromium \
-    && playwright install chromium
+    && pip install --no-cache-dir -r services/worker/requirements.txt
 
 # Copy application source
+COPY core ./core
+COPY utils ./utils
+COPY parsers ./parsers
+COPY scripts ./scripts
 COPY database ./database
 COPY services ./services
 COPY config ./config

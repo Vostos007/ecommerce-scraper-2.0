@@ -1,139 +1,105 @@
-# Docker запуск для NEW_PROJECT
+# Docker-инфраструктура ecommerce-scraper-2.0
 
-Этот файл описывает как вынести содержимое `network/NEW_PROJECT` в отдельный репозиторий и запускать сервисы в Docker.
+В репозитории собраны все компоненты проекта: FastAPI backend, RQ worker, Next.js Dashboard, а также вспомогательные сервисы (PostgreSQL, Redis, MinIO, FlareSolverr). Ниже — единый сценарий запуска и обновления.
 
-## 1. Подготовка отдельного репозитория
+## Структура образов
 
-1. Создайте пустой репозиторий `git@github.com:Vostos007/ecommerce-scraper-2.0.git` (уже создан в GitHub).
-2. Скопируйте только директорию `network/NEW_PROJECT` в рабочую папку будущего репозитория:
-   ```bash
-   mkdir -p ~/Dev/ecommerce-scraper-2.0
-   rsync -a --delete ~/Dev/Webscraper/network/NEW_PROJECT/ ~/Dev/ecommerce-scraper-2.0/
-   ```
-3. Инициализируйте Git и привяжите origin:
-   ```bash
-   cd ~/Dev/ecommerce-scraper-2.0
-   git init
-   git remote add origin git@github.com:Vostos007/ecommerce-scraper-2.0.git
-   git add .
-   git commit -m "feat: bootstrap scraper backend"
-   git push -u origin main
-   ```
+| Dockerfile               | Назначение                              |
+|--------------------------|-----------------------------------------|
+| `Dockerfile`             | Playwright Python образ с API и worker  |
+| `Dockerfile.dashboard`   | Next.js Dashboard (production build)    |
 
-Дальше обновления можно подтягивать тем же `rsync` (или `git subtree split`) и делать новые коммиты.
+Оба Dockerfile копируют каталоги `core/`, `parsers/`, `scripts/`, `utils/`, `services/`, `database/`, `apps/dashboard/`, поэтому внутри контейнеров есть весь код.
 
-## 2. Структура контейнера
-
-- `Dockerfile` — одиночный образ с Python 3.11
-- Внутри ставятся зависимости API (`services/api/requirements.txt`) и worker (`services/worker/requirements.txt`)
-- Playwright браузер Chromium скачивается на этапе сборки, поэтому worker готов к работе сразу после запуска контейнера
-
-Образ собирает все необходимые пакеты из подпапок `database`, `services`, `config`. Логи, тесты и документация не попадают в образ благодаря `.dockerignore`.
-
-## 3. Переменные окружения
-
-Основные ключи, которые нужно пробросить в контейнер:
-
-| Переменная | Назначение | Значение по умолчанию |
-|------------|------------|------------------------|
-| `DATABASE_URL` | строка подключения к PostgreSQL | `postgresql://scraper:scraper@localhost:5432/scraper` |
-| `REDIS_URL` | URL Redis для RQ очереди | `redis://localhost:6379/0` |
-| `CORS_ORIGINS` | список разрешённых Origin (через запятую) | `http://localhost:3000` |
-| `ADMIN_TOKEN` | токен для административных запросов | `dev-admin-token` |
-| `FLARESOLVERR_URL` | endpoint FlareSolverr | `http://localhost:8191` |
-| S3-параметры | `S3_ENDPOINT`, `S3_BUCKET`, `S3_ACCESS_KEY`, `S3_SECRET_KEY` | см. `services/api/config.py` |
-
-Можно создать `.env` в корне репозитория — Pydantic загрузит его автоматически.
-
-## 4. Сборка образа
+## Быстрый запуск (всё сразу)
 
 ```bash
-# из корня репозитория ecommerce-scraper-2.0
-docker build -t ecommerce-scraper-api:latest .
+# В первый раз (или после изменений) соберите образы
+docker compose build
+
+# Запускаем весь стек
+docker compose up -d
 ```
 
-Если нужен лёгкий rebuild после правок кода, используйте более конкретный тег, например `:dev-$(date +%Y%m%d)`.
+После старта доступны:
 
-## 5. Запуск FastAPI
+- Dashboard: `http://localhost:3000` (UI для запуска экспортов)
+- API Swagger: `http://localhost:8000/api/docs`
+- MinIO console: `http://localhost:9001`
+
+Основные сервисы:
+
+- `api` — FastAPI (uvicorn)
+- `worker` — RQ worker (использует тот же образ, что и API)
+- `dashboard` — Next.js фронтенд
+- `postgres`, `redis`, `minio`, `flaresolverr` — инфраструктура
+- `minio-init` — однократная инициализация bucket-а `scraper-artifacts`
+
+Экспортируемые файлы сохраняются во volume `exports_data` (см. `docker-compose.yml`).
+
+Просмотр логов:
 
 ```bash
-docker run --rm \
-  -p 8000:8000 \
-  -e DATABASE_URL=postgresql://scraper:scraper@host.docker.internal:5432/scraper \
-  -e REDIS_URL=redis://host.docker.internal:6379/0 \
-  --name ecommerce-api \
-  ecommerce-scraper-api:latest
+docker compose logs -f api
+# или
+docker compose logs -f worker
 ```
 
-FastAPI поднимется на `http://localhost:8000`; Swagger доступен по `http://localhost:8000/api/docs`.
-
-## 6. Запуск worker внутри того же образа
+Остановка:
 
 ```bash
-docker run --rm \
-  -e DATABASE_URL=postgresql://scraper:scraper@host.docker.internal:5432/scraper \
-  -e REDIS_URL=redis://host.docker.internal:6379/0 \
-  --name ecommerce-worker \
-  ecommerce-scraper-api:latest \
-  python -m services.worker.worker
+docker compose down
 ```
 
-> ℹ️  Worker на текущей кодовой базе зависит от модулей `core.*` и `utils.*`. Если вы переносите только поддиректорию `network/NEW_PROJECT`, добавьте эти модули в новый репозиторий (или опубликуйте их как отдельный пакет) прежде чем запускать контейнер с worker-ролями.
+## Переменные окружения
 
-## 7. Docker Compose (опционально)
+Часть значений уже зашита в `docker-compose.yml`. При необходимости переопределите их в `.env` рядом с compose-файлом — Docker Compose автоматически подхватит.
 
-Минимальный `docker-compose.yml` для нового репозитория:
+| Переменная      | Назначение                                    | По умолчанию                     |
+|-----------------|------------------------------------------------|----------------------------------|
+| `DATABASE_URL`  | Строка подключения к PostgreSQL               | `postgresql://scraper:...`       |
+| `REDIS_URL`     | Адрес Redis                                   | `redis://redis:6379/0`           |
+| `FLARESOLVERR_URL` | Endpoint FlareSolverr                      | `http://flaresolverr:8191`       |
+| `S3_ENDPOINT` / `S3_*` | Настройки MinIO                         | `http://minio:9000`, `minioadmin`|
+| `CORS_ORIGINS`  | Допустимые origin'ы для API                   | `http://localhost:3000,...`      |
+| `NEXT_PUBLIC_API_BASE_URL` | Базовый URL API для фронтенда       | `http://api:8000` (внутри compose)|
 
-```yaml
-env_file: .env
-services:
-  api:
-    build: .
-    image: ecommerce-scraper-api:latest
-    ports:
-      - "8000:8000"
-    environment:
-      DATABASE_URL: ${DATABASE_URL}
-      REDIS_URL: ${REDIS_URL}
-    depends_on:
-      - redis
-      - postgres
-  worker:
-    image: ecommerce-scraper-api:latest
-    command: python -m services.worker.worker
-    environment:
-      DATABASE_URL: ${DATABASE_URL}
-      REDIS_URL: ${REDIS_URL}
-    depends_on:
-      - redis
-      - postgres
-  redis:
-    image: redis:7-alpine
-  postgres:
-    image: postgres:15-alpine
-    environment:
-      POSTGRES_DB: scraper
-      POSTGRES_USER: scraper
-      POSTGRES_PASSWORD: scraper
-```
-
-## 8. Обновление образа после пуша
-
-1. В репозитории `ecommerce-scraper-2.0` выполните `git pull` (или `git fetch && git checkout tag`), чтобы получить последние изменения.
-2. Соберите новый билд: `docker build -t ecommerce-scraper-api:latest .`
-3. Перезапустите контейнеры (`docker compose up -d --build` либо `docker stop && docker run ...`).
-
-Для деплоя на сервере можно настроить GitHub Actions, которые после `git push` будут выполнять `docker build` и `docker push` в ваш registry, после чего на сервере достаточно `docker pull` и перезапуска.
-
-## 9. Чистка после сборок
+## Обновление после новых коммитов
 
 ```bash
+git pull
+# перезагружаем сервисы (соберёт только изменившиеся слои)
+docker compose up -d --build
+```
+
+Для серверного деплоя можно настроить CI (например, GitHub Actions), который будет собирать и пушить образы `ecommerce-scraper/api:latest` и `ecommerce-scraper/dashboard:latest` в реестр. Тогда на сервере достаточно `docker compose pull && docker compose up -d`.
+
+## Локальные проверки перед сборкой
+
+### Python (API + worker)
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r services/api/requirements.txt -r services/worker/requirements.txt
+pytest
+```
+
+### Dashboard
+
+```bash
+cd apps/dashboard
+corepack enable pnpm
+pnpm install
+pnpm lint && pnpm test
+pnpm build
+```
+
+## Очистка
+
+```bash
+docker compose down -v   # удалить контейнеры и volumes
 docker image prune -f
-docker builder prune -f
 ```
 
-Это удалит dangling-слои и сэкономит место, если делаете много rebuild.
-
----
-
-С этим набором файлов (`Dockerfile`, `.dockerignore`, текущее содержимое `services`/`database`/`config`) проект можно отделить и вести независимо в `ecommerce-scraper-2.0`.
+Теперь одни команды `docker compose build` и `docker compose up -d` поднимают полный сервис. Обновление — `git pull && docker compose up -d --build`.

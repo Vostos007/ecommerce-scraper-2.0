@@ -1,0 +1,15 @@
+{
+  "atmospherestore.ru": {
+    "status": "ok",
+    "export_file": "httpx_latest.json",
+    "products": 5,
+    "products_with_price": 5,
+    "products_with_stock_field": 5,
+    "products_in_stock_true": 5,
+    "products_total_stock": 606.0,
+    "products_with_variations": 0,
+    "total_variations": 0,
+    "variations_total_stock": 0.0,
+    "variations_in_stock_true": 0
+  }
+}
