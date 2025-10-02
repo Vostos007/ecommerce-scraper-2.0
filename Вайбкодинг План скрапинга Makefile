@@ -1,0 +1,29 @@
+.PHONY: up down rebuild logs ps update clean nuke
+
+up:
+\tdocker compose up -d
+
+down:
+\tdocker compose down
+
+rebuild:
+\tdocker compose build --pull
+\tdocker compose up -d --force-recreate
+
+logs:
+\tdocker compose logs -f --tail=200
+
+ps:
+\tdocker compose ps
+
+update:
+\tgit pull
+\tdocker compose build --pull
+\tdocker compose up -d --force-recreate --remove-orphans
+
+clean:
+\tdocker compose down -v
+
+nuke:
+\tdocker compose down -v --remove-orphans
+\tdocker system prune -af
