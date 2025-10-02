@@ -23,6 +23,8 @@ COPY scripts ./scripts
 COPY database ./database
 COPY services ./services
 COPY config ./config
+COPY reports ./reports
+COPY apps/dashboard/public ./apps/dashboard/public
 COPY data ./data
 
 ENV PYTHONPATH="/app"

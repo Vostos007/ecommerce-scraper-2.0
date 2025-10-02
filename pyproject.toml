@@ -1,0 +1,7 @@
+[project]
+name = "ecommerce-scraper"
+version = "0.1.0"
+description = "Demo configuration for resolveRepoPath"
+authors = ["Vostos <demo@example.com>"]
+readme = "README.md"
+requires-python = ">=3.11"
