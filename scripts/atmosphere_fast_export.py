@@ -1,10 +1,17 @@
-"""Stub exporter for Atmosphere Store used in demo docker image."""
+"""Demo exporter for Atmosphere Store."""
 
 from __future__ import annotations
 
+from .demo_export import run_demo_export
 
-def run_export(*_args, **_kwargs) -> None:
-    """Placeholder implementation."""
-    raise NotImplementedError(
-        "Demo image включает только заглушки экспортов."
-    )
+
+def main() -> None:
+    run_demo_export('atmospherestore.ru', default_total=80)
+
+
+def run_export() -> None:  # API совместимость со старыми скриптами
+    main()
+
+
+if __name__ == '__main__':
+    main()

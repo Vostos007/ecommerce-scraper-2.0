@@ -226,7 +226,23 @@ function scheduleReaper(record: ProcessRecord): void {
 }
 
 export function buildEnv(): NodeJS.ProcessEnv {
-  return { ...process.env };
+  const env: NodeJS.ProcessEnv = { ...process.env };
+
+  // Гарантируем, что Python-интерпретатор доступен и корректно указан.
+  if (!env.PYTHON_BIN || !env.PYTHON_BIN.trim()) {
+    env.PYTHON_BIN = getPythonBinary();
+  }
+
+  env.PYTHONIOENCODING = env.PYTHONIOENCODING ?? 'utf-8';
+
+  const repoRoot = resolveRepoPath('.');
+  const pythonPathEntries = [repoRoot];
+  if (env.PYTHONPATH && env.PYTHONPATH.trim()) {
+    pythonPathEntries.push(env.PYTHONPATH);
+  }
+  env.PYTHONPATH = pythonPathEntries.join(path.delimiter);
+
+  return env;
 }
 
 export function spawnExport(siteInput: string, options: SpawnOptions = {}): SpawnResult {
