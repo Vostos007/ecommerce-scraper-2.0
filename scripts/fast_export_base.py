@@ -246,8 +246,27 @@ def _release_all_process_locks() -> None:
         release_process_lock(path)
 
 
+def _is_pid_active(pid_value: str) -> bool:
+    if not pid_value or not pid_value.isdigit():
+        return False
+
+    pid = int(pid_value)
+    if pid <= 0:
+        return False
+
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    except OSError:
+        return False
+    return True
+
+
 def acquire_process_lock(lock_path: Path, *, logger: Optional[logging.Logger] = None) -> None:
-    """Acquire an exclusive process-level file lock or exit with code 1."""
+    """Acquire an exclusive process-level file lock, removing stale locks if required."""
 
     global _LOCK_CLEANUP_REGISTERED
 
@@ -255,35 +274,57 @@ def acquire_process_lock(lock_path: Path, *, logger: Optional[logging.Logger] = 
         (logger or LOGGER).debug("Process lock already held: %s", lock_path)
         return
 
-    try:
-        handle = lock_path.open("w")
-        fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-        handle.write(str(os.getpid()))
-        handle.flush()
-        _LOCK_REGISTRY[lock_path] = handle
-
-        if not _LOCK_CLEANUP_REGISTERED:
-            atexit.register(_release_all_process_locks)
-            _LOCK_CLEANUP_REGISTERED = True
-
-        (logger or LOGGER).info(
-            "Acquired process lock %s (pid=%s)", lock_path, os.getpid()
-        )
-    except BlockingIOError:
-        existing_pid = "unknown"
+    attempts = 0
+    while True:
+        attempts += 1
         try:
-            existing_pid = lock_path.read_text(encoding="utf-8").strip() or "unknown"
-        except OSError:
-            pass
-        (logger or LOGGER).error(
-            "Process lock busy %s (pid=%s)", lock_path, existing_pid
-        )
-        raise SystemExit(1) from None
-    except Exception as exc:  # noqa: BLE001
-        (logger or LOGGER).error(
-            "Failed to acquire process lock %s: %s", lock_path, exc
-        )
-        raise SystemExit(1) from exc
+            handle = lock_path.open("w")
+            try:
+                fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError:
+                with contextlib.suppress(OSError):
+                    handle.close()
+                raise
+            handle.write(str(os.getpid()))
+            handle.flush()
+            _LOCK_REGISTRY[lock_path] = handle
+
+            if not _LOCK_CLEANUP_REGISTERED:
+                atexit.register(_release_all_process_locks)
+                _LOCK_CLEANUP_REGISTERED = True
+
+            (logger or LOGGER).info(
+                "Acquired process lock %s (pid=%s)", lock_path, os.getpid()
+            )
+            return
+        except BlockingIOError:
+            existing_pid = "unknown"
+            try:
+                existing_pid = lock_path.read_text(encoding="utf-8").strip() or "unknown"
+            except OSError:
+                pass
+
+            if attempts == 1 and not _is_pid_active(existing_pid):
+                (logger or LOGGER).warning(
+                    "Removing stale process lock %s (stale pid=%s)",
+                    lock_path,
+                    existing_pid,
+                )
+                try:
+                    lock_path.unlink(missing_ok=True)
+                except OSError:
+                    pass
+                continue
+
+            (logger or LOGGER).error(
+                "Process lock busy %s (pid=%s)", lock_path, existing_pid
+            )
+            raise SystemExit(1) from None
+        except Exception as exc:  # noqa: BLE001
+            (logger or LOGGER).error(
+                "Failed to acquire process lock %s: %s", lock_path, exc
+            )
+            raise SystemExit(1) from exc
 
 
 def release_process_lock(lock_path: Path, *, logger: Optional[logging.Logger] = None) -> None:
