@@ -10,9 +10,13 @@ RUN corepack enable pnpm \
     && pnpm install --frozen-lockfile
 
 FROM node:20-bookworm AS builder
+ARG APP_VERSION=dev
+ARG GIT_SHA=local
 WORKDIR /app
 COPY --from=deps /app/apps/dashboard /app/apps/dashboard
 COPY apps/dashboard /app/apps/dashboard
+ENV NEXT_PUBLIC_APP_VERSION=$APP_VERSION \
+    NEXT_PUBLIC_GIT_SHA=$GIT_SHA
 RUN corepack enable pnpm \
     && cd apps/dashboard \
     && pnpm build
@@ -33,8 +37,19 @@ ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
 
 WORKDIR /app/apps/dashboard
+ARG APP_VERSION=dev
+ARG GIT_SHA=local
 ENV NODE_ENV=production \
-    PORT=3000
+    PORT=3000 \
+    NEXT_PUBLIC_APP_VERSION=$APP_VERSION \
+    NEXT_PUBLIC_GIT_SHA=$GIT_SHA \
+    SUMMARY_MAX_STOCK_THRESHOLD=10000 \
+    PROXY_STATS_REQUESTS_PER_PROXY=250 \
+    PROXY_STATS_COST_PER_PROXY=0.65 \
+    PROXY_STATS_PREMIUM_BUDGET=2200 \
+    PROXY_STATS_PREMIUM_COST_USED=650 \
+    PROXY_STATS_PREMIUM_ACTIVE_SESSIONS=0 \
+    PROXY_STATS_PURCHASE_COOLDOWN_MINUTES=0
 
 # Copy built assets and necessary files
 COPY --from=builder /app/apps/dashboard/.next ./.next

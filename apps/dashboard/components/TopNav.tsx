@@ -13,6 +13,9 @@ import { useDashboardStore } from '@/stores/dashboard';
 import { Select } from './ui/select';
 import { cn } from '@/lib/utils';
 
+const APP_VERSION = process.env.NEXT_PUBLIC_APP_VERSION ?? 'v0.1.0';
+const APP_REVISION = process.env.NEXT_PUBLIC_GIT_SHA?.slice(0, 7) ?? null;
+
 const PLACEHOLDER_OPTION = { value: '', label: 'Выберите сайт', disabled: true };
 
 export function TopNav() {
@@ -139,8 +142,12 @@ export function TopNav() {
             size="sm"
             className="w-60"
           />
-          <Badge variant="outline" className="text-xs uppercase tracking-wide text-muted-foreground">
-            Demo Mode
+          <Badge
+            variant="outline"
+            className="text-xs tracking-wide text-muted-foreground bg-secondary/40 border-border"
+            title={APP_REVISION ? `Сборка ${APP_REVISION}` : 'Версия приложения'}
+          >
+            Версия {APP_REVISION ? `${APP_VERSION} • ${APP_REVISION}` : APP_VERSION}
           </Badge>
         </div>
       </div>

@@ -33,6 +33,38 @@ const METRIC_KEYS = [
 
 const EXPORT_FILENAME = 'latest.json';
 const STOCK_KEYS = ['stock_quantity', 'stock', 'inventory', 'available', 'quantity'] as const;
+const ADDITIONAL_STOCK_KEYS = ['quantity_available', 'stock_left', 'stock_level', 'remaining', 'balance'] as const;
+const STOCK_EXCLUSION_THRESHOLD = Number(process.env.SUMMARY_MAX_STOCK_THRESHOLD ?? '10000');
+
+const ELECTRONIC_PATTERNS = [
+  /электрон/i,
+  /цифров/i,
+  /подписк/i,
+  /абонем/i,
+  /gift\s*card/i,
+  /сертификат/i,
+  /certificate/i,
+  /download/i,
+  /pdf/i,
+  /онлайн/i,
+  /digital/i,
+  /pattern/i
+];
+
+const TEXT_FIELDS = [
+  'name',
+  'title',
+  'description',
+  'short_description',
+  'summary',
+  'body',
+  'category',
+  'categories',
+  'type',
+  'tags',
+  'attributes',
+  'sku'
+] as const;
 
 const STATUS_MAP: Record<string, 'ok' | 'missing' | 'error'> = {
   ok: 'ok',
@@ -125,6 +157,71 @@ function coerceNumber(value: unknown): number | null {
   return null;
 }
 
+function collectStockNumbers(record: Record<string, unknown>): number[] {
+  const numbers: number[] = [];
+  for (const key of [...STOCK_KEYS, ...ADDITIONAL_STOCK_KEYS]) {
+    const candidate = coerceNumber(record[key]);
+    if (candidate !== null) {
+      numbers.push(candidate);
+    }
+  }
+  return numbers;
+}
+
+function gatherTextValues(source: unknown): string[] {
+  if (typeof source === 'string') {
+    return [source];
+  }
+  if (Array.isArray(source)) {
+    const collected: string[] = [];
+    for (const item of source) {
+      if (typeof item === 'string') {
+        collected.push(item);
+      }
+    }
+    return collected;
+  }
+  if (source && typeof source === 'object') {
+    const collected: string[] = [];
+    for (const value of Object.values(source as Record<string, unknown>)) {
+      collected.push(...gatherTextValues(value));
+    }
+    return collected;
+  }
+  return [];
+}
+
+function getProductTextCandidates(record: Record<string, unknown>): string[] {
+  const texts: string[] = [];
+  for (const field of TEXT_FIELDS) {
+    if (field in record) {
+      texts.push(...gatherTextValues(record[field]));
+    }
+  }
+  return texts;
+}
+
+function shouldExcludeProduct(
+  record: Record<string, unknown>,
+  variations: Array<Record<string, unknown>>,
+  productStocks: number[],
+  variationStocks: number[]
+): boolean {
+  if (productStocks.some((value) => value > STOCK_EXCLUSION_THRESHOLD)) {
+    return true;
+  }
+  if (variationStocks.some((value) => value > STOCK_EXCLUSION_THRESHOLD)) {
+    return true;
+  }
+
+  const textCandidates = getProductTextCandidates(record);
+  for (const variation of variations) {
+    textCandidates.push(...getProductTextCandidates(variation));
+  }
+
+  return textCandidates.some((text) => ELECTRONIC_PATTERNS.some((pattern) => pattern.test(text)));
+}
+
 interface ProductAggregates {
   products: number;
   products_with_price: number;
@@ -154,7 +251,19 @@ function aggregateProducts(products: unknown[]): ProductAggregates {
     if (!item || typeof item !== 'object' || Array.isArray(item)) {
       continue;
     }
+
     const record = item as Record<string, unknown>;
+    const variationsRaw = Array.isArray(record.variations) ? record.variations : [];
+    const variations: Array<Record<string, unknown>> = variationsRaw
+      .filter((entry): entry is Record<string, unknown> => Boolean(entry) && typeof entry === 'object' && !Array.isArray(entry));
+
+    const productStocks = collectStockNumbers(record);
+    const variationStocks = variations.flatMap((variationRecord) => collectStockNumbers(variationRecord));
+
+    if (shouldExcludeProduct(record, variations, productStocks, variationStocks)) {
+      continue;
+    }
+
     aggregates.products += 1;
 
     const priceValue = coerceNumber(record.price);
@@ -166,29 +275,22 @@ function aggregateProducts(products: unknown[]): ProductAggregates {
       aggregates.products_in_stock_true += 1;
     }
 
-    for (const key of STOCK_KEYS) {
-      const candidate = coerceNumber(record[key]);
-      if (candidate !== null) {
-        aggregates.products_with_stock_field += 1;
-        aggregates.products_total_stock += candidate;
-        break;
-      }
+    const primaryStock = productStocks.find((value) => Number.isFinite(value));
+    if (primaryStock !== undefined) {
+      aggregates.products_with_stock_field += 1;
+      aggregates.products_total_stock += primaryStock;
     }
 
-    const variations = Array.isArray(record.variations) ? record.variations : [];
     if (variations.length > 0) {
       aggregates.products_with_variations += 1;
     }
 
-    for (const variation of variations) {
-      if (!variation || typeof variation !== 'object' || Array.isArray(variation)) {
-        continue;
-      }
-      const variationRecord = variation as Record<string, unknown>;
+    for (const variationRecord of variations) {
       aggregates.total_variations += 1;
-      const variationStock = coerceNumber(variationRecord.stock);
-      if (variationStock !== null) {
-        aggregates.variations_total_stock += variationStock;
+      const variationStockValues = collectStockNumbers(variationRecord);
+      const primaryVariationStock = variationStockValues.find((value) => Number.isFinite(value));
+      if (primaryVariationStock !== undefined) {
+        aggregates.variations_total_stock += primaryVariationStock;
       }
       if (variationRecord.in_stock === true) {
         aggregates.variations_in_stock_true += 1;

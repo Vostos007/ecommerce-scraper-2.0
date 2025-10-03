@@ -17,8 +17,11 @@ describe('GET /api/summary', () => {
   const __dirname = path.dirname(__filename);
   const repoRoot = path.resolve(__dirname, '../../../../../');
   const summaryPath = path.resolve(repoRoot, 'reports', 'firecrawl_baseline_summary.json');
+  const sitesPath = path.resolve(repoRoot, 'config', 'sites.json');
+  const customDomain = 'electro-test.ru';
   let originalContents: string | null = null;
   let hadOriginal = false;
+  let originalSites: string | null = null;
 
   beforeEach(async () => {
     vi.resetModules();
@@ -39,6 +42,12 @@ describe('GET /api/summary', () => {
       hadOriginal = false;
     }
     await fs.unlink(summaryPath).catch(() => {});
+
+    try {
+      originalSites = await fs.readFile(sitesPath, 'utf-8');
+    } catch {
+      originalSites = null;
+    }
   });
 
   afterEach(async () => {
@@ -48,6 +57,13 @@ describe('GET /api/summary', () => {
     } else {
       await fs.unlink(summaryPath).catch(() => {});
     }
+    if (originalSites !== null) {
+      await fs.writeFile(sitesPath, originalSites, 'utf-8');
+    }
+    await fs.rm(path.resolve(repoRoot, 'data', 'sites', customDomain), {
+      recursive: true,
+      force: true
+    });
   });
 
   it('rebuilds summary from site exports when file is missing', async () => {
@@ -66,5 +82,66 @@ describe('GET /api/summary', () => {
     expect(payload.sites['atmospherestore.ru'].status).toBeTypeOf('string');
 
     expect(await fileExists(summaryPath)).toBe(true);
+  });
+
+  it('omits electronic or bulk inventory products from aggregates', async () => {
+    const sitesRaw = originalSites ?? (await fs.readFile(sitesPath, 'utf-8'));
+    const sitesConfig = JSON.parse(sitesRaw) as { sites?: Array<Record<string, unknown>> };
+    const sitesList = Array.isArray(sitesConfig.sites) ? [...sitesConfig.sites] : [];
+    sitesList.push({
+      name: 'Electro Test',
+      domain: customDomain,
+      script: 'electro-test'
+    });
+    await fs.writeFile(
+      sitesPath,
+      JSON.stringify({ ...sitesConfig, sites: sitesList }, null, 2),
+      'utf-8'
+    );
+
+    const exportDir = path.resolve(repoRoot, 'data', 'sites', customDomain, 'exports');
+    await fs.mkdir(exportDir, { recursive: true });
+    const exportPayload = {
+      generated_at: '2025-10-02T12:00:00Z',
+      products: [
+        {
+          name: 'Набор спиц деревянных',
+          price: 1200,
+          stock: 42,
+          in_stock: true
+        },
+        {
+          name: 'Электронный подарочный сертификат',
+          description: 'Электронный сертификат, высылается на email',
+          price: 3000,
+          stock: 25000,
+          in_stock: true
+        },
+        {
+          name: 'Exclusive digital pattern',
+          price: 900,
+          variations: [
+            {
+              name: 'PDF версия',
+              stock_quantity: 15000
+            }
+          ]
+        }
+      ]
+    };
+    await fs.writeFile(path.resolve(exportDir, 'latest.json'), JSON.stringify(exportPayload, null, 2), 'utf-8');
+
+    const { GET } = await import('@/app/api/summary/route');
+    const request = new NextRequest('http://localhost/api/summary');
+    const response = await GET(request);
+
+    expect(response.status).toBe(200);
+    const payload = await response.json();
+    const domainSummary = payload.sites[customDomain];
+    expect(domainSummary).toBeDefined();
+    expect(domainSummary.products).toBe(1);
+    expect(domainSummary.products_total_stock).toBe(42);
+    expect(domainSummary.products_with_price).toBe(1);
+    expect(domainSummary.total_variations).toBe(0);
   });
 });
