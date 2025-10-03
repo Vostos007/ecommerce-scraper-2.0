@@ -67,6 +67,12 @@ export interface DownloadExportOptions {
   sheet?: 'full' | 'seo' | 'diff';
 }
 
+interface BulkRunPayload {
+  sites?: string[];
+  resume?: boolean;
+  concurrency?: Record<string, number>;
+}
+
 const exportJobSchema = z.object({
   jobId: z.string(),
   site: z.string(),
@@ -150,7 +156,50 @@ const queuedExportSchema = z.object({
   estimatedUrlCount: z.number().optional()
 });
 
+const bulkRunSiteSchema = z.object({
+  site: z.string(),
+  status: z.enum(['pending', 'running', 'completed', 'failed', 'skipped', 'error']),
+  jobId: z.string().nullable(),
+  startedAt: z.string().nullable(),
+  finishedAt: z.string().nullable(),
+  lastEventAt: z.string().nullable(),
+  queueId: z.string().nullable(),
+  processedUrls: z.number().nullable(),
+  totalUrls: z.number().nullable(),
+  successUrls: z.number().nullable(),
+  failedUrls: z.number().nullable(),
+  progressPercent: z.number().nullable(),
+  estimatedSecondsRemaining: z.number().nullable(),
+  expectedTotalUrls: z.number().nullable(),
+  error: z.string().nullable()
+});
+
+const bulkRunSnapshotSchema = z.object({
+  id: z.string(),
+  status: z.enum(['idle', 'running', 'completed', 'failed']),
+  startedAt: z.string(),
+  updatedAt: z.string(),
+  completedAt: z.string().nullable(),
+  processedUrls: z.number(),
+  totalUrls: z.number(),
+  progressPercent: z.number(),
+  estimatedSecondsRemaining: z.number().nullable(),
+  sites: z.array(bulkRunSiteSchema),
+  archiveReady: z.boolean(),
+  archivePath: z.string().nullable(),
+  archiveSize: z.number().nullable(),
+  archiveError: z.string().nullable(),
+  errors: z.array(z.object({ site: z.string(), message: z.string() }))
+});
+
+const bulkRunStartSchema = z.object({
+  ok: z.literal(true),
+  runId: z.string(),
+  snapshot: bulkRunSnapshotSchema
+});
+
 export type ProxyStats = z.infer<typeof proxyStatsSchema>;
+export type BulkRunSnapshot = z.infer<typeof bulkRunSnapshotSchema>;
 
 interface ApiClientConfig {
   baseUrl?: string;
@@ -380,6 +429,38 @@ export function createApiClient(config: ApiClientConfig = {}) {
       const payload = (await response.json()) as unknown;
       return authUserSchema.parse(payload);
     },
+    startBulkExport: async (payload?: BulkRunPayload) => {
+      const response = await request<unknown>(withBase('/api/export/bulk'), {
+        method: 'POST',
+        headers: JSON_HEADERS,
+        body: payload ? JSON.stringify(payload) : null
+      });
+      const parsed = bulkRunStartSchema.parse(response);
+      return { runId: parsed.runId, snapshot: parsed.snapshot };
+    },
+    getBulkRunLatest: async () => {
+      const response = await fetch(withBase('/api/export/bulk/latest'));
+      if (response.status === 404) {
+        return null;
+      }
+      if (!response.ok) {
+        throw new ApiError('Не удалось получить статус массового прогона', response.status);
+      }
+      const payload = (await response.json()) as unknown;
+      return bulkRunSnapshotSchema.parse(payload);
+    },
+    getBulkRunStatus: async (runId: string) => {
+      const payload = await request<unknown>(withBase(`/api/export/bulk/${runId}/status`));
+      return bulkRunSnapshotSchema.parse(payload);
+    },
+    downloadBulkArchive: async (runId: string) => {
+      const response = await fetch(withBase(`/api/export/bulk/${runId}/archive`));
+      if (!response.ok) {
+        const { message } = await handleErrorPayload(response);
+        throw new ApiError(message, response.status);
+      }
+      return response.blob();
+    },
     getExportQueue: async () => {
       const payload = await request<unknown>(withBase('/api/export/queue'));
       return z.array(queuedExportSchema).parse(payload);
@@ -416,3 +497,7 @@ export const getCurrentUser = defaultClient.currentUser;
 export const getExportQueue = defaultClient.getExportQueue;
 export const cancelQueuedExport = defaultClient.cancelQueuedExport;
 export const getActiveExportJob = defaultClient.getActiveExportJob;
+export const startBulkExport = defaultClient.startBulkExport;
+export const getBulkRunLatest = defaultClient.getBulkRunLatest;
+export const getBulkRunStatus = defaultClient.getBulkRunStatus;
+export const downloadBulkArchive = defaultClient.downloadBulkArchive;

@@ -450,7 +450,7 @@ async function getSummaryData(): Promise<SummaryResponse> {
   }
 }
 
-const handler = async () => {
+const handler = async (_request?: Request) => {
   try {
     const data = await getSummaryData();
     return NextResponse.json(data, { headers: { 'Cache-Control': 'private, max-age=60' } });

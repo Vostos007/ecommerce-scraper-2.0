@@ -223,12 +223,83 @@ function ensureCapacity(): void {
   }
 }
 
+function updateProgressFromPayload(record: ProcessRecord, payload: Record<string, unknown>): void {
+  const eventName = typeof payload.event === 'string' ? payload.event : null;
+  if (eventName !== 'progress') {
+    return;
+  }
+
+  const processed = typeof payload.processed === 'number' && Number.isFinite(payload.processed)
+    ? payload.processed
+    : undefined;
+  const total = typeof payload.total === 'number' && Number.isFinite(payload.total)
+    ? payload.total
+    : undefined;
+  const success = typeof payload.success === 'number' && Number.isFinite(payload.success)
+    ? payload.success
+    : undefined;
+  const failed = typeof payload.failed === 'number' && Number.isFinite(payload.failed)
+    ? payload.failed
+    : undefined;
+  const progressPercent = typeof payload.progressPercent === 'number' && Number.isFinite(payload.progressPercent)
+    ? payload.progressPercent
+    : undefined;
+
+  if (processed !== undefined) {
+    record.processedUrls = processed;
+  }
+  if (total !== undefined) {
+    record.totalUrls = total;
+  }
+  if (success !== undefined) {
+    record.successUrls = success;
+  }
+  if (failed !== undefined) {
+    record.failedUrls = failed;
+  }
+  if (progressPercent !== undefined) {
+    record.progressPercent = Math.min(100, Math.max(0, progressPercent));
+  }
+
+  const timestampSeconds = typeof payload.timestamp === 'number' && Number.isFinite(payload.timestamp)
+    ? payload.timestamp
+    : Date.now() / 1000;
+
+  const elapsedSeconds = Math.max(0, timestampSeconds - record.createdAt.getTime() / 1000);
+  const effectiveProcessed = record.processedUrls ?? processed ?? 0;
+  const effectiveTotal = record.totalUrls ?? total ?? 0;
+
+  if (effectiveTotal > 0 && elapsedSeconds > 0) {
+    const remaining = Math.max(0, effectiveTotal - effectiveProcessed);
+    const speed = effectiveProcessed / elapsedSeconds;
+    if (speed > 0) {
+      record.estimatedSecondsRemaining = Math.ceil(remaining / speed);
+    } else {
+      delete record.estimatedSecondsRemaining;
+    }
+  } else {
+    delete record.estimatedSecondsRemaining;
+  }
+}
+
 function pushLog(record: ProcessRecord, kind: LogKind, message: string): void {
   const entry: LogEntry = { k: kind, m: message, t: Date.now() };
   record.logs.push(entry);
   if (record.logs.length > LOG_BUFFER_SIZE) {
     record.logs.splice(0, record.logs.length - LOG_BUFFER_SIZE);
   }
+
+  if (kind === 'out') {
+    try {
+      const parsed = JSON.parse(message);
+      if (parsed && typeof parsed === 'object') {
+        updateProgressFromPayload(record, parsed as Record<string, unknown>);
+      }
+    } catch {
+      // игнорируем строки, которые не являются JSON
+    }
+  }
+
   for (const subscriber of record.subscribers) {
     subscriber.onLog?.(entry);
   }
@@ -265,6 +336,7 @@ export function buildEnv(): NodeJS.ProcessEnv {
   }
 
   env.PYTHONIOENCODING = env.PYTHONIOENCODING ?? 'utf-8';
+  env.EXPORT_PROGRESS_EVENTS = '1';
 
   const repoRoot = resolveRepoPath('.');
   const pythonPathEntries = [repoRoot];

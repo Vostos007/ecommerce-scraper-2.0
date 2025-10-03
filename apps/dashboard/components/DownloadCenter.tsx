@@ -11,6 +11,7 @@ import { Progress } from '@/components/ui/progress';
 import { Select } from '@/components/ui/select';
 import { useMasterWorkbook } from '@/hooks/useMasterWorkbook';
 import { downloadExport, getSites, type DownloadExportOptions } from '@/lib/api';
+import { useBulkRun } from '@/hooks/useBulkRun';
 import type { SiteSummary } from '@/lib/sites';
 
 const dateFormatter = new Intl.DateTimeFormat('ru-RU', {
@@ -102,6 +103,8 @@ export function DownloadCenter() {
     [csvSelections]
   );
 
+  const bulkRun = useBulkRun();
+
   const statusMessage = useMemo(() => {
     if (masterWorkbook.error) {
       return masterWorkbook.error;
@@ -118,6 +121,33 @@ export function DownloadCenter() {
     }
     return 'Сводный отчёт ещё не создавался';
   }, [masterWorkbook.error, masterWorkbook.fileInfo, masterWorkbook.isGenerating]);
+
+  const bulkSnapshot = bulkRun.snapshot;
+
+  const bulkProgressPercent = bulkSnapshot?.progressPercent ?? 0;
+  const bulkProcessed = bulkSnapshot?.processedUrls ?? 0;
+  const bulkTotal = bulkSnapshot?.totalUrls ?? 0;
+  const bulkEta = bulkSnapshot?.estimatedSecondsRemaining ?? null;
+
+  const canStartBulkRun = !bulkRun.isStarting && (bulkSnapshot?.status !== 'running');
+  const canDownloadArchive = Boolean(bulkSnapshot && bulkSnapshot.status === 'completed' && bulkSnapshot.archiveReady);
+
+  const formatEta = useCallback((seconds: number | null) => {
+    if (seconds == null) {
+      return '—';
+    }
+    if (seconds < 60) {
+      return `${seconds}s`;
+    }
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    if (minutes < 60) {
+      return `${minutes}m ${remainingSeconds}s`;
+    }
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return `${hours}h ${remainingMinutes}m`;
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -162,6 +192,120 @@ export function DownloadCenter() {
               {progressPercent != null && (
                 <p className="text-xs text-muted-foreground">Скачано: {progressPercent}%</p>
               )}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Массовый прогон площадок</CardTitle>
+          <CardDescription>
+            Запустите все экспорты единовременно и отслеживайте прогресс в реальном времени
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="flex flex-col gap-4 pt-0">
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div className="space-y-1 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <p>
+                  {bulkSnapshot
+                    ? bulkSnapshot.status === 'running'
+                      ? 'Массовый прогон выполняется'
+                      : bulkSnapshot.status === 'completed'
+                        ? 'Массовый прогон завершён'
+                        : bulkSnapshot.status === 'failed'
+                          ? 'Массовый прогон завершился с ошибками'
+                          : 'Массовый прогон не запускался'
+                    : 'Массовый прогон не запускался'}
+                </p>
+                {bulkSnapshot?.status === 'running' && (
+                  <Badge variant="primary">в работе</Badge>
+                )}
+                {bulkSnapshot?.status === 'failed' && (
+                  <Badge variant="error">ошибки</Badge>
+                )}
+              </div>
+              <div className="text-xs">
+                <span className="text-muted-foreground">Прогресс:</span>{' '}
+                <span>{bulkProcessed.toLocaleString('ru-RU')} / {bulkTotal.toLocaleString('ru-RU')}</span>
+              </div>
+              <div className="text-xs">
+                <span className="text-muted-foreground">Осталось:</span>{' '}
+                <span>{formatEta(bulkEta)}</span>
+              </div>
+              {bulkRun.error && (
+                <p className="text-xs text-rose-300">{bulkRun.error}</p>
+              )}
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <Button
+                type="button"
+                onClick={() => {
+                  bulkRun.start().catch(() => undefined);
+                }}
+                disabled={!canStartBulkRun}
+              >
+                {bulkRun.isStarting ? 'Запускаем…' : 'Запустить все площадки'}
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                onClick={() => {
+                  bulkRun.downloadArchive().catch(() => undefined);
+                }}
+                disabled={!canDownloadArchive}
+              >
+                Скачать архив
+              </Button>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <Progress value={bulkProgressPercent} aria-label="Прогресс массового прогона" />
+            <div className="text-xs text-muted-foreground">
+              {bulkSnapshot ? `${bulkProgressPercent}%` : 'Ничего не запущено'}
+            </div>
+          </div>
+
+              {bulkSnapshot && (
+                <div className="space-y-2">
+                  <header className="flex items-center justify-between text-xs uppercase text-muted-foreground">
+                    <span>Площадка</span>
+                    <span>Статус / прогресс</span>
+                  </header>
+                  <div className="flex flex-col gap-2">
+                    {bulkSnapshot.sites.map((siteState) => {
+                      const progressValue = siteState.progressPercent ?? 0;
+                      return (
+                        <div
+                          key={siteState.site}
+                          className="flex flex-col gap-1 rounded-lg border border-slate-800 bg-slate-900/40 p-3 md:flex-row md:items-center md:justify-between"
+                        >
+                          <div className="space-y-1">
+                            <p className="font-medium text-sm">{siteState.site}</p>
+                            <p className="text-xs text-muted-foreground">
+                              {siteState.status === 'running' && 'В работе'}
+                              {siteState.status === 'pending' && 'Ожидает запуска'}
+                              {siteState.status === 'completed' && 'Завершено'}
+                              {siteState.status === 'failed' && 'Ошибка'}
+                              {siteState.status === 'skipped' && 'Пропущено'}
+                              {siteState.status === 'error' && (siteState.error ?? 'Ошибка')}
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              {`${(siteState.processedUrls ?? 0).toLocaleString('ru-RU')} / ${(siteState.totalUrls ?? siteState.expectedTotalUrls ?? 0).toLocaleString('ru-RU')}`}
+                            </p>
+                          </div>
+                          <div className="w-full md:w-1/2">
+                            <Progress value={progressValue} />
+                            <div className="mt-1 text-xs text-muted-foreground">
+                              {progressValue.toFixed(1)}% • ETA: {formatEta(siteState.estimatedSecondsRemaining)}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+              </div>
             </div>
           )}
         </CardContent>
