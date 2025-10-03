@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.6
 
-FROM node:20-bullseye AS deps
+FROM node:20-bookworm AS deps
 WORKDIR /app/apps/dashboard
 
 # Enable pnpm via corepack and install dependencies
@@ -9,7 +9,7 @@ COPY apps/dashboard/package.json ./package.json
 RUN corepack enable pnpm \
     && pnpm install --frozen-lockfile
 
-FROM node:20-bullseye AS builder
+FROM node:20-bookworm AS builder
 WORKDIR /app
 COPY --from=deps /app/apps/dashboard /app/apps/dashboard
 COPY apps/dashboard /app/apps/dashboard
@@ -17,7 +17,21 @@ RUN corepack enable pnpm \
     && cd apps/dashboard \
     && pnpm build
 
-FROM node:20-bullseye AS runner
+FROM node:20-bookworm AS runner
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        curl \
+        python3 \
+        python3-venv \
+        python3-distutils \
+        python3-dev \
+        ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
 WORKDIR /app/apps/dashboard
 ENV NODE_ENV=production \
     PORT=3000
@@ -30,6 +44,12 @@ COPY apps/dashboard/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY apps/dashboard/next.config.mjs ./next.config.mjs
 COPY apps/dashboard/tsconfig.json ./tsconfig.json
 COPY pyproject.toml /app/pyproject.toml
+COPY requirements.txt /app/requirements.txt
+COPY core /app/core
+COPY utils /app/utils
+COPY parsers /app/parsers
+COPY network /app/network
+COPY scripts /app/scripts
 COPY config /app/config
 COPY data /app/data
 COPY proxy-data /app/proxy-data
@@ -38,6 +58,14 @@ COPY reports /app/reports
 # Install only production dependencies
 RUN corepack enable pnpm \
     && pnpm install --prod --frozen-lockfile
+
+RUN python3 -m venv /opt/app-venv \
+    && /opt/app-venv/bin/pip install --upgrade pip \
+    && /opt/app-venv/bin/pip install --no-cache-dir -r /app/requirements.txt
+
+ENV PATH="/opt/app-venv/bin:$PATH" \
+    PYTHONPATH=/app \
+    PYTHON_BIN=/opt/app-venv/bin/python
 
 EXPOSE 3000
 CMD ["pnpm", "start"]
