@@ -7,6 +7,7 @@ Complete guide to launching the full scraping infrastructure from zero to runnin
 - Docker & Docker Compose installed
 - Git repository cloned
 - Terminal access
+- Python 3.11+ available (для локальных скриптов/вспомогательных утилит)
 
 ## Architecture Overview
 

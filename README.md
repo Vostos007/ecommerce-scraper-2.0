@@ -2,6 +2,13 @@
 
 FastAPI backend с RQ worker pool для orchestration слоя проекта Webscraper.
 
+## ✅ Требования
+
+- **Python 3.11+** (рекомендуется 3.12.x) — для локальных скриптов, воркеров и утилит.
+- Docker / Docker Compose — для запуска полного стека.
+- Node.js 20+ и pnpm 9+ — для Next.js dashboard.
+- OpenSSL ≥ 1.1.1 (идёт в комплекте с официальными сборками Python 3.11+).
+
 ## 📁 Структура проекта
 
 ```
@@ -88,10 +95,23 @@ make clean       # Очистить volumes и temp файлы
 
 ## 🔧 Локальная разработка
 
+### Подготовить Python окружение
+
+```bash
+# однажды (через pyenv / официальную сборку)
+pyenv install 3.12.6  # либо убедитесь, что `python3` → 3.11+
+
+# для проекта
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
 ### Запустить API локально
 
 ```bash
-cd network/NEW_PROJECT
+source .venv/bin/activate  # убедитесь, что активирован Python 3.11+
 export DATABASE_URL="postgresql://scraper:scraper@localhost:5432/scraper"
 export REDIS_URL="redis://localhost:6379/0"
 python -m uvicorn services.api.main:app --reload --port 8000
@@ -100,7 +120,7 @@ python -m uvicorn services.api.main:app --reload --port 8000
 ### Запустить Worker локально
 
 ```bash
-cd network/NEW_PROJECT
+source .venv/bin/activate
 export DATABASE_URL="postgresql://scraper:scraper@localhost:5432/scraper"
 export REDIS_URL="redis://localhost:6379/0"
 python services/worker/worker.py

@@ -2,7 +2,7 @@
 
 Общие требования:
 
-- Python 3.9+ (рекомендовано 3.11)
+- Python 3.11+ (рекомендуется 3.12)
 - Node.js 20+
 - Docker (опционально, для полного стека)
 - 4 GB RAM минимум (8 GB для комфортной работы)
@@ -12,7 +12,7 @@
 ```bash
 git clone <repo-url>
 cd Webscraper
-python3 -m venv .venv
+python3.11 -m venv .venv  # убедитесь, что python3.11 доступен (pyenv/ brew)
 source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
@@ -43,7 +43,7 @@ python scripts/validate_imports.py
 ## 5. Запуск основных компонентов
 
 - CLI-скраперы: `python main.py --url <site> --email you@example.com`
-- Dashboard: `make dashboard-dev PORT=3050 PYTHON_BIN=$(which python3)`
+- Dashboard: `make dashboard-dev PORT=3050 PYTHON_BIN=$(which python3.11)`
 - Проксисервис: `docker compose --profile proxies up`
 
 ## 6. Первичная диагностика

@@ -94,11 +94,19 @@ else
     MISSING_DEPS=1
 fi
 
-# Check Python (optional for local dev)
+# Check Python (обязателен для локального запуска скриптов)
 if check_command python3; then
-    python3 --version
+    PY_VERSION=$(python3 -c 'import sys; print("%s.%s.%s" % sys.version_info[:3])')
+    echo "python3 ${PY_VERSION}"
+    PY_MAJOR=$(python3 -c 'import sys; print(sys.version_info.major)')
+    PY_MINOR=$(python3 -c 'import sys; print(sys.version_info.minor)')
+    if [ "$PY_MAJOR" -lt 3 ] || { [ "$PY_MAJOR" -eq 3 ] && [ "$PY_MINOR" -lt 11 ]; }; then
+        print_error "Требуется Python 3.11+, обнаружено ${PY_VERSION}"
+        MISSING_DEPS=1
+    fi
 else
-    print_warning "Python3 не найден (опционально для Docker-based запуска)"
+    print_warning "Python3 не найден (обязателен для локальных скриптов). Установите Python 3.11+"
+    MISSING_DEPS=1
 fi
 
 # Check Node.js (optional for dashboard dev)

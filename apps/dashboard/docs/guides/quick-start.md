@@ -14,7 +14,7 @@ python main.py --url https://6wool.ru --email reports@example.com \
 ## 2. Просмотр Dashboard
 
 ```bash
-make dashboard-dev PORT=3050 PYTHON_BIN=$(which python3)
+make dashboard-dev PORT=3050 PYTHON_BIN=$(which python3.11)
 # UI будет доступен на http://localhost:3050/dashboard
 ```
 

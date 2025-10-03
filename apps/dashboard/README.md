@@ -28,7 +28,7 @@ cd apps/dashboard
 pnpm run dashboard:dev
 ```
 
-`dashboard-dev` автоматически проверяет наличие `python3`, создаёт `.env` из `.env.example`, устанавливает Python/Node зависимости (через `pip install -r requirements.txt` и `pnpm install`) и запускает Next.js dev сервер на `http://localhost:3050` с переменной `PYTHON_BIN`. Дополнительно поддерживаются переменные:
+`dashboard-dev` автоматически проверяет наличие Python **3.11+**, создаёт `.env` из `.env.example`, устанавливает Python/Node зависимости (через `pip install -r requirements.txt` и `pnpm install`) и запускает Next.js dev сервер на `http://localhost:3050` с переменной `PYTHON_BIN`. Дополнительно поддерживаются переменные:
 
 - `PORT` — переопределить порт (по умолчанию `3055`)
 - `PYTHON_BIN` — явный путь к Python 3.11+
