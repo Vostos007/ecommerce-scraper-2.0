@@ -130,6 +130,7 @@ services:
         GIT_SHA: ${GIT_SHA:-dev}
     image: ecommerce-scraper/dashboard:latest
     environment:
+      PORT: 3000
       NEXT_PUBLIC_API_BASE_URL: http://api:8000
       NODE_ENV: production
       NEXT_PUBLIC_APP_VERSION: ${APP_VERSION:-0.1.0}

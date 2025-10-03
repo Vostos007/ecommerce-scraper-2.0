@@ -61,7 +61,7 @@ async function resolveApiOrigin(): Promise<string> {
   if (process.env.PORT) {
     return `http://localhost:${process.env.PORT}`;
   }
-  return 'http://localhost:3050';
+  return 'http://localhost:3000';
 }
 
 async function fetchSiteSummary(site: string): Promise<SiteSummary | null> {
