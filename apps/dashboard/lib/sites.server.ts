@@ -11,7 +11,8 @@ const SCRIPT_ALLOWLIST: Record<string, string> = {
   'sittingknitting.ru': 'cityknitting_fast_export',
   'knitshop.ru': 'knitshop_fast_export',
   'ili-ili.com': 'ili_ili_fast_export',
-  'triskeli.ru': 'triskeli_fast_export'
+  'triskeli.ru': 'triskeli_fast_export',
+  'manefa.ru': 'manefa_fast_export'
 };
 
 const CACHE_TTL_MS = 60_000;

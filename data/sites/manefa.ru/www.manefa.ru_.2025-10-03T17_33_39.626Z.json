@@ -1,0 +1,903 @@
+{
+  "links": [
+    {
+      "url": "https://www.manefa.ru/page/vakansii",
+      "title": "Вакансии",
+      "description": "Вакансии · ГОТОВЫЕ ВЯЗАНЫЕ ИЗДЕЛИЯ · ПОДАРОЧНЫЕ СЕРТИФИКАТЫ · ПРЯЖА · СПИЦЫ И КРЮЧКИ · АКСЕССУАРЫ · ОПИСАНИЯ · SALE · ХИТЫ ПРОДАЖ · НОВИНКИ · ДЛЯ ВЯЗАНИЯ ..."
+    },
+    {
+      "url": "https://www.manefa.ru/page/payment"
+    },
+    {
+      "url": "https://www.manefa.ru/page/delivery"
+    },
+    {
+      "url": "https://www.manefa.ru/page/opt",
+      "title": "Пряжа оптом на бобинах и в мотках из Европы и Америки",
+      "description": "Donegal Yarns – это производители ирландского твида, мериноса и других видов пряжи, в основном, на бобинах. Фабрика стоит у истоков механического прядения ..."
+    },
+    {
+      "url": "https://www.manefa.ru/page/faq"
+    },
+    {
+      "url": "https://www.manefa.ru/page/favorites",
+      "title": "Избранное",
+      "description": "Загружаем список избранных товаров… В вашем избранном пока пусто. НОВОСТНАЯ РАССЫЛКА*. ПОДПИСАТЬСЯ. Подпишитесь на рассылку, чтобы быть в курсе наших новых ..."
+    },
+    {
+      "url": "https://www.manefa.ru/page/sitemap",
+      "title": "Карта сайта",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети."
+    },
+    {
+      "url": "https://www.manefa.ru/page/oferta",
+      "title": "Политика конфиденциальности и оферта",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети."
+    },
+    {
+      "url": "https://www.manefa.ru/page/agreement",
+      "title": "Пользовательское соглашение",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети."
+    },
+    {
+      "url": "https://www.manefa.ru/page/discounts",
+      "title": "акции, скидки и распродажи пряжи и спиц для вязания",
+      "description": "Как купить пряжу и спицы для вязания недорого по акциям и со скидками в интернет-магазине Манефа в Спб и в Москве и с доставкой по России."
+    },
+    {
+      "url": "https://www.manefa.ru/page/exchange",
+      "title": "Обмен и возврат",
+      "description": "Пряжа - текстильный товар (ТНВЭД, Раздел XI), который, в соответствии с Постановлением Правительства РФ от 19.01.1998 N 55 (ред. от 23.12.2016), возврату и ..."
+    },
+    {
+      "url": "https://www.manefa.ru",
+      "title": "Манефа: интернет-магазин пряжи в бобинах и мотках ...",
+      "description": "manefa.ru Дом пряжи и вязания Манефа: магазин пряжи, спиц и описаний для вязания, школа вязания, пряжа оптом и в розницу."
+    },
+    {
+      "url": "https://www.manefa.ru/page/kak-zakazat",
+      "title": "Оплата и доставка - магазин пряжи Манефа",
+      "description": "Как заказать · ГОТОВЫЕ ВЯЗАНЫЕ ИЗДЕЛИЯ · ПОДАРОЧНЫЕ СЕРТИФИКАТЫ · ПРЯЖА · СПИЦЫ И КРЮЧКИ · АКСЕССУАРЫ · ОПИСАНИЯ · SALE · ХИТЫ ПРОДАЖ · НОВИНКИ · ДЛЯ ВЯЗАНИЯ ..."
+    },
+    {
+      "url": "https://www.manefa.ru/page/about-us",
+      "title": "купить пряжу и спицы в магазине в Москве и СПб",
+      "description": "Pascuali - самые шикарные составы, самая ценная пряжа для искушенных из Германии. Наш магазин удобно расположен рядом с метро: Санкт-Петербург, ул. Маяковского, ..."
+    },
+    {
+      "url": "https://www.manefa.ru/page/contacts",
+      "title": "Контакты: адреса магазинов пряжи Манефа в СПб ...",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/page/feedback",
+      "title": "Очные курсы по вязанию спицами в Москве и Петербурге",
+      "description": "Открыт набор в группы на курсы по вязанию спицами в Школу Вязания при магазине пряжи Манефа. Очные курсы вязания в Москве и Петербурге. Оплата по занятиям."
+    },
+    {
+      "url": "https://www.manefa.ru/page/o-nashey-shkole-vyazaniya"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog",
+      "title": "Полезно и бесплатно",
+      "description": "Бесплатное описание по вязанию весенне-летнего свитера из пряжи Boheme (Fonty) с воротником гольф на застежке с кнопками с видео, поясняющими сложные ..."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/pull_moussaillon",
+      "title": "Описание \"Свитер Юнга\" из хлопка со льном",
+      "description": "Вам потребуется: Пряжа: Boheme Fonty, 65% лён, 35% хлопок, 50 г 125 м. Спицы: - лицевая гладь: 3,5-4,0 мм - резинка: 2,5-3,0 мм."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/architectural_socks",
+      "title": "Описание \"Архитектурные носки\"",
+      "description": "Описание \"Архитектурные носки\" · 1 ряд: • Сдвинуть на леску петли со спицы, от которой идёт рабочая нить. · 2 ряд (с прибавками): все петли ..."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/watson_socks_8",
+      "title": "\"Вяжу носки с Ватсоном\". Часть 8, заключительная",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay ..."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/watson_socks_7",
+      "title": "\"Вяжу носки с Ватсоном\". Часть 7",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay ..."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/watson_socks_6",
+      "title": "\"Вяжу носки с Ватсоном\". Часть 6",
+      "description": "Часть 6: Верхняя часть пятки. В этот раз никаких табличек! Зато много видео Главное правило: сколько прибавили, столько и убавляем!"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/watson_socks_5",
+      "title": "\"Вяжу носки с Ватсоном\". Часть 5",
+      "description": "Наконец-то, мы переходим к вязанию пятки! Продолжая вязать по кругу, прибавки для подъёма делаем на нижней части носка (следа) через ряд."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/watson_socks_4-3",
+      "title": "\"Вяжу носки с Ватсоном\". Часть 4.3",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay ..."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/watson_socks_4-2",
+      "title": "\"Вяжу носки с Ватсоном\". Часть 4.2",
+      "description": "Часть 4.2: Узор и длина носка из пряжи средней толщины. Провязав один круговой ряд после последней прибавки на верхней части носка, ..."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/watson_socks_4-1",
+      "title": "\"Вяжу носки с Ватсоном\". Часть 4.1",
+      "description": "Часть 4.1: Узор и длина носка из толстой пряжи. Провязав один круговой ряд после последней прибавки на верхней части носка, начинаем вязать ..."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/watson_socks_3",
+      "title": "\"Вяжу носки с Ватсоном\". Часть 3",
+      "description": "Начиная со второго ряда делаем прибавки на верхней и нижней частях носка: прибавляем по 1 петле на каждой спице после первой петли и перед ..."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/httpswwwmanefarublogsblogwatson_socks_2",
+      "title": "\"Вяжу носки с Ватсоном\". Часть 2",
+      "description": "Сегодня мы разберёмся с набором петель от мыска. По нашим данным он называется «Набор Джуди», но вы могли встретить и другое название. Самое ..."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/watson_socks_1",
+      "title": "\"Вяжу носки с Ватсоном\". Часть 1",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay ..."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/pattern-first-flower-scarf"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/sviter-podsnezhnik-snowdrop-sweater-3-2-2"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/petit-beret"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/besplatnyy-sovmestnik-po-noskam"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/french-angora"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/simple-hat-sd"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/merango-hat-2"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/merango-hat-1"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/gloria-transformer-hat"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/pradera_free_pattern",
+      "title": "Вяжем шарф Padrera Wrap от Jocelyn J. Tunney",
+      "description": "Дизайнер Jocelyn J. Tunney. Размер готового изделия. Ширина 40 см, длина 188 см. Пряжа Clara Manos Del Uruguay - 4 цвета (одна пасма 100 гр."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/bag-ball-free-pattern"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/wash-tweed"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/tags/beret"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/tags/vyazhu_noski_s_vatsonom"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/tags/vyazhu_sviter_yunga",
+      "title": "Полезно и бесплатно",
+      "description": "Бесплатное описание по вязанию весенне-летнего свитера из пряжи Boheme (Fonty) с воротником гольф на застежке с кнопками с видео, поясняющими сложные моменты."
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/tags/sharf"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/tags/arhitekturnye_noski"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/tags/sovmestnik"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/tags/palantin"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/tags/sviter"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/tags/noski"
+    },
+    {
+      "url": "https://www.manefa.ru/blogs/blog/tags/reglan-sverhu"
+    },
+    {
+      "url": "https://www.manefa.ru/collection/all",
+      "title": "Каталог - пряжа и спицы напрямую из Европы",
+      "description": "Каталог · Шапка · Кардиган · Свитер · Шарф · Шаль · Бактус · Варежки · Перчатки; Для детей; Носки; Свитшот; Майка; Футболка; Платье; Летний топ; Берет; Снуд"
+    },
+    {
+      "url": "https://www.manefa.ru/collection/opisaniya-pdf",
+      "title": "ОПИСАНИЯ PDF – купить по лучшей цене",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/proekt-retsepty-po-vyazaniyu"
+    },
+    {
+      "url": "https://www.manefa.ru/collection/pryazha-performance-bolgariya",
+      "title": "Пряжа PERFORMANCE (Болгария)",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/pryazha-montresor-turtsiya",
+      "title": "Пряжа MONTRESOR – купить по лучшей цене",
+      "description": "Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google pay; МИР; Visa; MasterCard. 2025 © manefa.ru. Карта сайта. Сделано в ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/fonty",
+      "title": "Пряжа FONTY (Франция)",
+      "description": "Пряжа FONTY (Франция) · Шапка · Кардиган · Свитер · Шарф · Варежки · Для детей · Платье · Берет; Снуд. Плотность 10х10 см. Плотность 10х10 см. 0 выбрано."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/pryazha-donegal-irlandiya",
+      "title": "Пряжа DONEGAL YARNS (Ирландия)",
+      "description": "Пряжа DONEGAL YARNS (Ирландия) · ГОТОВЫЕ ВЯЗАНЫЕ ИЗДЕЛИЯ · ПОДАРОЧНЫЕ СЕРТИФИКАТЫ · ПРЯЖА · СПИЦЫ И КРЮЧКИ · АКСЕССУАРЫ · ОПИСАНИЯ · SALE · ХИТЫ ПРОДАЖ ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/manefa-pret-a-poter"
+    },
+    {
+      "url": "https://www.manefa.ru/collection/knoll",
+      "title": "Пряжа KNOLL YARNS (Англия)",
+      "description": "Дом пряжи и вязания Манефа - официальный представитель английской компании Knoll Yarns c 2014 года. Давайте перенесемся в Великобританию и подглядим за работой ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/rosarios-4",
+      "title": "Пряжа ROSARIOS 4 (Португалия) – купить по лучшей цене",
+      "description": "ИСТОРИЯ ФАБРИКИ. ROSARIOS 4 или TINTURARIA ROSARIOS QUATRO - фабрика, расположенная в горах Португалии в маленьком городке Мира-дэ-Айре с узкими уочками, ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/manos-del-uruguay",
+      "title": "Пряжа MANOS DEL URUGUAY (Уругвай)",
+      "description": "Пряжа MANOS DEL URUGUAY (Уругвай) · Шапка · Кардиган · Свитер · Шарф · Шаль · Перчатки · Платок · Жилет; Как добавка. Плотность 10х10 см. Плотность 10х10 см. 0 ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/podarochnye-sertifikaty",
+      "title": "ПОДАРОЧНЫЕ СЕРТИФИКАТЫ",
+      "description": "Предлагаем купить ПОДАРОЧНЫЕ СЕРТИФИКАТЫ в широком ассортименте.Товаров в каталоге: 1.Низкие цены. Быстрая доставка. ☎️ +7-911-779-55-35."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/spitsy-ginger",
+      "title": "Спицы GINGER",
+      "description": "Предлагаем купить Спицы GINGER в широком ассортименте.Товаров в каталоге: 1.Низкие цены. Быстрая доставка. ☎️ +7-911-779-55-35."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/pryazha",
+      "title": "Купить пряжу в интернет-магазине в Москве и в СПб",
+      "description": "ПРЯЖА · 18 п. х 26 р. · 24 п. х 30 р. · 22 п. х 30 р. · 24 п. х 32 р. · 25 п. х 32 р. · 25 п. х 36 р. · 17 п. х 20 р. · 25 п. х 28 р."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/2-in-1-crochet-hook-raku-raku"
+    },
+    {
+      "url": "https://www.manefa.ru/collection/spitsy-mindful",
+      "title": "Спицы MINDFUL – купить по лучшей цене",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/katalog-1-f2b67c",
+      "title": "Спицы и крючки NOVITA (Финляндия)",
+      "description": "Спицы и крючки NOVITA (Финляндия) · Круговые · Чулочные. Применить Сбросить фильтр. Фильтр товаров. Сортировать: По умолчанию, По популярности, По возрастанию ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/spitsy",
+      "title": "СПИЦЫ И КРЮЧКИ",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/aksessuary",
+      "title": "АКСЕССУАРЫ – купить по лучшей цене",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/opisaniya",
+      "title": "ОПИСАНИЯ – купить по лучшей цене",
+      "description": "Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google pay; МИР; Visa; MasterCard. 2025 © manefa.ru. Карта сайта. Сделано в ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/sale",
+      "title": "SALE – купить по лучшей цене",
+      "description": "Мы знаем, как важно увидеть и пощупать пряжу вживую, поэтому специально для вас ежедневно открыт наш магазин в центре Санкт-Петербурга! ... с 11 до 20!"
+    },
+    {
+      "url": "https://www.manefa.ru/collection/frontpage",
+      "title": "ХИТЫ ПРОДАЖ",
+      "description": "ХИТЫ ПРОДАЖ. В этом разделе мы собрали для вас все самое любимое и актуальное на сегодня! Микс артикулов от разных производителей. Фильтр товаров. Цена, руб."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/popular",
+      "title": "НОВИНКИ – купить по лучшей цене",
+      "description": "Предлагаем купить НОВИНКИ в широком ассортименте.Товаров в каталоге: 9.Низкие цены. Быстрая доставка. ☎️ +7-911-779-55-35."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/dlya-vyazaniya-kryuchkom",
+      "title": "ДЛЯ ВЯЗАНИЯ КРЮЧКОМ",
+      "description": "Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google pay; МИР; Visa; MasterCard. 2025 © manefa.ru. Карта сайта. Сделано в ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-fonty-alpaga"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-fonty-boheme",
+      "title": "Пряжа FONTY Boheme (35% лён, 65% хлопок)",
+      "description": "Хлопок со льном Boheme - это классическое сочетание самых популярных растительных волокон: льна и хлопка. Он подходит для детских вещей, также как для ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-fonty-cocache"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-fonty-coeurdangora"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-fonty-mongolia3"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-fonty-mongolia3-2"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-fonty-nimbus",
+      "title": "Пряжа FONTY Nimbus (100% французский меринос d' ...",
+      "description": "Благодаря этому процессу цветовая палитра NIMBUS характеризуется диапазоном из 21 цвета, от оттенков серого глубокой плотности до облачно молочного. NIMBUS - ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-fonty-supertweed",
+      "title": "Пряжа FONTY Super Tweed (95% шерсть мериноса, 5% ...",
+      "description": "Купить пряжу твид из шерсти мериноса Fonty Super Tweed из Франции с доставкой по Москве, Санкт-Петербургу и России в интернет-магазине Манефа."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-fonty-tartan3",
+      "title": "Пряжа FONTY Tartan3 (100% шерсть мериноса)",
+      "description": "TARTAN 3 - это великолепная кардная пряжа из 100% шерсти, подходит для машинной стирки. Меланжевые цвета с тональной растяжкой от ярких и глубоких до нежных ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-fonty-ombelle"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-fonty-pole",
+      "title": "Пряжа FONTY Pole (70% шерсть мериноса, 30% беби ...",
+      "description": "Пряжа FONTY Pole (70% шерсть мериноса, 30% беби альпака) ... 50 гр. = 50 м. ... Толстая пряжа из смеси альпаки с мериносом очень хорошо подходит для теплых, ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-fonty-urga",
+      "title": "Пряжа FONTY Urga (50% пух яка, 50% шерсть мериноса)",
+      "description": "Вдохновляйтесь! URGA - карданная пряжа на 100% произведенная на нашей фабрике из 50% пуха яка, обитающего в Хангайских Горах, шерсть которого гарантированно ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-belmonte",
+      "title": "Пряжа ROSARIOS 4 Belmonte (50% органическая ...",
+      "description": "Купить португальскую пряжу из мягкой органической шерсти и органического хлопка Rosarios 4 Belmonte из Франции для свитера или шапки с доставкой по Москве, ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-biowool"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-jardim",
+      "title": "Пряжа ROSARIOS 4 Jardim (45% хлопок, 55% шерсть ...",
+      "description": "Купить пряжу из хлопка и шерсти мериноса супервош Jardim Rosarios4 из Португалии для объемного свитера с доставкой по Москве, Санкт-Петербургу и России в ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-meia",
+      "title": "Пряжа ROSARIOS 4 Meia (70% меринос, 30% полиамид)",
+      "description": "Пряжа ROSARIOS 4 Meia (70% меринос, 30% полиамид) ... Долгожданная пряжа для вязания носков от португальской фабрики Rosarios 4. \"Meia\" в переводе с ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-camwool",
+      "title": "Пряжа ROSARIOS 4 Camwool (80% шерсть мериноса ...",
+      "description": "Купить пряжу из мягкого беби верблюда и шерсти мериноса Rosarios4 Camwool из Пртугалии с доставкой по Москве, Санкт-Петербургу и России в интернет-магазине ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-capuccino"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-tentacao"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-tentacao-2"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-meubem"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-aurora",
+      "title": "Пряжа ROSARIOS 4 Aurora (70% кид мохер, 30% шёлк)",
+      "description": "Тонкий кид мохер на шёлке Aurora, который совсем не сыпется! Rosarios 4 используют очень нежное сырье для этой пряжи, поэтому мягкость кид мохера на шёлке ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-madragoa",
+      "title": "Пряжа ROSARIOS 4 Madragoa (100% шёлк tussah)",
+      "description": "Пряжа ROSARIOS 4 Madragoa (100% шёлк tussah) · ВКонтакте · Одноклассники · Pinterest · Twitter · Viber · WhatsApp · Telegram. ОПИСАНИЕ. ХАРАКТЕРИСТИКИ. ОТЗЫВЫ 0."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-merino4us"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-merinoland",
+      "title": "Пряжа ROSARIOS 4 Merinoland (100% шерсть мериноса)",
+      "description": "Купить пряжу Merinoland Rosarios 4 из мягкой шерсти мериноса для вязания детских и нательных изделий с доставкой по Москве, Санкт-Петербургу и России в ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-alfama"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-sol"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-bairro-alto"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-bio-love"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-invicta"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-re-use"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-lalala",
+      "title": "Пряжа ROSARIOS 4 Lalala (100% органическая шерсть)",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-principe-real"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-for-nature"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-tradicao",
+      "title": "Пряжа ROSARIOS 4 Tradicao (100% шерсть)",
+      "description": "Пряжа ROSARIOS 4 Tradicao (100% шерсть) ... 100 гр. = 120 м. ... Подпишитесь на рассылку, чтобы быть в курсе наших новых поступлений, акций и скидок. Нажимая на ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-damasco"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-tec",
+      "title": "Пряжа ROSARIOS 4 TEC (100% шерсть)",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-soft-donegal"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-galanta",
+      "title": "Твид с кашемиром Galanta: купить пряжу на бобинах в ...",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-knoll-samarkand-1"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-knoll-samarkand-2"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-soft-donegal-2"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-atlantico-2"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-atlantico"
+    },
+    {
+      "url": "https://www.manefa.ru/product/needles-novita-40-sm"
+    },
+    {
+      "url": "https://www.manefa.ru/product/needles-novita-60-sm"
+    },
+    {
+      "url": "https://www.manefa.ru/product/needles-sock-birch-20-sm"
+    },
+    {
+      "url": "https://www.manefa.ru/product/needles-sock-colour-15-sm"
+    },
+    {
+      "url": "https://www.manefa.ru/product/novita-knitters-scissors",
+      "title": "Ножницы NOVITA для рукоделия",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/magazine-novita-new-nordic"
+    },
+    {
+      "url": "https://www.manefa.ru/product/retsept-1-bezrukavka"
+    },
+    {
+      "url": "https://www.manefa.ru/product/retsept-2-shal",
+      "title": "Рецепт № 2 \"Шаль\"",
+      "description": "ВНИМАНИЕ! Мохер Aurora вязать в 2 нити, основную пряжу Invicta - в 1 нить. Накопите 12 рецептов и получите брендированную обложку для хранения рецептов от Дома ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/glasgo-sweater-pattern",
+      "title": "Свитер \"Глазго\" из пряжи Supersoft Knoll Yarns",
+      "description": "Подробное и понятное описание в PDF по вязанию свитера спицами с втачным рукавом для двух видов пряжи от англиской компании Knoll Yarns: Supersoft (серый) и ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/retsept-3-cviter-kotoryy-podhodit-vsem"
+    },
+    {
+      "url": "https://www.manefa.ru/product/retsept-4-top-bez-rukavov"
+    },
+    {
+      "url": "https://www.manefa.ru/product/retsept-5-vozdushnyy-kardigan"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-manos-alegria"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-manos-gloria",
+      "title": "Пряжа MANOS DEL URUGUAY Gloria (100% меринос ...",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-manos-fino",
+      "title": "Пряжа ручного крашения Fino Manos del Uruguay",
+      "description": "Пряжа MANOS DEL URUGUAY Fino (70% меринос, 30% шёлк) · ВКонтакте · Одноклассники · Pinterest · Twitter · Viber · WhatsApp · Telegram. ХАРАКТЕРИСТИКИ. ОТЗЫВЫ 0."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-manos-marina"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-manos-maxima",
+      "title": "Пряжа MANOS DEL URUGUAY Maxima (100% меринос)",
+      "description": "Пряжа MANOS DEL URUGUAY Maxima (100% меринос) ... Подпишитесь на рассылку, чтобы быть в курсе наших новых поступлений, акций и скидок. Нажимая на кнопку « ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-manos-cabrito",
+      "title": "Пряжа MANOS DEL URUGUAY Cabrito (80% кид мохер, ...",
+      "description": "Пряжа MANOS DEL URUGUAY Cabrito (80% кид мохер, 20% полиамид) ... Нежнейший кид мохер ручного крашения из Уругвая. Он уже зарекомендовал себя у любителей мохера."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-manos-alpaca-heather"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-manos-clara",
+      "title": "Пряжа MANOS DEL URUGUAY Clara (100% меринос)",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-manos-franca"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-manos-serpentina",
+      "title": "Пряжа ручного крашения и прядения Serpentina Manos ...",
+      "description": "Пряжа MANOS DEL URUGUAY Serpentina (100% меринос ручного прядения) ... Подпишитесь на рассылку, чтобы быть в курсе наших новых поступлений, акций и скидок."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-manos-silk-blend"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-manos-serena",
+      "title": "Пряжа ручного крашения Serena Manos del Uruguay",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-fonty-ombelle-cones"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-bulky-light"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-terra-tweed"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-monchique"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios4-marvila",
+      "title": "Пряжа ROSARIOS 4 Marvila (100% лён)",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/podarochnyy-sertifikat",
+      "title": "ПОДАРОЧНЫЙ СЕРТИФИКАТ - купить по выгодной цене",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/retsept-6-para-beretov"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-boolero",
+      "title": "Пряжа ROSARIOS 4 Boolero (50% бамбук, 50% хлопок)",
+      "description": "Купить летнюю пряжу для вязания на спицах с доставкой по Москве, Петербургу и России в интернет-магазине пряжи Манефа."
+    },
+    {
+      "url": "https://www.manefa.ru/product/top-letniy-sad",
+      "title": "Описание по вязанию летнего топа по кругу снизу.",
+      "description": "Пряжа Alfama Rosarios 4 (100% лён, 50 г, 125 м) или пряжа Boheme Fonty (65% хлопок, 35% лён, 50 г, 125 м) – 5 (6, 6, 7, 7, 8) пасм (мотков)."
+    },
+    {
+      "url": "https://www.manefa.ru/product/needles-mindful-sock-15"
+    },
+    {
+      "url": "https://www.manefa.ru/product/needles-mindful-circle-80"
+    },
+    {
+      "url": "https://www.manefa.ru/product/needles-mindful-circle-40"
+    },
+    {
+      "url": "https://www.manefa.ru/product/needles-mindful-ic-13"
+    },
+    {
+      "url": "https://www.manefa.ru/product/needles-mindful-ic-10"
+    },
+    {
+      "url": "https://www.manefa.ru/product/needles-mindful-cable-swivel"
+    },
+    {
+      "url": "https://www.manefa.ru/product/needles-mindful-cable-teal"
+    },
+    {
+      "url": "https://www.manefa.ru/product/kryuchok-raku-raku-2-v-1"
+    },
+    {
+      "url": "https://www.manefa.ru/product/nabor-kryuchkov-raku-raku-2-v-1-5-shtuk"
+    },
+    {
+      "url": "https://www.manefa.ru/product/retsept-10-top-s-rukavami-iz-mohera"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-crochet-12"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-crochet-12-print"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-alvor",
+      "title": "Пряжа ROSARIOS 4 Alvor (50% лён, 50% шерсть)",
+      "description": "Пряжа ROSARIOS 4 Alvor (50% лён, 50% шерсть) ... Новинка из Португалии - пряжа из смеси льна и мягкой шерсти. Эта пряжа подойдет для демисезонных изделий. Шерсть ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-paillettes",
+      "title": "Пряжа ROSARIOS 4 Paillettes (100% полиэстер)",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/kardigan-vremena-goda-vesna"
+    },
+    {
+      "url": "https://www.manefa.ru/product/spitsy-mindful-krugovye-100-sm"
+    },
+    {
+      "url": "https://www.manefa.ru/product/spitsy-mindful-krugovye-60-sm"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-montresor-paul",
+      "title": "Пряжа MONTRESOR 1/14 Nm Paul (50% шерсть ягненка, ...",
+      "description": "Пряжа MONTRESOR 1/14 Nm Paul (50% шерсть ягненка, 25% вискоза, 25% полиамид) · ВКонтакте · Одноклассники · Pinterest · Twitter · Viber · WhatsApp · Telegram."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-montresor-exclusive",
+      "title": "Пряжа MONTRESOR 1/15 Nm Exclusive (28% шерсть ...",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-montresor-louis"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-montresor-216-nm-albert-100-sherst-yagnenka"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-performance-cool-wool"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-performance-sock-wool-prime"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-performance-sock-wool-prime-multi"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-performance-warm-and-cozy"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-iaque",
+      "title": "Пряжа для вязания лён и шерсть Iaque Rosarios 4",
+      "description": "Это пряжа заменяет ушедшую из России пряжу Mongolia 3 (Fonty). Iaque (произносится [йакэ]) хорошо и для аксессуаров (шапки, перчатки, шарфы ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/nabor-igl-hamanaka-3-shtuki-pryamye"
+    },
+    {
+      "url": "https://www.manefa.ru/product/nabor-markerov-petel-hamanaka"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-ciranda"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-odemira"
+    },
+    {
+      "url": "https://www.manefa.ru/product/top-morskoe-poberezhie",
+      "title": "Топ \"Морское побережье\"",
+      "description": "Описание по вязанию ажурного летнего топа из пряжи Ciranda (Rosarios 4): 48% лён, 24% хлопок, 24 % вискоза, 4% полиэстер; 50 г/ 125м."
+    },
+    {
+      "url": "https://www.manefa.ru/product/spitsy-ginger-beryozovye-krugovye-80-sm"
+    },
+    {
+      "url": "https://www.manefa.ru/product/spitsy-ginger-beryozovye-chulochnye-15-sm-5-shtuk"
+    },
+    {
+      "url": "https://www.manefa.ru/product/comb_your_alpaca_sweater",
+      "title": "Щётка PRYM для пушистой пряжи",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/nabor-bulavok-dlya-petel-knit-pro"
+    },
+    {
+      "url": "https://www.manefa.ru/product/nabor-tub-dlya-spits-knit-pro"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-montresor-josephine",
+      "title": "Пушистая альпака \"Жозефина\" - Пряжа MONTRESOR",
+      "description": "Пряжа MONTRESOR 1/5,5 Nm Joséphine (78% альпака, 19% полиамид, 3% спандекс) · температура воды 20 градусов · со средством для стирки шерсти (идеально подходят ..."
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-montresor-17-nm-gerard-78-yak-20-poliamid-2-spandeks"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-montresor-216-nm-gaspard-50-yak-50-merinos"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-4-romaria-100-portugalskaya-sherst"
+    },
+    {
+      "url": "https://www.manefa.ru/product/pryazha-rosarios-4-abraco-90-hlopok-10-kashemir"
+    },
+    {
+      "url": "https://www.manefa.ru/product/retsept-8-manishka-s-bahromoy"
+    },
+    {
+      "url": "https://www.manefa.ru/product/retsept-11-sharf-stambul"
+    },
+    {
+      "url": "https://www.manefa.ru/collection/nabory",
+      "title": "НАБОРЫ – купить по лучшей цене | manefa.ru",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/zhurnaly",
+      "title": "ЖУРНАЛЫ – купить по лучшей цене",
+      "description": "Дом пряжи и вязания с любовью к своему делу, покупателям и творчеству! Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/pushistaya-pryazha",
+      "title": "ПУШИСТАЯ ПРЯЖА – купить по лучшей цене",
+      "description": "ПУШИСТАЯ ПРЯЖА · Шапка · Кардиган · Свитер · Шаль · Варежки · Берет · Как добавка. Плотность 10х10 см. Плотность 10х10 см. 0 выбрано. Выбрать всё. 25 п. х 32 р."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/pryazha-pascuali",
+      "title": "Пряжа PASCUALI (Германия)",
+      "description": "Pascuali - это немецкий бренд пряжи, созданный Паулем Паскуали - фанатом своего дела! Пауль специалист по редким текстильным волокнам. Он объездил весь мир для ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/vyazhem-nosochki",
+      "title": "вяжем носочки",
+      "description": "Лучшая пряжа напрямую с фабрик оптом и в розницу. Соц.сети. apple pay; google pay; МИР; Visa; MasterCard. 2025 © manefa.ru. Карта сайта. Сделано в ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/byudzhetnaya-pryazha",
+      "title": "БЮДЖЕТНАЯ ПРЯЖА – купить по лучшей цене",
+      "description": "БЮДЖЕТНАЯ ПРЯЖА · ГОТОВЫЕ ВЯЗАНЫЕ ИЗДЕЛИЯ · ПОДАРОЧНЫЕ СЕРТИФИКАТЫ · ПРЯЖА · СПИЦЫ И КРЮЧКИ · АКСЕССУАРЫ · ОПИСАНИЯ · SALE · ХИТЫ ПРОДАЖ · НОВИНКИ · ДЛЯ ВЯЗАНИЯ ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/pryazha-novita",
+      "title": "Пряжа NOVITA (Финляндия)",
+      "description": "Пряжа NOVITA (Финляндия) · ГОТОВЫЕ ВЯЗАНЫЕ ИЗДЕЛИЯ · ПОДАРОЧНЫЕ СЕРТИФИКАТЫ · ПРЯЖА · СПИЦЫ И КРЮЧКИ · АКСЕССУАРЫ · ОПИСАНИЯ · SALE · ХИТЫ ПРОДАЖ · НОВИНКИ ..."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/tovar-nedeli",
+      "title": "товар недели",
+      "description": "Еженедельная скидка на пряжу и спицы для вязания по акции Товар недели в интернет-магазине и на сайте Манефа с доставкой по России, Москве и СПб."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/pryazha-alize-turtsiya",
+      "title": "Пряжа ALIZE (Турция)",
+      "description": "Предлагаем купить Пряжа ALIZE (Турция) в широком ассортименте.Товаров в каталоге: 0.Низкие цены. Быстрая доставка. ☎️ +7-911-779-55-35."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/pryazha-na-bobinah",
+      "title": "ПРЯЖА НА БОБИНАХ",
+      "description": "ПРЯЖА НА БОБИНАХ · Шерсть · Шерсть мериноса · Полиамид · Кид мохер · Як. Вес. Вес. 0 выбрано. Выбрать всё. 100 г. Метраж. Метраж. 0 выбрано. Выбрать всё. 190 м"
+    },
+    {
+      "url": "https://www.manefa.ru/collection/pryazha-dlya-detey",
+      "title": "ПРЯЖА ДЛЯ ДЕТЕЙ",
+      "description": "ПРЯЖА ДЛЯ ДЕТЕЙ · 18 п. х 26 р. · 21 п. х 31 р. · 20 п. х 30 р. · 23 п. х 30 р. · 30 п. х 35 р. · 23 п. х 25 р. · 25 п. х 37 р. · 20 п. х 32 р."
+    },
+    {
+      "url": "https://www.manefa.ru/collection/likvidatsiya-ostatkov-knoll",
+      "title": "Ликвидация остатков Knoll",
+      "description": "Ликвидация остатков Knoll. В данном разделе мы собрали пряжу, поставки которой приостановлены. Это остатки. Кликайте по названию пряжи, чтобы перейти внутрь ..."
+    }
+  ],
+  "id": "ksVdkaTjTQ6kaOj-4I7Mq",
+  "startedAt": "2025-10-03T17:33:39.626Z",
+  "endedAt": "2025-10-03T17:33:42.595Z",
+  "endpoint": "map",
+  "formState": {
+    "extractSetupCompleted": false,
+    "urls": [],
+    "extractSchema": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "company_mission": {
+          "type": "string"
+        },
+        "supports_sso": {
+          "type": "boolean"
+        },
+        "is_open_source": {
+          "type": "boolean"
+        },
+        "is_in_yc": {
+          "type": "boolean"
+        }
+      }
+    },
+    "extractPrompt": "Extract the company details, following the schema.",
+    "enableWebSearch": false,
+    "options": {
+      "onlyMainContent": false,
+      "parsePDF": true,
+      "stealthMode": false,
+      "excludeTags": [],
+      "includeTags": [],
+      "waitFor": "",
+      "timeout": "",
+      "maxAge": "2 days",
+      "ignoreSitemap": false,
+      "crawlEntireDomain": false,
+      "sitemap": "include",
+      "limit": "5000",
+      "maxDepth": "",
+      "excludePaths": [],
+      "includePaths": [],
+      "includeSubdomains": false,
+      "search": "",
+      "scrapeContentFromSearchResults": true,
+      "timeBasedSearch": "",
+      "location": "",
+      "prompt": ""
+    },
+    "formats": [
+      "markdown"
+    ],
+    "sources": [
+      "web"
+    ],
+    "categories": [],
+    "jsonSchema": {
+      "type": "object",
+      "required": [],
+      "properties": {
+        "company_name": {
+          "type": "string"
+        },
+        "company_description": {
+          "type": "string"
+        }
+      }
+    },
+    "agent": {},
+    "url": "www.manefa.ru/",
+    "endpoint": "map"
+  },
+  "status": "success",
+  "version": "gf5n3mnKpKdkI43B0hMcD"
+}
