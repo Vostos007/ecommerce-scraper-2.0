@@ -441,10 +441,10 @@ function deriveWarnings(
 
 export async function collectProxyStats(): Promise<CollectedProxyStats> {
   const repoRoot = resolveRepoPath('.');
- const catalog = await buildProxyCatalog(repoRoot);
- const firecrawlSummary = await loadFirecrawlSummary(repoRoot);
- const logEvents = await gatherLogEvents(repoRoot);
- const summaryAggregates = aggregateFirecrawl(firecrawlSummary);
+  const catalog = await buildProxyCatalog(repoRoot);
+  const firecrawlSummary = await loadFirecrawlSummary(repoRoot);
+  const logEvents = await gatherLogEvents(repoRoot);
+  const summaryAggregates = aggregateFirecrawl(firecrawlSummary);
 
   const totalProxies = catalog.size;
   const burned = logEvents.burned.size;
@@ -465,7 +465,7 @@ export async function collectProxyStats(): Promise<CollectedProxyStats> {
   );
   const warnings = deriveWarnings(successRate, healthyProxies, totalProxies, autoscale);
 
-  return {
+  const payload: CollectedProxyStats = {
     total_proxies: totalProxies,
     active_proxies: activeProxies,
     healthy_proxies: healthyProxies,
@@ -474,17 +474,43 @@ export async function collectProxyStats(): Promise<CollectedProxyStats> {
     total_requests: summaryAggregates.totalRequests,
     successful_requests: summaryAggregates.successfulRequests,
     success_rate: successRate,
-    proxy_protocols: Object.keys(proxyProtocols).length ? proxyProtocols : undefined,
-    proxy_countries: Object.keys(proxyCountries).length ? proxyCountries : undefined,
     top_performing_proxies: topProxies,
     autoscale,
-    autoscale_concurrency: Number(autoscale.target_concurrency ?? 0) || undefined,
-    optimal_proxy_count: Number(autoscale.optimal_proxy_count ?? 0) || undefined,
-    recommended_purchase: Number(autoscale.recommended_purchase ?? 0) || undefined,
-    autoscale_status: typeof autoscale.status === 'string' ? (autoscale.status as string) : undefined,
-    purchase_estimate: Number(autoscale.estimated_cost ?? 0) || undefined,
-    premium_proxy_stats: premiumStats,
-    warnings: warnings.length ? warnings : undefined,
     generated_at: determineGeneratedAt(summaryAggregates, logEvents.timestamps)
   };
+
+  if (Object.keys(proxyProtocols).length) {
+    payload.proxy_protocols = proxyProtocols;
+  }
+  if (Object.keys(proxyCountries).length) {
+    payload.proxy_countries = proxyCountries;
+  }
+  const autoscaleConcurrency = Number(autoscale.target_concurrency ?? 0);
+  if (autoscaleConcurrency > 0) {
+    payload.autoscale_concurrency = autoscaleConcurrency;
+  }
+  const optimalCount = Number(autoscale.optimal_proxy_count ?? 0);
+  if (optimalCount > 0) {
+    payload.optimal_proxy_count = optimalCount;
+  }
+  const recommended = Number(autoscale.recommended_purchase ?? 0);
+  if (recommended > 0) {
+    payload.recommended_purchase = recommended;
+  }
+  const autoscaleStatus = autoscale.status;
+  if (typeof autoscaleStatus === 'string') {
+    payload.autoscale_status = autoscaleStatus;
+  }
+  const estimate = Number(autoscale.estimated_cost ?? 0);
+  if (estimate > 0) {
+    payload.purchase_estimate = estimate;
+  }
+  if (premiumStats) {
+    payload.premium_proxy_stats = premiumStats;
+  }
+  if (warnings.length) {
+    payload.warnings = warnings;
+  }
+
+  return payload;
 }

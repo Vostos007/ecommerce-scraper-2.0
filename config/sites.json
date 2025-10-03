@@ -81,7 +81,10 @@
             "limit": 60,
             "sitemap": "include",
             "include_subdomains": false,
-            "fallback_limits": [30, 10]
+            "fallback_limits": [
+              30,
+              10
+            ]
           }
         }
       },
@@ -251,7 +254,10 @@
           "limit": 60,
           "sitemap": "include",
           "include_subdomains": false,
-          "fallback_limits": [30, 10]
+          "fallback_limits": [
+            30,
+            10
+          ]
         }
       },
       "max_products": 10000,
@@ -301,7 +307,10 @@
             "limit": 0,
             "sitemap": "include",
             "include_subdomains": false,
-            "fallback_limits": [15, 5]
+            "fallback_limits": [
+              15,
+              5
+            ]
           }
         },
         "cms_detection": {
@@ -518,6 +527,24 @@
         }
       },
       "max_products": 10000
+    },
+    {
+      "name": "Manefa",
+      "domain": "manefa.ru",
+      "base_url": "https://www.manefa.ru",
+      "backend": "insales",
+      "overrides": {
+        "scraping": {
+          "product_patterns": [
+            "/catalog/"
+          ],
+          "sitemap_sources": [
+            "https://www.manefa.ru/sitemap.xml"
+          ],
+          "price_selector": "span.product-price",
+          "stock_selector": "span.js-stock-prod-2"
+        }
+      }
     }
   ]
 }

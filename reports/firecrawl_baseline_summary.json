@@ -30,7 +30,9 @@
     "total_variations": 0,
     "variations_total_stock": 0,
     "success_rate": null,
-    "errors": ["Последний экспорт не найден"],
+    "errors": [
+      "Последний экспорт не найден"
+    ],
     "updated_at": "2025-09-25T18:45:00Z"
   },
   "ili-ili.com": {
@@ -54,5 +56,19 @@
     "variations_total_stock": 1760,
     "success_rate": 96.8,
     "updated_at": "2025-09-29T20:15:00Z"
+  },
+  "manefa.ru": {
+    "status": "missing",
+    "products": 0,
+    "products_with_price": 0,
+    "products_total_stock": 0,
+    "products_with_variations": 0,
+    "total_variations": 0,
+    "variations_total_stock": 0,
+    "success_rate": null,
+    "errors": [
+      "Экспорт latest.json не найден"
+    ],
+    "updated_at": null
   }
 }
