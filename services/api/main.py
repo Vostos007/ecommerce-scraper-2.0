@@ -32,9 +32,9 @@ async def lifespan(app: FastAPI):
 
     # Initialize database manager
     try:
-        app.state.db = DatabaseManager()
-        app.state.db.init_db()
-        print("[API] Database initialized")
+        app.state.db = DatabaseManager(settings.database_url)
+        await app.state.db.init_pool()
+        print("[API] Database pool initialized")
     except Exception as e:
         print(f"[API] Database initialization failed: {e}")
         app.state.db = None

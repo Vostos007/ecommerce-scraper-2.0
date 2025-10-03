@@ -34,6 +34,27 @@ const METRIC_KEYS = [
 const EXPORT_FILENAME = 'latest.json';
 const STOCK_KEYS = ['stock_quantity', 'stock', 'inventory', 'available', 'quantity'] as const;
 
+const STATUS_MAP: Record<string, 'ok' | 'missing' | 'error'> = {
+  ok: 'ok',
+  ready: 'ok',
+  success: 'ok',
+  missing: 'missing',
+  missing_export: 'missing',
+  missing_map: 'missing',
+  unknown: 'missing',
+  pending: 'missing',
+  error: 'error',
+  failed: 'error'
+};
+
+function normalizeStatus(value: unknown): 'ok' | 'missing' | 'error' {
+  if (typeof value !== 'string') {
+    return 'missing';
+  }
+  const normalized = value.trim().toLowerCase();
+  return STATUS_MAP[normalized] ?? 'missing';
+}
+
 interface CacheEntry {
   data: z.infer<typeof summaryResponseSchema>;
   expiresAt: number;
@@ -339,12 +360,24 @@ async function loadSummaryFromDisk(stat: Awaited<ReturnType<typeof fs.stat>>): P
 
     const candidate: Record<string, unknown> = {};
     for (const key of METRIC_KEYS) {
-      if (key in metrics) {
-        const value = (metrics as Record<string, unknown>)[key];
-        if (value !== null && value !== undefined) {
-          candidate[key] = value;
-        }
+      if (!(key in metrics)) {
+        continue;
       }
+      const rawValue = (metrics as Record<string, unknown>)[key];
+      if (rawValue === null || rawValue === undefined) {
+        continue;
+      }
+
+      if (key === 'status') {
+        candidate[key] = normalizeStatus(rawValue);
+        continue;
+      }
+
+      candidate[key] = rawValue;
+    }
+
+    if (!('status' in candidate)) {
+      candidate.status = 'missing';
     }
 
     const result = siteSummaryMetricsSchema.safeParse(candidate);
