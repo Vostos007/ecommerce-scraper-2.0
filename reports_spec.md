@@ -32,10 +32,11 @@
 
 ### 2.1 full.csv
 ```
-url,final_url,http_status,fetched_at,title,h1,price,currency,availability,sku,brand,category,breadcrumbs,images,attrs_json,text_hash
+url,final_url,http_status,fetched_at,title,h1,price,stock,stock_value,currency,availability,sku,brand,category,breadcrumbs,images,attrs_json,text_hash
 ```
 - `price` — десятичное число, разделитель `.`.
-- `stock_value` хранится в Excel, в CSV не обязателен (можно добавить как отдельную колонку при необходимости).
+- `stock` — агрегированный остаток по карточке (из суммарного наличия вариаций или числового поля).
+- `stock_value = price * stock` — общая стоимость остатка в валюте источника.
 
 ### 2.2 seo.csv
 ```

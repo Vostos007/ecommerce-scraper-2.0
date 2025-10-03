@@ -51,6 +51,8 @@ FULL_CSV_COLUMNS: Tuple[str, ...] = (
     "title",
     "h1",
     "price",
+    "stock",
+    "stock_value",
     "currency",
     "availability",
     "sku",
@@ -457,6 +459,38 @@ def _normalize_price(value: Any) -> Optional[str]:
     return str(value)
 
 
+def _normalize_stock(value: Any) -> Optional[str]:
+    if value is None:
+        return None
+    if isinstance(value, (list, dict)):
+        return json.dumps(value, ensure_ascii=False)
+    if isinstance(value, (int, float)):
+        numeric = float(value)
+        if numeric.is_integer():
+            return str(int(numeric))
+        return f"{numeric:.2f}"
+    if isinstance(value, str):
+        cleaned = value.strip()
+        if not cleaned:
+            return None
+        numeric = _to_float(cleaned)
+        if numeric is not None:
+            if numeric.is_integer():
+                return str(int(numeric))
+            return f"{numeric:.2f}"
+        return cleaned
+    return str(value)
+
+
+def _compute_stock_value(price_value: Any, stock_value: Any) -> Optional[str]:
+    price_numeric = _to_float(price_value)
+    stock_numeric = _to_float(stock_value)
+    if price_numeric is None or stock_numeric is None:
+        return None
+    total = price_numeric * stock_numeric
+    return f"{total:.2f}"
+
+
 def _normalize_availability(product: Dict[str, Any]) -> Optional[str]:
     availability = _first_value(
         product,
@@ -662,6 +696,14 @@ def _build_full_rows(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             continue
 
         price_candidate = _choose_price(product)
+        stock_candidate = _first_value(
+            product,
+            "stock",
+            "stock_quantity",
+            "quantity",
+            "inventory",
+            "available",
+        )
         row: Dict[str, Any] = {
             "url": url,
             "final_url": _clean_str(
@@ -682,6 +724,8 @@ def _build_full_rows(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             "title": _clean_str(_first_value(product, "title", "name")),
             "h1": _clean_str(_first_value(product, "h1", "seo_h1")),
             "price": _normalize_price(price_candidate),
+            "stock": _normalize_stock(stock_candidate),
+            "stock_value": _compute_stock_value(price_candidate, stock_candidate),
             "currency": _clean_str(
                 _first_value(product, "currency", "price_currency", "currency_code")
             ),
