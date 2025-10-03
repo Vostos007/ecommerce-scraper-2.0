@@ -21,7 +21,7 @@ export function SiteDashboardClient({ site }: SiteDashboardClientProps) {
   const { setActiveSite } = useDashboardStore();
   const { startExport, status, latestJobId, isRunning } = useExportJob(site);
   const [downloadFormat, setDownloadFormat] = useState<'csv' | 'xlsx'>('csv');
-  const [downloadSheet, setDownloadSheet] = useState<'full_data' | 'seo' | 'changes'>('full_data');
+  const [downloadSheet, setDownloadSheet] = useState<'full' | 'seo' | 'diff'>('full');
   const { data: siteDetails, error } = useQuery<SiteSummary, Error>({
     queryKey: ['site', site],
     queryFn: () => getSiteDetail(site),
@@ -139,11 +139,11 @@ export function SiteDashboardClient({ site }: SiteDashboardClientProps) {
                   aria-label="Набор данных"
                   className="w-full sm:w-48"
                   value={downloadSheet}
-                  onChange={(event) => setDownloadSheet(event.target.value as 'full_data' | 'seo' | 'changes')}
+                  onChange={(event) => setDownloadSheet(event.target.value as 'full' | 'seo' | 'diff')}
                   options={[
-                    { value: 'full_data', label: 'Товары (full_data)' },
-                    { value: 'seo', label: 'SEO (seo)' },
-                    { value: 'changes', label: 'Изменения (changes)' }
+                    { value: 'full', label: 'Товары (full.csv)' },
+                    { value: 'seo', label: 'SEO (seo.csv)' },
+                    { value: 'diff', label: 'Изменения (diff.csv)' }
                   ]}
                 />
               )}

@@ -35,12 +35,63 @@ _PLACEHOLDER_NAME_PREFIX = "Sample Product "
 _PLACEHOLDER_SCRAPED_AT_PREFIX = "2024-10-01T12:"
 
 CSV_SHEETS: Dict[str, str] = {
-    "full_data": "full_data.csv",
+    "full": "full.csv",
     "seo": "seo.csv",
-    "changes": "changes.csv",
+    "diff": "diff.csv",
 }
 
 EXPORT_DISPLAY_TZ = ZoneInfo("Europe/Moscow")
+
+
+FULL_CSV_COLUMNS: Tuple[str, ...] = (
+    "url",
+    "final_url",
+    "http_status",
+    "fetched_at",
+    "title",
+    "h1",
+    "price",
+    "currency",
+    "availability",
+    "sku",
+    "brand",
+    "category",
+    "breadcrumbs",
+    "images",
+    "attrs_json",
+    "text_hash",
+)
+
+SEO_CSV_COLUMNS: Tuple[str, ...] = (
+    "url",
+    "fetched_at",
+    "title",
+    "meta_description",
+    "h1",
+    "og_title",
+    "og_description",
+    "og_image",
+    "twitter_title",
+    "twitter_description",
+    "canonical",
+    "robots",
+    "hreflang",
+    "images_alt_joined",
+)
+
+DIFF_CSV_COLUMNS: Tuple[str, ...] = (
+    "url",
+    "prev_crawl_at",
+    "curr_crawl_at",
+    "change_type",
+    "fields_changed",
+    "price_prev",
+    "price_curr",
+    "availability_prev",
+    "availability_curr",
+    "title_prev",
+    "title_curr",
+)
 
 
 @dataclass(frozen=True)
@@ -307,118 +358,641 @@ def _format_elapsed_between_exports(
     return f"{hours:.1f} h / {days:.2f} d"
 
 
-def _flatten_products(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """Flatten products and their variations into export-ready rows."""
+def _has_value(value: Any) -> bool:
+    if value is None:
+        return False
+    if isinstance(value, str):
+        return bool(value.strip())
+    if isinstance(value, (list, tuple, set, dict)):
+        return bool(value)
+    return True
 
-    flattened: List[Dict[str, Any]] = []
-    row_sequence = 0
+
+def _first_value(source: Dict[str, Any], *keys: str) -> Any:
+    for key in keys:
+        if key in source:
+            value = source[key]
+            if _has_value(value):
+                return value
+    return None
+
+
+def _clean_str(value: Any) -> Optional[str]:
+    if value is None:
+        return None
+    if isinstance(value, str):
+        cleaned = value.strip()
+        return cleaned or None
+    return str(value)
+
+
+def _normalize_int(value: Any) -> Optional[int]:
+    if isinstance(value, bool):
+        return int(value)
+    if isinstance(value, int):
+        return value
+    if isinstance(value, float):
+        try:
+            return int(value)
+        except (TypeError, ValueError):  # pragma: no cover - defensive guard
+            return None
+    if isinstance(value, str):
+        cleaned = value.strip()
+        if not cleaned:
+            return None
+        try:
+            return int(float(cleaned))
+        except ValueError:
+            return None
+    return None
+
+
+def _normalize_timestamp_field(value: Any) -> Optional[str]:
+    if value is None:
+        return None
+    if isinstance(value, str):
+        cleaned = value.strip()
+        return cleaned or None
+    if isinstance(value, datetime):
+        dt = value
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        else:
+            dt = dt.astimezone(timezone.utc)
+        iso_value = dt.isoformat()
+        if iso_value.endswith("+00:00"):
+            iso_value = iso_value[:-6] + "Z"
+        return iso_value
+    return None
+
+
+def _choose_price(product: Dict[str, Any]) -> Any:
+    direct_value = _first_value(product, "price", "base_price", "current_price")
+    variations = product.get("variations")
+    if isinstance(variations, list):
+        for variation in variations:
+            if not isinstance(variation, dict):
+                continue
+            candidate = _first_value(
+                variation, "price", "variation_price", "current_price"
+            )
+            if not _has_value(candidate):
+                continue
+            numeric = _to_float(candidate)
+            if numeric is not None and numeric > 0:
+                return numeric
+            return candidate
+    return direct_value
+
+
+def _normalize_price(value: Any) -> Optional[str]:
+    if value is None:
+        return None
+    numeric = _to_float(value)
+    if numeric is not None:
+        return f"{numeric:.2f}"
+    if isinstance(value, str):
+        cleaned = value.strip()
+        return cleaned or None
+    return str(value)
+
+
+def _normalize_availability(product: Dict[str, Any]) -> Optional[str]:
+    availability = _first_value(
+        product,
+        "availability",
+        "stock_status",
+        "availability_status",
+    )
+    if isinstance(availability, str):
+        cleaned = availability.strip()
+        return cleaned or None
+
+    in_stock_flag = product.get("in_stock")
+    if isinstance(in_stock_flag, bool):
+        return "in_stock" if in_stock_flag else "out_of_stock"
+
+    stock_value = _first_value(product, "stock", "stock_quantity", "quantity")
+    stock_numeric = _to_float(stock_value)
+    if stock_numeric is not None:
+        return "in_stock" if stock_numeric > 0 else "out_of_stock"
+
+    variations = product.get("variations")
+    if isinstance(variations, list) and variations:
+        for variation in variations:
+            if not isinstance(variation, dict):
+                continue
+            flag = variation.get("in_stock")
+            if isinstance(flag, bool):
+                if flag:
+                    return "in_stock"
+                continue
+            v_stock = _first_value(variation, "stock", "stock_quantity")
+            v_numeric = _to_float(v_stock)
+            if v_numeric is not None and v_numeric > 0:
+                return "in_stock"
+        return "out_of_stock"
+
+    return None
+
+
+def _normalize_category(value: Any) -> Optional[str]:
+    if isinstance(value, str):
+        cleaned = value.strip()
+        return cleaned or None
+    if isinstance(value, dict):
+        candidate = _first_value(value, "name", "title", "label", "category")
+        return _clean_str(candidate)
+    if isinstance(value, (list, tuple, set)):
+        parts: List[str] = []
+        for item in value:
+            if isinstance(item, str):
+                cleaned = item.strip()
+                if cleaned:
+                    parts.append(cleaned)
+            elif isinstance(item, dict):
+                label = _first_value(item, "name", "title", "label")
+                if isinstance(label, str):
+                    cleaned = label.strip()
+                    if cleaned:
+                        parts.append(cleaned)
+        if parts:
+            return ">".join(parts)
+    return None
+
+
+def _normalize_breadcrumbs(value: Any) -> Optional[str]:
+    if isinstance(value, str):
+        cleaned = value.strip()
+        return cleaned or None
+    if isinstance(value, (list, tuple)):
+        parts: List[str] = []
+        for item in value:
+            if isinstance(item, str):
+                cleaned = item.strip()
+                if cleaned:
+                    parts.append(cleaned)
+            elif isinstance(item, dict):
+                label = _first_value(item, "label", "name", "title", "text")
+                if isinstance(label, str):
+                    cleaned = label.strip()
+                    if cleaned:
+                        parts.append(cleaned)
+        if parts:
+            return ">".join(parts)
+    return None
+
+
+def _normalize_images(value: Any) -> Optional[str]:
+    if isinstance(value, str):
+        cleaned = value.strip()
+        return cleaned or None
+
+    urls: List[str] = []
+    if isinstance(value, (list, tuple, set)):
+        for item in value:
+            candidate: Optional[str] = None
+            if isinstance(item, str):
+                candidate = item.strip()
+            elif isinstance(item, dict):
+                candidate = _first_value(item, "url", "src", "href")
+                if isinstance(candidate, str):
+                    candidate = candidate.strip()
+                else:
+                    candidate = None
+            if candidate:
+                urls.append(candidate)
+    if urls:
+        return "|".join(urls)
+    return None
+
+
+def _normalize_attrs_payload(product: Dict[str, Any]) -> Optional[str]:
+    raw_attrs = product.get("attrs_json")
+    if isinstance(raw_attrs, str):
+        cleaned = raw_attrs.strip()
+        return cleaned or None
+
+    aggregated: Dict[str, Any] = {}
+    if isinstance(raw_attrs, (dict, list)) and raw_attrs:
+        aggregated["attrs_json"] = raw_attrs
+
+    for key in (
+        "attributes",
+        "attrs",
+        "characteristics",
+        "properties",
+        "specs",
+        "specifications",
+        "details",
+    ):
+        value = product.get(key)
+        if isinstance(value, (dict, list)) and value:
+            aggregated[key] = value
+
+    variations = product.get("variations")
+    if isinstance(variations, list) and variations:
+        aggregated.setdefault("variations", variations)
+
+    if not aggregated:
+        return None
+
+    try:
+        return json.dumps(aggregated, ensure_ascii=False)
+    except (TypeError, ValueError):  # pragma: no cover - defensive guard
+        return None
+
+
+def _normalize_hreflang(value: Any) -> Optional[str]:
+    if isinstance(value, str):
+        cleaned = value.strip()
+        return cleaned or None
+
+    entries: List[str] = []
+    if isinstance(value, (list, tuple, set)):
+        for item in value:
+            if isinstance(item, str):
+                cleaned = item.strip()
+                if cleaned:
+                    entries.append(cleaned)
+            elif isinstance(item, dict):
+                lang = _clean_str(_first_value(item, "lang", "locale"))
+                href = _clean_str(_first_value(item, "url", "href"))
+                if lang and href:
+                    entries.append(f"{lang}|{href}")
+                elif lang:
+                    entries.append(lang)
+                elif href:
+                    entries.append(href)
+    if entries:
+        return "|".join(entries)
+    return None
+
+
+def _normalize_images_alt(value: Any) -> Optional[str]:
+    if isinstance(value, str):
+        cleaned = value.strip()
+        return cleaned or None
+    if isinstance(value, (list, tuple, set)):
+        alts: List[str] = []
+        for item in value:
+            if isinstance(item, str):
+                cleaned = item.strip()
+                if cleaned:
+                    alts.append(cleaned)
+            elif isinstance(item, dict):
+                text = _first_value(item, "alt", "text", "label")
+                if isinstance(text, str):
+                    cleaned = text.strip()
+                    if cleaned:
+                        alts.append(cleaned)
+        if alts:
+            return "|".join(alts)
+    return None
+
+
+def _build_full_rows(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    rows: List[Dict[str, Any]] = []
     for product in products:
         if not isinstance(product, dict):
             continue
 
-        base_url = product.get("url") or ""
-        name = product.get("name") or ""
-        scraped_at = product.get("scraped_at")
-        seo_h1 = product.get("seo_h1")
-        seo_title = product.get("seo_title")
-        seo_meta_description = product.get("seo_meta_description")
+        url = _clean_str(product.get("url"))
+        if not url:
+            continue
 
-        def _make_row() -> Dict[str, Any]:
-            row: Dict[str, Any] = {
-                "url": base_url,
-                "name": name,
-                "price": _serialize_value(product.get("price")),
-                "base_price": _serialize_value(product.get("base_price")),
-                "scraped_at": scraped_at,
-                "seo_h1": seo_h1,
-                "seo_title": seo_title,
-                "seo_meta_description": seo_meta_description,
+        price_candidate = _choose_price(product)
+        row: Dict[str, Any] = {
+            "url": url,
+            "final_url": _clean_str(
+                _first_value(product, "final_url", "resolved_url", "canonical_url")
+            ),
+            "http_status": _normalize_int(
+                _first_value(product, "http_status", "status_code")
+            ),
+            "fetched_at": _normalize_timestamp_field(
+                _first_value(
+                    product,
+                    "fetched_at",
+                    "scraped_at",
+                    "collected_at",
+                    "timestamp",
+                )
+            ),
+            "title": _clean_str(_first_value(product, "title", "name")),
+            "h1": _clean_str(_first_value(product, "h1", "seo_h1")),
+            "price": _normalize_price(price_candidate),
+            "currency": _clean_str(
+                _first_value(product, "currency", "price_currency", "currency_code")
+            ),
+            "availability": _normalize_availability(product),
+            "sku": _clean_str(
+                _first_value(product, "sku", "article", "product_id", "id")
+            ),
+            "brand": _clean_str(_first_value(product, "brand", "manufacturer")),
+            "category": _normalize_category(
+                _first_value(product, "category", "categories")
+            ),
+            "breadcrumbs": _normalize_breadcrumbs(
+                _first_value(product, "breadcrumbs", "breadcrumb", "breadcrumb_path")
+            ),
+            "images": _normalize_images(
+                _first_value(product, "images", "image_urls", "gallery")
+            ),
+            "attrs_json": _normalize_attrs_payload(product),
+            "text_hash": _clean_str(
+                _first_value(product, "text_hash", "content_hash", "body_hash")
+            ),
+        }
+        rows.append(row)
+    return rows
+
+
+def _build_full_dataframe(products: List[Dict[str, Any]]) -> "pd.DataFrame":
+    pd = _ensure_pandas()
+    rows = _build_full_rows(products)
+    if not rows:
+        return pd.DataFrame(columns=FULL_CSV_COLUMNS)
+
+    dataframe = pd.DataFrame(rows)
+    for column in FULL_CSV_COLUMNS:
+        if column not in dataframe.columns:
+            dataframe[column] = None
+    dataframe = dataframe[list(FULL_CSV_COLUMNS)]
+    return dataframe
+
+
+def _build_seo_rows(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    rows: List[Dict[str, Any]] = []
+    seen_urls: set[str] = set()
+
+    for product in products:
+        if not isinstance(product, dict):
+            continue
+
+        url = _clean_str(product.get("url"))
+        if not url or url in seen_urls:
+            continue
+        seen_urls.add(url)
+
+        fetched_at = _normalize_timestamp_field(
+            _first_value(product, "fetched_at", "scraped_at", "collected_at", "timestamp")
+        )
+
+        og_block: Dict[str, Any] = {}
+        for key in ("open_graph", "og", "og_data"):
+            candidate = product.get(key)
+            if isinstance(candidate, dict):
+                og_block = candidate
+                break
+
+        twitter_block: Dict[str, Any] = {}
+        for key in ("twitter", "twitter_card", "twitter_data"):
+            candidate = product.get(key)
+            if isinstance(candidate, dict):
+                twitter_block = candidate
+                break
+
+        hreflang_source = (
+            product.get("hreflang")
+            or product.get("alternate_locales")
+            or product.get("alternates")
+            or product.get("alternate_hreflang")
+        )
+
+        images_alt_source = (
+            product.get("images_alt")
+            or product.get("image_alts")
+            or product.get("alt_texts")
+        )
+
+        row: Dict[str, Any] = {
+            "url": url,
+            "fetched_at": fetched_at,
+            "title": _clean_str(
+                _first_value(product, "seo_title", "title", "name")
+            ),
+            "meta_description": _clean_str(
+                _first_value(product, "seo_meta_description", "meta_description")
+            ),
+            "h1": _clean_str(_first_value(product, "seo_h1", "h1")),
+            "og_title": _clean_str(
+                _first_value(product, "og_title")
+                or _first_value(og_block, "title", "og:title")
+            ),
+            "og_description": _clean_str(
+                _first_value(product, "og_description")
+                or _first_value(og_block, "description", "og:description")
+            ),
+            "og_image": _clean_str(
+                _first_value(product, "og_image")
+                or _first_value(og_block, "image", "og:image")
+            ),
+            "twitter_title": _clean_str(
+                _first_value(product, "twitter_title")
+                or _first_value(twitter_block, "title", "twitter:title")
+            ),
+            "twitter_description": _clean_str(
+                _first_value(product, "twitter_description")
+                or _first_value(twitter_block, "description", "twitter:description")
+            ),
+            "canonical": _clean_str(
+                _first_value(product, "canonical", "canonical_url")
+            ),
+            "robots": _clean_str(
+                _first_value(product, "robots", "meta_robots")
+            ),
+            "hreflang": _normalize_hreflang(hreflang_source),
+            "images_alt_joined": _normalize_images_alt(images_alt_source),
+        }
+        rows.append(row)
+
+    return rows
+
+
+def _build_seo_dataframe(products: List[Dict[str, Any]]) -> "pd.DataFrame":
+    pd = _ensure_pandas()
+    rows = _build_seo_rows(products)
+    if not rows:
+        return pd.DataFrame(columns=SEO_CSV_COLUMNS)
+
+    dataframe = pd.DataFrame(rows)
+    for column in SEO_CSV_COLUMNS:
+        if column not in dataframe.columns:
+            dataframe[column] = None
+    dataframe = dataframe[list(SEO_CSV_COLUMNS)]
+    return dataframe
+
+
+def _dataframe_records(
+    dataframe: Optional["pd.DataFrame"], *, pd_module
+) -> Dict[str, Dict[str, Any]]:
+    if dataframe is None or dataframe.empty:
+        return {}
+
+    records = dataframe.to_dict(orient="records")
+    result: Dict[str, Dict[str, Any]] = {}
+    for record in records:
+        cleaned: Dict[str, Any] = {}
+        for key, value in record.items():
+            cleaned[key] = None if pd_module.isna(value) else value
+        url = cleaned.get("url")
+        if isinstance(url, str) and url:
+            result[url] = cleaned
+    return result
+
+
+def _build_diff_dataframe(
+    new_df: "pd.DataFrame",
+    previous_df: Optional["pd.DataFrame"],
+) -> "pd.DataFrame":
+    pd = _ensure_pandas()
+
+    current_records = _dataframe_records(new_df, pd_module=pd)
+    previous_records = _dataframe_records(previous_df, pd_module=pd)
+
+    urls = sorted(set(current_records) | set(previous_records))
+    if not urls:
+        return pd.DataFrame(columns=DIFF_CSV_COLUMNS)
+
+    diff_rows: List[Dict[str, Any]] = []
+
+    for url in urls:
+        current = current_records.get(url)
+        previous = previous_records.get(url)
+
+        if not current and not previous:
+            continue
+
+        if current and not previous:
+            change_type = "ADDED"
+            fields_changed = "added"
+            diff_rows.append(
+                {
+                    "url": url,
+                    "prev_crawl_at": None,
+                    "curr_crawl_at": current.get("fetched_at"),
+                    "change_type": change_type,
+                    "fields_changed": fields_changed,
+                    "price_prev": None,
+                    "price_curr": current.get("price"),
+                    "availability_prev": None,
+                    "availability_curr": current.get("availability"),
+                    "title_prev": None,
+                    "title_curr": current.get("title"),
+                }
+            )
+            continue
+
+        if previous and not current:
+            change_type = "REMOVED"
+            fields_changed = "removed"
+            diff_rows.append(
+                {
+                    "url": url,
+                    "prev_crawl_at": previous.get("fetched_at"),
+                    "curr_crawl_at": None,
+                    "change_type": change_type,
+                    "fields_changed": fields_changed,
+                    "price_prev": previous.get("price"),
+                    "price_curr": None,
+                    "availability_prev": previous.get("availability"),
+                    "availability_curr": None,
+                    "title_prev": previous.get("title"),
+                    "title_curr": None,
+                }
+            )
+            continue
+
+        if not current or not previous:
+            continue
+
+        fields_changed_list: List[str] = []
+
+        price_prev_value = previous.get("price")
+        price_curr_value = current.get("price")
+        if _to_float(price_prev_value) != _to_float(price_curr_value):
+            fields_changed_list.append("price")
+
+        availability_prev = previous.get("availability")
+        availability_curr = current.get("availability")
+        if (availability_prev or availability_curr) and (
+            availability_prev != availability_curr
+        ):
+            fields_changed_list.append("availability")
+
+        title_prev = previous.get("title")
+        title_curr = current.get("title")
+        if (title_prev or title_curr) and title_prev != title_curr:
+            fields_changed_list.append("title")
+
+        text_hash_prev = previous.get("text_hash")
+        text_hash_curr = current.get("text_hash")
+        if (text_hash_prev or text_hash_curr) and text_hash_prev != text_hash_curr:
+            fields_changed_list.append("text_hash")
+
+        if not fields_changed_list:
+            continue
+
+        change_type = "MODIFIED"
+        diff_rows.append(
+            {
+                "url": url,
+                "prev_crawl_at": previous.get("fetched_at"),
+                "curr_crawl_at": current.get("fetched_at"),
+                "change_type": change_type,
+                "fields_changed": ";".join(fields_changed_list),
+                "price_prev": price_prev_value,
+                "price_curr": price_curr_value,
+                "availability_prev": availability_prev,
+                "availability_curr": availability_curr,
+                "title_prev": title_prev,
+                "title_curr": title_curr,
             }
-            for key, value in product.items():
-                if key in {"variations"} or key in row:
-                    continue
-                row[key] = _serialize_value(value)
-            return row
+        )
 
-        variations = product.get("variations")
-        parent_total_stock: float = 0.0
-        parent_total_value: float = 0.0
+    if not diff_rows:
+        return pd.DataFrame(columns=DIFF_CSV_COLUMNS)
 
-        variation_rows: List[Dict[str, Any]] = []
-        if isinstance(variations, list) and variations:
-            for variation in variations:
-                if not isinstance(variation, dict):
-                    continue
-                row = _make_row()
-                row["row_type"] = "variation"
-                row["variation_value"] = variation.get("value")
-                row["variation_type"] = variation.get("type")
-                row["variation_price"] = variation.get("price")
-                row["variation_stock"] = variation.get("stock")
-                row["variation_url"] = variation.get("url") or variation.get("link")
+    dataframe = pd.DataFrame(diff_rows)
+    for column in DIFF_CSV_COLUMNS:
+        if column not in dataframe.columns:
+            dataframe[column] = None
+    dataframe = dataframe[list(DIFF_CSV_COLUMNS)]
+    return dataframe
 
-                v_stock = _to_float(variation.get("stock"))
-                v_price = _to_float(variation.get("price")) or _to_float(
-                    product.get("price")
-                )
-                if v_stock is not None:
-                    parent_total_stock += v_stock
-                if v_stock is not None and v_price is not None:
-                    total_value = v_stock * v_price
-                    parent_total_value += total_value
-                    row["total"] = round(total_value, 2)
-                else:
-                    row["total"] = None
 
-                row["variation_sku"] = variation.get("sku")
-                row["variation_variant_id"] = variation.get("variant_id")
-                row["variation_attributes"] = _serialize_value(
-                    variation.get("attributes")
-                )
-                row["entity_id"] = (
-                    variation.get("url")
-                    or f"variation::{base_url}::{variation.get('value')}"
-                )
-                row["_row_sequence"] = row_sequence
-                row_sequence += 1
-                variation_rows.append(row)
+def _write_csv_exports(
+    *,
+    full_display: "pd.DataFrame",
+    seo_dataframe: "pd.DataFrame",
+    diff_dataframe: "pd.DataFrame",
+    base_dir: Path,
+) -> Dict[str, Path]:
+    csv_paths: Dict[str, Path] = {}
 
-        # Build parent row (aggregated)
-        parent_row = _make_row()
-        parent_row["row_type"] = "parent"
-        parent_row["variation_count"] = len(variation_rows)
-        parent_row["_row_sequence"] = row_sequence
-        row_sequence += 1
+    exports = {
+        "full": full_display,
+        "seo": seo_dataframe,
+        "diff": diff_dataframe,
+    }
 
-        if parent_total_stock:
-            parent_row["stock"] = round(parent_total_stock, 2)
-        else:
-            parent_row["stock"] = product.get("stock")
+    for sheet_name, frame in exports.items():
+        file_name = CSV_SHEETS[sheet_name]
+        target_path = base_dir / file_name
+        frame.to_csv(target_path, index=False)
+        csv_paths[sheet_name] = target_path
 
-        if parent_total_value:
-            parent_row["total"] = round(parent_total_value, 2)
-        else:
-            base_stock = _to_float(product.get("stock"))
-            base_price = _to_float(product.get("price"))
-            if base_stock is not None and base_price is not None:
-                parent_row["total"] = round(base_stock * base_price, 2)
-            else:
-                parent_row["total"] = None
+    manifest_path = base_dir / "export_manifest.json"
+    manifest_payload = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "files": {sheet: path.name for sheet, path in csv_paths.items()},
+    }
+    manifest_path.write_text(
+        json.dumps(manifest_payload, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
 
-        parent_row["variation_value"] = None
-        parent_row["variation_type"] = None
-        parent_row["variation_price"] = None
-        parent_row["variation_stock"] = None
-        parent_row["variation_url"] = None
-        parent_row["variation_sku"] = None
-        parent_row["variation_variant_id"] = None
-        parent_row["variation_attributes"] = None
-        parent_row["entity_id"] = f"parent::{base_url}"
-
-        flattened.append(parent_row)
-        flattened.extend(variation_rows)
-
-    return flattened
+    return csv_paths
 
 
 def _is_placeholder_dataset(products: List[Dict[str, Any]]) -> bool:
@@ -434,7 +1008,7 @@ def _is_placeholder_dataset(products: List[Dict[str, Any]]) -> bool:
         name = product.get("name")
         if isinstance(name, str) and name.startswith(_PLACEHOLDER_NAME_PREFIX):
             sample_names += 1
-        scraped_at = product.get("scraped_at")
+        scraped_at = product.get("scraped_at") or product.get("fetched_at")
         if isinstance(scraped_at, str) and scraped_at.startswith(
             _PLACEHOLDER_SCRAPED_AT_PREFIX
         ):
@@ -456,206 +1030,15 @@ def _is_export_path_under_repo_sites(json_path: Path) -> bool:
         return str(json_path.resolve()).startswith(str(repo_site_root))
 
 
-def _build_full_dataframe(products: List[Dict[str, Any]]) -> "pd.DataFrame":
-    pd = _ensure_pandas()
-    rows = _flatten_products(products)
-    dataframe = pd.DataFrame(rows)
-
-    if "_row_sequence" in dataframe.columns:
-        try:
-            dataframe = dataframe.sort_values(by=["_row_sequence"], kind="stable")
-        except Exception:
-            pass
-        dataframe = dataframe.drop(columns=["_row_sequence"], errors="ignore")
-
-    desired_columns = [
-        "entity_id",
-        "row_type",
-        "url",
-        "variation_url",
-        "name",
-        "variation_value",
-        "variation_type",
-        "price",
-        "variation_price",
-        "base_price",
-        "stock",
-        "variation_stock",
-        "total",
-        "scraped_at",
-        "seo_h1",
-        "seo_title",
-        "seo_meta_description",
-    ]
-
-    for column in desired_columns:
-        if column not in dataframe.columns:
-            dataframe[column] = None
-
-    extra_columns = [col for col in dataframe.columns if col not in desired_columns]
-    dataframe = dataframe[desired_columns + sorted(extra_columns)]
-    return dataframe
-
-
-def _build_seo_dataframe(full_df: "pd.DataFrame") -> "pd.DataFrame":
-    seo_df = full_df[full_df["row_type"] == "parent"].copy()
-    return seo_df[["url", "name", "seo_h1", "seo_title", "seo_meta_description"]]
-
-
-def _build_diff_dataframe(
-    new_df: "pd.DataFrame",
-    previous_df: Optional["pd.DataFrame"],
-) -> "pd.DataFrame":
-    pd = _ensure_pandas()
-    columns = [
-        "entity_id",
-        "row_type",
-        "url",
-        "variation_url",
-        "name",
-        "variation_value",
-        "old_price",
-        "new_price",
-        "price_delta",
-        "old_stock",
-        "new_stock",
-        "stock_delta",
-        "previous_scraped_at",
-        "current_scraped_at",
-        "Прошедшее время между выгрузками (в часах и днях)",
-    ]
-
-    if previous_df is None or previous_df.empty:
-        return pd.DataFrame(columns=columns)
-
-    previous_snapshot_ts = _extract_snapshot_timestamp(
-        previous_df, pd_module=pd
-    )
-    current_snapshot_ts = _extract_snapshot_timestamp(new_df, pd_module=pd)
-    previous_snapshot_display = _format_timestamp_for_display(
-        previous_snapshot_ts, pd_module=pd
-    )
-    current_snapshot_display = _format_timestamp_for_display(
-        current_snapshot_ts, pd_module=pd
-    )
-    elapsed_display = _format_elapsed_between_exports(
-        current_snapshot_ts, previous_snapshot_ts
-    )
-
-    merged = new_df.merge(
-        previous_df,
-        on="entity_id",
-        suffixes=("_new", "_old"),
-        how="outer",
-        indicator=True,
-    )
-
-    change_rows: List[Dict[str, Any]] = []
-
-    for _, row in merged.iterrows():
-        row_type = row.get("row_type_new") or row.get("row_type_old")
-        url = row.get("url_new") or row.get("url_old")
-        variation_url = row.get("variation_url_new") or row.get("variation_url_old")
-        name = row.get("name_new") or row.get("name_old")
-        variation_value = row.get("variation_value_new") or row.get(
-            "variation_value_old"
-        )
-
-        if row_type == "variation":
-            price_old = _to_float(row.get("variation_price_old"))
-            price_new = _to_float(row.get("variation_price_new"))
-            stock_old = _to_float(row.get("variation_stock_old"))
-            stock_new = _to_float(row.get("variation_stock_new"))
-        else:
-            price_old = _to_float(row.get("price_old"))
-            price_new = _to_float(row.get("price_new"))
-            stock_old = _to_float(row.get("stock_old"))
-            stock_new = _to_float(row.get("stock_new"))
-
-        price_delta = None
-        stock_delta = None
-
-        if price_old is not None or price_new is not None:
-            if price_old is None:
-                price_delta = price_new
-            elif price_new is None:
-                price_delta = -price_old
-            else:
-                price_delta = round(price_new - price_old, 2)
-
-        if stock_old is not None or stock_new is not None:
-            if stock_old is None:
-                stock_delta = stock_new
-            elif stock_new is None:
-                stock_delta = -stock_old
-            else:
-                stock_delta = round(stock_new - stock_old, 2)
-
-        if (price_delta not in (None, 0.0)) or (stock_delta not in (None, 0.0)):
-            previous_scraped = _format_timestamp_for_display(
-                row.get("scraped_at_old"), pd_module=pd
-            ) or previous_snapshot_display
-            current_scraped = _format_timestamp_for_display(
-                row.get("scraped_at_new"), pd_module=pd
-            ) or current_snapshot_display
-
-            change_rows.append(
-                {
-                    "entity_id": row.get("entity_id"),
-                    "row_type": row_type,
-                    "url": url,
-                    "variation_url": variation_url,
-                    "name": name,
-                    "variation_value": variation_value,
-                    "old_price": price_old,
-                    "new_price": price_new,
-                    "price_delta": price_delta,
-                    "old_stock": stock_old,
-                    "new_stock": stock_new,
-                    "stock_delta": stock_delta,
-                    "previous_scraped_at": previous_scraped,
-                    "current_scraped_at": current_scraped,
-                    "Прошедшее время между выгрузками (в часах и днях)": elapsed_display,
-                }
-            )
-
-    if not change_rows:
-        return pd.DataFrame(columns=columns)
-
-    return pd.DataFrame(change_rows, columns=columns)
-
-
-def _write_csv_exports(
-    *,
-    full_display: "pd.DataFrame",
-    seo_dataframe: "pd.DataFrame",
-    diff_dataframe: "pd.DataFrame",
-    base_dir: Path,
-) -> Dict[str, Path]:
-    csv_paths: Dict[str, Path] = {}
-
-    exports = {
-        "full_data": full_display,
-        "seo": seo_dataframe,
-        "changes": diff_dataframe,
-    }
-
-    for sheet_name, frame in exports.items():
-        file_name = CSV_SHEETS[sheet_name]
-        target_path = base_dir / file_name
-        frame.to_csv(target_path, index=False)
-        csv_paths[sheet_name] = target_path
-
-    manifest_path = base_dir / "export_manifest.json"
-    manifest_payload = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "files": {sheet: path.name for sheet, path in csv_paths.items()},
-    }
-    manifest_path.write_text(
-        json.dumps(manifest_payload, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
-
-    return csv_paths
+def _extract_products_from_payload(payload: Any) -> List[Dict[str, Any]]:
+    if isinstance(payload, dict):
+        candidates = payload.get("products")
+        if isinstance(candidates, list):
+            return [item for item in candidates if isinstance(item, dict)]
+        return []
+    if isinstance(payload, list):
+        return [item for item in payload if isinstance(item, dict)]
+    return []
 
 
 def write_product_exports(
@@ -672,14 +1055,22 @@ def write_product_exports(
 
     json_path.parent.mkdir(parents=True, exist_ok=True)
     previous_dataframe: Optional["pd.DataFrame"] = None
+    previous_products: List[Dict[str, Any]] = []
     if _PANDAS_AVAILABLE and json_path.exists():
         try:
-            previous_products = json.loads(json_path.read_text(encoding="utf-8"))
-            previous_dataframe = _build_full_dataframe(previous_products)
+            payload = json.loads(json_path.read_text(encoding="utf-8"))
+            previous_products = _extract_products_from_payload(payload)
+            if previous_products:
+                previous_dataframe = _build_full_dataframe(previous_products)
         except Exception:  # pragma: no cover - defensive guard
             previous_dataframe = None
 
-    json_payload = json.dumps(products, ensure_ascii=False, indent=2)
+    generated_at = datetime.now(timezone.utc).isoformat()
+    json_payload_obj = {
+        "generated_at": generated_at,
+        "products": products,
+    }
+    json_payload = json.dumps(json_payload_obj, ensure_ascii=False, indent=2)
     json_path.write_text(json_payload, encoding="utf-8")
 
     latest_json = json_path.parent / "latest.json"
@@ -703,7 +1094,7 @@ def write_product_exports(
         return ExportArtifacts(json_path=json_path, csv_paths={}, excel_path=None)
 
     full_display = full_dataframe.copy()
-    seo_dataframe = _build_seo_dataframe(full_dataframe)
+    seo_dataframe = _build_seo_dataframe(products)
     diff_dataframe = _build_diff_dataframe(full_dataframe, previous_dataframe)
 
     csv_paths: Dict[str, Path] = {}
@@ -726,9 +1117,9 @@ def write_product_exports(
         excel_path = json_path.with_suffix(".xlsx")
         alternate_excel = json_path.parent / f"{site_slug}_latest.xlsx"
         with pd.ExcelWriter(excel_path, engine="openpyxl") as writer:
-            full_display.to_excel(writer, sheet_name="full_data", index=False)
+            full_display.to_excel(writer, sheet_name="full", index=False)
             seo_dataframe.to_excel(writer, sheet_name="seo", index=False)
-            diff_dataframe.to_excel(writer, sheet_name="changes", index=False)
+            diff_dataframe.to_excel(writer, sheet_name="diff", index=False)
 
             workbook = writer.book
             for sheet_name in writer.sheets:

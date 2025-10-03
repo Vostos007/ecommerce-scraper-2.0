@@ -64,7 +64,7 @@ export interface DownloadProgress {
 
 export interface DownloadExportOptions {
   format?: 'xlsx' | 'csv';
-  sheet?: 'full_data' | 'seo' | 'changes';
+  sheet?: 'full' | 'seo' | 'diff';
 }
 
 const exportJobSchema = z.object({

@@ -25,9 +25,9 @@ const CANONICAL_MAP_FILENAMES: Record<string, string> = {
 };
 
 export const CSV_EXPORT_FILES: Record<string, string> = {
-  full_data: 'full_data.csv',
+  full: 'full.csv',
   seo: 'seo.csv',
-  changes: 'changes.csv'
+  diff: 'diff.csv'
 };
 
 interface CacheEntry {

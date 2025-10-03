@@ -7,7 +7,7 @@ import { recordFileDownload, withApiMetrics } from '@/lib/metrics';
 
 export const runtime = 'nodejs';
 
-const CSV_DEFAULT_SHEET = 'full_data';
+const CSV_DEFAULT_SHEET = 'full';
 
 const handler = async (request: NextRequest, context: { params: { site: string } }) => {
   const sanitized = sanitizeSite(context.params.site);

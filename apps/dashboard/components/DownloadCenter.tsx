@@ -22,9 +22,9 @@ const dateFormatter = new Intl.DateTimeFormat('ru-RU', {
 });
 
 const CSV_SHEET_OPTIONS = [
-  { value: 'full_data', label: 'full_data.csv — товары' },
+  { value: 'full', label: 'full.csv — товары' },
   { value: 'seo', label: 'seo.csv — SEO-поля' },
-  { value: 'changes', label: 'changes.csv — сравнение с прошлым' }
+  { value: 'diff', label: 'diff.csv — сравнение с прошлым' }
 ] as const;
 
 const DEFAULT_CSV_SHEET = CSV_SHEET_OPTIONS[0].value;
