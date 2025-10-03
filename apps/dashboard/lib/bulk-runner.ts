@@ -90,11 +90,25 @@ interface BulkRunSubscriber {
   (snapshot: BulkRunSnapshot): void;
 }
 
-const bulkRuns = new Map<string, BulkRunInternal>();
-let activeBulkRunId: string | null = null;
-let latestBulkRunId: string | null = null;
+const globalStore = globalThis as typeof globalThis & {
+  __bulkRuns?: Map<string, BulkRunInternal>;
+  __bulkActiveId?: string | null;
+  __bulkLatestId?: string | null;
+  __bulkSubscribers?: Map<string, Set<BulkRunSubscriber>>;
+};
 
-const subscribers = new Map<string, Set<BulkRunSubscriber>>();
+const bulkRuns: Map<string, BulkRunInternal> = globalStore.__bulkRuns ?? new Map();
+if (!globalStore.__bulkRuns) {
+  globalStore.__bulkRuns = bulkRuns;
+}
+
+let activeBulkRunId: string | null = globalStore.__bulkActiveId ?? null;
+let latestBulkRunId: string | null = globalStore.__bulkLatestId ?? null;
+
+const subscribers: Map<string, Set<BulkRunSubscriber>> = globalStore.__bulkSubscribers ?? new Map();
+if (!globalStore.__bulkSubscribers) {
+  globalStore.__bulkSubscribers = subscribers;
+}
 
 function getOrCreateSubscribers(id: string): Set<BulkRunSubscriber> {
   let set = subscribers.get(id);
@@ -379,6 +393,7 @@ function maybeFinalizeRun(run: BulkRunInternal): void {
 
   if (activeBulkRunId === run.id) {
     activeBulkRunId = null;
+    globalStore.__bulkActiveId = null;
   }
 }
 
@@ -461,6 +476,8 @@ export function startBulkRun(params: StartBulkRunParams): StartBulkRunResult {
   bulkRuns.set(id, run);
   latestBulkRunId = id;
   activeBulkRunId = id;
+  globalStore.__bulkLatestId = latestBulkRunId;
+  globalStore.__bulkActiveId = activeBulkRunId;
 
   for (const site of params.sites) {
     const started = tryStartSite(run, site);
