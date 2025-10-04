@@ -58,17 +58,18 @@
     "updated_at": "2025-09-29T20:15:00Z"
   },
   "manefa.ru": {
-    "status": "missing",
-    "products": 0,
-    "products_with_price": 0,
-    "products_total_stock": 0,
-    "products_with_variations": 0,
-    "total_variations": 0,
-    "variations_total_stock": 0,
-    "success_rate": null,
-    "errors": [
-      "Экспорт latest.json не найден"
-    ],
-    "updated_at": null
+    "status": "ok",
+    "export_file": "httpx_latest.json",
+    "products": 120,
+    "products_with_price": 107,
+    "products_with_stock_field": 120,
+    "products_in_stock_true": 107,
+    "products_total_stock": 483410.0,
+    "products_with_variations": 120,
+    "total_variations": 2299,
+    "variations_total_stock": 483410.0,
+    "variations_in_stock_true": 1146,
+    "success_rate": 100.0,
+    "updated_at": "2025-10-04T12:29:37.974622+00:00"
   }
 }

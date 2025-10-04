@@ -94,7 +94,7 @@ export function ExportQueuePanel() {
           const siteSummary = siteLookup.get(entry.site);
           const estimate = estimateExportDuration(entry.site, siteSummary?.mapLinkCount ?? entry.estimatedUrlCount ?? null);
           const concurrencyLabel = entry.options.concurrency ?? preset.concurrency;
-          const resumeLabel = entry.options.resume ?? true;
+          const resumeLabel = entry.options.resume ?? false;
           const limitLabel = entry.options.limit;
           const estimatedDurationLabel = estimate.durationLabel ?? preset.estimatedDuration;
           const estimatedUrlsLabel = estimate.urlCountLabel ?? formatUrlCount(entry.estimatedUrlCount ?? null);

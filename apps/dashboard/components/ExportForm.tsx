@@ -57,7 +57,7 @@ export function ExportForm({
 }: ExportFormProps) {
   const preset = SITE_PRESETS[site] ?? { concurrency: 8, estimatedDuration: '≈45 минут' };
   const [concurrency, setConcurrency] = useState<number>(preset.concurrency);
-  const [resume, setResume] = useState(true);
+  const [resume, setResume] = useState(false);
   const [limit, setLimit] = useState<string>('');
   const [advancedOpen, setAdvancedOpen] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
@@ -69,6 +69,7 @@ export function ExportForm({
     setConcurrency(preset.concurrency);
     setLimit('');
     setFormError(null);
+    setResume(false);
   }, [preset.concurrency, site]);
 
   const hasBlockingMapIssue = mapStatus === 'missing';
@@ -177,7 +178,7 @@ export function ExportForm({
               onChange={(event) => setResume(event.target.checked)}
               className="h-4 w-4 rounded border-border bg-background"
             />
-            <span>Resume (использовать точки сохранения IncrementalWriter)</span>
+            <span>Resume (продолжать с частичных файлов)</span>
           </label>
 
           <button

@@ -17,3 +17,28 @@
 - Роль: backend-developer (primary), frontend-developer (secondary)
 - Действия: подключил новый скрипт `manefa_fast_export.py`, расширил allowlist `SCRIPT_ALLOWLIST`, пересобрал API/worker образы.
 - Результат: площадка manefa.ru поддерживается в частичном и массовом парсинге; после первой выгрузки появится в дашборде.
+## 2025-10-03 — Manefa exporter python alignment
+- Роль: backend-architect (primary), docs-architect (secondary)
+- Действия: перезапустил dashboard dev на порте 3002 с PYTHON_BIN=/Users/vostos/miniconda3/bin/python; обновил `scripts/manefa_fast_export.py` под новый `fast_export_base` (новые аргументы antibot, прогресс, resume), проверил запуск `python -m scripts.manefa_fast_export --limit 2`.
+- Результат: экспортер больше не падает на Python 3.9/argparse, работает в окружении Python 3.13, прогресс и антибот синхронизированы с базовыми утилитами.
+- TODO: восстановить доступность домена manefa.ru в тестовом окружении (сейчас resolve возвращает `nodename nor servname`).
+## 2025-10-03 — AGENT guide wording cleanup
+- Роль: docs-architect (primary)
+- Действия: обновил `AGENTS.md`, упростил инструкцию про оформление патчей, убрал упоминание о просмотрах "proposed changes".
+- Результат: документ теперь требует оформлять изменения как завершённые патчи с тестами без лишних указаний про отображение правок пользователю.
+## 2025-10-04 — Manefa redirect handling
+- Роль: backend-architect (primary)
+- Действия: обновил `scripts/manefa_fast_export.py` — нормализую product URL без хвостового `/`, включил follow_redirects и сохраняю финальный URL; проверил запуск `python -m scripts.manefa_fast_export --limit 1` (доменные 301 решаются, но DNS до manefa.ru в dev всё ещё нестабилен).
+- Результат: скрипт корректно формирует канонические ссылки, 301 больше не помечаются как ошибки; при доступном DNS прогон завершится без массовых fail.
+- TODO: восстановить резолв manefa.ru или добавить локальный override, затем повторить полный прогон.
+## 2025-10-04 — Manefa variations parsing
+- Роль: backend-architect (primary)
+- Действия: переработал `scripts/manefa_fast_export.py` — добавил извлечение вариантов из payload и DOM (`data-variants`, `data-variant-id`), сохранил итоговый URL после редиректов, подготовил отладочный режим `MANEFA_DEBUG_PAYLOADS`.
+- Результат: экспорт теперь формирует список вариаций (цветов) с количеством и атрибутами, что позволяет выгрузке строить отдельные строки по каждой вариации.
+- TODO: после стабилизации DNS повторно прогнать полный экспорт и убедиться, что `variations` заполнены.
+- Версия: pyproject.toml → 0.1.1, apps/dashboard/package.json → 0.1.1
+- ExportForm по умолчанию запускает без resume (теперь чекбокс выключен).
+## 2025-10-04 — Манефа вариации в CSV/Excel
+- Роль: backend-architect (primary)
+- Действия: переработал `scripts/manefa_fast_export.py`, чтобы нормализовать вариации (id, sku, тип, цена, остаток, атрибуты); обновил `utils/export_writers.py`, добавив строки на каждую вариацию и новые столбцы; поднял версии до 0.1.3.
+- Результат: `full.csv`/`xlsx` содержат отдельную запись на каждую вариацию товара, Dashboard считывает корректные метрики, выгрузка манефы больше не ограничена 120 строками.

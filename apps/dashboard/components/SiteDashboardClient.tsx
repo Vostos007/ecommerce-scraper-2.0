@@ -7,8 +7,15 @@ import { ExportForm } from './ExportForm';
 import { LogViewer } from './LogViewer';
 import type { AvailableMapEntry } from './MapStatus';
 import { useExportJob } from '@/hooks/useExportJob';
-import { downloadExport, getSiteDetail, getSiteMaps, type ExportConfig } from '@/lib/api';
+import {
+  downloadExport,
+  getSummaryMetrics,
+  getSiteDetail,
+  getSiteMaps,
+  type ExportConfig
+} from '@/lib/api';
 import type { SiteSummary } from '@/lib/sites';
+import type { SummaryResponse, SiteSummaryMetrics } from '@/lib/validations';
 import { useDashboardStore } from '@/stores/dashboard';
 import { Select } from './ui/select';
 import { Button } from './ui/button';
@@ -50,6 +57,27 @@ export function SiteDashboardClient({ site }: SiteDashboardClientProps) {
         isCanonical: entry.isCanonical
       }))
     : [];
+
+  const siteMetricsQuery = useQuery<SummaryResponse, Error>({
+    queryKey: ['summary-metrics'],
+    queryFn: getSummaryMetrics,
+    staleTime: 60_000,
+    refetchInterval: 60_000,
+    refetchOnWindowFocus: false
+  });
+
+  const siteMetrics: SiteSummaryMetrics | null =
+    siteMetricsQuery.data?.sites?.[site] ?? null;
+
+  const metricsError = siteMetricsQuery.error?.message ?? null;
+
+  const numberFormatter = new Intl.NumberFormat('ru-RU');
+  const formatNumber = (value: number | null | undefined) => {
+    if (typeof value !== 'number' || Number.isNaN(value)) {
+      return '—';
+    }
+    return numberFormatter.format(value);
+  };
 
   useEffect(() => {
     const currentSite = useDashboardStore.getState().activeSite;
@@ -193,6 +221,45 @@ export function SiteDashboardClient({ site }: SiteDashboardClientProps) {
               {typeof siteDetails.mapLinkCount === 'number' && <div>Ссылок: {siteDetails.mapLinkCount}</div>}
             </div>
           )}
+          <div className="space-y-1 text-xs text-muted-foreground">
+            <div className="font-medium text-foreground">Вариации</div>
+            {metricsError ? (
+              <div className="text-rose-200">Не удалось загрузить метрики: {metricsError}</div>
+            ) : siteMetricsQuery.isLoading ? (
+              <div>Загружаем статистику…</div>
+            ) : siteMetrics ? (
+              <div className="grid gap-1">
+                <div>
+                  Товаров с вариациями:{' '}
+                  <span className="text-foreground">
+                    {formatNumber(siteMetrics.products_with_variations ?? 0)}
+                  </span>
+                </div>
+                <div>
+                  Всего вариаций:{' '}
+                  <span className="text-foreground">
+                    {formatNumber(siteMetrics.total_variations ?? 0)}
+                  </span>
+                </div>
+                <div>
+                  В наличии вариаций:{' '}
+                  <span className="text-foreground">
+                    {formatNumber(siteMetrics.variations_in_stock_true ?? 0)}
+                  </span>
+                </div>
+                {typeof siteMetrics.variations_total_stock === 'number' && (
+                  <div>
+                    Суммарный остаток по вариациям:{' '}
+                    <span className="text-foreground">
+                      {formatNumber(Math.round(siteMetrics.variations_total_stock))}
+                    </span>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div>Метрики вариаций недоступны для этого сайта.</div>
+            )}
+          </div>
         </div>
       </aside>
     </div>

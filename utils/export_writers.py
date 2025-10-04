@@ -62,6 +62,14 @@ FULL_CSV_COLUMNS: Tuple[str, ...] = (
     "images",
     "attrs_json",
     "text_hash",
+    "variation_id",
+    "variation_sku",
+    "variation_type",
+    "variation_value",
+    "variation_price",
+    "variation_stock",
+    "variation_in_stock",
+    "variation_attributes",
 )
 
 SEO_CSV_COLUMNS: Tuple[str, ...] = (
@@ -704,7 +712,7 @@ def _build_full_rows(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             "inventory",
             "available",
         )
-        row: Dict[str, Any] = {
+        base_row: Dict[str, Any] = {
             "url": url,
             "final_url": _clean_str(
                 _first_value(product, "final_url", "resolved_url", "canonical_url")
@@ -748,7 +756,78 @@ def _build_full_rows(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                 _first_value(product, "text_hash", "content_hash", "body_hash")
             ),
         }
-        rows.append(row)
+
+        variations = product.get("variations")
+        variation_rows_added = False
+        if isinstance(variations, list) and variations:
+            for variation in variations:
+                if not isinstance(variation, dict):
+                    continue
+
+                variation_id = _clean_str(
+                    variation.get("variation_id") or variation.get("variant_id")
+                )
+                variation_value = _clean_str(
+                    variation.get("variation_value") or variation.get("value")
+                )
+                variation_type = _clean_str(
+                    variation.get("variation_type") or variation.get("type")
+                )
+                variation_price = _first_value(
+                    variation,
+                    "variation_price",
+                    "price",
+                    "current_price",
+                )
+                variation_stock = _first_value(
+                    variation,
+                    "variation_stock",
+                    "stock_quantity",
+                    "stock",
+                    "quantity",
+                )
+                variation_attributes = variation.get("variation_attributes") or variation.get(
+                    "attributes"
+                )
+
+                row = dict(base_row)
+                row["price"] = _normalize_price(variation_price) or row["price"]
+                row["stock"] = _normalize_stock(variation_stock) or row["stock"]
+                row["stock_value"] = _compute_stock_value(variation_price, variation_stock)
+                row["variation_id"] = variation_id
+                row["variation_sku"] = _clean_str(
+                    variation.get("variation_sku") or variation.get("sku")
+                )
+                row["variation_type"] = variation_type
+                row["variation_value"] = variation_value
+                row["variation_price"] = _normalize_price(variation_price)
+                row["variation_stock"] = _normalize_stock(variation_stock)
+                row["variation_in_stock"] = (
+                    "in_stock" if variation.get("variation_in_stock") or variation.get("in_stock") else "out_of_stock"
+                )
+                row["variation_attributes"] = (
+                    json.dumps(variation_attributes, ensure_ascii=False)
+                    if isinstance(variation_attributes, (dict, list))
+                    else _clean_str(variation_attributes)
+                )
+                rows.append(row)
+                variation_rows_added = True
+
+        if not variation_rows_added:
+            row = dict(base_row)
+            row.update(
+                {
+                    "variation_id": None,
+                    "variation_sku": None,
+                    "variation_type": None,
+                    "variation_value": None,
+                    "variation_price": None,
+                    "variation_stock": None,
+                    "variation_in_stock": None,
+                    "variation_attributes": None,
+                }
+            )
+            rows.append(row)
     return rows
 
 
