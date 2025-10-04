@@ -455,48 +455,41 @@ def _choose_price(product: Dict[str, Any]) -> Any:
     return direct_value
 
 
-def _normalize_price(value: Any) -> Optional[str]:
+def _normalize_price(value: Any) -> Optional[float]:
     if value is None:
         return None
     numeric = _to_float(value)
     if numeric is not None:
-        return f"{numeric:.2f}"
-    if isinstance(value, str):
-        cleaned = value.strip()
-        return cleaned or None
-    return str(value)
-
-
-def _normalize_stock(value: Any) -> Optional[str]:
-    if value is None:
-        return None
-    if isinstance(value, (list, dict)):
-        return json.dumps(value, ensure_ascii=False)
-    if isinstance(value, (int, float)):
-        numeric = float(value)
-        if numeric.is_integer():
-            return str(int(numeric))
-        return f"{numeric:.2f}"
+        return round(numeric, 2)
     if isinstance(value, str):
         cleaned = value.strip()
         if not cleaned:
             return None
-        numeric = _to_float(cleaned)
-        if numeric is not None:
-            if numeric.is_integer():
-                return str(int(numeric))
-            return f"{numeric:.2f}"
-        return cleaned
-    return str(value)
+    return None
 
 
-def _compute_stock_value(price_value: Any, stock_value: Any) -> Optional[str]:
+def _normalize_stock(value: Any) -> Optional[float]:
+    if value is None:
+        return None
+    if isinstance(value, (list, dict)):
+        return None
+    numeric = _to_float(value)
+    if numeric is not None:
+        return round(numeric, 3)
+    if isinstance(value, str):
+        cleaned = value.strip()
+        if not cleaned:
+            return None
+    return None
+
+
+def _compute_stock_value(price_value: Any, stock_value: Any) -> Optional[float]:
     price_numeric = _to_float(price_value)
     stock_numeric = _to_float(stock_value)
     if price_numeric is None or stock_numeric is None:
         return None
     total = price_numeric * stock_numeric
-    return f"{total:.2f}"
+    return round(total, 2)
 
 
 def _normalize_availability(product: Dict[str, Any]) -> Optional[str]:
@@ -712,6 +705,9 @@ def _build_full_rows(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             "inventory",
             "available",
         )
+        normalized_price = _normalize_price(price_candidate)
+        normalized_stock = _normalize_stock(stock_candidate)
+
         base_row: Dict[str, Any] = {
             "url": url,
             "final_url": _clean_str(
@@ -731,9 +727,9 @@ def _build_full_rows(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             ),
             "title": _clean_str(_first_value(product, "title", "name")),
             "h1": _clean_str(_first_value(product, "h1", "seo_h1")),
-            "price": _normalize_price(price_candidate),
-            "stock": _normalize_stock(stock_candidate),
-            "stock_value": _compute_stock_value(price_candidate, stock_candidate),
+            "price": normalized_price,
+            "stock": normalized_stock,
+            "stock_value": _compute_stock_value(normalized_price, normalized_stock),
             "currency": _clean_str(
                 _first_value(product, "currency", "price_currency", "currency_code")
             ),
@@ -791,20 +787,29 @@ def _build_full_rows(products: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
                 )
 
                 row = dict(base_row)
-                row["price"] = _normalize_price(variation_price) or row["price"]
-                row["stock"] = _normalize_stock(variation_stock) or row["stock"]
-                row["stock_value"] = _compute_stock_value(variation_price, variation_stock)
+                variation_price_normalized = _normalize_price(variation_price)
+                variation_stock_normalized = _normalize_stock(variation_stock)
+
+                if variation_price_normalized is not None:
+                    row["price"] = variation_price_normalized
+                if variation_stock_normalized is not None:
+                    row["stock"] = variation_stock_normalized
+                row["stock_value"] = _compute_stock_value(
+                    row["price"],
+                    row["stock"],
+                )
                 row["variation_id"] = variation_id
                 row["variation_sku"] = _clean_str(
                     variation.get("variation_sku") or variation.get("sku")
                 )
                 row["variation_type"] = variation_type
                 row["variation_value"] = variation_value
-                row["variation_price"] = _normalize_price(variation_price)
-                row["variation_stock"] = _normalize_stock(variation_stock)
-                row["variation_in_stock"] = (
-                    "in_stock" if variation.get("variation_in_stock") or variation.get("in_stock") else "out_of_stock"
-                )
+                row["variation_price"] = variation_price_normalized
+                row["variation_stock"] = variation_stock_normalized
+                variation_in_stock_flag = variation.get("variation_in_stock")
+                if variation_in_stock_flag is None:
+                    variation_in_stock_flag = variation.get("in_stock")
+                row["variation_in_stock"] = bool(variation_in_stock_flag)
                 row["variation_attributes"] = (
                     json.dumps(variation_attributes, ensure_ascii=False)
                     if isinstance(variation_attributes, (dict, list))
@@ -1103,7 +1108,14 @@ def _write_csv_exports(
     for sheet_name, frame in exports.items():
         file_name = CSV_SHEETS[sheet_name]
         target_path = base_dir / file_name
-        frame.to_csv(target_path, index=False)
+        frame.to_csv(
+            target_path,
+            index=False,
+            sep=';',
+            decimal=',',
+            encoding='utf-8',
+            lineterminator='\n',
+        )
         csv_paths[sheet_name] = target_path
 
     manifest_path = base_dir / "export_manifest.json"

@@ -32,9 +32,10 @@
 
 ### 2.1 full.csv
 ```
-url,final_url,http_status,fetched_at,title,h1,price,stock,stock_value,currency,availability,sku,brand,category,breadcrumbs,images,attrs_json,text_hash
+url,final_url,http_status,fetched_at,title,h1,price,stock,stock_value,currency,availability,sku,brand,category,breadcrumbs,images,attrs_json,text_hash,variation_id,variation_sku,variation_type,variation_value,variation_price,variation_stock,variation_in_stock,variation_attributes
 ```
-- `price` — десятичное число, разделитель `.`.
+- `price`, `stock`, `variation_price`, `variation_stock`, `stock_value` — числовые поля: в CSV выводятся с разделителем `;` и десятичной запятой, в Excel остаются числами (формат определяется локалью).
+- `variation_*` — отдельная строка на каждую вариацию товара. Для товаров без вариаций столбцы остаются пустыми.
 - `stock` — агрегированный остаток по карточке (из суммарного наличия вариаций или числового поля).
 - `stock_value = price * stock` — общая стоимость остатка в валюте источника.
 

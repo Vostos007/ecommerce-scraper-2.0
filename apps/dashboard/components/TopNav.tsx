@@ -6,6 +6,7 @@ import { useEffect, useMemo, type ChangeEvent } from 'react';
 
 import { useQuery } from '@tanstack/react-query';
 
+import appPackageJson from '../package.json' assert { type: 'json' };
 import { Badge } from '@/components/ui/badge';
 import { getSites } from '@/lib/api';
 import type { SiteSummary } from '@/lib/sites';
@@ -13,7 +14,9 @@ import { useDashboardStore } from '@/stores/dashboard';
 import { Select } from './ui/select';
 import { cn } from '@/lib/utils';
 
-const APP_VERSION = process.env.NEXT_PUBLIC_APP_VERSION ?? 'v0.1.0';
+const PACKAGE_VERSION =
+  typeof appPackageJson.version === 'string' ? appPackageJson.version : '0.0.0';
+const APP_VERSION = process.env.NEXT_PUBLIC_APP_VERSION ?? `v${PACKAGE_VERSION}`;
 const APP_REVISION = process.env.NEXT_PUBLIC_GIT_SHA?.slice(0, 7) ?? null;
 
 const PLACEHOLDER_OPTION = { value: '', label: 'Выберите сайт', disabled: true };
