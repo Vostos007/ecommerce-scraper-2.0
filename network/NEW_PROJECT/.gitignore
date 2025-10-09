@@ -1,0 +1,10 @@
+# MCP helper artifacts
+/.mcp_ts/
+/mcp/**/node_modules/
+/mcp/**/package-lock.json
+/mcp/**/ts_mcp.log
+
+# Build outputs generated locally
+/mcp/**/dist/
+
+# Local notes are tracked separately under network/NEW_PROJECT/logs

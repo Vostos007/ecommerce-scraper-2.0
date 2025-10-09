@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/vostos/**)",
+      "Bash(codex:*)",
+      "Bash(claude mcp add:*)",
+      "mcp__chrome-devtools__list_pages",
+      "mcp__chrome-devtools__navigate_page",
+      "mcp__chrome-devtools__take_snapshot",
+      "mcp__chrome-devtools__list_network_requests",
+      "mcp__chrome-devtools__list_console_messages",
+      "mcp__chrome-devtools__performance_start_trace",
+      "mcp__serena__list_dir",
+      "Bash(MANEFA_DEBUG_PAYLOADS=1 python:*)",
+      "Bash(python:*)",
+      "Bash(curl:*)",
+      "mcp__chrome-devtools__wait_for",
+      "mcp__chrome-devtools__get_network_request",
+      "Bash(pip install:*)",
+      "Bash(PYTHONPATH=. python scripts/manefa_fast_export.py:*)",
+      "Bash(git pull:*)",
+      "Bash(docker compose:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

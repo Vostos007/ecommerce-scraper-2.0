@@ -1,0 +1,28 @@
+{
+  "mcpServers": {
+    "serena": {
+      "type": "stdio",
+      "command": "/Users/vostos/.local/bin/uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena-mcp-server",
+        "--context",
+        "ide-assistant",
+        "--project",
+        "/Users/vostos/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Work_Table/Coding/ETSY_listing_manager"
+      ],
+      "env": {}
+    },
+    "ts_local": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/Users/vostos/Dev/ecommerce-scraper-2.0/network/NEW_PROJECT/mcp/typescript-server/dist/index.js"
+      ],
+      "env": {
+        "TS_MCP_WORKSPACE_ROOT": "/Users/vostos/Dev/ecommerce-scraper-2.0"
+      }
+    }
+  }
+}

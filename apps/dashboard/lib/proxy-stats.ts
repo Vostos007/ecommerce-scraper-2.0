@@ -12,6 +12,7 @@ const PREMIUM_BUDGET = Number(process.env.PROXY_STATS_PREMIUM_BUDGET ?? '2200');
 const PREMIUM_COST_USED = Number(process.env.PROXY_STATS_PREMIUM_COST_USED ?? '650');
 const PREMIUM_ACTIVE_SESSIONS = Number(process.env.PROXY_STATS_PREMIUM_ACTIVE_SESSIONS ?? '0');
 const PURCHASE_COOLDOWN = Number(process.env.PROXY_STATS_PURCHASE_COOLDOWN_MINUTES ?? '0');
+const STALE_THRESHOLD_HOURS = Number(process.env.PROXY_STATS_STALE_THRESHOLD_HOURS ?? '12');
 
 interface ProxyRecord {
   canonical: string;
@@ -38,6 +39,7 @@ interface LogEvents {
   failureCounts: Map<string, number>;
   burned: Set<string>;
   timestamps: Date[];
+  lastSeen: Map<string, Date>;
 }
 
 export interface CollectedProxyStats {
@@ -46,6 +48,9 @@ export interface CollectedProxyStats {
   healthy_proxies: number;
   failed_proxies: number;
   burned_proxies: number;
+  stale_proxies?: number;
+  inactive_proxies?: number;
+  recent_proxies?: number;
   total_requests: number;
   successful_requests: number;
   success_rate: number;
@@ -56,6 +61,13 @@ export interface CollectedProxyStats {
     success_rate?: number;
     latency_ms?: number;
     country?: string;
+  }>;
+  proxy_freshness?: Array<{
+    proxy: string;
+    canonical: string;
+    status: 'active' | 'stale' | 'inactive';
+    last_seen: string | null;
+    age_hours: number | null;
   }>;
   autoscale: Record<string, unknown>;
   autoscale_concurrency?: number;
@@ -212,6 +224,7 @@ async function gatherLogEvents(repoRoot: string): Promise<LogEvents> {
   const failureCounts = new Map<string, number>();
   const burned = new Set<string>();
   const timestamps: Date[] = [];
+  const lastSeen = new Map<string, Date>();
 
   const textLogs = [
     path.join(repoRoot, 'logs', 'antibot.log'),
@@ -227,11 +240,13 @@ async function gatherLogEvents(repoRoot: string): Promise<LogEvents> {
       if (!line) {
         continue;
       }
+      let stampDate: Date | null = null;
       const dateMatch = LOG_DATETIME_PATTERN.exec(line);
       if (dateMatch) {
         const parsed = Date.parse(dateMatch[1]!.replace(' ', 'T') + 'Z');
         if (!Number.isNaN(parsed)) {
-          timestamps.push(new Date(parsed));
+          stampDate = new Date(parsed);
+          timestamps.push(stampDate);
         }
       }
 
@@ -250,10 +265,15 @@ async function gatherLogEvents(repoRoot: string): Promise<LogEvents> {
       if (lowered.includes('fail') || lowered.includes('timeout') || lowered.includes('error')) {
         failureCounts.set(record.canonical, (failureCounts.get(record.canonical) ?? 0) + 1);
       }
+      const observed = stampDate ?? new Date();
+      const current = lastSeen.get(record.canonical);
+      if (!current || observed > current) {
+        lastSeen.set(record.canonical, observed);
+      }
     }
   }
 
-  return { failureCounts, burned, timestamps };
+  return { failureCounts, burned, timestamps, lastSeen };
 }
 
 function countProxyProtocols(catalog: Map<string, ProxyRecord>): Record<string, number> {
@@ -419,6 +439,72 @@ function buildPremiumStats(
   };
 }
 
+function buildFreshness(catalog: Map<string, ProxyRecord>, lastSeen: Map<string, Date>) {
+  if (catalog.size === 0) {
+    return {
+      entries: [] as Array<{
+        proxy: string;
+        canonical: string;
+        status: 'active' | 'stale' | 'inactive';
+        last_seen: string | null;
+        age_hours: number | null;
+      }>,
+      active: 0,
+      stale: 0,
+      inactive: 0
+    };
+  }
+
+  const thresholdHours = Number.isFinite(STALE_THRESHOLD_HOURS) && STALE_THRESHOLD_HOURS > 0 ? STALE_THRESHOLD_HOURS : 12;
+  const thresholdMs = thresholdHours * 3600 * 1000;
+  const now = Date.now();
+
+  const entries: Array<{
+    proxy: string;
+    canonical: string;
+    status: 'active' | 'stale' | 'inactive';
+    last_seen: string | null;
+    age_hours: number | null;
+  }> = [];
+
+  let active = 0;
+  let stale = 0;
+  let inactive = 0;
+
+  for (const record of catalog.values()) {
+    const seen = lastSeen.get(record.canonical);
+    if (!seen) {
+      inactive += 1;
+      entries.push({
+        proxy: record.raw,
+        canonical: record.canonical,
+        status: 'inactive',
+        last_seen: null,
+        age_hours: null
+      });
+      continue;
+    }
+
+    const ageMs = Math.max(now - seen.getTime(), 0);
+    const ageHours = Number((ageMs / 3600000).toFixed(2));
+    const status = ageMs > thresholdMs ? 'stale' : 'active';
+    if (status === 'stale') {
+      stale += 1;
+    } else {
+      active += 1;
+    }
+    entries.push({
+      proxy: record.raw,
+      canonical: record.canonical,
+      status,
+      last_seen: seen.toISOString(),
+      age_hours: ageHours
+    });
+  }
+
+  return { entries, active, stale, inactive };
+}
+
 function deriveWarnings(
   successRate: number,
   healthy: number,
@@ -464,6 +550,7 @@ export async function collectProxyStats(): Promise<CollectedProxyStats> {
     proxyCountries
   );
   const warnings = deriveWarnings(successRate, healthyProxies, totalProxies, autoscale);
+  const freshness = buildFreshness(catalog, logEvents.lastSeen);
 
   const payload: CollectedProxyStats = {
     total_proxies: totalProxies,
@@ -471,12 +558,16 @@ export async function collectProxyStats(): Promise<CollectedProxyStats> {
     healthy_proxies: healthyProxies,
     failed_proxies: failedProxies,
     burned_proxies: burned,
+    stale_proxies: freshness.stale,
+    inactive_proxies: freshness.inactive,
+    recent_proxies: freshness.active,
     total_requests: summaryAggregates.totalRequests,
     successful_requests: summaryAggregates.successfulRequests,
     success_rate: successRate,
     top_performing_proxies: topProxies,
     autoscale,
-    generated_at: determineGeneratedAt(summaryAggregates, logEvents.timestamps)
+    generated_at: determineGeneratedAt(summaryAggregates, logEvents.timestamps),
+    proxy_freshness: freshness.entries
   };
 
   if (Object.keys(proxyProtocols).length) {

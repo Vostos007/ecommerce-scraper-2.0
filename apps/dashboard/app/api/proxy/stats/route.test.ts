@@ -35,6 +35,8 @@ describe('GET /api/proxy/stats', () => {
     expect(Array.isArray(payload.top_performing_proxies)).toBe(true);
     expect(payload.top_performing_proxies.length).toBeGreaterThan(0);
     expect(Object.keys(payload.proxy_countries ?? {})).not.toHaveLength(0);
+    expect(Array.isArray(payload.proxy_freshness)).toBe(true);
+    expect(payload.stale_proxies).toBeGreaterThanOrEqual(0);
   });
 
   it('serves cached data on subsequent requests within TTL', async () => {

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 from ..proxy_stats.collector import collect_proxy_stats
@@ -63,6 +64,8 @@ def test_collect_proxy_stats(tmp_path: Path) -> None:
         ),
     )
 
+    os.environ['PROXY_STATS_STALE_THRESHOLD_HOURS'] = '48'
+
     stats = collect_proxy_stats(repo)
 
     assert stats["total_proxies"] == 4
@@ -89,3 +92,9 @@ def test_collect_proxy_stats(tmp_path: Path) -> None:
     generated_at = stats["generated_at"]
     assert isinstance(generated_at, str)
     assert generated_at.endswith("Z") or "+" in generated_at
+
+    freshness = stats["proxy_freshness"]
+    assert isinstance(freshness, list)
+    assert stats["stale_proxies"] >= 0
+    assert stats["inactive_proxies"] >= 0
+    assert any(entry["status"] != "active" for entry in freshness)

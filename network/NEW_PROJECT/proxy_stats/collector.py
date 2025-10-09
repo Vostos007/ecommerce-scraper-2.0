@@ -14,7 +14,7 @@ import os
 import re
 from collections import Counter, defaultdict
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Mapping, Optional, Sequence, Set
 from urllib.parse import urlparse
@@ -154,6 +154,7 @@ class ProxyMetricsCollector:
         failure_counts: Counter[str] = Counter()
         burned: Set[str] = set()
         timestamps: List[datetime] = []
+        last_seen: Dict[str, datetime] = {}
 
         text_logs = [
             self.repo_root / "logs" / "antibot.log",
@@ -181,6 +182,11 @@ class ProxyMetricsCollector:
                 if any(keyword in lowered for keyword in ("fail", "error", "timeout")):
                     failure_counts[canonical.canonical] += 1
 
+                observed_at = stamp or datetime.now(timezone.utc)
+                current_seen = last_seen.get(canonical.canonical)
+                if not current_seen or observed_at > current_seen:
+                    last_seen[canonical.canonical] = observed_at
+
         # Structured logs under logs/antibot/*.jsonl (optional)
         jsonl_dir = self.repo_root / "logs" / "antibot"
         if jsonl_dir.exists() and jsonl_dir.is_dir():
@@ -195,11 +201,20 @@ class ProxyMetricsCollector:
                         failure_counts[canonical.canonical] += 1
                     if stamp:
                         timestamps.append(stamp)
+                        current_seen = last_seen.get(canonical.canonical)
+                        if not current_seen or stamp > current_seen:
+                            last_seen[canonical.canonical] = stamp
+                    else:
+                        now = datetime.now(timezone.utc)
+                        current_seen = last_seen.get(canonical.canonical)
+                        if not current_seen or now > current_seen:
+                            last_seen[canonical.canonical] = now
 
         return {
             "failure_counts": failure_counts,
             "burned": burned,
             "timestamps": timestamps,
+            "last_seen": last_seen,
         }
 
     # ------------------------------------------------------------------
@@ -216,6 +231,7 @@ class ProxyMetricsCollector:
 
         failure_counts: Counter[str] = log_events.get("failure_counts", Counter())  # type: ignore[arg-type]
         burned = set(log_events.get("burned", set()))
+        last_seen: Mapping[str, datetime] = log_events.get("last_seen", {})
 
         healthy_proxies = max(total_proxies - len(burned), 0)
         active_proxies = max(total_proxies - len(failure_counts), 0)
@@ -255,6 +271,13 @@ class ProxyMetricsCollector:
             autoscale=autoscale,
         )
 
+        freshness_stats = self._build_freshness(proxies=proxies, last_seen=last_seen) or {
+            "entries": [],
+            "active": 0,
+            "stale": 0,
+            "inactive": 0,
+        }
+
         payload: Dict[str, Any] = {
             "total_proxies": total_proxies,
             "active_proxies": active_proxies,
@@ -272,6 +295,15 @@ class ProxyMetricsCollector:
             "autoscale_status": autoscale.get("status"),
             "purchase_estimate": autoscale.get("estimated_cost"),
         }
+
+        payload.update(
+            {
+                "stale_proxies": freshness_stats["stale"],
+                "inactive_proxies": freshness_stats["inactive"],
+                "recent_proxies": freshness_stats["active"],
+                "proxy_freshness": freshness_stats["entries"],
+            }
+        )
 
         if premium_stats:
             payload["premium_proxy_stats"] = premium_stats
@@ -471,6 +503,65 @@ class ProxyMetricsCollector:
             stats["proxy_countries"] = dict(proxy_countries)
 
         return stats
+
+    def _build_freshness(
+        self,
+        proxies: Sequence[ProxyRecord],
+        last_seen: Mapping[str, datetime],
+    ) -> Optional[Dict[str, Any]]:
+        if not proxies:
+            return None
+
+        try:
+            threshold_hours = float(os.getenv("PROXY_STATS_STALE_THRESHOLD_HOURS", "12"))
+        except ValueError:
+            threshold_hours = 12.0
+        threshold_hours = max(threshold_hours, 1.0)
+        threshold = datetime.now(timezone.utc) - timedelta(hours=threshold_hours)
+
+        entries: List[Dict[str, Any]] = []
+        counts = {"active": 0, "stale": 0, "inactive": 0}
+
+        for proxy in proxies:
+            seen = last_seen.get(proxy.canonical)
+            if seen is None:
+                status = "inactive"
+                counts["inactive"] += 1
+                entries.append(
+                    {
+                        "proxy": proxy.raw,
+                        "canonical": proxy.canonical,
+                        "status": status,
+                        "last_seen": None,
+                        "age_hours": None,
+                    }
+                )
+                continue
+
+            age_hours = max((datetime.now(timezone.utc) - seen).total_seconds() / 3600, 0.0)
+            if seen < threshold:
+                status = "stale"
+                counts["stale"] += 1
+            else:
+                status = "active"
+                counts["active"] += 1
+
+            entries.append(
+                {
+                    "proxy": proxy.raw,
+                    "canonical": proxy.canonical,
+                    "status": status,
+                    "last_seen": seen.astimezone(timezone.utc).isoformat(),
+                    "age_hours": round(age_hours, 2),
+                }
+            )
+
+        return {
+            "entries": entries,
+            "active": counts["active"],
+            "stale": counts["stale"],
+            "inactive": counts["inactive"],
+        }
 
     def _derive_warnings(
         self,

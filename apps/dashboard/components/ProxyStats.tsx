@@ -53,6 +53,55 @@ export function ProxyStats() {
   const concurrency = data?.autoscale_concurrency ?? 0;
   const deficitValue = autoscale?.deficit;
   const deficitDisplay = deficitValue != null ? Math.max(0, deficitValue) : null;
+  const freshnessEntries = data?.proxy_freshness ?? [];
+  const staleCount = data?.stale_proxies ?? 0;
+  const inactiveCount = data?.inactive_proxies ?? 0;
+  const recentCount =
+    data?.recent_proxies ??
+    (freshnessEntries.length ? freshnessEntries.filter((entry) => entry.status === 'active').length : 0);
+
+  const attentionList = useMemo(() => {
+    if (!freshnessEntries.length) {
+      return [];
+    }
+    return [...freshnessEntries]
+      .filter((entry) => entry.status !== 'active')
+      .sort((a, b) => {
+        const ageA = a.age_hours ?? Number.POSITIVE_INFINITY;
+        const ageB = b.age_hours ?? Number.POSITIVE_INFINITY;
+        return ageB - ageA;
+      })
+      .slice(0, 8);
+  }, [freshnessEntries]);
+
+  const statusLabels: Record<'active' | 'stale' | 'inactive', string> = {
+    active: 'Актуален',
+    stale: 'Требует обновления',
+    inactive: 'Нет активности'
+  };
+
+  const statusVariants: Record<'active' | 'stale' | 'inactive', 'success' | 'warning' | 'error' | 'outline'> = {
+    active: 'success',
+    stale: 'warning',
+    inactive: 'error'
+  };
+
+  const formatLastSeen = (iso: string | null, ageHours: number | null | undefined): string => {
+    if (!iso || ageHours == null) {
+      return 'Нет записей';
+    }
+    if (ageHours < 1) {
+      return 'Менее часа назад';
+    }
+    if (ageHours < 24) {
+      return `${Math.round(ageHours)} ч назад`;
+    }
+    const days = Math.floor(ageHours / 24);
+    if (days < 7) {
+      return `${days} дн назад`;
+    }
+    return new Date(iso).toLocaleString('ru-RU');
+  };
 
   const autoscaleBadge: Record<string, { label: string; variant: 'default' | 'primary' | 'success' | 'warning' | 'error' | 'outline' }> = {
     sufficient: { label: 'Достаточно', variant: 'success' },
@@ -103,7 +152,7 @@ export function ProxyStats() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <dl className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
                 <div>
                   <dt className="text-muted-foreground">Всего прокси</dt>
                   <dd className="text-xl font-semibold">{data?.total_proxies ?? '—'}</dd>
@@ -113,6 +162,18 @@ export function ProxyStats() {
                   <dd className={cn('text-xl font-semibold', data ? statusColor(data.active_proxies ?? 0, data.total_proxies ?? 1) : '')}>
                     {data?.active_proxies ?? '—'}
                   </dd>
+                </div>
+                <div>
+                  <dt className="text-muted-foreground">Актуальные прокси</dt>
+                  <dd className="text-xl font-semibold text-emerald-300">{recentCount}</dd>
+                </div>
+                <div>
+                  <dt className="text-muted-foreground">Стареющие прокси</dt>
+                  <dd className="text-xl font-semibold text-amber-300">{staleCount}</dd>
+                </div>
+                <div>
+                  <dt className="text-muted-foreground">Неактивные прокси</dt>
+                  <dd className="text-xl font-semibold text-rose-300">{inactiveCount}</dd>
                 </div>
                 <div>
                   <dt className="text-muted-foreground">Успешность</dt>
@@ -183,6 +244,41 @@ export function ProxyStats() {
                       </div>
                     )}
                   </div>
+                </div>
+              )}
+
+              {freshnessEntries.length > 0 && (
+                <div className="mt-6 space-y-3">
+                  <h3 className="text-sm font-semibold text-foreground">Актуальность прокси</h3>
+                  {attentionList.length === 0 ? (
+                    <div className="rounded-md border border-emerald-500/40 bg-emerald-500/10 px-3 py-2 text-sm text-emerald-200">
+                      Все прокси фиксировались в пределах установленного SLA.
+                    </div>
+                  ) : (
+                    <ul className="space-y-2">
+                      {attentionList.map((entry) => (
+                        <li
+                          key={entry.canonical}
+                          className="flex flex-col gap-1 rounded-md border border-border/60 bg-secondary/10 px-3 py-2 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between"
+                        >
+                          <div className="space-y-1">
+                            <div className="font-mono text-[11px] text-foreground">{entry.proxy}</div>
+                            <div>
+                              Последняя активность: {formatLastSeen(entry.last_seen, entry.age_hours)}
+                              {entry.last_seen ? (
+                                <span className="ml-1 text-[11px] text-muted-foreground/80">
+                                  ({new Date(entry.last_seen).toLocaleString('ru-RU')})
+                                </span>
+                              ) : null}
+                            </div>
+                          </div>
+                          <Badge variant={statusVariants[entry.status]} className="w-fit text-[11px] uppercase tracking-wide">
+                            {statusLabels[entry.status]}
+                          </Badge>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               )}
             </CardContent>

@@ -9,7 +9,12 @@ import {
   mapStatusSchema,
   mapFileMetadataSchema,
   authUserSchema,
-  loginSchema
+  loginSchema,
+  proxyListSchema,
+  proxyAddRequestSchema,
+  proxyAddResponseSchema,
+  proxyDeleteRequestSchema,
+  proxyDeleteResponseSchema
 } from './validations';
 import type { SiteSummary } from './sites';
 
@@ -55,6 +60,9 @@ export type SiteMapResponse = z.infer<typeof siteMapResponseSchema>;
 export type QueuedExport = z.infer<typeof queuedExportSchema>;
 
 export type ActiveExportJob = ExportStatus;
+export type ProxyList = z.infer<typeof proxyListSchema>;
+export type ProxyMutationResponse = z.infer<typeof proxyAddResponseSchema>;
+export type ProxyDeleteResponse = z.infer<typeof proxyDeleteResponseSchema>;
 export type { SiteSummary };
 
 export interface DownloadProgress {
@@ -312,6 +320,28 @@ export function createApiClient(config: ApiClientConfig = {}) {
       const stats = await request<unknown>(withBase('/api/proxy/stats'));
       return proxyStatsSchema.parse(stats);
     },
+    getDatacenterProxies: async () => {
+      const payload = await request<unknown>(withBase('/api/proxy/datacenter'));
+      return proxyListSchema.parse(payload);
+    },
+    addDatacenterProxies: async (input: { proxies: string[]; replace?: boolean }) => {
+      const body = proxyAddRequestSchema.parse(input);
+      const payload = await request<unknown>(withBase('/api/proxy/datacenter'), {
+        method: 'POST',
+        headers: JSON_HEADERS,
+        body: JSON.stringify(body)
+      });
+      return proxyAddResponseSchema.parse(payload);
+    },
+    deleteDatacenterProxies: async (proxies: string[]) => {
+      const body = proxyDeleteRequestSchema.parse({ proxies });
+      const payload = await request<unknown>(withBase('/api/proxy/datacenter'), {
+        method: 'DELETE',
+        headers: JSON_HEADERS,
+        body: JSON.stringify(body)
+      });
+      return proxyDeleteResponseSchema.parse(payload);
+    },
     getSummaryMetrics: async () => {
       const payload = await request<unknown>(withBase('/api/summary'));
       return summaryResponseSchema.parse(payload);
@@ -484,6 +514,9 @@ export const stopExport = defaultClient.stopExport;
 export const uploadJsonMap = defaultClient.uploadJsonMap;
 export const downloadExport = defaultClient.downloadExport;
 export const getProxyStats = defaultClient.getProxyStats;
+export const getDatacenterProxies = defaultClient.getDatacenterProxies;
+export const addDatacenterProxies = defaultClient.addDatacenterProxies;
+export const deleteDatacenterProxies = defaultClient.deleteDatacenterProxies;
 export const getSummaryMetrics = defaultClient.getSummaryMetrics;
 export const getSites = defaultClient.getSites;
 export const getSiteDetail = defaultClient.getSiteDetail;

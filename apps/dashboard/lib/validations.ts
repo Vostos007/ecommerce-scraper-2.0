@@ -77,9 +77,75 @@ export const uploadJsonSchema = z
     version: z.string().max(64).optional(),
     generated_at: timestampSchema.optional()
   })
-  .strict();
+  .passthrough();
 
 export const mapStatusSchema = z.enum(['available', 'missing', 'outdated']);
+
+export const proxyUrlSchema = z
+  .string()
+  .trim()
+  .min(1, 'Прокси обязателен')
+  .max(512, 'Слишком длинная запись прокси')
+  .regex(/^[a-zA-Z0-9+.-]+:\/\//, 'Прокси должен содержать схему (например, http://)');
+
+export const proxyEntrySchema = z
+  .object({
+    url: z.string(),
+    scheme: z.string(),
+    host: z.string(),
+    port: z.number().int().min(1).max(65535),
+    username: z.string().nullable(),
+    password: z.string().nullable(),
+    source: z.literal('datacenter')
+  })
+  .strict();
+
+export const proxyListSchema = z
+  .object({
+    proxies: z.array(proxyEntrySchema),
+    total: z.number().int().min(0),
+    updatedAt: timestampSchema
+  })
+  .strict();
+
+export const proxyAddRequestSchema = z
+  .object({
+    proxies: z.array(proxyUrlSchema).min(1, 'Укажите хотя бы один прокси').max(100, 'Не более 100 прокси за раз'),
+    replace: z.boolean().optional()
+  })
+  .strict();
+
+export const proxyAddResponseSchema = z
+  .object({
+    added: z.array(proxyEntrySchema),
+    skipped: z.array(z.string()),
+    total: z.number().int().min(0)
+  })
+  .strict();
+
+export const proxyDeleteRequestSchema = z
+  .object({
+    proxies: z.array(proxyUrlSchema).min(1, 'Укажите хотя бы один прокси')
+  })
+  .strict();
+
+export const proxyDeleteResponseSchema = z
+  .object({
+    removed: z.array(proxyEntrySchema),
+    missing: z.array(z.string()),
+    total: z.number().int().min(0)
+  })
+  .strict();
+
+const proxyFreshnessSchema = z
+  .object({
+    proxy: z.string(),
+    canonical: z.string(),
+    status: z.enum(['active', 'stale', 'inactive']),
+    last_seen: z.string().nullable(),
+    age_hours: z.number().min(0).nullable()
+  })
+  .strict();
 
 export const mapFileMetadataSchema = z
   .object({
@@ -159,6 +225,9 @@ export const proxyStatsSchema = z
     healthy_proxies: z.number().min(0).optional(),
     failed_proxies: z.number().min(0).optional(),
     burned_proxies: z.number().min(0).optional(),
+    stale_proxies: z.number().min(0).optional(),
+    inactive_proxies: z.number().min(0).optional(),
+    recent_proxies: z.number().min(0).optional(),
     total_requests: z.number().min(0),
     successful_requests: z.number().min(0).optional(),
     success_rate: z.number().min(0).max(100).optional(),
@@ -179,6 +248,7 @@ export const proxyStatsSchema = z
       .optional(),
     premium_proxy_stats: premiumStatsSchema.optional(),
     warnings: z.array(z.string()).optional(),
+    proxy_freshness: z.array(proxyFreshnessSchema).optional(),
     generated_at: timestampSchema.optional(),
     optimal_proxy_count: z.number().int().min(0).optional(),
     recommended_purchase: z.number().int().min(0).optional(),

@@ -76,6 +76,7 @@ harness/             # E2E и интеграционные тесты
 - Логи транслируются через `/api/streams/:jobId`
 - `/api/upload` принимает JSON карты, валидированные Zod
 - `/api/proxy/stats` запускает `scripts.proxy_stats_export` и возвращает метрики
+- `/api/proxy/datacenter` управляет пулом datacenter‑прокси (`config/proxy/proxy_pools.yml`, `manual_proxies.txt`, `proxies_https.txt`)
 
 ## TDD Workflow
 - Тесты пишутся Vitest + Testing Library

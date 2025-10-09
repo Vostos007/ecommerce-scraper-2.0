@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 
 from .config import get_settings
-from .routes import jobs, health, sse, exports
+from .routes import jobs, health, sse, exports, sites
 from database.manager import DatabaseManager
 
 
@@ -105,6 +105,11 @@ app.include_router(
     sse.router,
     prefix="/api",
     tags=["sse"]
+)
+app.include_router(
+    sites.router,
+    prefix="/api/sites",
+    tags=["sites"]
 )
 
 

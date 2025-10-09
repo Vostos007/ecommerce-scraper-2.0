@@ -1,83 +1,26 @@
 import Link from 'next/link';
-import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 
 import { SiteDashboardClient } from '@/components/SiteDashboardClient';
 import { SiteSectionNav, type SiteSectionDefinition } from '@/components/SiteSectionNav';
-import type { SiteSummary } from '@/lib/sites';
+import { getSiteSummaries } from '@/lib/sites.server';
+import { sanitizeSite, type SiteSummary } from '@/lib/sites';
 
 interface SitePageProps {
-  params: Promise<{ site: string }>;
+  params: { site: string };
 }
 
-async function resolveApiOrigin(): Promise<string> {
-  const incomingHeaders = await headers();
-  const forwardedProto =
-    incomingHeaders.get('x-forwarded-proto') ?? incomingHeaders.get('protocol') ?? 'http';
-  const forwardedHost = incomingHeaders.get('x-forwarded-host') ?? incomingHeaders.get('host');
-
-  const configuredOrigin =
-    process.env.NEXT_PUBLIC_DASHBOARD_ORIGIN ??
-    process.env.DASHBOARD_ORIGIN ??
-    process.env.NEXT_PUBLIC_APP_URL ??
-    null;
-
-  if (forwardedHost) {
-    const candidate = `${forwardedProto}://${forwardedHost}`;
-    if (!configuredOrigin) {
-      return candidate;
-    }
-
-    try {
-      const configuredUrl = new URL(configuredOrigin);
-      const sameHost = configuredUrl.host === forwardedHost;
-      if (sameHost) {
-        return configuredUrl.origin;
-      }
-
-      if (process.env.NODE_ENV === 'development') {
-        // В дев-режиме предпочитаем реальный хост, чтобы не спотыкаться на битых .env значениях.
-        return candidate;
-      }
-
-      return configuredUrl.origin;
-    } catch {
-      // если origin некорректен, игнорируем его
-      return candidate;
-    }
-  }
-
-  if (configuredOrigin) {
-    try {
-      return new URL(configuredOrigin).origin;
-    } catch {
-      // ignore malformed url
-    }
-  }
-
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`;
-  }
-  if (process.env.PORT) {
-    return `http://localhost:${process.env.PORT}`;
-  }
-  return 'http://localhost:3000';
-}
-
-async function fetchSiteSummary(site: string): Promise<SiteSummary | null> {
-  const origin = await resolveApiOrigin();
-  const response = await fetch(`${origin}/api/sites/${encodeURIComponent(site)}`, {
-    cache: 'no-store'
-  });
-  if (!response.ok) {
+function getSiteSummary(site: string): SiteSummary | null {
+  const normalized = sanitizeSite(site);
+  if (!normalized) {
     return null;
   }
-  return (await response.json()) as SiteSummary;
+  const summaries = getSiteSummaries();
+  return summaries.find((item) => item.domain === normalized) ?? null;
 }
 
-export default async function SiteDashboardPage({ params }: SitePageProps) {
-  const { site } = await params;
-  const summary = await fetchSiteSummary(site);
+export default function SiteDashboardPage({ params }: SitePageProps) {
+  const summary = getSiteSummary(params.site);
 
   if (!summary) {
     notFound();

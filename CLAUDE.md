@@ -32,6 +32,16 @@ This is a comprehensive e-commerce scraping platform with dual architecture: a P
 - Real-time updates via Server-Sent Events
 - API integration at `http://localhost:8000`
 
+## MCP Servers
+
+### Serena MCP
+- **Purpose**: AI-assisted IDE integration with real-time project indexing
+- **Configuration**: Local project config in `.mcp.json`
+- **Target Project**: `/Users/vostos/Library/Mobile Documents/com~apple~CloudDocs/Desktop/Work_Table/Coding/ETSY_listing_manager`
+- **Installation**: Uses `uvx` for package management
+- **Context Mode**: `ide-assistant` for enhanced development assistance
+- **Status**: Should be connected and providing real-time project insights
+
 ## Development Commands
 
 ### Docker Stack (Recommended)

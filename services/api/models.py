@@ -145,10 +145,57 @@ class HealthResponse(BaseModel):
         }
 
 
+class SiteStatus(str, Enum):
+    """Site export status."""
+    READY = "ready"
+    MISSING_EXPORT = "missing_export"
+    UNKNOWN = "unknown"
+    MISSING_MAP = "missing_map"
+
+
+class MapStatus(str, Enum):
+    """Site map status."""
+    AVAILABLE = "available"
+    MISSING = "missing"
+    OUTDATED = "outdated"
+
+
+class SiteSummary(BaseModel):
+    """
+    Site summary response.
+
+    Contains site configuration and current export/map status.
+    """
+    domain: str = Field(..., description="Site domain")
+    name: str = Field(..., description="Site display name")
+    lastExport: Optional[float] = Field(default=None, description="Last export timestamp (Unix)")
+    status: SiteStatus = Field(..., description="Site export status")
+    script: str = Field(..., description="Export script name")
+    mapFile: Optional[str] = Field(default=None, description="Active map file name")
+    mapStatus: MapStatus = Field(..., description="Site map status")
+    mapLastModified: Optional[float] = Field(default=None, description="Map file modification timestamp")
+    mapLinkCount: Optional[int] = Field(default=None, description="Number of links in map")
+
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "domain": "example.com",
+                "name": "Example Site",
+                "lastExport": 1638360000.0,
+                "status": "ready",
+                "script": "example_fast_export",
+                "mapFile": "example.com.URL-map.json",
+                "mapStatus": "available",
+                "mapLastModified": 1638360000.0,
+                "mapLinkCount": 1000
+            }
+        }
+
+
 class ErrorResponse(BaseModel):
     """Standard error response."""
     detail: str = Field(..., description="Error message")
-    
+
     class Config:
         json_schema_extra = {
             "example": {

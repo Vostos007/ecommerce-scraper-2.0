@@ -1,7 +1,7 @@
 {
   "name": "ui-dashboard",
   "private": true,
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "Next.js 15.5.4 dashboard для управления Python экспортерами",
   "engines": {
     "node": ">=20.0.0"
@@ -45,6 +45,7 @@
     "redis": "4.7.0",
     "tailwind-merge": "2.5.4",
     "tailwindcss": "4.0.0-beta.7",
+    "yaml": "^2.8.1",
     "zod": "3.24.1",
     "zustand": "5.0.8"
   },
